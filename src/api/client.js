@@ -18,8 +18,8 @@ async function request(endpoint, options = {}) {
   };
 
   const config = {
-    headers,
     ...options,
+    headers,
   };
 
   const response = await fetch(url, config);
