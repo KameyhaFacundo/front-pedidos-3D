@@ -1,0 +1,8 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+start_command = "npx serve dist -l ${PORT:-3000} --single --no-clipboard"
+
+[service]
+name = "pedidos-3d-front"
