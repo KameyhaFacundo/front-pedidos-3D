@@ -4718,6 +4718,8 @@ img { max-width: 100%; display: block; }
   background: linear-gradient(135deg, var(--ember), var(--gold));
   flex: none;
   opacity: 0.85;
+  display: block;
+  object-fit: cover;
 }
 
 .landing-mock-name {

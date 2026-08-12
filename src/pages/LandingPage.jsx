@@ -89,7 +89,6 @@ export default function LandingPage() {
           </div>
           <div className="landing-nav-actions">
             <Link to="/login" className="landing-nav-login">Iniciar sesión</Link>
-            <Link to="/demo" className="landing-nav-login">Ver demo</Link>
             <button className="landing-nav-cta" onClick={() => setShowRegistro(true)}>
               Solicitar demo
             </button>
@@ -116,7 +115,6 @@ export default function LandingPage() {
               <button className="landing-hero-cta" onClick={() => setShowRegistro(true)}>
                 Solicitar demo →
               </button>
-              <Link to="/demo" className="landing-hero-demo">Ver demo</Link>
             </div>
             <div className="landing-hero-stats">
               {[['+70', 'Locales activos'], ['5 min', 'para empezar'], ['24/7', 'Pedidos en vivo']].map(([v, l]) => (
@@ -136,7 +134,7 @@ export default function LandingPage() {
               </div>
               <div className="landing-mock-body">
                 <div className="landing-mock-item">
-                  <div className="landing-mock-thumb"></div>
+                  <img src="/hamburguesa.png" alt="Hamburguesa" className="landing-mock-thumb" />
                   <div>
                     <div className="landing-mock-name">Bunker Cranch Doble</div>
                     <div className="landing-mock-desc">Doble medallón, cheddar, panceta</div>
@@ -144,7 +142,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="landing-mock-item">
-                  <div className="landing-mock-thumb"></div>
+                  <img src="/hamburguesa con papas.png" alt="Hamburguesa con papas" className="landing-mock-thumb" />
                   <div>
                     <div className="landing-mock-name">Papas con cheddar</div>
                     <div className="landing-mock-desc">+ cebolla caramelizada</div>
@@ -152,7 +150,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="landing-mock-item">
-                  <div className="landing-mock-thumb"></div>
+                  <img src="/napolitana.png" alt="Napolitana" className="landing-mock-thumb" />
                   <div>
                     <div className="landing-mock-name">Napolitana</div>
                     <div className="landing-mock-desc">Muzzarella, jamón, tomate</div>
