@@ -13,6 +13,7 @@ import LoginPage from './pages/LoginPage';
 import PedidoTrackingPage from './pages/PedidoTrackingPage';
 import NotFoundPage from './pages/NotFoundPage';
 import Toast from './components/Toast';
+import Footer from './components/Footer';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { NotificationProvider } from './context/NotificationContext';
 import './App.css';
@@ -98,6 +99,7 @@ function Navbar() {
 export default function App() {
   const location = useLocation();
   const isAdmin = location.pathname.startsWith('/admin');
+  const hideFooter = ['/admin', '/cocina', '/llamados', '/login'].some((p) => location.pathname.startsWith(p));
 
   return (
     <ThemeProvider>
@@ -118,6 +120,7 @@ export default function App() {
             <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
+          {!hideFooter && <Footer />}
         </main>
         <Toast />
       </OrderModeProvider>

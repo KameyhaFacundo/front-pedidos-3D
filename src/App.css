@@ -3729,3 +3729,109 @@ img { max-width: 100%; display: block; }
 .mode-logo .brand-logo { height: 46px; margin-bottom: 6px; }
 .admin-brand .brand-logo { height: 26px; }
 .login-brand .brand-logo { height: 40px; margin: 0 auto; }
+
+/* ===== FOOTER ===== */
+.footer {
+  margin-top: 48px;
+  background: var(--surface);
+  border-top: 1px solid var(--hair);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 36px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.footer-brand .brand-logo { height: 34px; }
+
+.footer-tagline {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.footer-socials {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-2);
+  color: var(--cream);
+  font-size: 18px;
+  transition: all 0.2s;
+}
+
+.footer-social:hover {
+  background: var(--ember);
+  color: var(--on-brand);
+  transform: translateY(-2px);
+}
+
+.footer-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 20px;
+  background: var(--surface-2);
+  border-radius: var(--radius);
+}
+
+.footer-cta-text {
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.footer-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ember);
+  transition: gap 0.2s;
+}
+
+.footer-cta-link:hover { gap: 10px; }
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  padding-top: 16px;
+  border-top: 1px solid var(--hair);
+}
+
+.footer-dot { opacity: 0.5; }
+
+@media (min-width: 640px) {
+  .footer-inner {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-cta { max-width: 360px; }
+  .footer-bottom { width: 100%; }
+}
