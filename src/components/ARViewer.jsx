@@ -5,7 +5,6 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
   const containerRef = useRef(null);
   const modelRef = useRef(null);
   const [status, setStatus] = useState('loading');
-  const triedAr = useRef(false);
 
   useEffect(() => {
     if (plato?.id) {
@@ -26,14 +25,11 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
     let timeout;
 
     const onLoad = () => {
-      if (triedAr.current) return;
-      triedAr.current = true;
-
-      viewer.activateAR().then(() => {
-        if (mounted) setStatus('ar-active');
-      }).catch(() => {
-        if (mounted) setStatus('viewer');
-      });
+      // activateAR() requires a fresh user gesture (WebXR transient
+      // activation) -- calling it here, after the async model load, loses
+      // that gesture and opens AR without camera access (black screen).
+      // Show the 3D viewer instead and let the user tap the AR button.
+      if (mounted) setStatus('viewer');
     };
 
     const onError = () => { if (mounted) setStatus('error'); };
@@ -97,10 +93,7 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
         <div className="ar-overlay">
           <div className="spinner" style={{ width: 48, height: 48, borderWidth: 3 }} />
           <p style={{ color: 'var(--cream)', fontSize: 16, marginTop: 20, fontWeight: 600 }}>
-            Abriendo cámara...
-          </p>
-          <p style={{ color: 'var(--muted)', fontSize: 13, marginTop: 8 }}>
-            Apuntá a una superficie plana
+            Cargando modelo 3D...
           </p>
         </div>
       )}
