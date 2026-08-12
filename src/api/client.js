@@ -163,3 +163,10 @@ export function cancelarPedido(id) {
     method: 'PATCH',
   });
 }
+
+export function validarCupon(codigo) {
+  return request('/cupones/validar', {
+    method: 'POST',
+    body: JSON.stringify({ codigo }),
+  });
+}

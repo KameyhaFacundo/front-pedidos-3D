@@ -81,6 +81,8 @@ export default function AdminPage() {
   const [fotoFile, setFotoFile] = useState(null);
   const [glbFile, setGlbFile] = useState(null);
   const [usdzFile, setUsdzFile] = useState(null);
+  const [presentaciones, setPresentaciones] = useState([]);
+  const [agregados, setAgregados] = useState([]);
   const [qrMesa, setQrMesa] = useState(null);
 
   const fetchPedidosYMetricas = useCallback(() => {
@@ -133,6 +135,8 @@ export default function AdminPage() {
     setFotoFile(null);
     setGlbFile(null);
     setUsdzFile(null);
+    setPresentaciones([]);
+    setAgregados([]);
     setShowModal(true);
   };
 
@@ -148,6 +152,8 @@ export default function AdminPage() {
     setFotoFile(null);
     setGlbFile(null);
     setUsdzFile(null);
+    setPresentaciones((plato.presentaciones || []).map((p) => ({ id: p.id, nombre: p.nombre, descripcion: p.descripcion || '', precio: p.precio })));
+    setAgregados((plato.agregados || []).map((a) => ({ id: a.id, nombre: a.nombre, descripcion: a.descripcion || '', precio: a.precio })));
     setShowModal(true);
   };
 
@@ -173,6 +179,17 @@ export default function AdminPage() {
       if (fotoFile) formData.append('foto', fotoFile);
       if (glbFile) formData.append('modelo_glb', glbFile);
       if (usdzFile) formData.append('modelo_usdz', usdzFile);
+
+      presentaciones.forEach((p, i) => {
+        formData.append(`presentaciones[${i}][nombre]`, p.nombre);
+        formData.append(`presentaciones[${i}][descripcion]`, p.descripcion || '');
+        formData.append(`presentaciones[${i}][precio]`, Number(p.precio) || 0);
+      });
+      agregados.forEach((a, i) => {
+        formData.append(`agregados[${i}][nombre]`, a.nombre);
+        formData.append(`agregados[${i}][descripcion]`, a.descripcion || '');
+        formData.append(`agregados[${i}][precio]`, Number(a.precio) || 0);
+      });
 
       if (editingPlato) {
         await updatePlato(editingPlato.id, formData);
@@ -380,6 +397,15 @@ export default function AdminPage() {
                         {pedido.items?.map((item) => (
                           <span key={item.id}>
                             {item.cantidad} {item.plato?.nombre || `Plato #${item.plato_id}`}
+                            {item.presentacion_nombre && (
+                              <em className="admin-item-var"> ({item.presentacion_nombre})</em>
+                            )}
+                            {item.agregados?.length > 0 && (
+                              <em className="admin-item-extras"> + {item.agregados.map((a) => `${a.nombre}${a.cantidad > 1 ? ` x${a.cantidad}` : ''}`).join(', ')}</em>
+                            )}
+                            {item.observacion && (
+                              <em className="admin-item-obs"> · “{item.observacion}”</em>
+                            )}
                             <br />
                           </span>
                         ))}
@@ -724,6 +750,74 @@ export default function AdminPage() {
               onChange={(e) => handleModalChange('descripcion', e.target.value)}
               placeholder="Descripción breve"
             />
+          </div>
+
+          <div className="custom-field">
+            <div className="custom-field-head">
+              <label>Presentaciones</label>
+              <button className="custom-add" onClick={() => setPresentaciones((p) => [...p, { nombre: '', descripcion: '', precio: '' }])}>
+                <i className="ti ti-plus"></i> Agregar
+              </button>
+            </div>
+            {presentaciones.map((p, i) => (
+              <div key={i} className="custom-row">
+                <input
+                  type="text"
+                  placeholder="Nombre (ej: DOBLE)"
+                  value={p.nombre}
+                  onChange={(e) => setPresentaciones((prev) => prev.map((x, j) => j === i ? { ...x, nombre: e.target.value } : x))}
+                />
+                <input
+                  type="text"
+                  placeholder="Descripción"
+                  value={p.descripcion}
+                  onChange={(e) => setPresentaciones((prev) => prev.map((x, j) => j === i ? { ...x, descripcion: e.target.value } : x))}
+                />
+                <input
+                  type="number"
+                  placeholder="Precio"
+                  value={p.precio}
+                  onChange={(e) => setPresentaciones((prev) => prev.map((x, j) => j === i ? { ...x, precio: e.target.value } : x))}
+                />
+                <button className="custom-del" onClick={() => setPresentaciones((prev) => prev.filter((_, j) => j !== i))}>
+                  <i className="ti ti-x"></i>
+                </button>
+              </div>
+            ))}
+          </div>
+
+          <div className="custom-field">
+            <div className="custom-field-head">
+              <label>Agregados</label>
+              <button className="custom-add" onClick={() => setAgregados((a) => [...a, { nombre: '', descripcion: '', precio: '' }])}>
+                <i className="ti ti-plus"></i> Agregar
+              </button>
+            </div>
+            {agregados.map((a, i) => (
+              <div key={i} className="custom-row">
+                <input
+                  type="text"
+                  placeholder="Nombre (ej: EXTRA CHEDAR)"
+                  value={a.nombre}
+                  onChange={(e) => setAgregados((prev) => prev.map((x, j) => j === i ? { ...x, nombre: e.target.value } : x))}
+                />
+                <input
+                  type="text"
+                  placeholder="Descripción"
+                  value={a.descripcion}
+                  onChange={(e) => setAgregados((prev) => prev.map((x, j) => j === i ? { ...x, descripcion: e.target.value } : x))}
+                />
+                <input
+                  type="number"
+                  placeholder="Precio"
+                  value={a.precio}
+                  onChange={(e) => setAgregados((prev) => prev.map((x, j) => j === i ? { ...x, precio: e.target.value } : x))}
+                />
+                <button className="custom-del" onClick={() => setAgregados((prev) => prev.filter((_, j) => j !== i))}>
+                  <i className="ti ti-x"></i>
+                </button>
+              </div>
+            ))}
           </div>
 
           <div className="field">

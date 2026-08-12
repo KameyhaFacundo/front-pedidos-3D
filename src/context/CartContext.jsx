@@ -7,10 +7,29 @@ const CART_KEY = 'pedido3d_cart';
 function loadCart() {
   try {
     const stored = localStorage.getItem(CART_KEY);
-    return stored ? JSON.parse(stored) : [];
+    const parsed = stored ? JSON.parse(stored) : [];
+    return Array.isArray(parsed) ? parsed : [];
   } catch {
     return [];
   }
+}
+
+function itemKey(plato, presentacion, agregados, observacion) {
+  const ag = (agregados || [])
+    .map((a) => `${a.nombre}x${a.cantidad}`)
+    .sort()
+    .join('|');
+  return `${plato.id}:${presentacion || '-'}:${ag}:${(observacion || '').trim()}`;
+}
+
+function unitPrice(plato, presentacion, agregados) {
+  let base = Number(plato.precio);
+  if (presentacion && Array.isArray(plato.presentaciones)) {
+    const pres = plato.presentaciones.find((p) => p.nombre === presentacion);
+    if (pres) base = Number(pres.precio);
+  }
+  const extra = (agregados || []).reduce((sum, a) => sum + Number(a.precio || 0) * (a.cantidad || 1), 0);
+  return base + extra;
 }
 
 export function CartProvider({ children }) {
@@ -22,18 +41,21 @@ export function CartProvider({ children }) {
     localStorage.setItem(CART_KEY, JSON.stringify(items));
   }, [items]);
 
-  const addToCart = useCallback((plato, cantidad = 1) => {
+  const addToCart = useCallback((plato, opts = {}) => {
+    const { presentacion = null, agregados = [], observacion = '', cantidad = 1 } = opts;
+    const key = itemKey(plato, presentacion, agregados, observacion);
+    const precio = unitPrice(plato, presentacion, agregados);
+
     setItems((prev) => {
-      const existing = prev.find((item) => item.plato.id === plato.id);
+      const existing = prev.find((item) => item.key === key);
       if (existing) {
         return prev.map((item) =>
-          item.plato.id === plato.id
-            ? { ...item, cantidad: item.cantidad + cantidad }
-            : item
+          item.key === key ? { ...item, cantidad: item.cantidad + cantidad } : item
         );
       }
-      return [...prev, { plato, cantidad }];
+      return [...prev, { key, plato, presentacion, agregados, observacion, cantidad, precioUnitario: precio }];
     });
+
     const id = ++toastId.current;
     setToast({ plato, id });
     setTimeout(() => {
@@ -43,20 +65,16 @@ export function CartProvider({ children }) {
 
   const dismissToast = useCallback(() => setToast(null), []);
 
-  const removeFromCart = useCallback((platoId) => {
-    setItems((prev) => prev.filter((item) => item.plato.id !== platoId));
+  const removeFromCart = useCallback((key) => {
+    setItems((prev) => prev.filter((item) => item.key !== key));
   }, []);
 
-  const updateQuantity = useCallback((platoId, cantidad) => {
+  const updateQuantity = useCallback((key, cantidad) => {
     if (cantidad <= 0) {
-      setItems((prev) => prev.filter((item) => item.plato.id !== platoId));
+      setItems((prev) => prev.filter((item) => item.key !== key));
       return;
     }
-    setItems((prev) =>
-      prev.map((item) =>
-        item.plato.id === platoId ? { ...item, cantidad } : item
-      )
-    );
+    setItems((prev) => prev.map((item) => (item.key === key ? { ...item, cantidad } : item)));
   }, []);
 
   const clearCart = useCallback(() => {
@@ -64,15 +82,15 @@ export function CartProvider({ children }) {
     localStorage.removeItem(CART_KEY);
   }, []);
 
-  const getTotal = useCallback(() => {
-    return items.reduce((total, item) => total + item.plato.precio * item.cantidad, 0);
+  const getSubtotal = useCallback(() => {
+    return items.reduce((total, item) => total + (item.precioUnitario || 0) * item.cantidad, 0);
   }, [items]);
 
   const itemCount = items.reduce((count, item) => count + item.cantidad, 0);
 
   return (
     <CartContext.Provider
-      value={{ items, addToCart, removeFromCart, updateQuantity, clearCart, getTotal, itemCount, toast, dismissToast }}
+      value={{ items, addToCart, removeFromCart, updateQuantity, clearCart, getSubtotal, getTotal: getSubtotal, itemCount, toast, dismissToast }}
     >
       {children}
     </CartContext.Provider>

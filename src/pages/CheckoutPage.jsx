@@ -1,18 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useOrderMode } from '../context/OrderModeContext';
-import { getMesas, createPedido } from '../api/client';
+import { getMesas, createPedido, validarCupon } from '../api/client';
+
+function formatear(n) {
+  return '$' + Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+const ENTREGAS = [
+  { key: 'mesa', label: 'Lo consumo en el local', icon: 'ti-tools-kitchen-2' },
+  { key: 'retiro', label: 'Lo retiro personalmente', icon: 'ti-shopping-bag' },
+  { key: 'envio', label: 'Necesito que me lo envíen', icon: 'ti-truck-delivery' },
+];
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
   const { items, getTotal, clearCart } = useCart();
-  const { tipo, mesaId } = useOrderMode();
+  const { tipo: modoTipo, mesaId: modoMesaId } = useOrderMode();
   const [mesas, setMesas] = useState([]);
+  const [entrega, setEntrega] = useState(modoTipo === 'retiro' ? 'retiro' : 'mesa');
+  const [mesaId, setMesaId] = useState(modoMesaId || '');
+  const [direccion, setDireccion] = useState('');
   const [medioPago, setMedioPago] = useState('efectivo');
-  const [notas, setNotas] = useState('');
   const [nombre, setNombre] = useState('');
   const [celular, setCelular] = useState('');
+  const [cuponCodigo, setCuponCodigo] = useState('');
+  const [cupon, setCupon] = useState(null);
+  const [cuponError, setCuponError] = useState(null);
+  const [validando, setValidando] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
@@ -20,14 +36,46 @@ export default function CheckoutPage() {
   useEffect(() => {
     getMesas()
       .then((data) => setMesas(data))
-      .catch(() => setError('No se pudieron cargar las mesas'));
+      .catch(() => {});
   }, []);
 
-  const mesaNumero = mesas.find((m) => m.id === mesaId)?.numero;
+  const mesaNumero = useMemo(
+    () => mesas.find((m) => m.id === Number(mesaId))?.numero,
+    [mesas, mesaId]
+  );
+
+  const subtotal = getTotal();
+
+  const descuento = useMemo(() => {
+    if (!cupon) return 0;
+    if (cupon.tipo === 'porcentaje') return Math.round(subtotal * (cupon.descuento / 100) * 100) / 100;
+    return Math.min(Number(cupon.descuento), subtotal);
+  }, [cupon, subtotal]);
+
+  const total = subtotal - descuento;
+
+  const handleValidarCupon = async () => {
+    if (!cuponCodigo.trim()) return;
+    setValidando(true);
+    setCuponError(null);
+    try {
+      const result = await validarCupon(cuponCodigo.trim());
+      setCupon(result);
+    } catch (err) {
+      setCupon(null);
+      setCuponError(err.message);
+    } finally {
+      setValidando(false);
+    }
+  };
 
   const handleSubmit = async () => {
-    if (!tipo) {
-      setError('Seleccioná cómo querés pedir');
+    if (!nombre.trim()) {
+      setError('Ingresá tu nombre');
+      return;
+    }
+    if (!celular.trim()) {
+      setError('Ingresá tu teléfono');
       return;
     }
 
@@ -35,21 +83,25 @@ export default function CheckoutPage() {
     setError(null);
 
     const pedidoData = {
-      tipo,
-      mesa_id: tipo === 'mesa' ? mesaId : null,
-      nombre: nombre.trim() || null,
-      celular: celular.trim() || null,
+      tipo: entrega,
+      mesa_id: entrega === 'mesa' ? (Number(mesaId) || null) : null,
+      direccion: entrega === 'envio' ? direccion.trim() || null : null,
+      nombre: nombre.trim(),
+      celular: celular.trim(),
       medio_pago: medioPago,
-      notas: notas.trim() || undefined,
-      items: items.map(({ plato, cantidad }) => ({
-        plato_id: plato.id,
-        cantidad,
+      cupon_codigo: cupon ? cupon.codigo : undefined,
+      items: items.map((item) => ({
+        plato_id: item.plato.id,
+        cantidad: item.cantidad,
+        presentacion_nombre: item.presentacion || null,
+        agregados: item.agregados || [],
+        observacion: item.observacion || null,
       })),
     };
 
     try {
       const result = await createPedido(pedidoData);
-      localStorage.setItem('pedido3d_last_order', JSON.stringify({ id: result.id, tipo, mesaNumero: mesaNumero || null, fecha: new Date().toISOString() }));
+      localStorage.setItem('pedido3d_last_order', JSON.stringify({ id: result.id, tipo: entrega, mesaNumero: mesaNumero || null, fecha: new Date().toISOString() }));
       setSuccess(result);
       clearCart();
     } catch (err) {
@@ -58,6 +110,8 @@ export default function CheckoutPage() {
       setSubmitting(false);
     }
   };
+
+  const entregaLabel = ENTREGAS.find((e) => e.key === entrega)?.label || '';
 
   if (items.length === 0 && !success) {
     return (
@@ -69,6 +123,38 @@ export default function CheckoutPage() {
   }
 
   if (success) {
+    const restoPhone = '5493815069332';
+    const itemsTexto = items.map((item) => {
+      let linea = `${item.cantidad}x ${item.plato.nombre.toUpperCase()}`;
+      if (item.presentacion) linea += ` (${item.presentacion.toUpperCase()})`;
+      if (item.agregados?.length) {
+        linea += ' + ' + item.agregados.map((a) => `${a.nombre}${a.cantidad > 1 ? ` x${a.cantidad}` : ''}`).join(' + ');
+      }
+      linea += `: ${formatear(item.precioUnitario * item.cantidad)}`;
+      if (item.observacion) linea += `%0A  ↳ Obs: ${item.observacion}`;
+      return linea;
+    }).join('%0A');
+
+    const msg = [
+      '¡Hola! Te paso el resumen de mi pedido',
+      '',
+      `Pedido: #${success.id}`,
+      `Nombre: ${nombre}`,
+      `Teléfono: ${celular}`,
+      '',
+      `Forma de pago: ${medioPago}`,
+      `Entrega: ${entregaLabel}${entrega === 'mesa' && mesaNumero ? ` (Mesa ${mesaNumero})` : ''}${entrega === 'envio' && direccion ? ` - ${direccion}` : ''}`,
+      '',
+      'Mi pedido es:',
+      itemsTexto,
+      '',
+      `Subtotal: ${formatear(subtotal)}`,
+      descuento > 0 ? `Descuento: -${formatear(descuento)}` : '',
+      `TOTAL: ${formatear(total)}`,
+      '',
+      'Espero tu respuesta para confirmar mi pedido 🙌',
+    ].filter((l) => l !== '').join('%0A');
+
     return (
       <div className="page-center checkout-success">
         <div className="success-icon">
@@ -82,16 +168,7 @@ export default function CheckoutPage() {
         <p className="success-estado">Estado: {success.estado}</p>
 
         <a
-          href={(() => {
-            const restoPhone = '5493815069332';
-            const itemsTexto = items.map(({ plato, cantidad }) =>
-              `${cantidad}x ${plato.nombre.toUpperCase()}: $${(plato.precio * cantidad).toFixed(2)}`
-            ).join('%0A');
-            const total = getTotal().toFixed(2);
-            const nombreCliente = nombre || 'Cliente';
-            const msg = `¡Hola! Te paso el resumen de mi pedido%0A%0APedido: #${success.id}%0ANombre: ${nombreCliente}%0ATeléfono: ${celular || '---'}%0A%0AForma de pago: ${medioPago}%0ATotal: $${total}%0A%0A${tipo === 'mesa' ? `Estoy en la Mesa ${mesaNumero}` : 'Retiro en el local'}%0A%0AMi pedido es:%0A%0A${itemsTexto}%0A%0ATOTAL: $${total}%0A%0AEspero tu respuesta para confirmar mi pedido 🙌`;
-            return `https://wa.me/${restoPhone}?text=${msg}`;
-          })()}
+          href={`https://wa.me/${restoPhone}?text=${msg}`}
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-primary btn-block"
@@ -101,7 +178,7 @@ export default function CheckoutPage() {
           }}
         >
           <i className="ti ti-brand-whatsapp" style={{ fontSize: 20 }}></i>
-          Enviar por WhatsApp
+          Pedir por WhatsApp
         </a>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '100%', maxWidth: 300, marginTop: 12 }}>
@@ -120,9 +197,7 @@ export default function CheckoutPage() {
     <div className="checkout-page">
       <header className="page-header">
         <Link to="/carrito" className="back-link">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M19 12H5M12 19l-7-7 7-7" />
-          </svg>
+          <i className="ti ti-arrow-left"></i>
           Volver al carrito
         </Link>
         <h1>Confirmar pedido</h1>
@@ -136,60 +211,73 @@ export default function CheckoutPage() {
       )}
 
       <div className="checkout-section">
-        <h2>Modalidad</h2>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          {tipo === 'mesa' ? (
-            <>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF5A36" strokeWidth="2">
-                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-              </svg>
-              <span style={{ fontWeight: 600, color: 'var(--cream)', fontSize: 15 }}>
-                Mesa {mesaNumero || '...'}
-              </span>
-            </>
-          ) : (
-            <>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F0B429" strokeWidth="2">
-                <rect x="4" y="9" width="16" height="11" rx="2" />
-                <path d="M8 9V6a4 4 0 0 1 8 0v3" />
-              </svg>
-              <span style={{ fontWeight: 600, color: 'var(--cream)', fontSize: 15 }}>
-                Retiro en el local
-              </span>
-            </>
-          )}
-          <Link to="/" style={{ marginLeft: 'auto', fontSize: 12, color: 'var(--muted)' }}>
-            Cambiar
-          </Link>
-        </div>
+        <h2>Nombre y apellido</h2>
+        <input
+          className="input-text"
+          type="text"
+          placeholder="Necesitamos saber cómo te llamás"
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
+        />
       </div>
 
       <div className="checkout-section">
-        <h2>Tus datos</h2>
-        <div style={{ display: 'flex', gap: 10 }}>
-          <div className="field" style={{ flex: 1 }}>
-            <label>Nombre</label>
-            <input
-              type="text"
-              placeholder="Tu nombre"
-              value={nombre}
-              onChange={(e) => setNombre(e.target.value)}
-            />
-          </div>
-          <div className="field" style={{ flex: 1 }}>
-            <label>Celular</label>
-            <input
-              type="tel"
-              placeholder="381 5069332"
-              value={celular}
-              onChange={(e) => setCelular(e.target.value)}
-            />
-          </div>
-        </div>
+        <h2>Teléfono</h2>
+        <input
+          className="input-text"
+          type="tel"
+          placeholder="Necesitamos un medio de contacto"
+          value={celular}
+          onChange={(e) => setCelular(e.target.value)}
+        />
       </div>
 
       <div className="checkout-section">
-        <h2>Medio de pago</h2>
+        <h2>Forma de entrega</h2>
+        <div className="radio-group">
+          {ENTREGAS.map(({ key, label, icon }) => (
+            <label key={key} className={`radio-card ${entrega === key ? 'active' : ''}`}>
+              <input
+                type="radio"
+                name="entrega"
+                value={key}
+                checked={entrega === key}
+                onChange={(e) => setEntrega(e.target.value)}
+              />
+              <div className="radio-content">
+                <i className={`ti ${icon}`}></i>
+                <span>{label}</span>
+              </div>
+            </label>
+          ))}
+        </div>
+        {entrega === 'mesa' && (
+          <select
+            className="select-input"
+            value={mesaId}
+            onChange={(e) => setMesaId(e.target.value)}
+            style={{ marginTop: 10 }}
+          >
+            <option value="">Seleccioná tu mesa</option>
+            {mesas.filter((m) => m.activa).map((mesa) => (
+              <option key={mesa.id} value={mesa.id}>Mesa {mesa.numero}</option>
+            ))}
+          </select>
+        )}
+        {entrega === 'envio' && (
+          <input
+            className="input-text"
+            type="text"
+            placeholder="Dirección de envío"
+            value={direccion}
+            onChange={(e) => setDireccion(e.target.value)}
+            style={{ marginTop: 10 }}
+          />
+        )}
+      </div>
+
+      <div className="checkout-section">
+        <h2>Forma de pago</h2>
         <div className="radio-group">
           <label className={`radio-card ${medioPago === 'efectivo' ? 'active' : ''}`}>
             <input
@@ -200,10 +288,7 @@ export default function CheckoutPage() {
               onChange={(e) => setMedioPago(e.target.value)}
             />
             <div className="radio-content">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="2" y="5" width="20" height="14" rx="2" />
-                <path d="M2 10h20" />
-              </svg>
+              <i className="ti ti-cash"></i>
               <span>Efectivo</span>
             </div>
           </label>
@@ -216,10 +301,7 @@ export default function CheckoutPage() {
               onChange={(e) => setMedioPago(e.target.value)}
             />
             <div className="radio-content">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="M12 8v8M8 12h8" />
-              </svg>
+              <i className="ti ti-transfer"></i>
               <span>Transferencia</span>
             </div>
           </label>
@@ -227,31 +309,62 @@ export default function CheckoutPage() {
       </div>
 
       <div className="checkout-section">
-        <h2>Notas especiales</h2>
-        <textarea
-          className="input-textarea"
-          placeholder="Ej: sin cebolla, cocción medio, sin picante..."
-          value={notas}
-          onChange={(e) => setNotas(e.target.value)}
-          rows={3}
-        />
+        <h2>Cupón de descuento</h2>
+        <div className="cupon-row">
+          <input
+            className="input-text"
+            type="text"
+            placeholder="Ingresá el código y validalo"
+            value={cuponCodigo}
+            onChange={(e) => setCuponCodigo(e.target.value)}
+          />
+          <button
+            className="btn btn-outline btn-sm"
+            onClick={handleValidarCupon}
+            disabled={validando || !cuponCodigo.trim()}
+          >
+            {validando ? '...' : 'Validar'}
+          </button>
+        </div>
+        {cuponError && <p className="cupon-error">{cuponError}</p>}
+        {cupon && (
+          <p className="cupon-ok">
+            <i className="ti ti-circle-check"></i> Cupón aplicado: {cupon.codigo}{' '}
+            ({cupon.tipo === 'porcentaje' ? `${cupon.descuento}%` : formatear(cupon.descuento)})
+          </p>
+        )}
       </div>
 
       <div className="checkout-section">
         <h2>Resumen del pedido</h2>
         <div className="checkout-summary">
-          {items.map(({ plato, cantidad }) => (
-            <div key={plato.id} className="summary-item">
+          {items.map((item) => (
+            <div key={item.key} className="summary-item">
               <span>
-                {cantidad} x {plato.nombre}
+                {item.cantidad} x {item.plato.nombre}
+                {item.presentacion ? ` (${item.presentacion})` : ''}
+                {item.agregados?.length > 0 && (
+                  <span className="summary-extras"> + {item.agregados.map((a) => a.nombre).join(', ')}</span>
+                )}
+                {item.observacion && <span className="summary-obs"> · “{item.observacion}”</span>}
               </span>
-              <span>${(plato.precio * cantidad).toFixed(2)}</span>
+              <span>{formatear(item.precioUnitario * item.cantidad)}</span>
             </div>
           ))}
           <div className="summary-divider" />
+          <div className="summary-row">
+            <span>Subtotal</span>
+            <span>{formatear(subtotal)}</span>
+          </div>
+          {descuento > 0 && (
+            <div className="summary-row discount">
+              <span>Descuento</span>
+              <span>-{formatear(descuento)}</span>
+            </div>
+          )}
           <div className="summary-total">
             <span>Total</span>
-            <span>${getTotal().toFixed(2)}</span>
+            <span>{formatear(total)}</span>
           </div>
         </div>
       </div>
@@ -261,7 +374,7 @@ export default function CheckoutPage() {
         onClick={handleSubmit}
         disabled={submitting}
       >
-        {submitting ? 'Confirmando...' : 'Confirmar pedido'}
+        {submitting ? 'Confirmando...' : `Pedir por WhatsApp · ${formatear(total)}`}
       </button>
     </div>
   );

@@ -3,6 +3,7 @@ import { getMenu, getMesas } from '../api/client';
 import { useCart } from '../context/CartContext';
 import { useOrderMode } from '../context/OrderModeContext';
 import ARViewer from '../components/ARViewer';
+import PlatoDetailModal from '../components/PlatoDetailModal';
 import { MenuSkeleton } from '../components/Skeletons';
 
 const CATEGORIAS = [
@@ -18,6 +19,7 @@ export default function MenuPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [arPlato, setArPlato] = useState(null);
+  const [detailPlato, setDetailPlato] = useState(null);
   const [categoria, setCategoria] = useState('');
   const { addToCart, updateQuantity, items: cartItems } = useCart();
   const { tipo, mesaId } = useOrderMode();
@@ -58,14 +60,16 @@ export default function MenuPage() {
   })();
 
   const handleMenuItemClick = (plato) => {
-    if (plato.disponible) {
-      addToCart(plato, 1);
-    }
+    setDetailPlato(plato);
   };
 
   const handleARAddToCart = (plato) => {
-    addToCart(plato, 1);
     setArPlato(null);
+    if (plato.presentaciones?.length > 0 || plato.agregados?.length > 0) {
+      setDetailPlato(plato);
+    } else {
+      addToCart(plato);
+    }
   };
 
   if (loading) return <MenuSkeleton />;
@@ -129,13 +133,13 @@ export default function MenuPage() {
       ) : (
         <div className="menu-list">
           {filteredPlatos.map((plato) => {
-            const cartItem = cartItems.find((i) => i.plato.id === plato.id);
-            const qty = cartItem ? cartItem.cantidad : 0;
+            const platoCartItems = cartItems.filter((i) => i.plato.id === plato.id);
+            const qty = platoCartItems.reduce((sum, i) => sum + i.cantidad, 0);
             return (
               <div
                 key={plato.id}
                 className="menu-item"
-                onClick={() => { if (!qty) handleMenuItemClick(plato); }}
+                onClick={() => handleMenuItemClick(plato)}
               >
                 <div className="menu-item-thumb">
                   {plato.foto ? (
@@ -159,19 +163,23 @@ export default function MenuPage() {
                     {plato.descripcion || 'Plato elaborado con ingredientes frescos de estación.'}
                   </div>
                   <div className="menu-item-bottom">
-                    <div className="menu-item-price">${Number(plato.precio).toFixed(2)}</div>
+                    <div className="menu-item-price">
+                      {plato.presentaciones?.length > 0
+                        ? `Desde $${Math.min(...plato.presentaciones.map((p) => Number(p.precio))).toFixed(2)}`
+                        : `$${Number(plato.precio).toFixed(2)}`}
+                    </div>
                     {qty > 0 ? (
                       <div className="stepper" onClick={(e) => e.stopPropagation()}>
                         <button
                           className="stepper-btn"
-                          onClick={() => updateQuantity(plato.id, qty - 1)}
+                          onClick={() => updateQuantity(platoCartItems[platoCartItems.length - 1].key, qty - 1)}
                         >
                           <i className="ti ti-minus"></i>
                         </button>
                         <span className="stepper-val">{qty}</span>
                         <button
                           className="stepper-btn"
-                          onClick={() => updateQuantity(plato.id, qty + 1)}
+                          onClick={() => handleMenuItemClick(plato)}
                         >
                           <i className="ti ti-plus"></i>
                         </button>
@@ -198,6 +206,10 @@ export default function MenuPage() {
           onClose={() => setArPlato(null)}
           onAddToCart={handleARAddToCart}
         />
+      )}
+
+      {detailPlato && (
+        <PlatoDetailModal plato={detailPlato} onClose={() => setDetailPlato(null)} />
       )}
     </div>
   );

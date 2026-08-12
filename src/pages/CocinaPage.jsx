@@ -157,7 +157,18 @@ export default function CocinaPage() {
               <ul className="pedido-items">
                 {pedido.items.map((item) => (
                   <li key={item.id}>
-                    <span>{item.cantidad} x {item.plato?.nombre || `Plato #${item.plato_id}`}</span>
+                    <span>
+                      {item.cantidad} x {item.plato?.nombre || `Plato #${item.plato_id}`}
+                      {item.presentacion_nombre && <em className="pedido-item-var"> ({item.presentacion_nombre})</em>}
+                    </span>
+                    {item.agregados?.length > 0 && (
+                      <span className="pedido-item-extras">
+                        + {item.agregados.map((a) => `${a.nombre}${a.cantidad > 1 ? ` x${a.cantidad}` : ''}`).join(', ')}
+                      </span>
+                    )}
+                    {item.observacion && (
+                      <span className="pedido-item-obs">“{item.observacion}”</span>
+                    )}
                   </li>
                 ))}
               </ul>

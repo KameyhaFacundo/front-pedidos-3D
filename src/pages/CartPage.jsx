@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
+function formatear(n) {
+  return '$' + Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
 export default function CartPage() {
   const { items, removeFromCart, updateQuantity, getTotal } = useCart();
 
@@ -28,12 +32,12 @@ export default function CartPage() {
       </header>
 
       <div className="cart-items">
-        {items.map(({ plato, cantidad }) => (
-          <div key={plato.id} className="cart-item">
+        {items.map((item) => (
+          <div key={item.key} className="cart-item">
             <div className="cart-item-image">
               <img
-                src={plato.foto}
-                alt={plato.nombre}
+                src={item.plato.foto}
+                alt={item.plato.nombre}
                 loading="lazy"
                 onError={(e) => {
                   e.target.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"><rect fill="%232A2318" width="80" height="80"/></svg>';
@@ -41,31 +45,45 @@ export default function CartPage() {
               />
             </div>
             <div className="cart-item-info">
-              <h3>{plato.nombre}</h3>
-              <p className="cart-item-price">${Number(plato.precio).toFixed(2)} c/u</p>
+              <h3>{item.plato.nombre}</h3>
+              {item.presentacion && (
+                <span className="cart-item-variant">{item.presentacion}</span>
+              )}
+              {item.agregados?.length > 0 && (
+                <div className="cart-item-extras">
+                  {item.agregados.map((a, i) => (
+                    <span key={i}>+ {a.nombre}{a.cantidad > 1 ? ` x${a.cantidad}` : ''}</span>
+                  ))}
+                </div>
+              )}
+              {item.observacion && (
+                <div className="cart-item-obs">“{item.observacion}”</div>
+              )}
+              <p className="cart-item-price">{formatear(item.precioUnitario)} c/u</p>
             </div>
             <div className="cart-item-controls">
               <button
                 className="btn-qty"
-                onClick={() => updateQuantity(plato.id, cantidad - 1)}
+                onClick={() => updateQuantity(item.key, item.cantidad - 1)}
               >
                 -
               </button>
-              <span className="cart-item-qty">{cantidad}</span>
+              <span className="cart-item-qty">{item.cantidad}</span>
               <button
                 className="btn-qty"
-                onClick={() => updateQuantity(plato.id, cantidad + 1)}
+                onClick={() => updateQuantity(item.key, item.cantidad + 1)}
               >
                 +
               </button>
             </div>
             <div className="cart-item-subtotal">
-              ${(plato.precio * cantidad).toFixed(2)}
+              {formatear(item.precioUnitario * item.cantidad)}
             </div>
             <button
               className="cart-item-remove"
-              onClick={() => removeFromCart(plato.id)}
+              onClick={() => removeFromCart(item.key)}
               title="Eliminar"
+              aria-label="Eliminar"
             >
               <i className="ti ti-trash"></i>
             </button>
@@ -76,7 +94,7 @@ export default function CartPage() {
       <div className="cart-footer">
         <div className="cart-total">
           <span>Total</span>
-          <span className="cart-total-amount">${getTotal().toFixed(2)}</span>
+          <span className="cart-total-amount">{formatear(getTotal())}</span>
         </div>
         <Link to="/checkout" className="btn btn-primary btn-block">
           Continuar pedido
