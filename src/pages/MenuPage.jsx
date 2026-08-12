@@ -98,7 +98,7 @@ export default function MenuPage() {
         </h1>
       </header>
 
-      <div className="chips">
+      <div className="menu-toolbar">
         <div className="menu-search">
           <i className="ti ti-search"></i>
           <input
@@ -113,7 +113,7 @@ export default function MenuPage() {
             </button>
           )}
         </div>
-        <div className="chips-row">
+        <div className="chips">
           {CATEGORIAS.map(({ key, label }) => (
             <button
               key={key}
