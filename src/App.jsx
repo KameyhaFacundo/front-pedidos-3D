@@ -13,12 +13,22 @@ import LoginPage from './pages/LoginPage';
 import PedidoTrackingPage from './pages/PedidoTrackingPage';
 import NotFoundPage from './pages/NotFoundPage';
 import Toast from './components/Toast';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
 import './App.css';
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
   if (!isAuthenticated) return <Navigate to="/login" replace />;
   return children;
+}
+
+function ThemeToggle() {
+  const { theme, toggleTheme } = useTheme();
+  return (
+    <button className="theme-toggle" onClick={toggleTheme} aria-label="Cambiar tema">
+      <i className={`ti ${theme === 'dark' ? 'ti-sun' : 'ti-moon'}`}></i>
+    </button>
+  );
 }
 
 function Navbar() {
@@ -43,6 +53,7 @@ function Navbar() {
         </Link>
 
         <div className="navbar-links">
+          <ThemeToggle />
           {isClientRoute ? (
             <Link to="/carrito" className="nav-cart-link">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -54,6 +65,7 @@ function Navbar() {
             </Link>
           ) : (
             <>
+              <ThemeToggle />
               <Link to="/admin" className="nav-link">
                 Panel
               </Link>
@@ -91,6 +103,7 @@ export default function App() {
   const isAdmin = location.pathname.startsWith('/admin');
 
   return (
+    <ThemeProvider>
     <AuthProvider>
       <OrderModeProvider>
         <Navbar />
@@ -111,5 +124,6 @@ export default function App() {
         <Toast />
       </OrderModeProvider>
     </AuthProvider>
+    </ThemeProvider>
   );
 }

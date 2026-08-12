@@ -13,6 +13,26 @@
   --radius: 18px;
   --radius-sm: 14px;
   --radius-pill: 100px;
+  --body-bg: #0A0906;
+  --mode-gradient: radial-gradient(ellipse at 50% 40%, #1a1508 0%, #0A0906 70%);
+  --qr-bg: #0A0906;
+}
+
+[data-theme="light"] {
+  --bg: #F5F0E8;
+  --surface: #FFFFFF;
+  --surface-2: #EDE7DB;
+  --ember: #E8451E;
+  --ember-dark: #C43512;
+  --ember-dim: #A82E15;
+  --herb: #6B8A23;
+  --gold: #C4881A;
+  --cream: #2A2520;
+  --muted: #8C8276;
+  --hair: rgba(42, 37, 32, 0.08);
+  --body-bg: #EBE4D8;
+  --mode-gradient: radial-gradient(ellipse at 50% 40%, #E8E0D2 0%, #EBE4D8 70%);
+  --qr-bg: #F5F0E8;
 }
 
 *,
@@ -25,7 +45,7 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #0A0906;
+  background: var(--body-bg);
   color: var(--cream);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -124,6 +144,51 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: center;
   padding: 0 3px;
+}
+
+/* ===== THEME TOGGLE ===== */
+.theme-toggle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.2s;
+  margin-right: 4px;
+}
+
+.theme-toggle:hover {
+  background: var(--surface-2);
+  color: var(--cream);
+}
+
+.admin-theme-toggle {
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px 12px;
+  height: auto;
+  font-size: 13.5px;
+  font-weight: 600;
+  gap: 9px;
+  justify-content: flex-start;
+  color: var(--muted);
+  margin-right: 0;
+}
+
+.admin-theme-toggle i {
+  font-size: 18px;
+}
+
+.admin-sidebar-bottom {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--hair);
 }
 
 .main-content {
@@ -537,7 +602,7 @@ img { max-width: 100%; display: block; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(ellipse at 50% 40%, #1a1508 0%, #0A0906 70%);
+  background: var(--mode-gradient);
   pointer-events: auto;
 }
 
@@ -1240,6 +1305,8 @@ img { max-width: 100%; display: block; }
   border-right: 1px solid var(--hair);
   padding: 24px 16px;
   flex: none;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 768px) {
@@ -2002,7 +2069,7 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0A0906;
+  background: var(--qr-bg);
   padding: 24px;
 }
 

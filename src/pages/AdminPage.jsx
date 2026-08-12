@@ -15,6 +15,7 @@ import {
 import { useSSE } from '../api/useSSE';
 import QRModal from '../components/QRModal';
 import { AdminSkeleton } from '../components/Skeletons';
+import { useTheme } from '../context/ThemeContext';
 
 function formatearPrecio(n) {
   return '$' + Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -835,6 +836,7 @@ export default function AdminPage() {
 }
 
 function AdminSidebar({ view, setView }) {
+  const { theme, toggleTheme } = useTheme();
   const items = [
     { key: 'pedidos', label: 'Pedidos', icon: 'ti-receipt' },
     { key: 'menu', label: 'Menú', icon: 'ti-tools-kitchen-2' },
@@ -857,6 +859,12 @@ function AdminSidebar({ view, setView }) {
           </div>
         ))}
       </nav>
+      <div className="admin-sidebar-bottom">
+        <button className="theme-toggle admin-theme-toggle" onClick={toggleTheme}>
+          <i className={`ti ${theme === 'dark' ? 'ti-sun' : 'ti-moon'}`}></i>
+          {theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
+        </button>
+      </div>
     </aside>
   );
 }
