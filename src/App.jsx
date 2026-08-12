@@ -14,6 +14,7 @@ import LoginPage from './pages/LoginPage';
 import PedidoTrackingPage from './pages/PedidoTrackingPage';
 import NotFoundPage from './pages/NotFoundPage';
 import LandingPage from './pages/LandingPage';
+import DemoPage from './pages/DemoPage';
 import Toast from './components/Toast';
 import Footer from './components/Footer';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
@@ -99,6 +100,7 @@ export default function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/landing" element={<LandingPage />} />
               <Route path="/login" element={<LoginPage />} />
+                <Route path="/demo" element={<DemoPage />} />
               <Route path="/:slug/*" element={<CompanyLayout />}>
                 <Route index element={<ModeSelectPage />} />
                 <Route path="menu" element={<MenuPage />} />

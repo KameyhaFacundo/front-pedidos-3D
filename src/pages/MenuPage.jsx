@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { getMenu, getMesas } from '../api/client';
 import { useCart } from '../context/CartContext';
@@ -16,6 +17,22 @@ const CATEGORIAS = [
 ];
 
 export default function MenuPage() {
+  const [searchParams] = useSearchParams();
+  const location = useLocation();
+  const isDemo = searchParams.get('demo') === '1' || location.pathname.includes('/demo');
+
+  const SAMPLE_PLATOS = [
+    { id: 101, nombre: 'Hamburguesa demo', descripcion: 'Medallón, queso, lechuga', precio: 13500 },
+    { id: 102, nombre: 'Papas demo', descripcion: '+ cheddar', precio: 9500 },
+    { id: 103, nombre: 'Napolitana demo', descripcion: 'Muzzarella, jamón, tomate', precio: 11000 },
+  ];
+
+  const DEMO_MESAS = [
+    { id: 201, numero: 1, activa: true, ocupada: false },
+    { id: 202, numero: 2, activa: true, ocupada: true },
+    { id: 203, numero: 3, activa: true, ocupada: false },
+  ];
+
   const [platos, setPlatos] = useState([]);
   const [empresa, setEmpresa] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -28,7 +45,11 @@ export default function MenuPage() {
   const [mesas, setMesas] = useState([]);
 
   useEffect(() => {
-    getMesas().then(setMesas).catch(() => {});
+    if (isDemo) {
+      setMesas(DEMO_MESAS);
+    } else {
+      getMesas().then(setMesas).catch(() => {});
+    }
   }, []);
 
   const mesaNumero = useMemo(() => {
@@ -37,6 +58,13 @@ export default function MenuPage() {
   }, [mesas, mesaId]);
 
   useEffect(() => {
+    if (isDemo) {
+      setPlatos(SAMPLE_PLATOS);
+      setEmpresa({ nombre: 'Demo' });
+      setLoading(false);
+      return;
+    }
+
     getMenu()
       .then((data) => {
         const list = Array.isArray(data) ? data : (data?.platos || []);
@@ -110,6 +138,11 @@ export default function MenuPage() {
 
   return (
     <div className="menu-page">
+      {isDemo && (
+        <div className="demo-banner">
+          MODO DEMO — datos ficticios. No se están usando datos reales.
+        </div>
+      )}
       <header className="menu-header">
         <div className="menu-eyebrow">
           {empresa?.nombre || 'Menú'} · {tipo === 'mesa' ? `Mesa ${mesaNumero || '...'}` : 'Para retirar'}

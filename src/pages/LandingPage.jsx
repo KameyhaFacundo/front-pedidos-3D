@@ -89,7 +89,7 @@ export default function LandingPage() {
           </div>
           <div className="landing-nav-actions">
             <Link to="/login" className="landing-nav-login">Iniciar sesión</Link>
-            <Link to="/tuhambur" className="landing-nav-login">Ver demo</Link>
+            <Link to="/demo" className="landing-nav-login">Ver demo</Link>
             <button className="landing-nav-cta" onClick={() => setShowRegistro(true)}>
               Solicitar demo
             </button>
@@ -116,7 +116,7 @@ export default function LandingPage() {
               <button className="landing-hero-cta" onClick={() => setShowRegistro(true)}>
                 Solicitar demo →
               </button>
-              <Link to="/tuhambur" className="landing-hero-demo">Ver demo</Link>
+              <Link to="/demo" className="landing-hero-demo">Ver demo</Link>
             </div>
             <div className="landing-hero-stats">
               {[['+70', 'Locales activos'], ['5 min', 'para empezar'], ['24/7', 'Pedidos en vivo']].map(([v, l]) => (
