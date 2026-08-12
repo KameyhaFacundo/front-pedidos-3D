@@ -376,11 +376,20 @@ export default function AdminPage() {
       {sidebarOpen && <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />}
 
       <div className="admin-main">
-        {!sidebarOpen && (
-          <button className="hamburger" onClick={() => setSidebarOpen(true)} aria-label="Abrir menú">
-            <i className="ti ti-menu-2"></i>
-          </button>
-        )}
+        <div className="admin-topbar">
+          {!sidebarOpen && (
+            <button className="hamburger" onClick={() => setSidebarOpen(true)} aria-label="Abrir menú">
+              <i className="ti ti-menu-2"></i>
+            </button>
+          )}
+          <span className="topbar-date">
+            {new Date().toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' })}
+          </span>
+          <span className="topbar-live">
+            <i className="ti ti-bolt"></i> En vivo
+          </span>
+        </div>
+
         {/* PEDIDOS */}
         <div className={`view ${view === 'pedidos' ? 'active' : ''}`}>
           <div className="admin-top">
@@ -391,22 +400,32 @@ export default function AdminPage() {
           </div>
 
           <div className="admin-metrics">
-            <div className="admin-metric">
-              <div className="label"><i className="ti ti-receipt-2"></i> Pedidos hoy</div>
-              <div className="value">{metricas?.pedidos_hoy || 0}</div>
+            <div className="admin-metric metric-ember">
+              <div className="admin-metric-icon"><i className="ti ti-receipt-2"></i></div>
+              <div>
+                <div className="admin-metric-label">Pedidos hoy</div>
+                <div className="admin-metric-value">{metricas?.pedidos_hoy || 0}</div>
+              </div>
             </div>
-            <div className="admin-metric">
-              <div className="label"><i className="ti ti-currency-dollar"></i> Ventas hoy</div>
-              <div className="value">{formatearPrecio(metricas?.ventas_hoy || 0)}</div>
+            <div className="admin-metric metric-gold">
+              <div className="admin-metric-icon"><i className="ti ti-currency-dollar"></i></div>
+              <div>
+                <div className="admin-metric-label">Ventas hoy</div>
+                <div className="admin-metric-value">{formatearPrecio(metricas?.ventas_hoy || 0)}</div>
+              </div>
             </div>
-            <div className="admin-metric accent">
-              <div className="label"><i className="ti ti-flame"></i> Activos ahora</div>
-              <div className="value">{metricas?.activos_ahora || 0}</div>
+            <div className="admin-metric metric-herb">
+              <div className="admin-metric-icon"><i className="ti ti-flame"></i></div>
+              <div>
+                <div className="admin-metric-label">Activos ahora</div>
+                <div className="admin-metric-value">{metricas?.activos_ahora || 0}</div>
+              </div>
             </div>
-            <div className="admin-metric">
-              <div className="label"><i className="ti ti-star"></i> Más pedido</div>
-              <div className="value" style={{ fontSize: 15 }}>
-                {metricas?.mas_pedido || '-'}
+            <div className="admin-metric metric-muted">
+              <div className="admin-metric-icon"><i className="ti ti-star"></i></div>
+              <div>
+                <div className="admin-metric-label">Más pedido</div>
+                <div className="admin-metric-value admin-metric-value-sm">{metricas?.mas_pedido || '-'}</div>
               </div>
             </div>
           </div>
@@ -419,6 +438,7 @@ export default function AdminPage() {
                   <div className="admin-col-head">
                     <span className={`col-dot ${dotClass}`} />
                     {label}
+                    <span className="admin-col-count">{colPedidos.length}</span>
                   </div>
                   {colPedidos.map((pedido) => (
                     <div key={pedido.id} className="admin-order">
@@ -427,7 +447,9 @@ export default function AdminPage() {
                         <span className={`admin-tag ${pedido.tipo}`}>
                           {pedido.tipo === 'mesa'
                             ? `Mesa ${pedido.mesa?.numero || '?'}`
-                            : 'Retiro'}
+                            : pedido.tipo === 'envio'
+                              ? 'Envío'
+                              : 'Retiro'}
                         </span>
                       </div>
                       {(pedido.nombre || pedido.celular) && (
@@ -492,37 +514,15 @@ export default function AdminPage() {
 
                       {pedido.estado_pago === 'pendiente' && pedido.estado === 'entregado' && (
                         <button
-                          className="btn btn-sm btn-block"
-                          style={{
-                            marginTop: 8,
-                            background: 'var(--green)',
-                            color: '#fff',
-                            border: 'none',
-                            borderRadius: 8,
-                            padding: '6px 12px',
-                            fontSize: 12,
-                            fontWeight: 600,
-                            cursor: 'pointer',
-                          }}
+                          className="kanban-advance advance-pay"
                           onClick={(e) => { e.stopPropagation(); handlePagar(pedido.id); }}
                         >
-                          Marcar como pagado
+                          <i className="ti ti-cash"></i> Marcar como pagado
                         </button>
                       )}
                       {(pedido.estado === 'nuevo' || pedido.estado === 'preparacion') && (
                         <button
-                          className="btn btn-sm btn-block"
-                          style={{
-                            marginTop: 8,
-                            background: 'transparent',
-                            color: 'var(--ember)',
-                            border: '1px solid var(--hair)',
-                            borderRadius: 8,
-                            padding: '6px 12px',
-                            fontSize: 12,
-                            fontWeight: 600,
-                            cursor: 'pointer',
-                          }}
+                          className="kanban-advance advance-cancel"
                           onClick={(e) => { e.stopPropagation(); handleCancelar(pedido.id); }}
                         >
                           Cancelar

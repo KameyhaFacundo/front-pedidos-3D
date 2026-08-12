@@ -1355,10 +1355,6 @@ img { max-width: 100%; display: block; }
 
 /* Hamburger */
 .hamburger {
-  position: fixed;
-  top: 16px;
-  left: 16px;
-  z-index: 300;
   width: 42px;
   height: 42px;
   border-radius: 12px;
@@ -1372,22 +1368,52 @@ img { max-width: 100%; display: block; }
   font-size: 20px;
   box-shadow: var(--shadow);
   transition: all 0.2s;
+  flex: none;
 }
 
 .hamburger:hover { background: var(--surface-2); }
 
 .hamburger.in-sidebar {
-  position: static;
   width: 34px;
   height: 34px;
   border: none;
   background: transparent;
   box-shadow: none;
   color: var(--muted);
-  flex: none;
 }
 
 .hamburger.in-sidebar:hover { background: var(--surface-2); color: var(--cream); }
+
+/* Topbar */
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.topbar-date {
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: capitalize;
+}
+
+.topbar-live {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--herb);
+  background: rgba(var(--herb-rgb), 0.12);
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.topbar-live i { font-size: 13px; }
 
 .sidebar-backdrop {
   display: none;
@@ -1544,18 +1570,37 @@ img { max-width: 100%; display: block; }
 }
 
 .admin-metric {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   background: var(--surface);
   border: 1px solid var(--hair);
   border-radius: 14px;
   padding: 14px 16px;
 }
 
+.admin-metric-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex: none;
+}
+
+.metric-ember .admin-metric-icon { background: rgba(var(--ember-rgb), 0.14); color: var(--ember); }
+.metric-gold .admin-metric-icon { background: rgba(var(--gold-rgb), 0.14); color: var(--gold); }
+.metric-herb .admin-metric-icon { background: rgba(var(--herb-rgb), 0.16); color: var(--herb); }
+.metric-muted .admin-metric-icon { background: var(--surface-2); color: var(--muted); }
+
 .admin-metric-label {
   font-size: 11px;
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .admin-metric-value {
@@ -1567,6 +1612,8 @@ img { max-width: 100%; display: block; }
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.admin-metric-value-sm { font-size: 15px; }
 
 .admin-metric.accent .admin-metric-value { color: var(--gold); }
 
@@ -1589,15 +1636,6 @@ img { max-width: 100%; display: block; }
 }
 
 /* ===== ADMIN KANBAN ===== */
-
-.admin-col-count {
-  background: var(--surface-2);
-  color: var(--cream);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: var(--radius-pill);
-}
 
 .admin-order {
   background: var(--surface);
@@ -1637,13 +1675,18 @@ img { max-width: 100%; display: block; }
 }
 
 .admin-tag.mesa {
-  background: rgba(255, 90, 54, 0.15);
+  background: rgba(var(--ember-rgb), 0.15);
   color: var(--ember);
 }
 
 .admin-tag.retiro {
-  background: rgba(240, 180, 41, 0.15);
+  background: rgba(var(--gold-rgb), 0.15);
   color: var(--gold);
+}
+
+.admin-tag.envio {
+  background: rgba(var(--herb-rgb), 0.15);
+  color: var(--herb);
 }
 
 .admin-order-items {
@@ -1712,18 +1755,18 @@ img { max-width: 100%; display: block; }
 }
 
 .advance-prep {
-  background: rgba(232, 174, 45, 0.15);
+  background: rgba(var(--gold-rgb), 0.15);
   color: var(--gold);
 }
 
-.advance-prep:hover { background: rgba(232, 174, 45, 0.25); }
+.advance-prep:hover { background: rgba(var(--gold-rgb), 0.25); }
 
 .advance-ready {
-  background: rgba(143, 168, 62, 0.15);
+  background: rgba(var(--herb-rgb), 0.15);
   color: var(--herb);
 }
 
-.advance-ready:hover { background: rgba(143, 168, 62, 0.25); }
+.advance-ready:hover { background: rgba(var(--herb-rgb), 0.25); }
 
 .advance-done {
   background: var(--hover);
@@ -1731,6 +1774,21 @@ img { max-width: 100%; display: block; }
 }
 
 .advance-done:hover { background: var(--hair); }
+
+.advance-pay {
+  background: rgba(var(--herb-rgb), 0.2);
+  color: var(--herb);
+}
+
+.advance-pay:hover { background: rgba(var(--herb-rgb), 0.3); }
+
+.advance-cancel {
+  background: transparent;
+  color: var(--ember);
+  border: 1px solid var(--hair);
+}
+
+.advance-cancel:hover { background: rgba(var(--ember-rgb), 0.1); }
 
 .admin-filters-seg {
   display: flex;
@@ -1776,25 +1834,15 @@ img { max-width: 100%; display: block; }
   color: var(--muted);
 }
 
-.admin-metric .label {
-  font-size: 10.5px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.admin-metric .value {
-  font-family: 'Fraunces', serif;
-  font-weight: 600;
-  font-size: 21px;
+.admin-col-count {
+  margin-left: auto;
+  background: var(--surface-2);
   color: var(--cream);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
 }
-
-.admin-metric.accent .value { color: var(--gold); }
 
 /* Menu view */
 .dish-grid {
