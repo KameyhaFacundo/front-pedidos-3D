@@ -90,7 +90,7 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
           ar-scale="fixed"
           camera-controls
           auto-rotate
-          scale="0.007 0.007 0.007"
+          scale="0.009 0.009 0.009"
           style={{
             width: '100%',
             height: '100%',
