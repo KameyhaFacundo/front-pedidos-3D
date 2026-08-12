@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getPedidos, updatePedidoEstado, cancelarPedido } from '../api/client';
 import { useSSE } from '../api/useSSE';
+import { useNotify } from '../context/NotificationContext';
 
 const ESTADOS = [
   { key: '', label: 'Todos' },
@@ -24,6 +25,7 @@ const ESTADO_LABELS = {
 };
 
 export default function CocinaPage() {
+  const { confirm } = useNotify();
   const [pedidos, setPedidos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -71,16 +73,17 @@ export default function CocinaPage() {
   };
 
   const handleCancelar = async (pedidoId) => {
-    if (!window.confirm('¿Cancelar este pedido?')) return;
-    setUpdating(pedidoId);
-    try {
-      await cancelarPedido(pedidoId);
-      await fetchPedidos();
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setUpdating(null);
-    }
+    confirm('¿Cancelar este pedido?', async () => {
+      setUpdating(pedidoId);
+      try {
+        await cancelarPedido(pedidoId);
+        await fetchPedidos();
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setUpdating(null);
+      }
+    }, { confirmText: 'Cancelar pedido', danger: true });
   };
 
   const formatTime = (dateStr) => {

@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getPedido, llamarMozo } from '../api/client';
 import { useSSE } from '../api/useSSE';
+import { useNotify } from '../context/NotificationContext';
 
 const ESTADOS = ['nuevo', 'preparacion', 'listo', 'entregado', 'cancelado'];
 const ESTADO_LABELS = {
@@ -21,6 +22,7 @@ const ESTADO_ICONS = {
 
 export default function PedidoTrackingPage() {
   const { id } = useParams();
+  const { notify } = useNotify();
   const [pedido, setPedido] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -72,7 +74,7 @@ export default function PedidoTrackingPage() {
       setLlamadoOk(true);
       setTimeout(() => setLlamadoOk(false), 3000);
     } catch {
-      alert('No se pudo llamar al mozo');
+      notify('No se pudo llamar al mozo', 'error');
     } finally {
       setLlamando(false);
     }

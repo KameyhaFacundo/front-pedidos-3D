@@ -14,6 +14,7 @@ import PedidoTrackingPage from './pages/PedidoTrackingPage';
 import NotFoundPage from './pages/NotFoundPage';
 import Toast from './components/Toast';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
+import { NotificationProvider } from './context/NotificationContext';
 import './App.css';
 
 function ProtectedRoute({ children }) {
@@ -104,6 +105,7 @@ export default function App() {
 
   return (
     <ThemeProvider>
+    <NotificationProvider>
     <AuthProvider>
       <OrderModeProvider>
         <Navbar />
@@ -124,6 +126,7 @@ export default function App() {
         <Toast />
       </OrderModeProvider>
     </AuthProvider>
+    </NotificationProvider>
     </ThemeProvider>
   );
 }

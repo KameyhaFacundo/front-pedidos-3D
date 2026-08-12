@@ -16,6 +16,7 @@ import { useSSE } from '../api/useSSE';
 import QRModal from '../components/QRModal';
 import { AdminSkeleton } from '../components/Skeletons';
 import { useTheme } from '../context/ThemeContext';
+import { useNotify } from '../context/NotificationContext';
 
 function formatearPrecio(n) {
   return '$' + Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -62,6 +63,7 @@ const EMPTY_PLATO = {
 };
 
 export default function AdminPage() {
+  const { notify, confirm } = useNotify();
   const [view, setView] = useState('pedidos');
   const [pedidos, setPedidos] = useState([]);
   const [metricas, setMetricas] = useState(null);
@@ -169,6 +171,14 @@ export default function AdminPage() {
   };
 
   const handleSavePlato = async () => {
+    if (!modalForm.nombre.trim()) {
+      notify('Ingresá el nombre del plato', 'error');
+      return;
+    }
+    if (!modalForm.precio) {
+      notify('Ingresá el precio del plato', 'error');
+      return;
+    }
     setSaving(true);
     try {
       const formData = new FormData();
@@ -182,12 +192,15 @@ export default function AdminPage() {
       if (glbFile) formData.append('modelo_glb', glbFile);
       if (usdzFile) formData.append('modelo_usdz', usdzFile);
 
-      presentaciones.forEach((p, i) => {
+      const presValidas = presentaciones.filter((p) => p.nombre.trim());
+      const agreValidas = agregados.filter((a) => a.nombre.trim());
+
+      presValidas.forEach((p, i) => {
         formData.append(`presentaciones[${i}][nombre]`, p.nombre);
         formData.append(`presentaciones[${i}][descripcion]`, p.descripcion || '');
         formData.append(`presentaciones[${i}][precio]`, Number(p.precio) || 0);
       });
-      agregados.forEach((a, i) => {
+      agreValidas.forEach((a, i) => {
         formData.append(`agregados[${i}][nombre]`, a.nombre);
         formData.append(`agregados[${i}][descripcion]`, a.descripcion || '');
         formData.append(`agregados[${i}][precio]`, Number(a.precio) || 0);
@@ -200,22 +213,25 @@ export default function AdminPage() {
       }
       closeModal();
       fetchPlatos();
+      notify(editingPlato ? 'Plato actualizado' : 'Plato creado', 'success');
     } catch (e) {
-      alert(e.message);
+      notify(e.message, 'error');
     } finally {
       setSaving(false);
     }
   };
 
-  const handleDeletePlato = async (id) => {
-    if (!window.confirm('¿Eliminar este plato?')) return;
-    try {
-      await deletePlato(id);
-      closeModal();
-      fetchPlatos();
-    } catch (e) {
-      alert(e.message);
-    }
+  const handleDeletePlato = (id) => {
+    confirm('¿Eliminar este plato? Esta acción no se puede deshacer.', async () => {
+      try {
+        await deletePlato(id);
+        closeModal();
+        fetchPlatos();
+        notify('Plato eliminado', 'success');
+      } catch (e) {
+        notify(e.message, 'error');
+      }
+    }, { confirmText: 'Eliminar', danger: true });
   };
 
   const handleToggleDisponible = async (id) => {
@@ -223,7 +239,7 @@ export default function AdminPage() {
       await togglePlatoDisponible(id);
       fetchPlatos();
     } catch (e) {
-      alert(e.message);
+      notify(e.message, 'error');
     }
   };
 
@@ -231,19 +247,22 @@ export default function AdminPage() {
     try {
       await updatePedidoPago(id);
       fetchPedidosYMetricas();
+      notify('Pedido marcado como pagado', 'success');
     } catch (e) {
-      alert(e.message);
+      notify(e.message, 'error');
     }
   };
 
-  const handleCancelar = async (id) => {
-    if (!window.confirm('¿Cancelar este pedido?')) return;
-    try {
-      await cancelarPedido(id);
-      fetchPedidosYMetricas();
-    } catch (e) {
-      alert(e.message);
-    }
+  const handleCancelar = (id) => {
+    confirm('¿Cancelar este pedido?', async () => {
+      try {
+        await cancelarPedido(id);
+        fetchPedidosYMetricas();
+        notify('Pedido cancelado', 'success');
+      } catch (e) {
+        notify(e.message, 'error');
+      }
+    }, { confirmText: 'Cancelar pedido', danger: true });
   };
 
   const handleAvanzar = async (id, estado) => {
@@ -251,7 +270,7 @@ export default function AdminPage() {
       await updatePedidoEstado(id, estado);
       fetchPedidosYMetricas();
     } catch (e) {
-      alert(e.message);
+      notify(e.message, 'error');
     }
   };
 
