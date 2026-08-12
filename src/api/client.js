@@ -6,7 +6,7 @@ function getToken() {
   return localStorage.getItem('token');
 }
 
-async function request(endpoint, options = {}) {
+export async function request(endpoint, options = {}) {
   const url = `${BASE_URL}${endpoint}`;
   const token = getToken();
   const isFormData = options.body instanceof FormData;
@@ -56,6 +56,10 @@ export function getMe() {
 
 export function getMenu() {
   return request('/menu');
+}
+
+export function getPedido(id) {
+  return request(`/pedidos/${id}`);
 }
 
 export function getPedidos(estado, page = 1) {

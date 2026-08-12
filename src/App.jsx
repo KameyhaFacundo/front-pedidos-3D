@@ -10,6 +10,7 @@ import CocinaPage from './pages/CocinaPage';
 import LlamadosPage from './pages/LlamadosPage';
 import AdminPage from './pages/AdminPage';
 import LoginPage from './pages/LoginPage';
+import PedidoTrackingPage from './pages/PedidoTrackingPage';
 import Toast from './components/Toast';
 import './App.css';
 
@@ -27,7 +28,7 @@ function Navbar() {
   if (location.pathname.startsWith('/admin')) return null;
   if (location.pathname === '/login') return null;
 
-  const isClientRoute = ['/', '/menu', '/carrito', '/checkout'].includes(location.pathname);
+  const isClientRoute = ['/', '/menu', '/carrito', '/checkout'].includes(location.pathname) || location.pathname.startsWith('/pedido/');
 
   return (
     <nav className="navbar">
@@ -98,6 +99,7 @@ export default function App() {
             <Route path="/menu" element={<MenuPage />} />
             <Route path="/carrito" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/pedido/:id" element={<PedidoTrackingPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/cocina" element={<ProtectedRoute><CocinaPage /></ProtectedRoute>} />
             <Route path="/llamados" element={<ProtectedRoute><LlamadosPage /></ProtectedRoute>} />

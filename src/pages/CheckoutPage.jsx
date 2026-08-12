@@ -10,6 +10,7 @@ export default function CheckoutPage() {
   const { tipo, mesaId } = useOrderMode();
   const [mesas, setMesas] = useState([]);
   const [medioPago, setMedioPago] = useState('efectivo');
+  const [notas, setNotas] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
@@ -35,6 +36,7 @@ export default function CheckoutPage() {
       tipo,
       mesa_id: tipo === 'mesa' ? mesaId : null,
       medio_pago: medioPago,
+      notas: notas.trim() || undefined,
       items: items.map(({ plato, cantidad }) => ({
         plato_id: plato.id,
         cantidad,
@@ -73,9 +75,14 @@ export default function CheckoutPage() {
         <h2>¡Pedido confirmado!</h2>
         <p>Tu pedido #{success.id} ha sido registrado.</p>
         <p className="success-estado">Estado: {success.estado}</p>
-        <button className="btn btn-primary" onClick={() => navigate('/menu')}>
-          Volver al menú
-        </button>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '100%', maxWidth: 300 }}>
+          <button className="btn btn-primary" onClick={() => navigate(`/pedido/${success.id}`)}>
+            <i className="ti ti-eye"></i> Ver seguimiento
+          </button>
+          <button className="btn btn-outline" onClick={() => navigate('/menu')}>
+            Volver al menú
+          </button>
+        </div>
       </div>
     );
   }
@@ -164,6 +171,17 @@ export default function CheckoutPage() {
             </div>
           </label>
         </div>
+      </div>
+
+      <div className="checkout-section">
+        <h2>Notas especiales</h2>
+        <textarea
+          className="input-textarea"
+          placeholder="Ej: sin cebolla, cocción medio, sin picante..."
+          value={notas}
+          onChange={(e) => setNotas(e.target.value)}
+          rows={3}
+        />
       </div>
 
       <div className="checkout-section">

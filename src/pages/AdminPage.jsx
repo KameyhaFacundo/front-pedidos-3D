@@ -66,6 +66,7 @@ export default function AdminPage() {
   const [mesas, setMesas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filtro, setFiltro] = useState('');
+  const [menuSearch, setMenuSearch] = useState('');
 
   const [showModal, setShowModal] = useState(false);
   const [editingPlato, setEditingPlato] = useState(null);
@@ -252,6 +253,34 @@ export default function AdminPage() {
 
   const maxPlatoCount = platosMasPedidos.length > 0 ? platosMasPedidos[0][1] : 1;
 
+  const totalRevenue = pedidos.reduce((sum, p) => {
+    if (p.estado === 'cancelado') return sum;
+    return sum + (p.items || []).reduce((s, i) => s + (i.plato?.precio || 0) * (i.cantidad || 1), 0);
+  }, 0);
+  const totalPedidos = pedidos.filter((p) => p.estado !== 'cancelado').length;
+
+  const cateCounts = {};
+  pedidos.forEach((p) => {
+    if (p.estado === 'cancelado') return;
+    (p.items || []).forEach((item) => {
+      const cat = item.plato?.categoria || 'sin categoria';
+      cateCounts[cat] = (cateCounts[cat] || 0) + (item.cantidad || 1);
+    });
+  });
+  const maxCate = Math.max(1, ...Object.values(cateCounts));
+  const cateLabels = { principales: 'Principales', entradas: 'Entradas', postres: 'Postres', bebidas: 'Bebidas' };
+
+  const hourlyData = (() => {
+    const hours = new Array(24).fill(0);
+    pedidos.forEach((p) => {
+      if (p.estado === 'cancelado') return;
+      const h = new Date(p.created_at).getHours();
+      hours[h] += 1;
+    });
+    const max = Math.max(1, ...hours);
+    return hours.map((count, hour) => ({ hour: `${String(hour).padStart(2, '0')}:00`, count, pct: (count / max) * 100 }));
+  })();
+
   const arVistasData = (() => {
     if (!metricas?.ar_vistas) return [];
     const arVistas = metricas.ar_vistas;
@@ -408,8 +437,29 @@ export default function AdminPage() {
             </button>
           </div>
 
+          <div className="menu-search" style={{ marginBottom: 16 }}>
+            <i className="ti ti-search"></i>
+            <input
+              type="text"
+              placeholder="Buscar plato..."
+              value={menuSearch}
+              onChange={(e) => setMenuSearch(e.target.value)}
+            />
+            {menuSearch && (
+              <button className="search-clear" onClick={() => setMenuSearch('')}>
+                <i className="ti ti-x"></i>
+              </button>
+            )}
+          </div>
+
           <div className="dish-grid">
-            {platos.map((plato) => {
+            {platos
+              .filter((p) => {
+                if (!menuSearch.trim()) return true;
+                const q = menuSearch.toLowerCase();
+                return p.nombre.toLowerCase().includes(q) || (p.descripcion || '').toLowerCase().includes(q);
+              })
+              .map((plato) => {
               const icon = categoriaIcon(plato.categoria);
               return (
                 <div
@@ -488,6 +538,30 @@ export default function AdminPage() {
             </div>
           </div>
 
+          <div className="kpi-row">
+            <div className="kpi-card">
+              <div className="kpi-icon"><i className="ti ti-cash"></i></div>
+              <div>
+                <div className="kpi-value">{formatearPrecio(totalRevenue)}</div>
+                <div className="kpi-label">Facturación total</div>
+              </div>
+            </div>
+            <div className="kpi-card">
+              <div className="kpi-icon"><i className="ti ti-receipt"></i></div>
+              <div>
+                <div className="kpi-value">{totalPedidos}</div>
+                <div className="kpi-label">Pedidos</div>
+              </div>
+            </div>
+            <div className="kpi-card">
+              <div className="kpi-icon"><i className="ti ti-chart-bar"></i></div>
+              <div>
+                <div className="kpi-value">{platosMasPedidos.length}</div>
+                <div className="kpi-label">Platos con pedidos</div>
+              </div>
+            </div>
+          </div>
+
           <div className="dual">
             <div>
               <div className="metric-block">
@@ -513,36 +587,44 @@ export default function AdminPage() {
             </div>
             <div>
               <div className="metric-block">
-                <h3>Vistos en AR vs. pedidos</h3>
-                {arVistasData.length === 0 && (
+                <h3>Por categoría</h3>
+                {Object.keys(cateCounts).length === 0 && (
                   <div style={{ color: 'var(--muted)', fontSize: 13 }}>Sin datos aún</div>
                 )}
-                {arVistasData.map(({ nombre, vistas, pedidos: pCount, conversion }) => (
-                  <div key={nombre} className="bar-row">
-                    <div className="bar-label">
-                      <span>{nombre}</span>
-                      <span>Conv. {conversion}%</span>
+                {Object.entries(cateCounts)
+                  .sort((a, b) => b[1] - a[1])
+                  .map(([cat, count]) => (
+                    <div key={cat} className="bar-row">
+                      <div className="bar-label">
+                        <span>{cateLabels[cat] || cat}</span>
+                        <span>{count}</span>
+                      </div>
+                      <div className="bar-track">
+                        <div
+                          className="bar-fill"
+                          style={{ width: `${(count / maxCate) * 100}%`, background: 'var(--herb)' }}
+                        />
+                      </div>
                     </div>
-                    <div className="bar-track">
-                      <div
-                        className="bar-fill"
-                        style={{ width: `${Math.min((vistas / (maxPlatoCount * 3)) * 100, 100)}%` }}
-                      />
+                  ))}
+              </div>
+
+              <div className="metric-block" style={{ marginTop: 20 }}>
+                <h3>Pedidos por hora</h3>
+                <div className="hourly-grid">
+                  {hourlyData.filter((h) => h.count > 0).map(({ hour, count, pct }) => (
+                    <div key={hour} className="hourly-bar-wrapper">
+                      <div className="hourly-count">{count}</div>
+                      <div className="hourly-track">
+                        <div className="hourly-fill" style={{ height: `${Math.max(pct, 4)}%` }} />
+                      </div>
+                      <div className="hourly-label">{hour}</div>
                     </div>
-                    <div
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        fontSize: 11,
-                        color: 'var(--muted)',
-                        marginTop: 3,
-                      }}
-                    >
-                      <span>{vistas} vistas</span>
-                      <span>{pCount} pedidos</span>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                  {hourlyData.every((h) => h.count === 0) && (
+                    <div style={{ color: 'var(--muted)', fontSize: 13, padding: 12 }}>Sin datos aún</div>
+                  )}
+                </div>
               </div>
             </div>
           </div>

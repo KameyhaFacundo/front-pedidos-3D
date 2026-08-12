@@ -43,26 +43,18 @@ export default function MenuPage() {
       });
   }, []);
 
-  useEffect(() => {
-    // Warm the browser cache for each dish's GLB as soon as its thumbnail
-    // appears in the menu, so it's already downloaded by the time the
-    // customer opens AR -- only the on-device tracking wait is left.
-    const urls = [...new Set(platos.map((p) => p.modelo_glb).filter(Boolean))];
-    const links = urls.map((url) => {
-      const link = document.createElement('link');
-      link.rel = 'prefetch';
-      link.as = 'fetch';
-      link.crossOrigin = 'anonymous';
-      link.href = url;
-      document.head.appendChild(link);
-      return link;
-    });
-    return () => links.forEach((link) => link.remove());
-  }, [platos]);
+  const [search, setSearch] = useState('');
 
-  const filteredPlatos = categoria
-    ? platos.filter((p) => (p.categoria || 'principales') === categoria && p.disponible !== false)
-    : platos.filter((p) => p.disponible !== false);
+  const filteredPlatos = (() => {
+    let result = categoria
+      ? platos.filter((p) => (p.categoria || 'principales') === categoria && p.disponible !== false)
+      : platos.filter((p) => p.disponible !== false);
+    if (search.trim()) {
+      const q = search.toLowerCase();
+      result = result.filter((p) => p.nombre.toLowerCase().includes(q) || (p.descripcion || '').toLowerCase().includes(q));
+    }
+    return result;
+  })();
 
   const handleMenuItemClick = (plato) => {
     if (plato.disponible) {
@@ -109,15 +101,31 @@ export default function MenuPage() {
       </header>
 
       <div className="chips">
-        {CATEGORIAS.map(({ key, label }) => (
-          <button
-            key={key}
-            className={`chip ${categoria === key ? 'active' : ''}`}
-            onClick={() => setCategoria(key)}
-          >
-            {label}
-          </button>
-        ))}
+        <div className="menu-search">
+          <i className="ti ti-search"></i>
+          <input
+            type="text"
+            placeholder="Buscar plato..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          {search && (
+            <button className="search-clear" onClick={() => setSearch('')}>
+              <i className="ti ti-x"></i>
+            </button>
+          )}
+        </div>
+        <div className="chips-row">
+          {CATEGORIAS.map(({ key, label }) => (
+            <button
+              key={key}
+              className={`chip ${categoria === key ? 'active' : ''}`}
+              onClick={() => setCategoria(key)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
       </div>
 
       {filteredPlatos.length === 0 ? (
