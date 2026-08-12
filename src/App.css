@@ -2058,26 +2058,26 @@ img { max-width: 100%; display: block; }
 .qr-btn i { font-size: 13px; }
 
 /* ===== PLANO DEL LOCAL ===== */
-.plano-editor { display: flex; flex-direction: column; gap: 14px; }
+.plano-editor { display: flex; flex-direction: column; gap: 10px; max-width: 760px; margin-inline: auto; }
 
 .plano-loading { color: var(--muted); padding: 40px 0; text-align: center; }
 
 .plano-toolbar {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
 .plano-tool {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   background: var(--bg);
   border: 1px solid var(--hair);
-  border-radius: 10px;
+  border-radius: 9px;
   color: var(--cream);
-  padding: 8px 12px;
-  font-size: 12.5px;
+  padding: 6px 10px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
@@ -2107,7 +2107,7 @@ img { max-width: 100%; display: block; }
 .plano-canvas {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 2 / 1;
   background-color: var(--bg);
   background-image: radial-gradient(var(--hair) 1px, transparent 1px), var(--mode-gradient);
   background-size: 34px 34px, cover;
@@ -2158,7 +2158,7 @@ img { max-width: 100%; display: block; }
   text-transform: uppercase;
 }
 
-.plano-fix i { font-size: 18px; }
+.plano-fix i { font-size: 15px; }
 
 .plano-fix-entrada { color: var(--herb); border-color: rgba(143, 168, 62, 0.5); border-style: solid; }
 .plano-fix-mostrador { color: var(--gold); border-color: rgba(232, 174, 45, 0.5); border-style: solid; }
@@ -2171,8 +2171,8 @@ img { max-width: 100%; display: block; }
 .plano-fix.selected { outline: 2px solid var(--ember); outline-offset: 3px; }
 
 .plano-mesa {
-  width: 7%;
-  height: 10.5%;
+  width: 6.8%;
+  height: 13.6%;
   background: var(--surface-2);
   border: 1px solid var(--hair);
   border-radius: 50%;
@@ -2184,7 +2184,7 @@ img { max-width: 100%; display: block; }
 
 .plano-mesa.rect {
   width: 9%;
-  height: 13.5%;
+  height: 14%;
   border-radius: 20%;
 }
 
@@ -2276,12 +2276,12 @@ img { max-width: 100%; display: block; }
 .plano-pick {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 2 / 1;
   background-color: var(--bg);
   background-image: radial-gradient(var(--hair) 1px, transparent 1px), var(--mode-gradient);
   background-size: 30px 30px, cover;
   border: 1px solid var(--hair);
-  border-radius: 16px;
+  border-radius: 14px;
   overflow: hidden;
   touch-action: manipulation;
 }

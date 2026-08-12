@@ -1,18 +1,18 @@
-export const PLANO_ASPECT = 1.5;
+export const PLANO_ASPECT = 2;
 export const PLANO_PADDING = 4;
 
 export const TIPOS_FIJO = {
-  entrada:  { label: 'Entrada',    icon: 'ti-door-exit',      color: 'var(--herb)',   w: 11, h: 8 },
-  mostrador: { label: 'Mostrador', icon: 'ti-tools-kitchen-2', color: 'var(--gold)',  w: 24, h: 18 },
-  cocina:   { label: 'Cocina',    icon: 'ti-chef-hat',        color: 'var(--ember)', w: 22, h: 20 },
-  banio:    { label: 'Baño',      icon: 'ti-bath',            color: 'var(--ember-dim)', w: 13, h: 13 },
-  ventana:  { label: 'Ventana',   icon: 'ti-window',          color: 'var(--muted)', w: 20, h: 9 },
-  barra:    { label: 'Barra',     icon: 'ti-glass-full',      color: 'var(--gold)',  w: 22, h: 14 },
+  entrada:  { label: 'Entrada',    icon: 'ti-door-exit',      color: 'var(--herb)',   w: 11, h: 7 },
+  mostrador: { label: 'Mostrador', icon: 'ti-tools-kitchen-2', color: 'var(--gold)',  w: 24, h: 14 },
+  cocina:   { label: 'Cocina',    icon: 'ti-chef-hat',        color: 'var(--ember)', w: 22, h: 16 },
+  banio:    { label: 'Baño',      icon: 'ti-bath',            color: 'var(--ember-dim)', w: 12, h: 10 },
+  ventana:  { label: 'Ventana',   icon: 'ti-window',          color: 'var(--muted)', w: 20, h: 8 },
+  barra:    { label: 'Barra',     icon: 'ti-glass-full',      color: 'var(--gold)',  w: 22, h: 11 },
 };
 
 export function mesaSize(mesa) {
-  if (mesa.forma === 'rectangular') return { w: 9, h: 13.5 };
-  return { w: 7, h: 10.5 };
+  if (mesa.forma === 'rectangular') return { w: 9, h: 14 };
+  return { w: 6.8, h: 13.6 };
 }
 
 export function mesaStyle(mesa) {
