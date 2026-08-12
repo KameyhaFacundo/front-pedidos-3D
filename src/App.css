@@ -2230,15 +2230,11 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--qr-bg);
+  background: var(--body-bg);
   padding: 24px;
 }
 
 .login-card {
-  background: var(--surface);
-  border: 1px solid var(--hair);
-  border-radius: var(--radius);
-  padding: 40px 32px;
   width: 100%;
   max-width: 400px;
 }
