@@ -11,38 +11,33 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-inner">
-        <div className="footer-brand">
-          <img src="/pidevo.png" alt="Pidevo" className="brand-logo" />
-          <p className="footer-tagline">Pedí fácil desde tu celular.</p>
-        </div>
+        <div className="footer-top">
+          <div className="footer-brand">
+            <img src="/pidevo.png" alt="Pidevo" className="brand-logo" />
+            <p className="footer-tagline">Pedí fácil desde tu celular.</p>
+          </div>
 
-        <div className="footer-socials">
-          {REDES.map(({ icon, label, href }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-social"
-              aria-label={label}
-            >
-              <i className={`ti ${icon}`}></i>
-            </a>
-          ))}
-        </div>
-
-        <div className="footer-cta">
-          <div className="footer-cta-text">¿Querés un sistema como este para tu local?</div>
-          <Link to="/landing" className="footer-cta-link">
-            Conocé Pidevo
-            <i className="ti ti-arrow-right"></i>
-          </Link>
+          <div className="footer-socials">
+            {REDES.map(({ icon, label, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-social"
+                aria-label={label}
+              >
+                <i className={`ti ${icon}`}></i>
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} Pidevo</span>
-          <span className="footer-dot">·</span>
-          <span>Hecho con ❤</span>
+          <span>© {new Date().getFullYear()} Pidevo · Hecho con ❤</span>
+          <Link to="/landing" className="footer-made">
+            ¿Querés tu propio sistema? <span>Conocé Pidevo</span>
+          </Link>
         </div>
       </div>
     </footer>

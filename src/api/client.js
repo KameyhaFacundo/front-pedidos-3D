@@ -55,6 +55,13 @@ export function login(email, password) {
   });
 }
 
+export function registrarEmpresa(data) {
+  return request('/registro', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
 export function logout() {
   return request('/logout', { method: 'POST' });
 }

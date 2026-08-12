@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import RegistroModal from '../components/RegistroModal';
 
 const WHATSAPP = '5493815069332';
 
@@ -56,6 +57,7 @@ const fmt = (n) => n.toLocaleString('es-AR');
 
 export default function LandingPage() {
   const [anual, setAnual] = useState(true);
+  const [showRegistro, setShowRegistro] = useState(false);
   const [wordIdx, setWordIdx] = useState(0);
   const [expanded, setExpanded] = useState(null);
 
@@ -79,14 +81,11 @@ export default function LandingPage() {
             ))}
           </div>
           <div className="landing-nav-actions">
-            <Link to="/" className="landing-nav-login">Probar demo</Link>
-            <a
-              href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent('¡Hola! Me interesa Pidevo para mi local.')}`}
-              target="_blank" rel="noopener noreferrer"
-              className="landing-nav-cta"
-            >
+            <Link to="/login" className="landing-nav-login">Iniciar sesión</Link>
+            <Link to="/tuhambur" className="landing-nav-login">Probar demo</Link>
+            <button className="landing-nav-cta" onClick={() => setShowRegistro(true)}>
               Empezar gratis
-            </a>
+            </button>
           </div>
         </div>
       </nav>
@@ -107,10 +106,10 @@ export default function LandingPage() {
               Pidevo transforma tu menú en una experiencia digital: QR en la mesa, platos en 3D y pedidos que llegan directo a tu WhatsApp.
             </p>
             <div className="landing-hero-actions">
-              <a href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent('¡Hola! Quiero probar Pidevo para mi local.')}`} target="_blank" rel="noopener noreferrer" className="landing-hero-cta">
+              <button className="landing-hero-cta" onClick={() => setShowRegistro(true)}>
                 Empezar gratis →
-              </a>
-              <Link to="/menu" className="landing-hero-demo">Ver demo del menú</Link>
+              </button>
+              <Link to="/tuhambur" className="landing-hero-demo">Ver demo del menú</Link>
             </div>
             <div className="landing-hero-stats">
               {[['+50', 'Locales activos'], ['2 min', 'Para cargar el menú'], ['24/7', 'Pedidos en vivo']].map(([v, l]) => (
@@ -235,13 +234,12 @@ export default function LandingPage() {
                   <span className="amount">{precio === 0 ? '0' : fmt(precio)}</span>
                 </div>
                 <div className="landing-plan-per">por mes{anual && precio > 0 ? ` · $${fmt(precio * 12)}/año` : ''}</div>
-                <a
-                  href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`¡Hola! Quiero el plan ${plan.nombre} de Pidevo.`)}`}
-                  target="_blank" rel="noopener noreferrer"
+                <button
                   className="landing-plan-cta"
+                  onClick={() => setShowRegistro(true)}
                 >
                   Empezar con {plan.nombre} →
-                </a>
+                </button>
                 <ul className="landing-plan-features">
                   {plan.features.map((f) => (
                     <li key={f}><i className="ti ti-check"></i> {f}</li>
@@ -284,9 +282,9 @@ export default function LandingPage() {
               <span><i className="ti ti-check"></i> Cancelás cuando quieras</span>
             </div>
           </div>
-          <a href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent('¡Hola! Quiero empezar con Pidevo.')}`} target="_blank" rel="noopener noreferrer" className="landing-final-cta">
+          <button className="landing-final-cta" onClick={() => setShowRegistro(true)}>
             Empezar gratis →
-          </a>
+          </button>
         </div>
       </section>
 
@@ -314,6 +312,8 @@ export default function LandingPage() {
       >
         <i className="ti ti-brand-whatsapp"></i>
       </a>
+
+      {showRegistro && <RegistroModal onClose={() => setShowRegistro(false)} />}
     </div>
   );
 }
