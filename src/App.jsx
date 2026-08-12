@@ -36,11 +36,7 @@ function ThemeToggle() {
 }
 
 function CompanyLayout() {
-  return (
-    <CompanyProvider>
-      <Outlet />
-    </CompanyProvider>
-  );
+  return <Outlet />;
 }
 
 function Navbar() {
@@ -93,6 +89,7 @@ export default function App() {
     <NotificationProvider>
     <AuthProvider>
       <OrderModeProvider>
+      <CompanyProvider>
         <Navbar />
         <main key={location.pathname} className={`page-fade ${isAdmin || isLanding ? '' : 'main-content'}`}>
           <div className="app-content">
@@ -116,6 +113,7 @@ export default function App() {
           {!hideFooter && <Footer />}
         </main>
         <Toast />
+      </CompanyProvider>
       </OrderModeProvider>
     </AuthProvider>
     </NotificationProvider>

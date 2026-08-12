@@ -3825,7 +3825,7 @@ img { max-width: 100%; display: block; }
 /* ===== FOOTER ===== */
 .footer {
   margin-top: auto;
-  background: var(--bg);
+  background: var(--body-bg);
   border-top: 1px solid var(--hair);
 }
 

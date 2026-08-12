@@ -2,17 +2,16 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useOrderMode } from '../context/OrderModeContext';
 import { useCompany } from '../context/CompanyContext';
-import { getMesas, getEmpresa } from '../api/client';
+import { getMesas } from '../api/client';
 import BuscarPedidoModal from '../components/BuscarPedidoModal';
 
 export default function ModeSelectPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { setTipo, setMesaId } = useOrderMode();
-  const { path } = useCompany();
+  const { path, empresa } = useCompany();
   const [step, setStep] = useState('mode');
   const [mesas, setMesas] = useState([]);
-  const [empresa, setEmpresa] = useState(null);
   const [mesaSeleccionada, setMesaSeleccionada] = useState('');
   const [showBuscar, setShowBuscar] = useState(false);
 
@@ -25,7 +24,6 @@ export default function ModeSelectPage() {
 
   useEffect(() => {
     getMesas().then(setMesas).catch(() => {});
-    getEmpresa().then(setEmpresa).catch(() => {});
   }, []);
 
   useEffect(() => {
