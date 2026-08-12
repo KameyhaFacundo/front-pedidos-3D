@@ -14,6 +14,7 @@ import {
 } from '../api/client';
 import { useSSE } from '../api/useSSE';
 import QRModal from '../components/QRModal';
+import PlanoEditor from '../components/PlanoEditor';
 import { AdminSkeleton } from '../components/Skeletons';
 import { useTheme } from '../context/ThemeContext';
 import { useNotify } from '../context/NotificationContext';
@@ -107,7 +108,7 @@ export default function AdminPage() {
   }, []);
 
   const fetchMesasData = useCallback(() => {
-    Promise.all([getMesas(), getPedidos()])
+    Promise.all([getMesas(true), getPedidos()])
       .then(([mesasData, pedidosData]) => {
         setMesas(mesasData);
         setPedidos(pedidosData);
@@ -290,6 +291,16 @@ export default function AdminPage() {
       .map((p) => p.mesa.id)
   );
   const ocupadas = mesasActivasIds.size;
+
+  const ordersPorMesa = (() => {
+    const map = {};
+    pedidos
+      .filter((p) => p.tipo === 'mesa' && p.mesa_id && ['nuevo', 'preparacion', 'listo'].includes(p.estado))
+      .forEach((p) => {
+        (map[p.mesa_id] ||= []).push(p);
+      });
+    return map;
+  })();
 
   const platoCounts = {};
   pedidos.forEach((p) => {
@@ -634,32 +645,19 @@ export default function AdminPage() {
             <div>
               <div className="admin-title">Mesas</div>
               <div className="admin-subtitle">
-                {ocupadas} ocupadas de {mesas.length}
+                {ocupadas} ocupadas de {mesas.length} · plano del local
               </div>
             </div>
           </div>
 
-          <div className="table-grid">
-            {mesas.map((mesa) => {
-              const isBusy = mesasActivasIds.has(mesa.id);
-              return (
-                <div key={mesa.id} className="table-card">
-                  <div className="table-num">{mesa.numero}</div>
-                  <div className={`table-status ${isBusy ? 'busy' : 'free'}`}>
-                    <i className="ti ti-circle-filled"></i>
-                    {isBusy ? 'Ocupada' : 'Libre'}
-                  </div>
-                  <div
-                    className="qr-btn"
-                    onClick={(e) => { e.stopPropagation(); setQrMesa(mesa); }}
-                  >
-                    <i className="ti ti-qrcode"></i>
-                    Ver QR
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <PlanoEditor
+            mesas={mesas}
+            busyIds={mesasActivasIds}
+            ordersPorMesa={ordersPorMesa}
+            onQrMesa={setQrMesa}
+            onSaved={fetchMesasData}
+            notify={notify}
+          />
         </div>
 
         {/* METRICAS */}

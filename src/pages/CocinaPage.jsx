@@ -152,7 +152,7 @@ export default function CocinaPage() {
 
               <div className="pedido-card-meta">
                 <span className={`pedido-tipo-badge ${pedido.tipo}`}>
-                  {pedido.tipo === 'mesa' ? `Mesa ${pedido.mesa_id || '?'}` : 'Retiro'}
+                  {pedido.tipo === 'mesa' ? `Mesa ${pedido.mesa?.numero ?? pedido.mesa_id ?? '?'}` : 'Retiro'}
                 </span>
                 <span className="pedido-hora">{formatTime(pedido.created_at)}</span>
               </div>

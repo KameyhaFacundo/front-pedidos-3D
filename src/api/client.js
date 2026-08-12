@@ -104,8 +104,41 @@ export function updatePedidoEstado(id, estado) {
   });
 }
 
-export function getMesas() {
-  return request('/mesas');
+export function getMesas(all = false) {
+  return request(`/mesas${all ? '?all=1' : ''}`);
+}
+
+export function createMesa(data) {
+  return request('/mesas', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export function updateMesa(id, data) {
+  return request(`/mesas/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  });
+}
+
+export function deleteMesa(id) {
+  return request(`/mesas/${id}`, {
+    method: 'DELETE',
+  });
+}
+
+export function toggleMesaActiva(id) {
+  return request(`/mesas/${id}/toggle`, {
+    method: 'PATCH',
+  });
+}
+
+export function saveLayout(layout) {
+  return request('/empresa/layout', {
+    method: 'PUT',
+    body: JSON.stringify({ layout }),
+  });
 }
 
 export function llamarMozo(mesaId) {

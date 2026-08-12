@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useOrderMode } from '../context/OrderModeContext';
 import { useCompany } from '../context/CompanyContext';
 import { getMesas } from '../api/client';
+import { TIPOS_FIJO, mesaStyle, fixStyle } from '../components/planoUtils';
 import BuscarPedidoModal from '../components/BuscarPedidoModal';
 
 export default function ModeSelectPage() {
@@ -13,6 +14,7 @@ export default function ModeSelectPage() {
   const [step, setStep] = useState('mode');
   const [mesas, setMesas] = useState([]);
   const [mesaSeleccionada, setMesaSeleccionada] = useState('');
+  const [ocupadaMsg, setOcupadaMsg] = useState(false);
   const [showBuscar, setShowBuscar] = useState(false);
 
   const lastOrder = (() => {
@@ -25,6 +27,24 @@ export default function ModeSelectPage() {
   useEffect(() => {
     getMesas().then(setMesas).catch(() => {});
   }, []);
+
+  useEffect(() => {
+    if (step !== 'mesa') return;
+    const refresh = () => {
+      getMesas()
+        .then((data) => {
+          setMesas(data);
+          setMesaSeleccionada((prev) => {
+            const m = data.find((x) => x.id === Number(prev));
+            return m && m.ocupada ? '' : prev;
+          });
+        })
+        .catch(() => {});
+    };
+    refresh();
+    const t = setInterval(refresh, 4000);
+    return () => clearInterval(t);
+  }, [step]);
 
   useEffect(() => {
     const mesaParam = searchParams.get('mesa');
@@ -50,42 +70,95 @@ export default function ModeSelectPage() {
 
   const handleConfirmMesa = () => {
     if (!mesaSeleccionada) return;
+    const mesa = mesas.find((m) => m.id === Number(mesaSeleccionada));
+    if (mesa?.ocupada) {
+      setOcupadaMsg(true);
+      return;
+    }
     setMesaId(Number(mesaSeleccionada));
     navigate(path('/menu'));
   };
 
   if (step === 'mesa') {
+    const activas = mesas.filter((m) => m.activa);
+    const fixtures = Array.isArray(empresa?.layout) ? empresa.layout : [];
+    const hasPlano = activas.some((m) => m.pos_x != null && m.pos_y != null) || fixtures.length > 0;
+    const mesaPick = activas.find((m) => m.id === Number(mesaSeleccionada));
+
     return (
       <div className="mode-screen">
         <div className="mode-eyebrow">Bienvenido a</div>
         <div className="mode-logo">{empresa?.nombre || 'Pidevo'}</div>
         <div className="mode-sub">¿En qué mesa estás?</div>
 
-        <div style={{ marginBottom: 24 }}>
-          <label style={{ fontSize: 13, color: 'var(--muted)', display: 'block', marginBottom: 8 }}>
-            Número de mesa
-          </label>
-          <select
-            className="select-input"
-            value={mesaSeleccionada}
-            onChange={(e) => setMesaSeleccionada(e.target.value)}
-            style={{ fontSize: 16 }}
-          >
-            <option value="">Seleccioná tu mesa</option>
-            {mesas.filter(m => m.activa).map((mesa) => (
-              <option key={mesa.id} value={mesa.id}>
-                Mesa {mesa.numero}
-              </option>
-            ))}
-          </select>
-        </div>
+        {hasPlano ? (
+          <>
+            <div className="plano-pick">
+              {fixtures.map((fix, i) => {
+                const cfg = TIPOS_FIJO[fix.tipo];
+                if (!cfg) return null;
+                return (
+                  <div key={i} className={`plano-item plano-fix plano-fix-${fix.tipo}`} style={fixStyle(fix)}>
+                    <i className={`ti ${cfg.icon}`}></i>
+                    <span>{cfg.label}</span>
+                  </div>
+                );
+              })}
+              {activas.map((mesa) => (
+                <div
+                  key={mesa.id}
+                  className={`plano-item plano-mesa ${mesa.forma === 'rectangular' ? 'rect' : ''} ${mesa.ocupada ? 'busy' : ''} ${Number(mesaSeleccionada) === mesa.id ? 'picked' : ''}`}
+                  style={mesaStyle(mesa)}
+                  onClick={() => {
+                    if (mesa.ocupada) {
+                      setMesaSeleccionada('');
+                      setOcupadaMsg(true);
+                      return;
+                    }
+                    setOcupadaMsg(false);
+                    setMesaSeleccionada(String(mesa.id));
+                  }}
+                >
+                  <span className="plano-mesa-num">{mesa.numero}</span>
+                </div>
+              ))}
+            </div>
+            <div className="plano-pick-tip">
+              <i className="ti ti-corner-up-right"></i>
+              {ocupadaMsg ? (
+                <span className="plano-ocupada-msg">Esa mesa está ocupada — tocá otra</span>
+              ) : (
+                <span>Tocá tu mesa en el mapa · las <b style={{ color: 'var(--ember)' }}>rojas</b> están ocupadas</span>
+              )}
+            </div>
+          </>
+        ) : (
+          <div style={{ marginBottom: 24 }}>
+            <label style={{ fontSize: 13, color: 'var(--muted)', display: 'block', marginBottom: 8 }}>
+              Número de mesa
+            </label>
+            <select
+              className="select-input"
+              value={mesaSeleccionada}
+              onChange={(e) => setMesaSeleccionada(e.target.value)}
+              style={{ fontSize: 16 }}
+            >
+              <option value="">Seleccioná tu mesa</option>
+              {activas.map((mesa) => (
+                <option key={mesa.id} value={mesa.id}>
+                  Mesa {mesa.numero}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
 
         <button
           className="btn btn-primary btn-block btn-lg"
           onClick={handleConfirmMesa}
-          disabled={!mesaSeleccionada}
+          disabled={!mesaSeleccionada || mesaPick?.ocupada}
         >
-          Ver menú
+          {mesaPick?.ocupada ? 'Mesa ocupada' : mesaPick ? `Ver menú · Mesa ${mesaPick.numero}` : 'Ver menú'}
         </button>
       </div>
     );
