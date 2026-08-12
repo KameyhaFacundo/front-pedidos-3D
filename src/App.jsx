@@ -10,6 +10,7 @@ import CocinaPage from './pages/CocinaPage';
 import LlamadosPage from './pages/LlamadosPage';
 import AdminPage from './pages/AdminPage';
 import LoginPage from './pages/LoginPage';
+import Toast from './components/Toast';
 import './App.css';
 
 function ProtectedRoute({ children }) {
@@ -103,6 +104,7 @@ export default function App() {
             <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
           </Routes>
         </main>
+        <Toast />
       </OrderModeProvider>
     </AuthProvider>
   );

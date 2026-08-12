@@ -61,8 +61,8 @@ export default function MenuPage() {
   }, [platos]);
 
   const filteredPlatos = categoria
-    ? platos.filter((p) => (p.categoria || 'principales') === categoria)
-    : platos;
+    ? platos.filter((p) => (p.categoria || 'principales') === categoria && p.disponible !== false)
+    : platos.filter((p) => p.disponible !== false);
 
   const handleMenuItemClick = (plato) => {
     if (plato.disponible) {

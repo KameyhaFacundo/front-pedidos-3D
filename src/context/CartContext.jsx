@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 
 const CartContext = createContext(null);
 
@@ -15,6 +15,8 @@ function loadCart() {
 
 export function CartProvider({ children }) {
   const [items, setItems] = useState(loadCart);
+  const [toast, setToast] = useState(null);
+  const toastId = useRef(0);
 
   useEffect(() => {
     localStorage.setItem(CART_KEY, JSON.stringify(items));
@@ -32,7 +34,14 @@ export function CartProvider({ children }) {
       }
       return [...prev, { plato, cantidad }];
     });
+    const id = ++toastId.current;
+    setToast({ plato, id });
+    setTimeout(() => {
+      setToast((prev) => (prev && prev.id === id ? null : prev));
+    }, 1800);
   }, []);
+
+  const dismissToast = useCallback(() => setToast(null), []);
 
   const removeFromCart = useCallback((platoId) => {
     setItems((prev) => prev.filter((item) => item.plato.id !== platoId));
@@ -63,7 +72,7 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ items, addToCart, removeFromCart, updateQuantity, clearCart, getTotal, itemCount }}
+      value={{ items, addToCart, removeFromCart, updateQuantity, clearCart, getTotal, itemCount, toast, dismissToast }}
     >
       {children}
     </CartContext.Provider>

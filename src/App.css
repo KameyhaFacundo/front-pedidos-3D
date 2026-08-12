@@ -3,6 +3,7 @@
   --surface: #1B160F;
   --surface-2: #241D14;
   --ember: #FF5A36;
+  --ember-dark: #CC3A1A;
   --ember-dim: #B84226;
   --herb: #8FA83E;
   --gold: #E8AE2D;
@@ -1975,6 +1976,52 @@ img { max-width: 100%; display: block; }
   color: var(--muted);
   font-size: 13px;
   margin-top: 4px;
+}
+
+/* ===== TOAST ===== */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface-2);
+  border: 1px solid var(--herb);
+  border-radius: var(--radius-pill);
+  padding: 10px 22px 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 9999;
+  cursor: pointer;
+  animation: toast-in 0.35s cubic-bezier(0.16, 1, 0.3, 1), toast-out 0.3s ease 1.5s forwards;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+.toast-icon {
+  color: var(--herb);
+  font-size: 20px;
+  display: flex;
+}
+
+.toast-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--cream);
+}
+
+.toast-sub {
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(16px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes toast-out {
+  from { opacity: 1; transform: translateX(-50%) translateY(0); }
+  to   { opacity: 0; transform: translateX(-50%) translateY(16px); }
 }
 
 /* ===== RESPONSIVE ===== */
