@@ -93,9 +93,9 @@ export default function MenuPage() {
         <div className="menu-eyebrow">
           {tipo === 'mesa' ? `Mesa ${mesaNumero || '...'}` : 'Para retirar'}
         </div>
-        <h1 className="menu-brand">
-          pedido<span>3D</span>
-        </h1>
+        <div className="menu-brand">
+          <img src="/pidevo.png" alt="Pidevo" className="brand-logo" />
+        </div>
       </header>
 
       <div className="menu-toolbar">

@@ -1696,6 +1696,50 @@ img { max-width: 100%; display: block; }
   margin-bottom: 8px;
 }
 
+.admin-order-item {
+  padding: 4px 0;
+  border-bottom: 1px dashed var(--hair);
+}
+
+.admin-order-item:last-child { border-bottom: none; }
+
+.aoi-main {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+
+.aoi-qty {
+  color: var(--ember);
+  font-weight: 700;
+  flex: none;
+}
+
+.aoi-name {
+  color: var(--cream);
+  font-weight: 600;
+}
+
+.aoi-line {
+  font-size: 11.5px;
+  margin-top: 2px;
+}
+
+.aoi-var {
+  color: var(--gold);
+  text-transform: uppercase;
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+.aoi-extras { color: var(--herb); }
+
+.aoi-obs {
+  color: var(--muted);
+  font-style: italic;
+}
+
 .admin-order-bottom {
   display: flex;
   justify-content: space-between;
@@ -1719,10 +1763,28 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   gap: 8px;
+  font-size: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.customer-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--cream);
+  font-weight: 600;
+}
+
+.customer-name i { color: var(--muted); font-size: 14px; }
+
+.admin-order-address {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   font-size: 11px;
   color: var(--muted);
-  margin-bottom: 6px;
-  flex-wrap: wrap;
+  margin-bottom: 8px;
 }
 
 .admin-customer-whatsapp {
@@ -3476,22 +3538,6 @@ img { max-width: 100%; display: block; }
 
 .modal-save { margin-top: 0; flex: 1; }
 
-/* ===== ADMIN ORDER ITEM CUSTOMIZATION ===== */
-.admin-item-var {
-  color: var(--gold);
-  font-style: normal;
-  font-weight: 600;
-}
-
-.admin-item-extras {
-  color: var(--herb);
-  font-style: normal;
-}
-
-.admin-item-obs {
-  color: var(--muted);
-}
-
 /* ===== NOTIFICATIONS ===== */
 .toast-stack {
   position: fixed;
@@ -3669,3 +3715,17 @@ img { max-width: 100%; display: block; }
     padding: 4px 16px;
   }
 }
+
+/* ===== BRAND LOGO (Pidevo) ===== */
+.brand-logo {
+  display: block;
+  width: auto;
+  height: 30px;
+  object-fit: contain;
+}
+
+.navbar-brand .brand-logo { height: 30px; }
+.menu-brand .brand-logo { height: 40px; }
+.mode-logo .brand-logo { height: 46px; margin-bottom: 6px; }
+.admin-brand .brand-logo { height: 26px; }
+.login-brand .brand-logo { height: 40px; margin: 0 auto; }

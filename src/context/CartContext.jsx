@@ -2,11 +2,11 @@ import { createContext, useContext, useState, useEffect, useCallback, useRef } f
 
 const CartContext = createContext(null);
 
-const CART_KEY = 'pedido3d_cart';
+const CART_KEY = 'pidevo_cart';
 
 function loadCart() {
   try {
-    const stored = localStorage.getItem(CART_KEY);
+    const stored = localStorage.getItem(CART_KEY) || localStorage.getItem('pedido3d_cart');
     const parsed = stored ? JSON.parse(stored) : [];
     return Array.isArray(parsed) ? parsed : [];
   } catch {

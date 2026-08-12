@@ -46,11 +46,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-inner">
         <Link to="/" className="navbar-brand">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2C9.5 8 7 10 7 14a5 5 0 0010 0c0-4-2.5-6-5-12z" fill="#FF5A36"/>
-            <path d="M12 16a2 2 0 100-4 2 2 0 000 4z" fill="#2A0D04"/>
-          </svg>
-          pedido<span>3D</span>
+          <img src="/pidevo.png" alt="Pidevo" className="brand-logo" />
         </Link>
 
         <div className="navbar-links">

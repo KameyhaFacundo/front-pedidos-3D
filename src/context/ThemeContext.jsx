@@ -3,11 +3,11 @@ import { useLocation } from 'react-router-dom';
 
 const ThemeContext = createContext(null);
 
-const STORAGE_KEY = 'pedido3d_themes';
+const STORAGE_KEY = 'pidevo_themes';
 
 function getStoredThemes() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('pedido3d_themes');
     if (raw) {
       const parsed = JSON.parse(raw);
       if (parsed.client && parsed.admin) return parsed;

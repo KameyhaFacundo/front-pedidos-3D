@@ -30,7 +30,7 @@ export default function LoginPage() {
     <div className="login-page">
       <div className="login-card">
         <div className="login-brand">
-          pedido<span>3D</span>
+          <img src="/pidevo.png" alt="Pidevo" className="brand-logo" />
         </div>
         <p className="login-sub">Acceso al panel</p>
 
@@ -47,7 +47,7 @@ export default function LoginPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@pedido3d.com"
+              placeholder="admin@pidevo.com"
               required
             />
           </div>

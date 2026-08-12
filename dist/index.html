@@ -2,10 +2,10 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/pidevo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#14110D" />
-    <title>Pedido 3D — Menú AR</title>
+    <title>Pidevo — Pedidos para tu local</title>
     <script>
       (function() {
         var path = window.location.pathname;
@@ -13,7 +13,7 @@
         var key = isAdmin ? 'admin' : 'client';
         var themes = { client: 'dark', admin: 'dark' };
         try {
-          var raw = localStorage.getItem('pedido3d_themes');
+          var raw = localStorage.getItem('pidevo_themes') || localStorage.getItem('pedido3d_themes');
           if (raw) themes = JSON.parse(raw);
         } catch(e) {}
         document.documentElement.setAttribute('data-theme', themes[key] || 'dark');
@@ -22,8 +22,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="/assets/index-C4Pnytwq.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CdctZD8f.css">
+    <script type="module" crossorigin src="/assets/index-BgLltEmh.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-COu9rzm8.css">
   </head>
   <body>
     <div id="root"></div>

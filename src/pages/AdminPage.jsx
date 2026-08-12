@@ -452,9 +452,14 @@ export default function AdminPage() {
                               : 'Retiro'}
                         </span>
                       </div>
+
                       {(pedido.nombre || pedido.celular) && (
                         <div className="admin-order-customer">
-                          {pedido.nombre && <span>{pedido.nombre}</span>}
+                          {pedido.nombre && (
+                            <span className="customer-name">
+                              <i className="ti ti-user"></i> {pedido.nombre}
+                            </span>
+                          )}
                           {pedido.celular && (
                             <a
                               href={`https://wa.me/549${pedido.celular.replace(/\D/g, '')}`}
@@ -468,21 +473,32 @@ export default function AdminPage() {
                           )}
                         </div>
                       )}
+
+                      {pedido.tipo === 'envio' && pedido.direccion && (
+                        <div className="admin-order-address">
+                          <i className="ti ti-map-pin"></i> {pedido.direccion}
+                        </div>
+                      )}
+
                       <div className="admin-order-items">
                         {pedido.items?.map((item) => (
-                          <span key={item.id}>
-                            {item.cantidad} {item.plato?.nombre || `Plato #${item.plato_id}`}
+                          <div key={item.id} className="admin-order-item">
+                            <div className="aoi-main">
+                              <span className="aoi-qty">{item.cantidad}x</span>
+                              <span className="aoi-name">{item.plato?.nombre || `Plato #${item.plato_id}`}</span>
+                            </div>
                             {item.presentacion_nombre && (
-                              <em className="admin-item-var"> ({item.presentacion_nombre})</em>
+                              <div className="aoi-line aoi-var">{item.presentacion_nombre}</div>
                             )}
                             {item.agregados?.length > 0 && (
-                              <em className="admin-item-extras"> + {item.agregados.map((a) => `${a.nombre}${a.cantidad > 1 ? ` x${a.cantidad}` : ''}`).join(', ')}</em>
+                              <div className="aoi-line aoi-extras">
+                                + {item.agregados.map((a) => `${a.nombre}${a.cantidad > 1 ? ` x${a.cantidad}` : ''}`).join(' · ')}
+                              </div>
                             )}
                             {item.observacion && (
-                              <em className="admin-item-obs"> · “{item.observacion}”</em>
+                              <div className="aoi-line aoi-obs">“{item.observacion}”</div>
                             )}
-                            <br />
-                          </span>
+                          </div>
                         ))}
                       </div>
                       <div className="admin-order-bottom">
@@ -1035,7 +1051,7 @@ function AdminSidebar({ view, setView, open, onToggle }) {
   return (
     <aside className={`admin-sidebar ${open ? 'open' : ''}`}>
       <div className="admin-sidebar-header">
-        <div className="admin-brand">pedido<span>3D</span></div>
+        <div className="admin-brand"><img src="/pidevo.png" alt="Pidevo" className="brand-logo" /></div>
         <button className="hamburger in-sidebar" onClick={onToggle} aria-label="Cerrar menú">
           <i className="ti ti-x"></i>
         </button>

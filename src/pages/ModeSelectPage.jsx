@@ -13,7 +13,7 @@ export default function ModeSelectPage() {
 
   const lastOrder = (() => {
     try {
-      const raw = localStorage.getItem('pedido3d_last_order');
+      const raw = localStorage.getItem('pidevo_last_order') || localStorage.getItem('pedido3d_last_order');
       return raw ? JSON.parse(raw) : null;
     } catch { return null; }
   })();
@@ -53,7 +53,7 @@ export default function ModeSelectPage() {
   if (step === 'mesa') {
     return (
       <div className="mode-screen">
-        <div className="mode-logo">pedido<span>3D</span></div>
+        <div className="mode-logo"><img src="/pidevo.png" alt="Pidevo" className="brand-logo" /></div>
         <div className="mode-sub">¿En qué mesa estás?</div>
 
         <div style={{ marginBottom: 24 }}>
@@ -89,7 +89,7 @@ export default function ModeSelectPage() {
   return (
     <div className="mode-screen">
       <div className="mode-eyebrow">Bienvenido</div>
-      <div className="mode-logo">pedido<span>3D</span></div>
+      <div className="mode-logo"><img src="/pidevo.png" alt="Pidevo" className="brand-logo" /></div>
       <div className="mode-sub">Elegí cómo vas a disfrutar tu pedido hoy.</div>
 
       <div className="mode-opt dine" onClick={() => handlePickMode('mesa')}>
