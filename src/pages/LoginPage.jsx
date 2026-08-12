@@ -1,7 +1,13 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { login as apiLogin } from '../api/client';
 import { useAuth } from '../context/AuthContext';
+
+function getSlugFromPath(pathname) {
+  const segments = pathname.split('/').filter(Boolean);
+  const [first, second] = segments;
+  return first && second === 'login' ? first : null;
+}
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -12,6 +18,8 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const pathSlug = getSlugFromPath(location.pathname);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +32,11 @@ export default function LoginPage() {
     try {
       const data = await apiLogin(email, password);
       login(data.token, data.user);
-      const slug = localStorage.getItem('pidevo_slug');
+      const storedSlug = localStorage.getItem('pidevo_slug');
+      const slug = storedSlug || pathSlug;
+      if (slug) {
+        localStorage.setItem('pidevo_slug', slug);
+      }
       navigate(slug ? `/${slug}/admin` : '/');
     } catch (err) {
       setError(err.message || 'Error al iniciar sesión');

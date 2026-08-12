@@ -33,9 +33,15 @@ export async function request(endpoint, options = {}) {
   if (response.status === 401) {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    const isAdminRoute = /^\/([^\/]+\/)?(admin|cocina|llamados)/.test(window.location.pathname);
-    if (isAdminRoute || localStorage.getItem('token_before_401')) {
-      window.location.href = '/login';
+    const path = window.location.pathname;
+    const slugMatch = path.match(/^\/([^\/]+)(?:\/|$)/);
+    const slug = slugMatch && slugMatch[1] && !['admin', 'cocina', 'llamados', 'login', 'landing'].includes(slugMatch[1])
+      ? slugMatch[1]
+      : null;
+    const loginPath = slug ? `/${slug}/login` : '/login';
+    const isAdminRoute = /^\/([^\/]+\/)?(admin|cocina|llamados)/.test(path);
+    if (isAdminRoute || localStorage.getItem('token_before_401') || slug) {
+      window.location.href = loginPath;
     }
     throw new Error('Sesión expirada');
   }

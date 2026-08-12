@@ -22,7 +22,8 @@ import './App.css';
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
+  const { slug } = useCompany();
+  if (!isAuthenticated) return <Navigate to={slug ? `/${slug}/login` : '/login'} replace />;
   return children;
 }
 
@@ -46,8 +47,8 @@ function Navbar() {
   const { path, empresa } = useCompany();
 
   const isLanding = location.pathname === '/' || location.pathname === '/landing';
-  const isAdminArea = ['/admin', '/cocina', '/llamados'].some((p) => location.pathname.startsWith(p));
-  const isLogin = location.pathname === '/login';
+  const isAdminArea = /^\/([^\/]+\/)?(?:admin|cocina|llamados)/.test(location.pathname);
+  const isLogin = location.pathname === '/login' || /^\/[^\/]+\/login$/.test(location.pathname);
 
   if (isLanding || isLogin || isAdminArea) return null;
 
@@ -98,12 +99,13 @@ export default function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/landing" element={<LandingPage />} />
               <Route path="/login" element={<LoginPage />} />
-              <Route path="/:slug" element={<CompanyLayout />}>
+              <Route path="/:slug/*" element={<CompanyLayout />}>
                 <Route index element={<ModeSelectPage />} />
                 <Route path="menu" element={<MenuPage />} />
                 <Route path="carrito" element={<CartPage />} />
                 <Route path="checkout" element={<CheckoutPage />} />
                 <Route path="pedido/:id" element={<PedidoTrackingPage />} />
+                <Route path="login" element={<LoginPage />} />
                 <Route
                   path="admin"
                   element={

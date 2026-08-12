@@ -9,7 +9,7 @@
     <script>
       (function() {
         var path = window.location.pathname;
-        var isAdmin = path.indexOf('/admin') === 0 || path.indexOf('/cocina') === 0 || path.indexOf('/llamados') === 0;
+        var isAdmin = /^\/(?:[^\/]+\/)?(?:admin|cocina|llamados)/.test(path);
         var key = isAdmin ? 'admin' : 'client';
         var themes = { client: 'dark', admin: 'dark' };
         try {
