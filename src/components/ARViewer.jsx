@@ -77,6 +77,7 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
           ar-modes="webxr scene-viewer quick-look"
           camera-controls
           auto-rotate
+          scale="0.04 0.04 0.04"
           style={{
             width: '100%',
             height: '100%',
