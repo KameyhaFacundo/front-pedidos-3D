@@ -36,6 +36,7 @@ export default function PedidoTrackingPage() {
   const [error, setError] = useState(null);
   const [llamando, setLlamando] = useState(false);
   const [llamadoOk, setLlamadoOk] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState(null);
 
   const fetchPedido = useCallback(() => {
     getPedido(id)
@@ -71,6 +72,16 @@ export default function PedidoTrackingPage() {
       return () => clearInterval(interval);
     }, [fetchPedido]);
   }
+
+  // Fallback polling for token users in case SSE misses events
+  useEffect(() => {
+    if (!hasToken) return;
+    const interval = setInterval(() => {
+      fetchPedido();
+      setLastUpdated(new Date());
+    }, 8000);
+    return () => clearInterval(interval);
+  }, [fetchPedido, hasToken]);
 
   const handleLlamar = async () => {
     if (!pedido?.mesa?.id) return;
@@ -129,6 +140,10 @@ export default function PedidoTrackingPage() {
         </div>
         <div className="tracking-hero-label" style={{ color }}>{info.label}</div>
         <div className="tracking-hero-sub">{info.sub}</div>
+      </div>
+      <div className="tracking-meta">
+        <div className="tracking-updated">{lastUpdated ? `Actualizado: ${new Date(lastUpdated).toLocaleTimeString()}` : ''}</div>
+        <button className="btn btn-sm" onClick={() => { setLoading(true); fetchPedido(); setLastUpdated(new Date()); }}>Actualizar</button>
       </div>
 
       {!esCancelado && (

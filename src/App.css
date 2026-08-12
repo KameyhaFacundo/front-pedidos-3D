@@ -399,6 +399,15 @@ img { max-width: 100%; display: block; }
 
 .menu-brand span { color: var(--ember); }
 
+.tracking-meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 8px 24px 16px 24px;
+}
+.tracking-updated { color: var(--muted); font-size: 0.9rem; }
+
 /* Toolbar (search + chips) */
 .menu-toolbar {
   padding: 0 24px 16px;
