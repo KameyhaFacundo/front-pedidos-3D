@@ -8,8 +8,15 @@
     <title>Pedido 3D — Menú AR</title>
     <script>
       (function() {
-        var theme = localStorage.getItem('pedido3d_theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', theme);
+        var path = window.location.pathname;
+        var isAdmin = path.indexOf('/admin') === 0 || path.indexOf('/cocina') === 0 || path.indexOf('/llamados') === 0;
+        var key = isAdmin ? 'admin' : 'client';
+        var themes = { client: 'dark', admin: 'dark' };
+        try {
+          var raw = localStorage.getItem('pedido3d_themes');
+          if (raw) themes = JSON.parse(raw);
+        } catch(e) {}
+        document.documentElement.setAttribute('data-theme', themes[key] || 'dark');
       })();
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />

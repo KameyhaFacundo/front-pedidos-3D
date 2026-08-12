@@ -1,29 +1,45 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const ThemeContext = createContext(null);
 
-function getInitialTheme() {
+const STORAGE_KEY = 'pedido3d_themes';
+
+function getStoredThemes() {
   try {
-    const stored = localStorage.getItem('pedido3d_theme');
-    if (stored === 'light' || stored === 'dark') return stored;
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed.client && parsed.admin) return parsed;
+    }
   } catch {}
-  return 'dark';
+  return { client: 'dark', admin: 'dark' };
+}
+
+function getScope(pathname) {
+  if (pathname.startsWith('/admin') || pathname.startsWith('/cocina') || pathname.startsWith('/llamados')) return 'admin';
+  return 'client';
 }
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(getInitialTheme);
+  const location = useLocation();
+  const scope = getScope(location.pathname);
+  const [themes, setThemes] = useState(getStoredThemes);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('pedido3d_theme', theme);
-  }, [theme]);
+    document.documentElement.setAttribute('data-theme', themes[scope]);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(themes));
+  }, [themes, scope]);
 
   const toggleTheme = useCallback(() => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  }, []);
+    setThemes((prev) => {
+      const next = { ...prev, [scope]: prev[scope] === 'dark' ? 'light' : 'dark' };
+      return next;
+    });
+  }, [scope]);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme: themes[scope], toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
