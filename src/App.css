@@ -2168,6 +2168,25 @@ img { max-width: 100%; display: block; }
 .plano-fix-barra { color: var(--gold); border-color: rgba(232, 174, 45, 0.5); border-style: solid; }
 .plano-fix-muro { color: var(--hair); border-color: rgba(255, 255, 255, 0.12); border-style: solid; background: rgba(255, 255, 255, 0.03); }
 
+/* Brick pattern for muro */
+.plano-fix-muro {
+  color: #fff;
+  border-color: rgba(0,0,0,0.18);
+  border-style: solid;
+  background-color: #b86b4a;
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,0.06), rgba(255,255,255,0.02)),
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.06) 0 1px, transparent 1px 30px),
+    linear-gradient(#c16f52, #a85f45);
+  background-size: auto, 30px 100%, auto;
+  box-shadow: inset 0 -6px 12px rgba(0,0,0,0.12), 0 8px 20px rgba(0,0,0,0.06);
+  border-radius: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.plano-fix-muro i { color: rgba(255,255,255,0.9); }
+
 .plano-item.selected,
 .plano-fix.selected { outline: 2px solid var(--ember); outline-offset: 3px; }
 

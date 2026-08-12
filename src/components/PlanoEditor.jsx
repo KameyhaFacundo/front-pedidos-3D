@@ -300,6 +300,23 @@ export default function PlanoEditor({ mesas, busyIds, ordersPorMesa = {}, onQrMe
           )}
           {selectedFix && (
             <>
+              {selectedFix.tipo === 'muro' && (
+                <div className="plano-control-group">
+                  <span className="plano-control-label">Ancho (%)</span>
+                  <input
+                    type="range"
+                    min={6}
+                    max={90}
+                    value={(selectedFix.w ?? (TIPOS_FIJO[selectedFix.tipo]?.w || 45))}
+                    onChange={(e) => setFixProp(selectedFix.key, { w: Number(e.target.value) })}
+                  />
+                  <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
+                    <button className="plano-chip" onClick={() => setFixProp(selectedFix.key, { w: Math.max(6, (selectedFix.w ?? TIPOS_FIJO[selectedFix.tipo].w) - 5) })}>-</button>
+                    <div style={{ alignSelf: 'center' }}>{Math.round((selectedFix.w ?? TIPOS_FIJO[selectedFix.tipo].w) * 10) / 10}%</div>
+                    <button className="plano-chip" onClick={() => setFixProp(selectedFix.key, { w: Math.min(90, (selectedFix.w ?? TIPOS_FIJO[selectedFix.tipo].w) + 5) })}>+</button>
+                  </div>
+                </div>
+              )}
               <div className="plano-control-group">
                 <span className="plano-control-label">Rotar</span>
                 <button className="plano-chip" onClick={() => setFixProp(selectedFix.key, { rotacion: ((selectedFix.rotacion || 0) + 45) % 360 })}>
