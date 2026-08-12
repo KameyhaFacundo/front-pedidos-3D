@@ -43,6 +43,23 @@ export default function MenuPage() {
       });
   }, []);
 
+  useEffect(() => {
+    // Warm the browser cache for each dish's GLB as soon as its thumbnail
+    // appears in the menu, so it's already downloaded by the time the
+    // customer opens AR -- only the on-device tracking wait is left.
+    const urls = [...new Set(platos.map((p) => p.modelo_glb).filter(Boolean))];
+    const links = urls.map((url) => {
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.as = 'fetch';
+      link.crossOrigin = 'anonymous';
+      link.href = url;
+      document.head.appendChild(link);
+      return link;
+    });
+    return () => links.forEach((link) => link.remove());
+  }, [platos]);
+
   const filteredPlatos = categoria
     ? platos.filter((p) => (p.categoria || 'principales') === categoria)
     : platos;
