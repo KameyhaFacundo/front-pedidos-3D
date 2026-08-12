@@ -43,6 +43,8 @@ export default function PedidoTrackingPage() {
     fetchPedido();
   }, [fetchPedido]);
 
+  const hasToken = !!localStorage.getItem('token');
+
   const handleSSE = useCallback(
     (updated) => {
       const match = updated.find((p) => p.id === Number(id));
@@ -53,7 +55,14 @@ export default function PedidoTrackingPage() {
     [id]
   );
 
-  useSSE(handleSSE);
+  if (hasToken) {
+    useSSE(handleSSE);
+  } else {
+    useEffect(() => {
+      const interval = setInterval(fetchPedido, 5000);
+      return () => clearInterval(interval);
+    }, [fetchPedido]);
+  }
 
   const handleLlamar = async () => {
     if (!pedido?.mesa?.id) return;

@@ -45,6 +45,7 @@ export default function CheckoutPage() {
 
     try {
       const result = await createPedido(pedidoData);
+      localStorage.setItem('pedido3d_last_order', JSON.stringify({ id: result.id, tipo, mesaNumero: mesaNumero || null, fecha: new Date().toISOString() }));
       setSuccess(result);
       clearCart();
     } catch (err) {

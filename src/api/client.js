@@ -27,7 +27,10 @@ export async function request(endpoint, options = {}) {
   if (response.status === 401) {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    window.location.href = '/login';
+    const isAdminRoute = window.location.pathname.startsWith('/admin') || window.location.pathname.startsWith('/cocina') || window.location.pathname.startsWith('/llamados');
+    if (isAdminRoute || localStorage.getItem('token_before_401')) {
+      window.location.href = '/login';
+    }
     throw new Error('Sesión expirada');
   }
 

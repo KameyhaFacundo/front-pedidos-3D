@@ -11,6 +11,13 @@ export default function ModeSelectPage() {
   const [mesas, setMesas] = useState([]);
   const [mesaSeleccionada, setMesaSeleccionada] = useState('');
 
+  const lastOrder = (() => {
+    try {
+      const raw = localStorage.getItem('pedido3d_last_order');
+      return raw ? JSON.parse(raw) : null;
+    } catch { return null; }
+  })();
+
   useEffect(() => {
     getMesas().then(setMesas).catch(() => {});
   }, []);
@@ -103,6 +110,33 @@ export default function ModeSelectPage() {
         <div>
           <div className="mode-title">Quiero retirar</div>
           <div className="mode-desc">Pedís desde donde estés y pasás a buscarlo por el local.</div>
+        </div>
+        <i className="ti ti-chevron-right mode-arrow"></i>
+      </div>
+
+      {lastOrder && (
+        <div className="track-my-order" onClick={() => navigate(`/pedido/${lastOrder.id}`)}>
+          <div className="track-icon">
+            <i className="ti ti-eye"></i>
+          </div>
+          <div>
+            <div className="track-label">Seguir mi pedido</div>
+            <div className="track-desc">Pedido #{lastOrder.id} · {lastOrder.tipo === 'mesa' ? `Mesa ${lastOrder.mesaNumero}` : 'Retiro'} · {new Date(lastOrder.fecha).toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' })}</div>
+          </div>
+          <i className="ti ti-chevron-right mode-arrow"></i>
+        </div>
+      )}
+
+      <div className="track-my-order manual" onClick={() => {
+        const id = prompt('Ingresá el número de tu pedido:');
+        if (id && /^\d+$/.test(id.trim())) navigate(`/pedido/${id.trim()}`);
+      }}>
+        <div className="track-icon">
+          <i className="ti ti-search"></i>
+        </div>
+        <div>
+          <div className="track-label">Buscar otro pedido</div>
+          <div className="track-desc">Ingresá el número de pedido manualmente</div>
         </div>
         <i className="ti ti-chevron-right mode-arrow"></i>
       </div>
