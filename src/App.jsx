@@ -80,9 +80,10 @@ function Navbar() {
 
 export default function App() {
   const location = useLocation();
-  const isAdmin = location.pathname.startsWith('/admin');
+  const adminAreaRegex = /^\/([^\/]+\/)?(admin|cocina|llamados)/;
+  const isAdmin = adminAreaRegex.test(location.pathname);
   const isLanding = location.pathname === '/' || location.pathname === '/landing';
-  const hideFooter = isLanding || ['/admin', '/cocina', '/llamados', '/login'].some((p) => location.pathname.startsWith(p));
+  const hideFooter = isLanding || /^\/(?:[^\/]+\/)?(?:admin|cocina|llamados|login)/.test(location.pathname);
 
   return (
     <ThemeProvider>
@@ -97,15 +98,36 @@ export default function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/landing" element={<LandingPage />} />
               <Route path="/login" element={<LoginPage />} />
-              <Route path="/cocina" element={<ProtectedRoute><CocinaPage /></ProtectedRoute>} />
-              <Route path="/llamados" element={<ProtectedRoute><LlamadosPage /></ProtectedRoute>} />
-              <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
               <Route path="/:slug" element={<CompanyLayout />}>
                 <Route index element={<ModeSelectPage />} />
                 <Route path="menu" element={<MenuPage />} />
                 <Route path="carrito" element={<CartPage />} />
                 <Route path="checkout" element={<CheckoutPage />} />
                 <Route path="pedido/:id" element={<PedidoTrackingPage />} />
+                <Route
+                  path="admin"
+                  element={
+                    <ProtectedRoute>
+                      <AdminPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="cocina"
+                  element={
+                    <ProtectedRoute>
+                      <CocinaPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="llamados"
+                  element={
+                    <ProtectedRoute>
+                      <LlamadosPage />
+                    </ProtectedRoute>
+                  }
+                />
               </Route>
               <Route path="*" element={<NotFoundPage />} />
             </Routes>

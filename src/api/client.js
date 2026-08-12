@@ -33,7 +33,7 @@ export async function request(endpoint, options = {}) {
   if (response.status === 401) {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    const isAdminRoute = window.location.pathname.startsWith('/admin') || window.location.pathname.startsWith('/cocina') || window.location.pathname.startsWith('/llamados');
+    const isAdminRoute = /^\/([^\/]+\/)?(admin|cocina|llamados)/.test(window.location.pathname);
     if (isAdminRoute || localStorage.getItem('token_before_401')) {
       window.location.href = '/login';
     }

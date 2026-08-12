@@ -6,13 +6,17 @@ const CompanyContext = createContext(null);
 
 const RESERVED = ['admin', 'cocina', 'llamados', 'login', 'landing'];
 
+function getSlugFromPath(pathname) {
+  const segments = pathname.split('/').filter(Boolean);
+  const first = segments[0];
+  return first && !RESERVED.includes(first) ? first : null;
+}
+
 export function CompanyProvider({ children }) {
   const location = useLocation();
   const [empresa, setEmpresa] = useState(null);
 
-  const segments = location.pathname.split('/').filter(Boolean);
-  const first = segments[0];
-  const slug = first && !RESERVED.includes(first) ? first : null;
+  const slug = getSlugFromPath(location.pathname);
 
   useEffect(() => {
     if (slug) {

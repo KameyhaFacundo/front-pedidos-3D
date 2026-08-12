@@ -24,7 +24,8 @@ export default function LoginPage() {
     try {
       const data = await apiLogin(email, password);
       login(data.token, data.user);
-      navigate('/admin');
+      const slug = localStorage.getItem('pidevo_slug');
+      navigate(slug ? `/${slug}/admin` : '/');
     } catch (err) {
       setError(err.message || 'Error al iniciar sesión');
     } finally {

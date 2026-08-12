@@ -32,7 +32,7 @@ export default function RegistroModal({ onClose }) {
       localStorage.setItem('pidevo_slug', result.empresa.slug);
       notify('¡Tu local está listo! Bienvenido a Pidevo', 'success');
       onClose();
-      navigate('/admin');
+      navigate(`/${result.empresa.slug}/admin`);
     } catch (err) {
       notify(err.message, 'error');
     } finally {

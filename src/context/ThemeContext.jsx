@@ -17,7 +17,7 @@ function getStoredThemes() {
 }
 
 function getScope(pathname) {
-  if (pathname.startsWith('/admin') || pathname.startsWith('/cocina') || pathname.startsWith('/llamados')) return 'admin';
+  if (/^\/([^\/]+\/)?(admin|cocina|llamados)/.test(pathname)) return 'admin';
   return 'client';
 }
 
