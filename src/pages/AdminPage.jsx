@@ -65,6 +65,7 @@ const EMPTY_PLATO = {
 export default function AdminPage() {
   const { notify, confirm } = useNotify();
   const [view, setView] = useState('pedidos');
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [pedidos, setPedidos] = useState([]);
   const [metricas, setMetricas] = useState(null);
   const [platos, setPlatos] = useState([]);
@@ -371,9 +372,15 @@ export default function AdminPage() {
 
   return (
     <div className="admin-layout">
-      <AdminSidebar view={view} setView={setView} />
+      <AdminSidebar view={view} setView={setView} open={sidebarOpen} onToggle={() => setSidebarOpen((v) => !v)} />
+      {sidebarOpen && <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />}
 
       <div className="admin-main">
+        {!sidebarOpen && (
+          <button className="hamburger" onClick={() => setSidebarOpen(true)} aria-label="Abrir menú">
+            <i className="ti ti-menu-2"></i>
+          </button>
+        )}
         {/* PEDIDOS */}
         <div className={`view ${view === 'pedidos' ? 'active' : ''}`}>
           <div className="admin-top">
@@ -1016,7 +1023,7 @@ export default function AdminPage() {
   );
 }
 
-function AdminSidebar({ view, setView }) {
+function AdminSidebar({ view, setView, open, onToggle }) {
   const { theme, toggleTheme } = useTheme();
   const items = [
     { key: 'pedidos', label: 'Pedidos', icon: 'ti-receipt' },
@@ -1026,8 +1033,13 @@ function AdminSidebar({ view, setView }) {
   ];
 
   return (
-    <aside className="admin-sidebar">
-      <div className="admin-brand">pedido<span>3D</span></div>
+    <aside className={`admin-sidebar ${open ? 'open' : ''}`}>
+      <div className="admin-sidebar-header">
+        <div className="admin-brand">pedido<span>3D</span></div>
+        <button className="hamburger in-sidebar" onClick={onToggle} aria-label="Cerrar menú">
+          <i className="ti ti-x"></i>
+        </button>
+      </div>
       <nav className="admin-nav">
         {items.map(({ key, label, icon }) => (
           <div
