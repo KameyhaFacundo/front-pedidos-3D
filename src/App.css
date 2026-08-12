@@ -1545,6 +1545,14 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   font-size: 24px;
   color: rgba(247, 241, 230, 0.35);
+  overflow: hidden;
+  position: relative;
+}
+
+.dish-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .dish-cat {

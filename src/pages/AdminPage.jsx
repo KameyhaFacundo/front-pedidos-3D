@@ -418,11 +418,17 @@ export default function AdminPage() {
                   onClick={() => openEditModal(plato)}
                   style={{ cursor: 'pointer' }}
                 >
-                  <div
-                    className="dish-thumb"
-                    style={{ background: 'var(--surface)' }}
-                  >
-                    <i className={`ti ${icon}`}></i>
+                  <div className="dish-thumb" style={{ background: 'var(--surface)' }}>
+                    {plato.foto ? (
+                      <img
+                        src={plato.foto}
+                        alt={plato.nombre}
+                        className="dish-thumb-img"
+                        onError={(e) => { e.target.style.display = 'none'; }}
+                      />
+                    ) : (
+                      <i className={`ti ${icon}`}></i>
+                    )}
                   </div>
                   <div className="dish-cat">{plato.categoria}</div>
                   <div className="dish-name">{plato.nombre}</div>
