@@ -24,6 +24,13 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
     let mounted = true;
     let timeout;
 
+    // With a poster photo, the customer sees the dish instantly instead of
+    // staring at a spinner while the GLB downloads/parses in the
+    // background -- model-viewer swaps poster -> 3D model on its own.
+    if (plato.foto) {
+      setStatus('viewer');
+    }
+
     const onLoad = () => {
       // activateAR() requires a fresh user gesture (WebXR transient
       // activation) -- calling it here, after the async model load, loses
@@ -32,14 +39,16 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
       if (mounted) setStatus('viewer');
     };
 
-    const onError = () => { if (mounted) setStatus('error'); };
+    const onError = () => { if (mounted && !plato.foto) setStatus('error'); };
 
     viewer.addEventListener('load', onLoad);
     viewer.addEventListener('error', onError);
 
-    timeout = setTimeout(() => {
-      if (mounted && status === 'loading') setStatus('viewer');
-    }, 15000);
+    if (!plato.foto) {
+      timeout = setTimeout(() => {
+        if (mounted) setStatus('viewer');
+      }, 6000);
+    }
 
     return () => {
       mounted = false;
@@ -47,7 +56,7 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
       viewer.removeEventListener('load', onLoad);
       viewer.removeEventListener('error', onError);
     };
-  }, [plato?.modelo_glb]);
+  }, [plato?.modelo_glb, plato?.foto]);
 
   const handleClose = () => {
     onClose();
@@ -73,16 +82,19 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
           ref={modelRef}
           src={plato.modelo_glb}
           ios-src={plato.modelo_usdz || ''}
+          poster={plato.foto || undefined}
+          reveal="auto"
+          loading="eager"
           ar
           ar-modes="webxr scene-viewer quick-look"
           ar-scale="fixed"
           camera-controls
           auto-rotate
-          scale="0.01 0.01 0.01"
+          scale="0.005 0.005 0.005"
           style={{
             width: '100%',
             height: '100%',
-            opacity: status === 'viewer' ? 1 : 0,
+            opacity: status === 'no-model' ? 0 : 1,
             position: 'absolute',
           }}
           exposure="1"
@@ -91,7 +103,7 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
         />
       )}
 
-      {status === 'loading' && (
+      {status === 'loading' && !tieneFoto && (
         <div className="ar-overlay">
           <div className="spinner" style={{ width: 48, height: 48, borderWidth: 3 }} />
           <p style={{ color: 'var(--cream)', fontSize: 16, marginTop: 20, fontWeight: 600 }}>
