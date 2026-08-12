@@ -75,9 +75,10 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
           ios-src={plato.modelo_usdz || ''}
           ar
           ar-modes="webxr scene-viewer quick-look"
+          ar-scale="fixed"
           camera-controls
           auto-rotate
-          scale="0.04 0.04 0.04"
+          scale="0.01 0.01 0.01"
           style={{
             width: '100%',
             height: '100%',
