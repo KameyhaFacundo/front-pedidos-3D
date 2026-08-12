@@ -123,7 +123,7 @@ export default function CheckoutPage() {
   }
 
   if (success) {
-    const restoPhone = '5493815069332';
+    const restoPhone = import.meta.env.VITE_RESTAURANT_PHONE || '5493815069332';
     const itemsTexto = items.map((item) => {
       let linea = `${item.cantidad}x ${item.plato.nombre.toUpperCase()}`;
       if (item.presentacion) linea += ` (${item.presentacion.toUpperCase()})`;

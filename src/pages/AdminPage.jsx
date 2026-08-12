@@ -85,6 +85,8 @@ export default function AdminPage() {
   const [agregados, setAgregados] = useState([]);
   const [qrMesa, setQrMesa] = useState(null);
 
+  const fotoPreview = fotoFile ? URL.createObjectURL(fotoFile) : (editingPlato?.foto || null);
+
   const fetchPedidosYMetricas = useCallback(() => {
     Promise.all([getPedidos(), getMetricas()])
       .then(([pedidosData, metricasData]) => {
@@ -697,29 +699,59 @@ export default function AdminPage() {
 
       {/* MODAL */}
       <div className={`overlay ${showModal ? 'active' : ''}`} onClick={closeModal}>
-        <div className="modal" onClick={(e) => e.stopPropagation()}>
-          <div className="modal-top">
-            <div className="modal-title">
-              {editingPlato ? 'Editar plato' : 'Nuevo plato'}
+        <div className="modal plato-modal-admin" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-header">
+            <div>
+              <div className="modal-title">
+                {editingPlato ? 'Editar plato' : 'Nuevo plato'}
+              </div>
+              <div className="modal-subtitle">
+                {editingPlato ? 'Modificá los datos del plato' : 'Cargá un nuevo plato al menú'}
+              </div>
             </div>
             <button className="modal-close" onClick={closeModal}>
               <i className="ti ti-x"></i>
             </button>
           </div>
 
+          <div className="modal-body">
+            <div className="photo-drop" onClick={() => fotoInputRef.current?.click()}>
+            {fotoPreview ? (
+              <>
+                <img src={fotoPreview} alt="Foto del plato" className="photo-drop-img" />
+                <div className="photo-drop-overlay">
+                  <i className="ti ti-pencil"></i> Cambiar foto
+                </div>
+              </>
+            ) : (
+              <div className="photo-drop-empty">
+                <i className="ti ti-photo-up"></i>
+                <span>Subir foto</span>
+                <small>PNG, JPG o WebP</small>
+              </div>
+            )}
+          </div>
+          <input
+            ref={fotoInputRef}
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            style={{ display: 'none' }}
+            onChange={(e) => setFotoFile(e.target.files[0] || null)}
+          />
+
           <div className="field">
-            <label>Nombre</label>
+            <label>Nombre del plato</label>
             <input
               type="text"
               value={modalForm.nombre}
               onChange={(e) => handleModalChange('nombre', e.target.value)}
-              placeholder="Nombre del plato"
+              placeholder="Ej: Bunker Cranch Doble"
             />
           </div>
 
           <div className="field-row">
             <div className="field">
-              <label>Precio</label>
+              <label>Precio base</label>
               <input
                 type="number"
                 value={modalForm.precio}
@@ -744,143 +776,130 @@ export default function AdminPage() {
 
           <div className="field">
             <label>Descripción</label>
-            <input
-              type="text"
+            <textarea
+              className="input-textarea"
+              rows={2}
               value={modalForm.descripcion}
               onChange={(e) => handleModalChange('descripcion', e.target.value)}
-              placeholder="Descripción breve"
+              placeholder="Doble medallón de 110gr, queso tybo, panceta..."
             />
           </div>
 
-          <div className="custom-field">
-            <div className="custom-field-head">
-              <label>Presentaciones</label>
+          <div className="custom-section">
+            <div className="custom-section-head">
+              <div>
+                <div className="custom-section-title">Presentaciones</div>
+                <div className="custom-section-sub">Variantes con distinto precio</div>
+              </div>
               <button className="custom-add" onClick={() => setPresentaciones((p) => [...p, { nombre: '', descripcion: '', precio: '' }])}>
                 <i className="ti ti-plus"></i> Agregar
               </button>
             </div>
+            {presentaciones.length === 0 && (
+              <div className="custom-empty">Sin presentaciones. Ej: Doble, Triple, Cuádruple.</div>
+            )}
             {presentaciones.map((p, i) => (
-              <div key={i} className="custom-row">
+              <div key={i} className="custom-card">
+                <div className="custom-card-row">
+                  <input
+                    type="text"
+                    placeholder="Nombre (ej: DOBLE)"
+                    value={p.nombre}
+                    onChange={(e) => setPresentaciones((prev) => prev.map((x, j) => j === i ? { ...x, nombre: e.target.value } : x))}
+                  />
+                  <div className="custom-price">
+                    <span>$</span>
+                    <input
+                      type="number"
+                      placeholder="0.00"
+                      value={p.precio}
+                      onChange={(e) => setPresentaciones((prev) => prev.map((x, j) => j === i ? { ...x, precio: e.target.value } : x))}
+                    />
+                  </div>
+                  <button className="custom-del" onClick={() => setPresentaciones((prev) => prev.filter((_, j) => j !== i))}>
+                    <i className="ti ti-trash"></i>
+                  </button>
+                </div>
                 <input
+                  className="custom-card-desc"
                   type="text"
-                  placeholder="Nombre (ej: DOBLE)"
-                  value={p.nombre}
-                  onChange={(e) => setPresentaciones((prev) => prev.map((x, j) => j === i ? { ...x, nombre: e.target.value } : x))}
-                />
-                <input
-                  type="text"
-                  placeholder="Descripción"
+                  placeholder="Descripción (opcional)"
                   value={p.descripcion}
                   onChange={(e) => setPresentaciones((prev) => prev.map((x, j) => j === i ? { ...x, descripcion: e.target.value } : x))}
                 />
-                <input
-                  type="number"
-                  placeholder="Precio"
-                  value={p.precio}
-                  onChange={(e) => setPresentaciones((prev) => prev.map((x, j) => j === i ? { ...x, precio: e.target.value } : x))}
-                />
-                <button className="custom-del" onClick={() => setPresentaciones((prev) => prev.filter((_, j) => j !== i))}>
-                  <i className="ti ti-x"></i>
-                </button>
               </div>
             ))}
           </div>
 
-          <div className="custom-field">
-            <div className="custom-field-head">
-              <label>Agregados</label>
+          <div className="custom-section">
+            <div className="custom-section-head">
+              <div>
+                <div className="custom-section-title">Agregados</div>
+                <div className="custom-section-sub">Extras que el cliente puede sumar</div>
+              </div>
               <button className="custom-add" onClick={() => setAgregados((a) => [...a, { nombre: '', descripcion: '', precio: '' }])}>
                 <i className="ti ti-plus"></i> Agregar
               </button>
             </div>
+            {agregados.length === 0 && (
+              <div className="custom-empty">Sin agregados. Ej: Extra cheddar, cebolla caramelizada.</div>
+            )}
             {agregados.map((a, i) => (
-              <div key={i} className="custom-row">
+              <div key={i} className="custom-card">
+                <div className="custom-card-row">
+                  <input
+                    type="text"
+                    placeholder="Nombre (ej: EXTRA CHEDAR)"
+                    value={a.nombre}
+                    onChange={(e) => setAgregados((prev) => prev.map((x, j) => j === i ? { ...x, nombre: e.target.value } : x))}
+                  />
+                  <div className="custom-price">
+                    <span>$</span>
+                    <input
+                      type="number"
+                      placeholder="0.00"
+                      value={a.precio}
+                      onChange={(e) => setAgregados((prev) => prev.map((x, j) => j === i ? { ...x, precio: e.target.value } : x))}
+                    />
+                  </div>
+                  <button className="custom-del" onClick={() => setAgregados((prev) => prev.filter((_, j) => j !== i))}>
+                    <i className="ti ti-trash"></i>
+                  </button>
+                </div>
                 <input
+                  className="custom-card-desc"
                   type="text"
-                  placeholder="Nombre (ej: EXTRA CHEDAR)"
-                  value={a.nombre}
-                  onChange={(e) => setAgregados((prev) => prev.map((x, j) => j === i ? { ...x, nombre: e.target.value } : x))}
-                />
-                <input
-                  type="text"
-                  placeholder="Descripción"
+                  placeholder="Descripción (opcional)"
                   value={a.descripcion}
                   onChange={(e) => setAgregados((prev) => prev.map((x, j) => j === i ? { ...x, descripcion: e.target.value } : x))}
                 />
-                <input
-                  type="number"
-                  placeholder="Precio"
-                  value={a.precio}
-                  onChange={(e) => setAgregados((prev) => prev.map((x, j) => j === i ? { ...x, precio: e.target.value } : x))}
-                />
-                <button className="custom-del" onClick={() => setAgregados((prev) => prev.filter((_, j) => j !== i))}>
-                  <i className="ti ti-x"></i>
-                </button>
               </div>
             ))}
           </div>
 
-          <div className="field">
-            <label>Foto</label>
-            <div className="upload" onClick={() => fotoInputRef.current?.click()}>
-              <i className="ti ti-photo"></i>
-              <div>
-                <div className="u-title">{fotoFile ? fotoFile.name : 'Subir imagen'}</div>
-                <div className="u-sub">PNG, JPG o WebP</div>
+          <div className="field-row">
+            <div className="field">
+              <label>Modelo 3D (GLB)</label>
+              <div className="upload compact" onClick={() => glbInputRef.current?.click()}>
+                <i className="ti ti-box"></i>
+                <div>
+                  <div className="u-title">{glbFile ? glbFile.name : 'Subir .glb'}</div>
+                </div>
+                {glbFile && <i className="ti ti-check" style={{ color: 'var(--herb)', marginLeft: 'auto' }}></i>}
               </div>
-              {fotoFile && (
-                <i className="ti ti-check" style={{ color: 'var(--herb)', marginLeft: 'auto' }}></i>
-              )}
+              <input ref={glbInputRef} type="file" accept=".glb" style={{ display: 'none' }} onChange={(e) => setGlbFile(e.target.files[0] || null)} />
             </div>
-            <input
-              ref={fotoInputRef}
-              type="file"
-              accept="image/jpeg,image/png,image/webp"
-              style={{ display: 'none' }}
-              onChange={(e) => setFotoFile(e.target.files[0] || null)}
-            />
-          </div>
-
-          <div className="field">
-            <label>Modelo 3D (GLB)</label>
-            <div className="upload" onClick={() => glbInputRef.current?.click()}>
-              <i className="ti ti-box"></i>
-              <div>
-                <div className="u-title">{glbFile ? glbFile.name : 'Subir modelo GLB'}</div>
-                <div className="u-sub">Archivo .glb</div>
+            <div className="field">
+              <label>Modelo iOS (USDZ)</label>
+              <div className="upload compact" onClick={() => usdzInputRef.current?.click()}>
+                <i className="ti ti-box"></i>
+                <div>
+                  <div className="u-title">{usdzFile ? usdzFile.name : 'Subir .usdz'}</div>
+                </div>
+                {usdzFile && <i className="ti ti-check" style={{ color: 'var(--herb)', marginLeft: 'auto' }}></i>}
               </div>
-              {glbFile && (
-                <i className="ti ti-check" style={{ color: 'var(--herb)', marginLeft: 'auto' }}></i>
-              )}
+              <input ref={usdzInputRef} type="file" accept=".usdz" style={{ display: 'none' }} onChange={(e) => setUsdzFile(e.target.files[0] || null)} />
             </div>
-            <input
-              ref={glbInputRef}
-              type="file"
-              accept=".glb"
-              style={{ display: 'none' }}
-              onChange={(e) => setGlbFile(e.target.files[0] || null)}
-            />
-          </div>
-
-          <div className="field">
-            <label>Modelo iOS (USDZ)</label>
-            <div className="upload" onClick={() => usdzInputRef.current?.click()}>
-              <i className="ti ti-box"></i>
-              <div>
-                <div className="u-title">{usdzFile ? usdzFile.name : 'Subir modelo USDZ'}</div>
-                <div className="u-sub">Archivo .usdz</div>
-              </div>
-              {usdzFile && (
-                <i className="ti ti-check" style={{ color: 'var(--herb)', marginLeft: 'auto' }}></i>
-              )}
-            </div>
-            <input
-              ref={usdzInputRef}
-              type="file"
-              accept=".usdz"
-              style={{ display: 'none' }}
-              onChange={(e) => setUsdzFile(e.target.files[0] || null)}
-            />
           </div>
 
           <div className="toggle-row">
@@ -893,34 +912,25 @@ export default function AdminPage() {
               onClick={() => handleModalChange('disponible', !modalForm.disponible)}
             />
           </div>
+          </div>
 
-          {editingPlato && (
+          <div className="modal-footer">
+            {editingPlato && (
+              <button
+                className="btn-delete"
+                onClick={() => handleDeletePlato(editingPlato.id)}
+              >
+                <i className="ti ti-trash"></i> Eliminar
+              </button>
+            )}
             <button
-              className="btn btn-block"
-              style={{
-                background: 'transparent',
-                color: 'var(--ember)',
-                border: '1px solid var(--hair)',
-                borderRadius: 12,
-                padding: '11px',
-                fontSize: 13,
-                fontWeight: 700,
-                cursor: 'pointer',
-                marginTop: 12,
-              }}
-              onClick={() => handleDeletePlato(editingPlato.id)}
+              className="modal-save"
+              disabled={saving || !modalForm.nombre.trim() || !modalForm.precio}
+              onClick={handleSavePlato}
             >
-              <i className="ti ti-trash"></i> Eliminar plato
+              {saving ? 'Guardando...' : editingPlato ? 'Guardar cambios' : 'Crear plato'}
             </button>
-          )}
-
-          <button
-            className="modal-save"
-            disabled={saving || !modalForm.nombre.trim() || !modalForm.precio}
-            onClick={handleSavePlato}
-          >
-            {saving ? 'Guardando...' : 'Guardar plato'}
-          </button>
+          </div>
         </div>
       </div>
 
