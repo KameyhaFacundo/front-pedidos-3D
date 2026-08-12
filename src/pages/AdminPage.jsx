@@ -13,6 +13,7 @@ import {
 } from '../api/client';
 import { useSSE } from '../api/useSSE';
 import QRModal from '../components/QRModal';
+import { AdminSkeleton } from '../components/Skeletons';
 
 function formatearPrecio(n) {
   return '$' + Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -292,18 +293,7 @@ export default function AdminPage() {
     });
   })();
 
-  if (loading) {
-    return (
-      <div className="admin-layout">
-        <AdminSidebar view={view} setView={setView} />
-        <div className="admin-main">
-          <div className="page-center" style={{ flex: 1 }}>
-            <div className="spinner" />
-          </div>
-        </div>
-      </div>
-    );
-  }
+  if (loading) return <AdminSkeleton />;
 
   return (
     <div className="admin-layout">

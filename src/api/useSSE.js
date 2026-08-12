@@ -8,7 +8,7 @@ const getBase = () => {
   return (import.meta.env.VITE_API_URL || 'http://localhost:8000/api').replace('/api', '');
 };
 
-export function useSSE(onPedidosUpdate) {
+export function useSSE(onPedidosUpdate, onMessage) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -24,6 +24,7 @@ export function useSSE(onPedidosUpdate) {
         if (data.pedidos && onPedidosUpdate) {
           onPedidosUpdate(data.pedidos);
         }
+        if (onMessage) onMessage();
       } catch {}
     };
 
@@ -42,5 +43,5 @@ export function useSSE(onPedidosUpdate) {
     return () => {
       source.close();
     };
-  }, [onPedidosUpdate]);
+  }, [onPedidosUpdate, onMessage]);
 }

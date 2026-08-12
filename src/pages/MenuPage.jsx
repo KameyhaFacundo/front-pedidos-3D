@@ -3,6 +3,7 @@ import { getMenu, getMesas } from '../api/client';
 import { useCart } from '../context/CartContext';
 import { useOrderMode } from '../context/OrderModeContext';
 import ARViewer from '../components/ARViewer';
+import { MenuSkeleton } from '../components/Skeletons';
 
 const CATEGORIAS = [
   { key: '', label: 'Todos' },
@@ -18,7 +19,7 @@ export default function MenuPage() {
   const [error, setError] = useState(null);
   const [arPlato, setArPlato] = useState(null);
   const [categoria, setCategoria] = useState('');
-  const { addToCart } = useCart();
+  const { addToCart, updateQuantity, items: cartItems } = useCart();
   const { tipo, mesaId } = useOrderMode();
   const [mesas, setMesas] = useState([]);
 
@@ -67,14 +68,7 @@ export default function MenuPage() {
     setArPlato(null);
   };
 
-  if (loading) {
-    return (
-      <div className="page-center">
-        <div className="spinner" />
-        <p>Cargando menú...</p>
-      </div>
-    );
-  }
+  if (loading) return <MenuSkeleton />;
 
   if (error) {
     return (
@@ -134,46 +128,66 @@ export default function MenuPage() {
         </div>
       ) : (
         <div className="menu-list">
-          {filteredPlatos.map((plato) => (
-            <div
-              key={plato.id}
-              className="menu-item"
-              onClick={() => handleMenuItemClick(plato)}
-            >
-              <div className="menu-item-thumb">
-                {plato.foto ? (
-                  <img
-                    src={plato.foto}
-                    alt={plato.nombre}
-                    onError={(e) => { e.target.style.display = 'none'; }}
-                  />
-                ) : (
-                  <div className="thumb-icon-placeholder">
-                    <i className="ti ti-meat"></i>
-                  </div>
-                )}
-                <div className="thumb-sweep"></div>
-              </div>
-
-              <div className="menu-item-info">
-                <div className="menu-item-name">{plato.nombre}</div>
-                <div className="menu-item-desc">
-                  {plato.descripcion || 'Plato elaborado con ingredientes frescos de estación.'}
-                </div>
-                <div className="menu-item-bottom">
-                  <div className="menu-item-price">${Number(plato.precio).toFixed(2)}</div>
-                  {plato.modelo_glb && (
-                    <button
-                      className="ar-pill"
-                      onClick={(e) => { e.stopPropagation(); setArPlato(plato); }}
-                    >
-                      <i className="ti ti-camera"></i>VER EN AR
-                    </button>
+          {filteredPlatos.map((plato) => {
+            const cartItem = cartItems.find((i) => i.plato.id === plato.id);
+            const qty = cartItem ? cartItem.cantidad : 0;
+            return (
+              <div
+                key={plato.id}
+                className="menu-item"
+                onClick={() => { if (!qty) handleMenuItemClick(plato); }}
+              >
+                <div className="menu-item-thumb">
+                  {plato.foto ? (
+                    <img
+                      src={plato.foto}
+                      alt={plato.nombre}
+                      onError={(e) => { e.target.style.display = 'none'; }}
+                    />
+                  ) : (
+                    <div className="thumb-icon-placeholder">
+                      <i className="ti ti-meat"></i>
+                    </div>
                   )}
+                  <div className="thumb-sweep"></div>
+                </div>
+
+                <div className="menu-item-info">
+                  <div className="menu-item-name">{plato.nombre}</div>
+                  <div className="menu-item-desc">
+                    {plato.descripcion || 'Plato elaborado con ingredientes frescos de estación.'}
+                  </div>
+                  <div className="menu-item-bottom">
+                    <div className="menu-item-price">${Number(plato.precio).toFixed(2)}</div>
+                    {qty > 0 ? (
+                      <div className="stepper" onClick={(e) => e.stopPropagation()}>
+                        <button
+                          className="stepper-btn"
+                          onClick={() => updateQuantity(plato.id, qty - 1)}
+                        >
+                          <i className="ti ti-minus"></i>
+                        </button>
+                        <span className="stepper-val">{qty}</span>
+                        <button
+                          className="stepper-btn"
+                          onClick={() => updateQuantity(plato.id, qty + 1)}
+                        >
+                          <i className="ti ti-plus"></i>
+                        </button>
+                      </div>
+                    ) : plato.modelo_glb ? (
+                      <button
+                        className="ar-pill"
+                        onClick={(e) => { e.stopPropagation(); setArPlato(plato); }}
+                      >
+                        <i className="ti ti-camera"></i>VER EN AR
+                      </button>
+                    ) : null}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
 

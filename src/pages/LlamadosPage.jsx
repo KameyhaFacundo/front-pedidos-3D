@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getLlamados, atenderLlamado } from '../api/client';
+import { useSSE } from '../api/useSSE';
 
 export default function LlamadosPage() {
   const [llamados, setLlamados] = useState([]);
@@ -25,10 +26,7 @@ export default function LlamadosPage() {
     fetchLlamados();
   }, [fetchLlamados]);
 
-  useEffect(() => {
-    const interval = setInterval(fetchLlamados, 10000);
-    return () => clearInterval(interval);
-  }, [fetchLlamados]);
+  useSSE(null, fetchLlamados);
 
   const handleAtender = async (llamadoId, mesaNumero) => {
     setAttending(llamadoId);

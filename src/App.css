@@ -449,6 +449,42 @@ img { max-width: 100%; display: block; }
 
 .ar-pill i { font-size: 12px; }
 
+/* ===== STEPPER ===== */
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  background: var(--surface-2);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.stepper-btn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  color: var(--cream);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: background 0.15s;
+}
+
+.stepper-btn:hover {
+  background: rgba(247, 241, 230, 0.08);
+}
+
+.stepper-val {
+  min-width: 24px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--cream);
+}
+
 .menu-item-cart {
   display: flex;
   gap: 6px;
@@ -1192,6 +1228,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   gap: 9px;
   text-decoration: none;
+  cursor: pointer;
   transition: all 0.2s;
 }
 
@@ -1201,6 +1238,8 @@ img { max-width: 100%; display: block; }
   background: var(--surface-2);
   color: var(--cream);
 }
+
+.admin-nav-item.active i { color: var(--ember); }
 
 .admin-nav-dot {
   width: 6px;
@@ -1226,20 +1265,21 @@ img { max-width: 100%; display: block; }
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 22px;
+  margin-bottom: 26px;
 }
 
 .admin-title {
   font-family: 'Fraunces', serif;
   font-weight: 600;
-  font-size: 22px;
+  font-size: 24px;
+  letter-spacing: -0.01em;
   color: var(--cream);
 }
 
 .admin-subtitle {
   font-size: 12.5px;
   color: var(--muted);
-  margin-top: 3px;
+  margin-top: 4px;
 }
 
 .admin-filters {
@@ -1325,17 +1365,7 @@ img { max-width: 100%; display: block; }
   }
 }
 
-.admin-col-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  font-size: 12.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: var(--muted);
-}
+/* ===== ADMIN KANBAN ===== */
 
 .admin-col-count {
   background: var(--surface-2);
@@ -1439,16 +1469,6 @@ img { max-width: 100%; display: block; }
 .view { display: none; }
 .view.active { display: block; }
 
-.admin-nav-item {
-  cursor: pointer;
-  transition: all 0.2s;
-  text-decoration: none;
-}
-
-.admin-nav-item:hover { color: var(--cream); }
-
-.admin-nav-item.active i { color: var(--ember); }
-
 .col-dot {
   width: 7px;
   height: 7px;
@@ -1460,13 +1480,6 @@ img { max-width: 100%; display: block; }
 .col-dot.prep { background: var(--gold); }
 .col-dot.ready { background: var(--herb); }
 .col-dot.done { background: #514736; }
-
-.admin-order {
-  padding: 14px 0;
-  border-bottom: 1px solid var(--hair);
-}
-
-.admin-order:first-child { padding-top: 0; }
 
 .admin-col-head {
   display: flex;
@@ -1499,23 +1512,6 @@ img { max-width: 100%; display: block; }
 }
 
 .admin-metric.accent .value { color: var(--gold); }
-
-.admin-top {
-  margin-bottom: 26px;
-}
-
-.admin-title {
-  font-family: 'Fraunces', serif;
-  font-weight: 600;
-  font-size: 24px;
-  letter-spacing: -0.01em;
-}
-
-.admin-subtitle {
-  font-size: 12.5px;
-  color: var(--muted);
-  margin-top: 4px;
-}
 
 /* Menu view */
 .dish-grid {
@@ -2363,4 +2359,67 @@ img { max-width: 100%; display: block; }
   font-weight: 700;
   font-size: 1rem;
   color: var(--cream);
+}
+
+/* ===== SKELETON ===== */
+.skeleton {
+  background: linear-gradient(90deg, var(--surface) 25%, var(--surface-2) 50%, var(--surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-text {
+  height: 14px;
+  border-radius: 6px;
+}
+
+.skeleton-title {
+  height: 22px;
+  border-radius: 6px;
+}
+
+.skeleton-chip {
+  height: 32px;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+}
+
+.skeleton-thumb {
+  width: 78px;
+  height: 78px;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+
+.skeleton-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.skeleton-item {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--hair);
+}
+
+.skeleton-nav {
+  height: 36px;
+  border-radius: 10px;
+  margin-bottom: 4px;
+}
+
+.skeleton-card {
+  border-radius: var(--radius-sm);
+}
+
+@media (max-width: 480px) {
+  .skeleton-thumb { width: 64px; height: 64px; }
 }
