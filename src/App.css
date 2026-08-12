@@ -2735,51 +2735,61 @@ img { max-width: 100%; display: block; }
 .tracking-page {
   max-width: 560px;
   margin: 0 auto;
-  padding: 24px 20px;
+  padding: 20px 20px 40px;
 }
 
-.tracking-estado-badge {
-  display: inline-flex;
+.tracking-header {
+  display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
-  border-radius: var(--radius-pill);
-  font-weight: 700;
-  font-size: 0.95rem;
+  justify-content: space-between;
   margin-bottom: 24px;
 }
 
-.tracking-estado-badge[data-estado="nuevo"] {
-  background: rgba(232, 174, 45, 0.15);
-  color: var(--gold);
-}
-
-.tracking-estado-badge[data-estado="preparacion"] {
-  background: rgba(255, 90, 54, 0.15);
-  color: var(--ember);
-}
-
-.tracking-estado-badge[data-estado="listo"] {
-  background: rgba(143, 168, 62, 0.15);
-  color: var(--herb);
-}
-
-.tracking-estado-badge[data-estado="entregado"] {
-  background: var(--hover);
+.tracking-header-id {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
   color: var(--cream);
 }
 
-.tracking-estado-badge[data-estado="cancelado"] {
-  background: rgba(255, 90, 54, 0.1);
-  color: var(--ember-dim);
+.tracking-hero {
+  text-align: center;
+  padding: 32px 20px;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius);
+  background: var(--surface);
+  margin-bottom: 24px;
+}
+
+.tracking-hero-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  margin: 0 auto 16px;
+}
+
+.tracking-hero-label {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.tracking-hero-sub {
+  font-size: 0.85rem;
+  color: var(--muted);
 }
 
 .tracking-timeline {
   display: flex;
   align-items: flex-start;
   gap: 0;
-  margin-bottom: 28px;
-  padding: 16px 0;
+  margin-bottom: 24px;
+  padding: 8px 0;
 }
 
 .tl-step {
@@ -2792,10 +2802,11 @@ img { max-width: 100%; display: block; }
 }
 
 .tl-dot {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: var(--surface-2);
+  border: 2px solid var(--hair);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2808,18 +2819,20 @@ img { max-width: 100%; display: block; }
 
 .tl-step.active .tl-dot {
   background: var(--herb);
-  color: #1A1A0A;
+  border-color: var(--herb);
+  color: var(--on-brand);
 }
 
 .tl-step.current .tl-dot {
   background: var(--ember);
+  border-color: var(--ember);
   color: #fff;
-  box-shadow: 0 0 0 4px rgba(255, 90, 54, 0.2);
+  box-shadow: 0 0 0 5px rgba(var(--ember-rgb), 0.18);
 }
 
 .tl-line {
   position: absolute;
-  top: 16px;
+  top: 17px;
   left: 50%;
   right: -50%;
   height: 2px;
@@ -2836,10 +2849,11 @@ img { max-width: 100%; display: block; }
 }
 
 .tl-label {
-  margin-top: 8px;
-  font-size: 0.7rem;
+  margin-top: 10px;
+  font-size: 0.68rem;
   color: var(--muted);
   font-weight: 600;
+  padding: 0 4px;
 }
 
 .tl-step.current .tl-label {
@@ -2848,56 +2862,126 @@ img { max-width: 100%; display: block; }
 
 .tracking-details {
   background: var(--surface);
+  border: 1px solid var(--hair);
   border-radius: var(--radius);
   padding: 20px;
+  margin-bottom: 16px;
 }
 
-.tracking-details h3 {
+.tracking-details-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.tracking-details-head h3 {
   font-family: 'Fraunces', serif;
   font-size: 1rem;
-  margin-bottom: 14px;
   color: var(--cream);
+}
+
+.tracking-details-count {
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: var(--surface-2);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
 }
 
 .tracking-items {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .tracking-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 10px;
-  font-size: 0.9rem;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--hair);
+}
+
+.tracking-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.tracking-item-main {
+  display: flex;
+  gap: 10px;
+  min-width: 0;
 }
 
 .tracking-qty {
   color: var(--ember);
   font-weight: 700;
-  min-width: 28px;
+  min-width: 24px;
+  flex: none;
 }
 
-.tracking-name {
-  flex: 1;
+.tracking-item-name {
   color: var(--cream);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.tracking-item-var {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.tracking-item-extras {
+  font-size: 0.78rem;
+  color: var(--herb);
+  margin-top: 2px;
+}
+
+.tracking-item-obs {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 2px;
 }
 
 .tracking-price {
   color: var(--muted);
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .tracking-total {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 8px;
   border-top: 1px solid var(--hair);
   margin-top: 14px;
   padding-top: 14px;
-  font-weight: 700;
-  font-size: 1rem;
+}
+
+.tracking-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.tracking-total-row.discount { color: var(--herb); }
+
+.tracking-total-row.grand {
+  font-size: 1.1rem;
+  font-weight: 800;
   color: var(--cream);
 }
+
+.tracking-total-row.grand span:last-child { color: var(--gold); }
+
+.tracking-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tracking-actions .btn { text-align: center; justify-content: center; }
 
 /* ===== SKELETON ===== */
 .skeleton {

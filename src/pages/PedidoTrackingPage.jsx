@@ -4,21 +4,27 @@ import { getPedido, llamarMozo } from '../api/client';
 import { useSSE } from '../api/useSSE';
 import { useNotify } from '../context/NotificationContext';
 
-const ESTADOS = ['nuevo', 'preparacion', 'listo', 'entregado', 'cancelado'];
-const ESTADO_LABELS = {
-  nuevo: 'Recibido',
-  preparacion: 'En preparación',
-  listo: 'Listo para retirar',
-  entregado: 'Entregado',
-  cancelado: 'Cancelado',
+const ESTADOS = ['nuevo', 'preparacion', 'listo', 'entregado'];
+
+const ESTADO_INFO = {
+  nuevo: { label: 'Recibido', icon: 'ti-clock', sub: 'Tu pedido fue recibido y está en cola' },
+  preparacion: { label: 'En preparación', icon: 'ti-chef-hat', sub: 'La cocina está preparando tu pedido' },
+  listo: { label: 'Listo para retirar', icon: 'ti-circle-check', sub: '¡Tu pedido está listo!' },
+  entregado: { label: 'Entregado', icon: 'ti-truck-delivery', sub: 'Pedido completado' },
+  cancelado: { label: 'Cancelado', icon: 'ti-circle-x', sub: 'Este pedido fue cancelado' },
 };
-const ESTADO_ICONS = {
-  nuevo: 'ti-clock',
-  preparacion: 'ti-chef-hat',
-  listo: 'ti-circle-check',
-  entregado: 'ti-truck-delivery',
-  cancelado: 'ti-circle-x',
+
+const ESTADO_COLORS = {
+  nuevo: 'var(--gold)',
+  preparacion: 'var(--ember)',
+  listo: 'var(--herb)',
+  entregado: 'var(--cream)',
+  cancelado: 'var(--ember-dim)',
 };
+
+function formatear(n) {
+  return '$' + Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
 
 export default function PedidoTrackingPage() {
   const { id } = useParams();
@@ -50,9 +56,7 @@ export default function PedidoTrackingPage() {
   const handleSSE = useCallback(
     (updated) => {
       const match = updated.find((p) => p.id === Number(id));
-      if (match) {
-        setPedido(match);
-      }
+      if (match) setPedido(match);
     },
     [id]
   );
@@ -100,39 +104,43 @@ export default function PedidoTrackingPage() {
     );
   }
 
-  const estadoActual = pedido.estado;
-  const estadoIdx = ESTADOS.indexOf(estadoActual);
-  const esCancelado = estadoActual === 'cancelado';
+  const estado = pedido.estado;
+  const info = ESTADO_INFO[estado] || ESTADO_INFO.nuevo;
+  const estadoIdx = ESTADOS.indexOf(estado);
+  const esCancelado = estado === 'cancelado';
+  const color = ESTADO_COLORS[estado] || 'var(--cream)';
+  const total = (pedido.items || []).reduce((s, i) => s + (i.plato?.precio || 0) * (i.cantidad || 0), 0);
+  const descuento = Number(pedido.descuento || 0);
 
   return (
     <div className="tracking-page">
-      <header className="page-header">
+      <header className="tracking-header">
         <Link to="/menu" className="back-link">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M19 12H5M12 19l-7-7 7-7" />
-          </svg>
-          Volver al menú
+          <i className="ti ti-arrow-left"></i> Volver
         </Link>
-        <h1>Pedido #{pedido.id}</h1>
+        <span className="tracking-header-id">Pedido #{pedido.id}</span>
       </header>
 
-      <div className="tracking-estado-badge" data-estado={estadoActual}>
-        <i className={`ti ${ESTADO_ICONS[estadoActual] || 'ti-clock'}`}></i>
-        <span>{ESTADO_LABELS[estadoActual] || estadoActual}</span>
+      <div className="tracking-hero" style={{ borderColor: color }}>
+        <div className="tracking-hero-icon" style={{ background: `color-mix(in srgb, ${color} 15%, transparent)`, color }}>
+          <i className={`ti ${info.icon}`}></i>
+        </div>
+        <div className="tracking-hero-label" style={{ color }}>{info.label}</div>
+        <div className="tracking-hero-sub">{info.sub}</div>
       </div>
 
       {!esCancelado && (
         <div className="tracking-timeline">
-          {ESTADOS.filter((e) => e !== 'cancelado').map((estado, idx) => {
+          {ESTADOS.map((e, idx) => {
             const isActive = idx <= estadoIdx;
             const isCurrent = idx === estadoIdx;
             return (
-              <div key={estado} className={`tl-step ${isActive ? 'active' : ''} ${isCurrent ? 'current' : ''}`}>
+              <div key={e} className={`tl-step ${isActive ? 'active' : ''} ${isCurrent ? 'current' : ''}`}>
                 <div className="tl-dot">
                   {isActive ? <i className="ti ti-check"></i> : <span>{idx + 1}</span>}
                 </div>
                 <div className="tl-line" />
-                <div className="tl-label">{ESTADO_LABELS[estado]}</div>
+                <div className="tl-label">{ESTADO_INFO[e].label}</div>
               </div>
             );
           })}
@@ -140,54 +148,70 @@ export default function PedidoTrackingPage() {
       )}
 
       <div className="tracking-details">
-        <h3>Detalle del pedido</h3>
+        <div className="tracking-details-head">
+          <h3>Tu pedido</h3>
+          <span className="tracking-details-count">{pedido.items?.length || 0} items</span>
+        </div>
+
         <div className="tracking-items">
           {(pedido.items || []).map((item, i) => (
             <div key={i} className="tracking-item">
-              <span className="tracking-qty">{item.cantidad}x</span>
-              <span className="tracking-name">{item.plato?.nombre || `Plato #${item.plato_id}`}</span>
+              <div className="tracking-item-main">
+                <span className="tracking-qty">{item.cantidad}x</span>
+                <div className="tracking-item-name">
+                  {item.plato?.nombre || `Plato #${item.plato_id}`}
+                  {item.presentacion_nombre && <span className="tracking-item-var"> · {item.presentacion_nombre}</span>}
+                  {item.agregados?.length > 0 && (
+                    <div className="tracking-item-extras">
+                      + {item.agregados.map((a) => a.nombre).join(', ')}
+                    </div>
+                  )}
+                  {item.observacion && <div className="tracking-item-obs">“{item.observacion}”</div>}
+                </div>
+              </div>
               <span className="tracking-price">
-                ${((item.plato?.precio || 0) * item.cantidad).toFixed(2)}
+                {formatear((item.plato?.precio || 0) * item.cantidad)}
               </span>
             </div>
           ))}
         </div>
+
         <div className="tracking-total">
-          <span>Total</span>
-          <span>
-            $
-            {(pedido.items || []).reduce(
-              (s, i) => s + (i.plato?.precio || 0) * (i.cantidad || 0),
-              0
-            ).toFixed(2)}
-          </span>
+          {descuento > 0 && (
+            <>
+              <div className="tracking-total-row">
+                <span>Subtotal</span>
+                <span>{formatear(total + descuento)}</span>
+              </div>
+              <div className="tracking-total-row discount">
+                <span>Descuento</span>
+                <span>-{formatear(descuento)}</span>
+              </div>
+            </>
+          )}
+          <div className="tracking-total-row grand">
+            <span>Total</span>
+            <span>{formatear(total)}</span>
+          </div>
         </div>
       </div>
 
-      {pedido.mesa && !esCancelado && (
-        <button
-          className="btn btn-primary btn-block btn-lg"
-          onClick={handleLlamar}
-          disabled={llamando || llamadoOk}
-          style={{ marginTop: 16 }}
-        >
-          {llamadoOk ? (
-            <>
-              <i className="ti ti-check"></i> Mozo notificado
-            </>
-          ) : llamando ? (
-            'Llamando...'
-          ) : (
-            <>
-              <i className="ti ti-bell-ringing"></i> Llamar al mozo
-            </>
-          )}
-        </button>
-      )}
-
-      <Link to="/menu" className="btn btn-outline btn-block" style={{ marginTop: 12, textAlign: 'center' }}>
-        Seguir pidiendo
-      </Link>
+      <div className="tracking-actions">
+        {pedido.mesa && !esCancelado && (
+          <button className="btn btn-primary btn-block" onClick={handleLlamar} disabled={llamando || llamadoOk}>
+            {llamadoOk ? (
+              <><i className="ti ti-check"></i> Mozo notificado</>
+            ) : llamando ? (
+              'Llamando...'
+            ) : (
+              <><i className="ti ti-bell-ringing"></i> Llamar al mozo</>
+            )}
+          </button>
+        )}
+        <Link to="/menu" className="btn btn-outline btn-block">
+          Seguir pidiendo
+        </Link>
+      </div>
     </div>
   );
 }
