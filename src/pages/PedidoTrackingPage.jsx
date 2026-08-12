@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { getPedido, llamarMozo } from '../api/client';
 import { useSSE } from '../api/useSSE';
 import { useNotify } from '../context/NotificationContext';
@@ -29,6 +29,8 @@ function formatear(n) {
 
 export default function PedidoTrackingPage() {
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
+  const trackingToken = searchParams.get('t');
   const { notify } = useNotify();
   const { path } = useCompany();
   const [pedido, setPedido] = useState(null);
@@ -39,7 +41,7 @@ export default function PedidoTrackingPage() {
   const [lastUpdated, setLastUpdated] = useState(null);
 
   const fetchPedido = useCallback(() => {
-    getPedido(id)
+    getPedido(id, trackingToken)
       .then((data) => {
         setPedido(data.data || data);
         setLoading(false);
@@ -48,7 +50,7 @@ export default function PedidoTrackingPage() {
         setError(err.message);
         setLoading(false);
       });
-  }, [id]);
+  }, [id, trackingToken]);
 
   useEffect(() => {
     fetchPedido();

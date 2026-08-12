@@ -9,7 +9,7 @@
     <script>
       (function() {
         var path = window.location.pathname;
-        var isAdmin = path.indexOf('/admin') === 0 || path.indexOf('/cocina') === 0 || path.indexOf('/llamados') === 0;
+        var isAdmin = /^\/(?:[^\/]+\/)?(?:admin|cocina|llamados)/.test(path);
         var key = isAdmin ? 'admin' : 'client';
         var themes = { client: 'dark', admin: 'dark' };
         try {
@@ -22,8 +22,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="/assets/index-C_-uilp9.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DPCNsrHb.css">
+    <script type="module" crossorigin src="/assets/index-pstlauMx.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-PhhVSPFt.css">
   </head>
   <body>
     <div id="root"></div>

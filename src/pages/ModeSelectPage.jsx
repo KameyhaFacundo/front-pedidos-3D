@@ -4,7 +4,6 @@ import { useOrderMode } from '../context/OrderModeContext';
 import { useCompany } from '../context/CompanyContext';
 import { getMesas } from '../api/client';
 import { TIPOS_FIJO, mesaStyle, fixStyle } from '../components/planoUtils';
-import BuscarPedidoModal from '../components/BuscarPedidoModal';
 import QRInstructionsModal from '../components/QRInstructionsModal';
 import { useLocation } from 'react-router-dom';
 
@@ -17,7 +16,6 @@ export default function ModeSelectPage() {
   const [mesas, setMesas] = useState([]);
   const [mesaSeleccionada, setMesaSeleccionada] = useState('');
   const [ocupadaMsg, setOcupadaMsg] = useState(false);
-  const [showBuscar, setShowBuscar] = useState(false);
   const [showQrInstructions, setShowQrInstructions] = useState(false);
   const location = useLocation();
 
@@ -208,7 +206,7 @@ export default function ModeSelectPage() {
       </div>
 
       {lastOrder && (
-        <div className="track-my-order" onClick={() => navigate(path(`/pedido/${lastOrder.id}`))}>
+        <div className="track-my-order" onClick={() => navigate(path(`/pedido/${lastOrder.id}?t=${lastOrder.token}`))}>
           <div className="track-icon">
             <i className="ti ti-eye"></i>
           </div>
@@ -220,18 +218,6 @@ export default function ModeSelectPage() {
         </div>
       )}
 
-      <div className="track-my-order manual" onClick={() => setShowBuscar(true)}>
-        <div className="track-icon">
-          <i className="ti ti-search"></i>
-        </div>
-        <div>
-          <div className="track-label">Buscar otro pedido</div>
-          <div className="track-desc">Ingresá el número de pedido manualmente</div>
-        </div>
-        <i className="ti ti-chevron-right mode-arrow"></i>
-      </div>
-
-      {showBuscar && <BuscarPedidoModal onClose={() => setShowBuscar(false)} />}
       {showQrInstructions && <QRInstructionsModal onClose={() => setShowQrInstructions(false)} />}
     </div>
   );

@@ -103,7 +103,7 @@ export default function CheckoutPage() {
 
     try {
       const result = await createPedido(pedidoData);
-      localStorage.setItem('pidevo_last_order', JSON.stringify({ id: result.id, tipo: entrega, mesaNumero: mesaNumero || null, fecha: new Date().toISOString() }));
+      localStorage.setItem('pidevo_last_order', JSON.stringify({ id: result.id, token: result.token, tipo: entrega, mesaNumero: mesaNumero || null, fecha: new Date().toISOString() }));
       setSuccess(result);
       clearCart();
     } catch (err) {
@@ -184,7 +184,7 @@ export default function CheckoutPage() {
         </a>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '100%', maxWidth: 300, marginTop: 12 }}>
-          <button className="btn btn-outline" onClick={() => navigate(path(`/pedido/${success.id}`))}>
+          <button className="btn btn-outline" onClick={() => navigate(path(`/pedido/${success.id}?t=${success.token}`))}>
             <i className="ti ti-eye"></i> Ver seguimiento
           </button>
           <button className="btn btn-outline" onClick={() => navigate(path('/menu'))}>

@@ -84,8 +84,9 @@ export function getEmpresa() {
   return request('/empresa');
 }
 
-export function getPedido(id) {
-  return request(`/pedidos/${id}`);
+export function getPedido(id, token) {
+  const query = token ? `?token=${encodeURIComponent(token)}` : '';
+  return request(`/pedidos/${id}${query}`);
 }
 
 export function getPedidos(estado, page = 1) {
