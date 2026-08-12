@@ -12,6 +12,7 @@ import AdminPage from './pages/AdminPage';
 import LoginPage from './pages/LoginPage';
 import PedidoTrackingPage from './pages/PedidoTrackingPage';
 import NotFoundPage from './pages/NotFoundPage';
+import LandingPage from './pages/LandingPage';
 import Toast from './components/Toast';
 import Footer from './components/Footer';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
@@ -114,6 +115,7 @@ export default function App() {
             <Route path="/carrito" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/pedido/:id" element={<PedidoTrackingPage />} />
+            <Route path="/landing" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/cocina" element={<ProtectedRoute><CocinaPage /></ProtectedRoute>} />
             <Route path="/llamados" element={<ProtectedRoute><LlamadosPage /></ProtectedRoute>} />

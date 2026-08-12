@@ -1,4 +1,4 @@
-const LANDING_URL = import.meta.env.VITE_LANDING_URL || 'https://pidevo.com';
+import { Link } from 'react-router-dom';
 
 const REDES = [
   { icon: 'ti-brand-instagram', label: 'Instagram', href: 'https://instagram.com/pidevo' },
@@ -33,15 +33,10 @@ export default function Footer() {
 
         <div className="footer-cta">
           <div className="footer-cta-text">¿Querés un sistema como este para tu local?</div>
-          <a
-            href={LANDING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer-cta-link"
-          >
+          <Link to="/landing" className="footer-cta-link">
             Conocé Pidevo
             <i className="ti ti-arrow-right"></i>
-          </a>
+          </Link>
         </div>
 
         <div className="footer-bottom">
