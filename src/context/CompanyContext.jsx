@@ -1,17 +1,21 @@
 import { createContext, useContext, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { getEmpresa } from '../api/client';
 
 const CompanyContext = createContext(null);
 
 export function CompanyProvider({ children }) {
   const params = useParams();
-  const location = useLocation();
-
   const slug = params.slug || null;
 
   useEffect(() => {
     if (slug) {
       localStorage.setItem('pidevo_slug', slug);
+      getEmpresa()
+        .then((empresa) => {
+          localStorage.setItem('pidevo_empresa', JSON.stringify(empresa));
+        })
+        .catch(() => {});
     }
   }, [slug]);
 
@@ -26,5 +30,19 @@ export function CompanyProvider({ children }) {
 
 export function useCompany() {
   const context = useContext(CompanyContext);
-  return context || { slug: localStorage.getItem('pidevo_slug'), path: (p) => p };
+  if (context) return context;
+
+  let empresa = null;
+  try {
+    empresa = JSON.parse(localStorage.getItem('pidevo_empresa') || 'null');
+  } catch {}
+
+  return {
+    slug: localStorage.getItem('pidevo_slug'),
+    empresa,
+    path: (p) => {
+      const s = localStorage.getItem('pidevo_slug');
+      return s ? `/${s}${p}` : p;
+    },
+  };
 }

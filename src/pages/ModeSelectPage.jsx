@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useOrderMode } from '../context/OrderModeContext';
 import { useCompany } from '../context/CompanyContext';
 import { getMesas, getEmpresa } from '../api/client';
+import BuscarPedidoModal from '../components/BuscarPedidoModal';
 
 export default function ModeSelectPage() {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ export default function ModeSelectPage() {
   const [mesas, setMesas] = useState([]);
   const [empresa, setEmpresa] = useState(null);
   const [mesaSeleccionada, setMesaSeleccionada] = useState('');
+  const [showBuscar, setShowBuscar] = useState(false);
 
   const lastOrder = (() => {
     try {
@@ -132,10 +134,7 @@ export default function ModeSelectPage() {
         </div>
       )}
 
-      <div className="track-my-order manual" onClick={() => {
-        const id = prompt('Ingresá el número de tu pedido:');
-        if (id && /^\d+$/.test(id.trim())) navigate(path(`/pedido/${id.trim()}`));
-      }}>
+      <div className="track-my-order manual" onClick={() => setShowBuscar(true)}>
         <div className="track-icon">
           <i className="ti ti-search"></i>
         </div>
@@ -145,6 +144,8 @@ export default function ModeSelectPage() {
         </div>
         <i className="ti ti-chevron-right mode-arrow"></i>
       </div>
+
+      {showBuscar && <BuscarPedidoModal onClose={() => setShowBuscar(false)} />}
     </div>
   );
 }

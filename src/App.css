@@ -210,6 +210,14 @@ img { max-width: 100%; display: block; }
   margin: 0 auto;
   padding: 0;
   min-height: calc(100vh - 56px);
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Buttons */
@@ -3816,39 +3824,20 @@ img { max-width: 100%; display: block; }
 
 /* ===== FOOTER ===== */
 .footer {
-  margin-top: 48px;
-  background: var(--surface);
+  margin-top: auto;
+  background: var(--bg);
   border-top: 1px solid var(--hair);
 }
 
 .footer-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 28px 24px 24px;
-}
-
-.footer-top {
+  padding: 20px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
   flex-wrap: wrap;
-  margin-bottom: 24px;
-}
-
-.footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.footer-brand .brand-logo { height: 30px; }
-
-.footer-tagline {
-  font-size: 13px;
-  color: var(--muted);
-  padding-left: 14px;
-  border-left: 1px solid var(--hair);
 }
 
 .footer-socials {
@@ -3857,8 +3846,8 @@ img { max-width: 100%; display: block; }
 }
 
 .footer-social {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -3866,7 +3855,7 @@ img { max-width: 100%; display: block; }
   background: var(--surface-2);
   border: 1px solid var(--hair);
   color: var(--muted);
-  font-size: 17px;
+  font-size: 16px;
   transition: all 0.2s;
 }
 
@@ -3880,13 +3869,10 @@ img { max-width: 100%; display: block; }
 .footer-bottom {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
   font-size: 12px;
   color: var(--muted);
-  padding-top: 20px;
-  border-top: 1px solid var(--hair);
 }
 
 .footer-made {
@@ -3904,8 +3890,7 @@ img { max-width: 100%; display: block; }
 .footer-made:hover { color: var(--cream); }
 
 @media (max-width: 640px) {
-  .footer-top { flex-direction: column; align-items: flex-start; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
 }
 
 /* ===== LANDING PAGE ===== */
@@ -4790,4 +4775,28 @@ img { max-width: 100%; display: block; }
 .registro-note a {
   color: var(--ember);
   font-weight: 600;
+}
+
+/* ===== NAVBAR EMPRESA ===== */
+.navbar-empresa {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--cream);
+}
+
+/* ===== BUSCAR PEDIDO MODAL ===== */
+.buscar-pedido-modal {
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg);
+  border: 1px solid var(--hair);
+  border-radius: 20px;
+  color: var(--cream);
+  animation: modal-in 0.25s ease-out;
+}
+
+.buscar-pedido-body {
+  padding: 16px 24px 24px;
 }

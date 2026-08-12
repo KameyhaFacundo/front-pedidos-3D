@@ -47,7 +47,7 @@ function Navbar() {
   const location = useLocation();
   const { itemCount } = useCart();
   const { isAuthenticated, logout } = useAuth();
-  const { path } = useCompany();
+  const { path, empresa } = useCompany();
 
   const isLanding = location.pathname === '/' || location.pathname === '/landing';
   const isAdminArea = ['/admin', '/cocina', '/llamados'].some((p) => location.pathname.startsWith(p));
@@ -59,7 +59,11 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-inner">
         <Link to={path('/')} className="navbar-brand">
-          <img src="/pidevo.png" alt="Pidevo" className="brand-logo" />
+          {empresa?.nombre ? (
+            <span className="navbar-empresa">{empresa.nombre}</span>
+          ) : (
+            <img src="/pidevo.png" alt="Pidevo" className="brand-logo" />
+          )}
         </Link>
 
         <div className="navbar-links">
@@ -91,22 +95,24 @@ export default function App() {
       <OrderModeProvider>
         <Navbar />
         <main key={location.pathname} className={`page-fade ${isAdmin || isLanding ? '' : 'main-content'}`}>
-          <Routes location={location}>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/landing" element={<LandingPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/cocina" element={<ProtectedRoute><CocinaPage /></ProtectedRoute>} />
-            <Route path="/llamados" element={<ProtectedRoute><LlamadosPage /></ProtectedRoute>} />
-            <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
-            <Route path="/:slug" element={<CompanyLayout />}>
-              <Route index element={<ModeSelectPage />} />
-              <Route path="menu" element={<MenuPage />} />
-              <Route path="carrito" element={<CartPage />} />
-              <Route path="checkout" element={<CheckoutPage />} />
-              <Route path="pedido/:id" element={<PedidoTrackingPage />} />
-            </Route>
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+          <div className="app-content">
+            <Routes location={location}>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/landing" element={<LandingPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/cocina" element={<ProtectedRoute><CocinaPage /></ProtectedRoute>} />
+              <Route path="/llamados" element={<ProtectedRoute><LlamadosPage /></ProtectedRoute>} />
+              <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
+              <Route path="/:slug" element={<CompanyLayout />}>
+                <Route index element={<ModeSelectPage />} />
+                <Route path="menu" element={<MenuPage />} />
+                <Route path="carrito" element={<CartPage />} />
+                <Route path="checkout" element={<CheckoutPage />} />
+                <Route path="pedido/:id" element={<PedidoTrackingPage />} />
+              </Route>
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </div>
           {!hideFooter && <Footer />}
         </main>
         <Toast />
