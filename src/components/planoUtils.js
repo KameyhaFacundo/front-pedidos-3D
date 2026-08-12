@@ -8,6 +8,7 @@ export const TIPOS_FIJO = {
   banio:    { label: 'Baño',      icon: 'ti-bath',            color: 'var(--ember-dim)', w: 12, h: 10 },
   ventana:  { label: 'Ventana',   icon: 'ti-window',          color: 'var(--muted)', w: 20, h: 8 },
   barra:    { label: 'Barra',     icon: 'ti-glass-full',      color: 'var(--gold)',  w: 22, h: 11 },
+  muro:     { label: 'Muro',      icon: 'ti-layout-grid',    color: 'var(--hair)',  w: 45, h: 4 },
 };
 
 export function mesaSize(mesa) {

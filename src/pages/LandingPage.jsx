@@ -4,27 +4,34 @@ import RegistroModal from '../components/RegistroModal';
 
 const WHATSAPP = '5493815069332';
 
-const PALABRAS = ['menú digital', 'pedidos por WhatsApp', 'realidad aumentada 3D', 'mesas con QR', 'reportes en vivo'];
+const PALABRAS = ['menú digital', 'pedidos por WhatsApp', '3D en la mesa', 'QR por mesa', 'panel de gestión'];
 
 const TICKER = [
-  'Menú digital con QR', 'Pedidos por WhatsApp', 'Realidad aumentada 3D', 'Panel de pedidos en vivo',
-  'Métricas de ventas', 'Gestión de mesas', 'Variantes y agregados', 'Cupones de descuento',
-  'Seguimiento de pedido', 'Cocina en tiempo real',
+  'Menú digital por QR', 'Pedidos en tiempo real', 'Platos en 3D', 'Panel de cocina',
+  'Métricas de ventas', 'Gestión de mesas', 'Variantes y agregados', 'Promociones rápidas',
+  'Seguimiento digital', 'Sin descargas',
 ];
 
 const PASOS = [
-  { num: '01', title: 'Cargá tu menú', desc: 'Subí tus platos con foto, precio, variantes y agregados. Todo desde el panel del dueño.', color: 'var(--ember)' },
-  { num: '02', title: 'Pegá el QR en tu local', desc: 'Generá el QR de cada mesa. El cliente lo escanea, elige y personaliza su pedido.', color: 'var(--gold)' },
-  { num: '03', title: 'Recibí el pedido por WhatsApp', desc: 'Cada pedido te llega por WhatsApp y a tu panel en vivo. Cambiá el estado con un toque.', color: 'var(--herb)' },
+  { num: '01', title: 'Digitalizá tu carta', desc: 'Subí tus platos, precios, variantes y agregados. Todo se administra desde un panel centralizado.', color: 'var(--ember)' },
+  { num: '02', title: 'QR por mesa', desc: 'Generá un código único para cada mesa y dejá que el cliente pida desde su celular.', color: 'var(--gold)' },
+  { num: '03', title: 'Atendé pedidos en vivo', desc: 'Recibí pedidos en WhatsApp y en tu panel de cocina, con estados claros y actualizaciones instantáneas.', color: 'var(--herb)' },
 ];
 
 const FEATURES = [
-  { icon: 'ti-qrcode', tag: 'Menú QR', title: 'Menú digital por mesa', desc: 'Cada mesa tiene su QR. El cliente ve el menú, elige y pide sin descargar nada.', },
-  { icon: 'ti-camera', tag: 'Realidad aumentada', title: 'Platos en 3D', desc: 'Los clientes ven el plato en realidad aumentada antes de pedir. Más ventas, menos dudas.', },
-  { icon: 'ti-brand-whatsapp', tag: 'WhatsApp', title: 'Pedidos directo a tu WhatsApp', desc: 'El pedido te llega formateado a tu WhatsApp con nombre, teléfono, items y total.', },
-  { icon: 'ti-layout-board', tag: 'Panel en vivo', title: 'Pedidos en tiempo real', desc: 'Kanban con estados: nuevo, en preparación, listo y entregado. Todo se actualiza solo.', },
-  { icon: 'ti-chart-bar', tag: 'Métricas', title: 'Sabé qué se vende', desc: 'Facturación por día, platos más pedidos, ticket promedio y pedidos por hora.', },
-  { icon: 'ti-tags', tag: 'Personalización', title: 'Variantes y agregados', desc: 'Presentaciones (doble/triple), agregados con precio y observaciones por plato.', },
+  { icon: 'ti-qrcode', tag: 'QR inteligente', title: 'Menú digital por mesa', desc: 'Cada mesa tiene su propio QR para pedir sin descargas ni apps.', },
+  { icon: 'ti-camera', tag: '3D experience', title: 'Presentación 3D', desc: 'Mostrá tus platos en 3D para que el cliente elija con más confianza.', },
+  { icon: 'ti-brand-whatsapp', tag: 'WhatsApp', title: 'Pedidos al instante', desc: 'Recibí cada pedido estructurado en WhatsApp con cliente, items y total.', },
+  { icon: 'ti-layout-board', tag: 'Panel operativo', title: 'Cocina y sala sincronizadas', desc: 'Monitoreá pedidos activos, tiempos y estados desde un tablero único.', },
+  { icon: 'ti-chart-bar', tag: 'Métricas', title: 'Análisis de ventas', desc: 'Conocé qué platos venden más y cómo mejorar tu facturación.', },
+  { icon: 'ti-tags', tag: 'Personalización', title: 'Menú configurable', desc: 'Configurá variantes, agregados y promociones sin límites.', },
+  { icon: 'ti-layout-grid', tag: 'Plano profesional', title: 'Distribución de sala', desc: 'Armá tu plano con mesas, barra, cocina y muros para una sala más organizada.', },
+];
+
+const SALA_ITEMS = [
+  { icon: 'ti-square-rounded-check', title: 'Mesas con QR', text: 'Cada mesa se transforma en una estación de pedido con QR único y estados claros para el equipo.', },
+  { icon: 'ti-layout-grid', title: 'Muros y sectores', text: 'Añadí barreras y zonas de paso para reflejar el verdadero flujo de tu salón.', },
+  { icon: 'ti-chef-hat', title: 'Cocina sincronizada', text: 'La cocina recibe los pedidos del salón en vivo para reducir tiempos y errores.', },
 ];
 
 const PLANS = [
@@ -82,9 +89,9 @@ export default function LandingPage() {
           </div>
           <div className="landing-nav-actions">
             <Link to="/login" className="landing-nav-login">Iniciar sesión</Link>
-            <Link to="/tuhambur" className="landing-nav-login">Probar demo</Link>
+            <Link to="/tuhambur" className="landing-nav-login">Ver demo</Link>
             <button className="landing-nav-cta" onClick={() => setShowRegistro(true)}>
-              Empezar gratis
+              Solicitar demo
             </button>
           </div>
         </div>
@@ -96,23 +103,23 @@ export default function LandingPage() {
           <div className="landing-hero-copy">
             <div className="landing-badge">
               <span className="landing-badge-dot"></span>
-              Sistema de pedidos para gastronómicos
+              Sistema de pedidos para restaurantes
             </div>
             <h1 className="landing-hero-title">
-              Tu local con<br />
-              <span className="landing-rotating" key={wordIdx}>{PALABRAS[wordIdx]}</span>
+              El sistema de pedidos para<br />
+              restaurantes modernos.
             </h1>
             <p className="landing-hero-desc">
-              Pidevo transforma tu menú en una experiencia digital: QR en la mesa, platos en 3D y pedidos que llegan directo a tu WhatsApp.
+              Digitalizá tu sala con <span className="landing-rotating">{PALABRAS[wordIdx]}</span>, QR por mesa, panel de cocina en vivo y pedidos que llegan directo a WhatsApp. Todo sin apps ni procesos complicados.
             </p>
             <div className="landing-hero-actions">
               <button className="landing-hero-cta" onClick={() => setShowRegistro(true)}>
-                Empezar gratis →
+                Solicitar demo →
               </button>
-              <Link to="/tuhambur" className="landing-hero-demo">Ver demo del menú</Link>
+              <Link to="/tuhambur" className="landing-hero-demo">Ver demo</Link>
             </div>
             <div className="landing-hero-stats">
-              {[['+50', 'Locales activos'], ['2 min', 'Para cargar el menú'], ['24/7', 'Pedidos en vivo']].map(([v, l]) => (
+              {[['+70', 'Locales activos'], ['5 min', 'para empezar'], ['24/7', 'Pedidos en vivo']].map(([v, l]) => (
                 <div key={l} className="landing-stat">
                   <div className="landing-stat-value">{v}</div>
                   <div className="landing-stat-label">{l}</div>
@@ -121,11 +128,11 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="landing-hero-mock">
-            <div className="landing-mock-window">
+          <div className="landing-hero-mock" aria-hidden="true">
+            <div className="landing-mock-window" role="presentation">
               <div className="landing-mock-bar">
                 <span></span><span></span><span></span>
-                <div className="landing-mock-url">pidevo.com/menu</div>
+                <div className="landing-mock-url">app.pidevo.com/menu</div>
               </div>
               <div className="landing-mock-body">
                 <div className="landing-mock-item">
@@ -206,6 +213,23 @@ export default function LandingPage() {
         </div>
       </section>
 
+      <section className="landing-section landing-section-sala">
+        <div className="landing-section-head">
+          <div className="landing-eyebrow">Plano de sala</div>
+          <h2>Diseñá el salón como lo piensa tu equipo.</h2>
+          <p className="landing-section-sub">Armá mesas, barra, cocina y muros en un plano profesional que refleja tu sala real y mejora la gestión.</p>
+        </div>
+        <div className="landing-sala-grid">
+          {SALA_ITEMS.map((item) => (
+            <div key={item.title} className="landing-sala-card">
+              <div className="landing-sala-card-icon"><i className={`ti ${item.icon}`}></i></div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* PRECIOS */}
       <section id="precios" className="landing-section">
         <div className="landing-section-head">
@@ -277,13 +301,13 @@ export default function LandingPage() {
           <div>
             <h2>Tu local, listo para<br />recibir pedidos.</h2>
             <div className="landing-final-points">
-              <span><i className="ti ti-check"></i> Sin instalación</span>
-              <span><i className="ti ti-check"></i> Empezá gratis</span>
-              <span><i className="ti ti-check"></i> Cancelás cuando quieras</span>
+              <span><i className="ti ti-check"></i> Sin instalación ni descargas</span>
+              <span><i className="ti ti-check"></i> Configurás tu menú en minutos</span>
+              <span><i className="ti ti-check"></i> Sin contratos, sin costos ocultos</span>
             </div>
           </div>
           <button className="landing-final-cta" onClick={() => setShowRegistro(true)}>
-            Empezar gratis →
+            Solicitar demo →
           </button>
         </div>
       </section>

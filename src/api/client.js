@@ -140,7 +140,7 @@ export function toggleMesaActiva(id) {
   });
 }
 
-export function saveLayout(layout) {
+export function saveLayout(layout = []) {
   return request('/empresa/layout', {
     method: 'PUT',
     body: JSON.stringify({ layout }),
