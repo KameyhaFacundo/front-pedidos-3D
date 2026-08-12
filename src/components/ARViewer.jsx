@@ -159,7 +159,7 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
       {status === 'no-model' && (
         <div className="ar-overlay">
           {tieneFoto ? (
-            <img src={plato.foto} alt={plato.nombre} style={{ maxWidth: '80%', maxHeight: '60%', objectFit: 'contain', borderRadius: 16 }} />
+            <img src={plato.foto} alt={plato.nombre} loading="lazy" style={{ maxWidth: '80%', maxHeight: '60%', objectFit: 'contain', borderRadius: 16 }} />
           ) : (
             <i className="ti ti-meat" style={{ fontSize: 64, color: 'var(--ember)', opacity: 0.6 }} />
           )}

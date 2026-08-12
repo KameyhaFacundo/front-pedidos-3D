@@ -464,6 +464,7 @@ export default function AdminPage() {
                         src={plato.foto}
                         alt={plato.nombre}
                         className="dish-thumb-img"
+                        loading="lazy"
                         onError={(e) => { e.target.style.display = 'none'; }}
                       />
                     ) : (

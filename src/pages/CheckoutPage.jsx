@@ -75,6 +75,9 @@ export default function CheckoutPage() {
         <h2>¡Pedido confirmado!</h2>
         <p>Tu pedido #{success.id} ha sido registrado.</p>
         <p className="success-estado">Estado: {success.estado}</p>
+        <p className="success-time" style={{ color: 'var(--muted)', fontSize: 13, marginTop: 4 }}>
+          <i className="ti ti-clock"></i> Tiempo estimado: 15-25 min
+        </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '100%', maxWidth: 300 }}>
           <button className="btn btn-primary" onClick={() => navigate(`/pedido/${success.id}`)}>
             <i className="ti ti-eye"></i> Ver seguimiento

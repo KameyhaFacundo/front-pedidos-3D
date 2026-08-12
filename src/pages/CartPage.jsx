@@ -34,6 +34,7 @@ export default function CartPage() {
               <img
                 src={plato.foto}
                 alt={plato.nombre}
+                loading="lazy"
                 onError={(e) => {
                   e.target.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"><rect fill="%232A2318" width="80" height="80"/></svg>';
                 }}

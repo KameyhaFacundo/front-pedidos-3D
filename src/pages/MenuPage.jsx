@@ -142,6 +142,7 @@ export default function MenuPage() {
                     <img
                       src={plato.foto}
                       alt={plato.nombre}
+                      loading="lazy"
                       onError={(e) => { e.target.style.display = 'none'; }}
                     />
                   ) : (

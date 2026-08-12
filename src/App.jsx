@@ -11,6 +11,7 @@ import LlamadosPage from './pages/LlamadosPage';
 import AdminPage from './pages/AdminPage';
 import LoginPage from './pages/LoginPage';
 import PedidoTrackingPage from './pages/PedidoTrackingPage';
+import NotFoundPage from './pages/NotFoundPage';
 import Toast from './components/Toast';
 import './App.css';
 
@@ -93,8 +94,8 @@ export default function App() {
     <AuthProvider>
       <OrderModeProvider>
         <Navbar />
-        <main className={isAdmin ? '' : 'main-content'}>
-          <Routes>
+        <main key={location.pathname} className={`page-fade ${isAdmin ? '' : 'main-content'}`}>
+          <Routes location={location}>
             <Route path="/" element={<ModeSelectPage />} />
             <Route path="/menu" element={<MenuPage />} />
             <Route path="/carrito" element={<CartPage />} />
@@ -104,6 +105,7 @@ export default function App() {
             <Route path="/cocina" element={<ProtectedRoute><CocinaPage /></ProtectedRoute>} />
             <Route path="/llamados" element={<ProtectedRoute><LlamadosPage /></ProtectedRoute>} />
             <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
         <Toast />
