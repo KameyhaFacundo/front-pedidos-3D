@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { getPedido, llamarMozo } from '../api/client';
 import { useSSE } from '../api/useSSE';
 import { useNotify } from '../context/NotificationContext';
+import { useCompany } from '../context/CompanyContext';
 
 const ESTADOS = ['nuevo', 'preparacion', 'listo', 'entregado'];
 
@@ -29,6 +30,7 @@ function formatear(n) {
 export default function PedidoTrackingPage() {
   const { id } = useParams();
   const { notify } = useNotify();
+  const { path } = useCompany();
   const [pedido, setPedido] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -98,7 +100,7 @@ export default function PedidoTrackingPage() {
       <div className="page-center">
         <div className="error-message">
           <p>{error || 'Pedido no encontrado'}</p>
-          <Link to="/menu" className="btn btn-primary">Volver al menú</Link>
+          <Link to={path('/menu')} className="btn btn-primary">Volver al menú</Link>
         </div>
       </div>
     );
@@ -115,7 +117,7 @@ export default function PedidoTrackingPage() {
   return (
     <div className="tracking-page">
       <header className="tracking-header">
-        <Link to="/menu" className="back-link">
+        <Link to={path('/menu')} className="back-link">
           <i className="ti ti-arrow-left"></i> Volver
         </Link>
         <span className="tracking-header-id">Pedido #{pedido.id}</span>
@@ -208,7 +210,7 @@ export default function PedidoTrackingPage() {
             )}
           </button>
         )}
-        <Link to="/menu" className="btn btn-outline btn-block">
+        <Link to={path('/menu')} className="btn btn-outline btn-block">
           Seguir pidiendo
         </Link>
       </div>

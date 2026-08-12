@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useOrderMode } from '../context/OrderModeContext';
+import { useCompany } from '../context/CompanyContext';
 import { getMesas } from '../api/client';
 
 export default function ModeSelectPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { setTipo, setMesaId } = useOrderMode();
+  const { path } = useCompany();
   const [step, setStep] = useState('mode');
   const [mesas, setMesas] = useState([]);
   const [mesaSeleccionada, setMesaSeleccionada] = useState('');
@@ -29,16 +31,16 @@ export default function ModeSelectPage() {
       if (mesa && mesa.activa) {
         setTipo('mesa');
         setMesaId(mesa.id);
-        navigate('/menu', { replace: true });
+        navigate(path('/menu'), { replace: true });
       }
     }
-  }, [mesas, searchParams, setTipo, setMesaId, navigate]);
+  }, [mesas, searchParams, setTipo, setMesaId, navigate, path]);
 
   const handlePickMode = (modo) => {
     setTipo(modo);
     if (modo === 'retiro') {
       setMesaId(null);
-      navigate('/menu');
+      navigate(path('/menu'));
     } else {
       setStep('mesa');
     }
@@ -47,7 +49,7 @@ export default function ModeSelectPage() {
   const handleConfirmMesa = () => {
     if (!mesaSeleccionada) return;
     setMesaId(Number(mesaSeleccionada));
-    navigate(`/menu`);
+    navigate(path('/menu'));
   };
 
   if (step === 'mesa') {
@@ -115,7 +117,7 @@ export default function ModeSelectPage() {
       </div>
 
       {lastOrder && (
-        <div className="track-my-order" onClick={() => navigate(`/pedido/${lastOrder.id}`)}>
+        <div className="track-my-order" onClick={() => navigate(path(`/pedido/${lastOrder.id}`))}>
           <div className="track-icon">
             <i className="ti ti-eye"></i>
           </div>
@@ -129,7 +131,7 @@ export default function ModeSelectPage() {
 
       <div className="track-my-order manual" onClick={() => {
         const id = prompt('Ingresá el número de tu pedido:');
-        if (id && /^\d+$/.test(id.trim())) navigate(`/pedido/${id.trim()}`);
+        if (id && /^\d+$/.test(id.trim())) navigate(path(`/pedido/${id.trim()}`));
       }}>
         <div className="track-icon">
           <i className="ti ti-search"></i>

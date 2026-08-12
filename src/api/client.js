@@ -6,14 +6,20 @@ function getToken() {
   return localStorage.getItem('token');
 }
 
+function getEmpresaSlug() {
+  return localStorage.getItem('pidevo_slug');
+}
+
 export async function request(endpoint, options = {}) {
   const url = `${BASE_URL}${endpoint}`;
   const token = getToken();
+  const slug = getEmpresaSlug();
   const isFormData = options.body instanceof FormData;
   const headers = {
     ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
     'Accept': 'application/json',
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    ...(slug ? { 'X-Empresa': slug } : {}),
     ...options.headers,
   };
 
@@ -59,6 +65,10 @@ export function getMe() {
 
 export function getMenu() {
   return request('/menu');
+}
+
+export function getEmpresa() {
+  return request('/empresa');
 }
 
 export function getPedido(id) {

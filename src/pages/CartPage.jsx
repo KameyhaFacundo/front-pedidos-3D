@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useCompany } from '../context/CompanyContext';
 
 function formatear(n) {
   return '$' + Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -7,6 +8,7 @@ function formatear(n) {
 
 export default function CartPage() {
   const { items, removeFromCart, updateQuantity, getTotal } = useCart();
+  const { path } = useCompany();
 
   if (items.length === 0) {
     return (
@@ -14,7 +16,7 @@ export default function CartPage() {
         <i className="ti ti-shopping-cart" style={{ fontSize: 64, color: 'var(--muted)' }}></i>
         <h2>Tu carrito está vacío</h2>
         <p>Agregá platos desde el menú para comenzar tu pedido.</p>
-        <Link to="/menu" className="btn btn-primary">
+        <Link to={path('/menu')} className="btn btn-primary">
           Ver menú
         </Link>
       </div>
@@ -24,7 +26,7 @@ export default function CartPage() {
   return (
     <div className="cart-page">
       <header className="page-header">
-        <Link to="/menu" className="back-link">
+        <Link to={path('/menu')} className="back-link">
           <i className="ti ti-arrow-left"></i>
           Volver al menú
         </Link>
@@ -96,7 +98,7 @@ export default function CartPage() {
           <span>Total</span>
           <span className="cart-total-amount">{formatear(getTotal())}</span>
         </div>
-        <Link to="/checkout" className="btn btn-primary btn-block">
+        <Link to={path('/checkout')} className="btn btn-primary btn-block">
           Continuar pedido
         </Link>
       </div>

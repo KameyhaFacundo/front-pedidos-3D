@@ -16,6 +16,7 @@ const CATEGORIAS = [
 
 export default function MenuPage() {
   const [platos, setPlatos] = useState([]);
+  const [empresa, setEmpresa] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [arPlato, setArPlato] = useState(null);
@@ -37,7 +38,9 @@ export default function MenuPage() {
   useEffect(() => {
     getMenu()
       .then((data) => {
-        setPlatos(data);
+        const list = Array.isArray(data) ? data : (data?.platos || []);
+        setPlatos(list);
+        if (!Array.isArray(data) && data?.empresa) setEmpresa(data.empresa);
         setLoading(false);
       })
       .catch((err) => {
@@ -91,7 +94,7 @@ export default function MenuPage() {
     <div className="menu-page">
       <header className="menu-header">
         <div className="menu-eyebrow">
-          {tipo === 'mesa' ? `Mesa ${mesaNumero || '...'}` : 'Para retirar'}
+          {empresa?.nombre || 'Menú'} · {tipo === 'mesa' ? `Mesa ${mesaNumero || '...'}` : 'Para retirar'}
         </div>
       </header>
 

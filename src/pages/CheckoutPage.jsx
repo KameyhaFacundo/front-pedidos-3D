@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useOrderMode } from '../context/OrderModeContext';
+import { useCompany } from '../context/CompanyContext';
 import { getMesas, createPedido, validarCupon } from '../api/client';
 
 function formatear(n) {
@@ -18,6 +19,7 @@ export default function CheckoutPage() {
   const navigate = useNavigate();
   const { items, getTotal, clearCart } = useCart();
   const { tipo: modoTipo, mesaId: modoMesaId } = useOrderMode();
+  const { path } = useCompany();
   const [mesas, setMesas] = useState([]);
   const [entrega, setEntrega] = useState(modoTipo === 'retiro' ? 'retiro' : 'mesa');
   const [mesaId, setMesaId] = useState(modoMesaId || '');
@@ -117,7 +119,7 @@ export default function CheckoutPage() {
     return (
       <div className="page-center cart-empty">
         <h2>No hay items en tu pedido</h2>
-        <Link to="/menu" className="btn btn-primary">Volver al menú</Link>
+        <Link to={path('/menu')} className="btn btn-primary">Volver al menú</Link>
       </div>
     );
   }
@@ -182,10 +184,10 @@ export default function CheckoutPage() {
         </a>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '100%', maxWidth: 300, marginTop: 12 }}>
-          <button className="btn btn-outline" onClick={() => navigate(`/pedido/${success.id}`)}>
+          <button className="btn btn-outline" onClick={() => navigate(path(`/pedido/${success.id}`))}>
             <i className="ti ti-eye"></i> Ver seguimiento
           </button>
-          <button className="btn btn-outline" onClick={() => navigate('/menu')}>
+          <button className="btn btn-outline" onClick={() => navigate(path('/menu'))}>
             Volver al menú
           </button>
         </div>
@@ -196,7 +198,7 @@ export default function CheckoutPage() {
   return (
     <div className="checkout-page">
       <header className="page-header">
-        <Link to="/carrito" className="back-link">
+        <Link to={path('/carrito')} className="back-link">
           <i className="ti ti-arrow-left"></i>
           Volver al carrito
         </Link>

@@ -1,7 +1,8 @@
-import { Routes, Route, Link, useLocation, Navigate } from 'react-router-dom';
+import { Routes, Route, Link, useLocation, Navigate, Outlet } from 'react-router-dom';
 import { useCart } from './context/CartContext';
 import { OrderModeProvider } from './context/OrderModeContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { CompanyProvider, useCompany } from './context/CompanyContext';
 import ModeSelectPage from './pages/ModeSelectPage';
 import MenuPage from './pages/MenuPage';
 import CartPage from './pages/CartPage';
@@ -34,63 +35,43 @@ function ThemeToggle() {
   );
 }
 
+function CompanyLayout() {
+  return (
+    <CompanyProvider>
+      <Outlet />
+    </CompanyProvider>
+  );
+}
+
 function Navbar() {
   const location = useLocation();
   const { itemCount } = useCart();
   const { isAuthenticated, logout } = useAuth();
+  const { path } = useCompany();
 
-  if (location.pathname.startsWith('/admin')) return null;
-  if (location.pathname === '/login') return null;
+  const isLanding = location.pathname === '/' || location.pathname === '/landing';
+  const isAdminArea = ['/admin', '/cocina', '/llamados'].some((p) => location.pathname.startsWith(p));
+  const isLogin = location.pathname === '/login';
 
-  const isClientRoute = ['/', '/menu', '/carrito', '/checkout'].includes(location.pathname) || location.pathname.startsWith('/pedido/');
+  if (isLanding || isLogin || isAdminArea) return null;
 
   return (
     <nav className="navbar">
       <div className="navbar-inner">
-        <Link to="/" className="navbar-brand">
+        <Link to={path('/')} className="navbar-brand">
           <img src="/pidevo.png" alt="Pidevo" className="brand-logo" />
         </Link>
 
         <div className="navbar-links">
           <ThemeToggle />
-          {isClientRoute ? (
-            <Link to="/carrito" className="nav-cart-link">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="9" cy="21" r="1" />
-                <circle cx="20" cy="21" r="1" />
-                <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
-              </svg>
-              {itemCount > 0 && <span className="nav-cart-badge">{itemCount}</span>}
-            </Link>
-          ) : (
-            <>
-              <ThemeToggle />
-              <Link to="/admin" className="nav-link">
-                Panel
-              </Link>
-              <Link
-                to="/cocina"
-                className={`nav-link ${location.pathname === '/cocina' ? 'active' : ''}`}
-              >
-                Cocina
-              </Link>
-              <Link
-                to="/llamados"
-                className={`nav-link ${location.pathname === '/llamados' ? 'active' : ''}`}
-              >
-                Llamados
-              </Link>
-              {isAuthenticated && (
-                <button
-                  onClick={() => { logout(); }}
-                  className="nav-link"
-                  style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 'inherit' }}
-                >
-                  Salir
-                </button>
-              )}
-            </>
-          )}
+          <Link to={path('/carrito')} className="nav-cart-link">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="20" cy="21" r="1" />
+              <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
+            </svg>
+            {itemCount > 0 && <span className="nav-cart-badge">{itemCount}</span>}
+          </Link>
         </div>
       </div>
     </nav>
@@ -100,7 +81,8 @@ function Navbar() {
 export default function App() {
   const location = useLocation();
   const isAdmin = location.pathname.startsWith('/admin');
-  const hideFooter = ['/admin', '/cocina', '/llamados', '/login'].some((p) => location.pathname.startsWith(p));
+  const isLanding = location.pathname === '/' || location.pathname === '/landing';
+  const hideFooter = isLanding || ['/admin', '/cocina', '/llamados', '/login'].some((p) => location.pathname.startsWith(p));
 
   return (
     <ThemeProvider>
@@ -108,18 +90,21 @@ export default function App() {
     <AuthProvider>
       <OrderModeProvider>
         <Navbar />
-        <main key={location.pathname} className={`page-fade ${isAdmin ? '' : 'main-content'}`}>
+        <main key={location.pathname} className={`page-fade ${isAdmin || isLanding ? '' : 'main-content'}`}>
           <Routes location={location}>
-            <Route path="/" element={<ModeSelectPage />} />
-            <Route path="/menu" element={<MenuPage />} />
-            <Route path="/carrito" element={<CartPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/pedido/:id" element={<PedidoTrackingPage />} />
+            <Route path="/" element={<LandingPage />} />
             <Route path="/landing" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/cocina" element={<ProtectedRoute><CocinaPage /></ProtectedRoute>} />
             <Route path="/llamados" element={<ProtectedRoute><LlamadosPage /></ProtectedRoute>} />
             <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
+            <Route path="/:slug" element={<CompanyLayout />}>
+              <Route index element={<ModeSelectPage />} />
+              <Route path="menu" element={<MenuPage />} />
+              <Route path="carrito" element={<CartPage />} />
+              <Route path="checkout" element={<CheckoutPage />} />
+              <Route path="pedido/:id" element={<PedidoTrackingPage />} />
+            </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
           {!hideFooter && <Footer />}
