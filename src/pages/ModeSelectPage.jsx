@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useOrderMode } from '../context/OrderModeContext';
 import { useCompany } from '../context/CompanyContext';
-import { getMesas } from '../api/client';
+import { getMesas, getEmpresa } from '../api/client';
 
 export default function ModeSelectPage() {
   const navigate = useNavigate();
@@ -11,6 +11,7 @@ export default function ModeSelectPage() {
   const { path } = useCompany();
   const [step, setStep] = useState('mode');
   const [mesas, setMesas] = useState([]);
+  const [empresa, setEmpresa] = useState(null);
   const [mesaSeleccionada, setMesaSeleccionada] = useState('');
 
   const lastOrder = (() => {
@@ -22,6 +23,7 @@ export default function ModeSelectPage() {
 
   useEffect(() => {
     getMesas().then(setMesas).catch(() => {});
+    getEmpresa().then(setEmpresa).catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -55,7 +57,8 @@ export default function ModeSelectPage() {
   if (step === 'mesa') {
     return (
       <div className="mode-screen">
-        <div className="mode-logo"><img src="/pidevo.png" alt="Pidevo" className="brand-logo" /></div>
+        <div className="mode-eyebrow">Bienvenido a</div>
+        <div className="mode-logo">{empresa?.nombre || 'Pidevo'}</div>
         <div className="mode-sub">¿En qué mesa estás?</div>
 
         <div style={{ marginBottom: 24 }}>
@@ -90,8 +93,8 @@ export default function ModeSelectPage() {
 
   return (
     <div className="mode-screen">
-      <div className="mode-eyebrow">Bienvenido</div>
-      <div className="mode-logo"><img src="/pidevo.png" alt="Pidevo" className="brand-logo" /></div>
+      <div className="mode-eyebrow">Bienvenido a</div>
+      <div className="mode-logo">{empresa?.nombre || 'Pidevo'}</div>
       <div className="mode-sub">Elegí cómo vas a disfrutar tu pedido hoy.</div>
 
       <div className="mode-opt dine" onClick={() => handlePickMode('mesa')}>
