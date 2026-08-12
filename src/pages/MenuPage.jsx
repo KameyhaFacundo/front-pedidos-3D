@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getMenu, getMesas } from '../api/client';
 import { useCart } from '../context/CartContext';
 import { useOrderMode } from '../context/OrderModeContext';
@@ -44,9 +45,26 @@ export default function MenuPage() {
         setLoading(false);
       })
       .catch((err) => {
-        setError(err.message);
+        const msg = (err && err.message) || '';
+        if (msg.toLowerCase().includes('empresa')) {
+          // Empresa no encontrada: redirigimos al landing
+          window.location.href = '/';
+          return;
+        }
+        setError(msg || 'Error al cargar el menú');
         setLoading(false);
       });
+  }, []);
+
+  // auto-open picker support: if query ?open_picker=1, navigate back to mode select with picker
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('open_picker') === '1') {
+        // redirect to mode select where the picker will open
+        window.location.href = '/mode?open_picker=1';
+      }
+    } catch (e) {}
   }, []);
 
   const [search, setSearch] = useState('');

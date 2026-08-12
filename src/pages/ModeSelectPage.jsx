@@ -5,17 +5,21 @@ import { useCompany } from '../context/CompanyContext';
 import { getMesas } from '../api/client';
 import { TIPOS_FIJO, mesaStyle, fixStyle } from '../components/planoUtils';
 import BuscarPedidoModal from '../components/BuscarPedidoModal';
+import QRInstructionsModal from '../components/QRInstructionsModal';
+import { useLocation } from 'react-router-dom';
 
 export default function ModeSelectPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { setTipo, setMesaId } = useOrderMode();
-  const { path, empresa } = useCompany();
+  const { path, empresa, slug } = useCompany();
   const [step, setStep] = useState('mode');
   const [mesas, setMesas] = useState([]);
   const [mesaSeleccionada, setMesaSeleccionada] = useState('');
   const [ocupadaMsg, setOcupadaMsg] = useState(false);
   const [showBuscar, setShowBuscar] = useState(false);
+  const [showQrInstructions, setShowQrInstructions] = useState(false);
+  const location = useLocation();
 
   const lastOrder = (() => {
     try {
@@ -48,6 +52,7 @@ export default function ModeSelectPage() {
 
   useEffect(() => {
     const mesaParam = searchParams.get('mesa');
+    const openPicker = searchParams.get('open_picker');
     if (mesaParam && mesas.length > 0) {
       const mesa = mesas.find((m) => m.id === Number(mesaParam));
       if (mesa && mesa.activa) {
@@ -55,6 +60,10 @@ export default function ModeSelectPage() {
         setMesaId(mesa.id);
         navigate(path('/menu'), { replace: true });
       }
+    }
+    // if query requests opening picker, switch to mesa step
+    if (openPicker === '1') {
+      setStep('mesa');
     }
   }, [mesas, searchParams, setTipo, setMesaId, navigate, path]);
 
@@ -64,7 +73,13 @@ export default function ModeSelectPage() {
       setMesaId(null);
       navigate(path('/menu'));
     } else {
-      setStep('mesa');
+      // si tenemos slug en path, abrimos el picker; si no, mostramos instrucciones QR
+      if (slug) {
+        setStep('mesa');
+        // si la query indica abrir picker, no cambiamos
+      } else {
+        setShowQrInstructions(true);
+      }
     }
   };
 
@@ -217,6 +232,7 @@ export default function ModeSelectPage() {
       </div>
 
       {showBuscar && <BuscarPedidoModal onClose={() => setShowBuscar(false)} />}
+      {showQrInstructions && <QRInstructionsModal onClose={() => setShowQrInstructions(false)} />}
     </div>
   );
 }
