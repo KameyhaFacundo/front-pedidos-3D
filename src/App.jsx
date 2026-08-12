@@ -101,6 +101,8 @@ export default function App() {
               <Route path="/landing" element={<LandingPage />} />
               <Route path="/login" element={<LoginPage />} />
                 <Route path="/demo" element={<DemoPage />} />
+                <Route path="/pidevo" element={<Navigate to="/pidevo/menu?demo=1" replace />} />
+                <Route path="/pidevo/demo" element={<Navigate to="/pidevo/menu?demo=1" replace />} />
               <Route path="/:slug/*" element={<CompanyLayout />}>
                 <Route index element={<ModeSelectPage />} />
                 <Route path="menu" element={<MenuPage />} />

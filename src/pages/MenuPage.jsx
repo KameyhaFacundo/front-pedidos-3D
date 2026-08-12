@@ -21,17 +21,8 @@ export default function MenuPage() {
   const location = useLocation();
   const isDemo = searchParams.get('demo') === '1' || location.pathname.includes('/demo');
 
-  const SAMPLE_PLATOS = [
-    { id: 101, nombre: 'Hamburguesa demo', descripcion: 'Medallón, queso, lechuga', precio: 13500 },
-    { id: 102, nombre: 'Papas demo', descripcion: '+ cheddar', precio: 9500 },
-    { id: 103, nombre: 'Napolitana demo', descripcion: 'Muzzarella, jamón, tomate', precio: 11000 },
-  ];
-
-  const DEMO_MESAS = [
-    { id: 201, numero: 1, activa: true, ocupada: false },
-    { id: 202, numero: 2, activa: true, ocupada: true },
-    { id: 203, numero: 3, activa: true, ocupada: false },
-  ];
+  // Demo defaults — will set slug and show 'Pidevo' while API loads
+  const DEMO_COMPANY_SLUG = 'pidevo';
 
   const [platos, setPlatos] = useState([]);
   const [empresa, setEmpresa] = useState(null);
@@ -46,11 +37,13 @@ export default function MenuPage() {
 
   useEffect(() => {
     if (isDemo) {
-      setMesas(DEMO_MESAS);
-    } else {
-      getMesas().then(setMesas).catch(() => {});
+      try {
+        localStorage.setItem('pidevo_slug', DEMO_COMPANY_SLUG);
+      } catch {}
+      setEmpresa({ nombre: 'Pidevo', slug: DEMO_COMPANY_SLUG });
     }
-  }, []);
+    getMesas().then(setMesas).catch(() => {});
+  }, [isDemo]);
 
   const mesaNumero = useMemo(() => {
     const mesa = mesas.find((m) => m.id === mesaId);
@@ -58,13 +51,7 @@ export default function MenuPage() {
   }, [mesas, mesaId]);
 
   useEffect(() => {
-    if (isDemo) {
-      setPlatos(SAMPLE_PLATOS);
-      setEmpresa({ nombre: 'Demo' });
-      setLoading(false);
-      return;
-    }
-
+    // If demo mode, we already set localStorage slug and empresa above; proceed to call API
     getMenu()
       .then((data) => {
         const list = Array.isArray(data) ? data : (data?.platos || []);
@@ -82,7 +69,7 @@ export default function MenuPage() {
         setError(msg || 'Error al cargar el menú');
         setLoading(false);
       });
-  }, []);
+  }, [isDemo]);
 
   // auto-open picker support: if query ?open_picker=1, navigate back to mode select with picker
   useEffect(() => {
