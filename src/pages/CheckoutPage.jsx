@@ -11,6 +11,8 @@ export default function CheckoutPage() {
   const [mesas, setMesas] = useState([]);
   const [medioPago, setMedioPago] = useState('efectivo');
   const [notas, setNotas] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [celular, setCelular] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
@@ -35,6 +37,8 @@ export default function CheckoutPage() {
     const pedidoData = {
       tipo,
       mesa_id: tipo === 'mesa' ? mesaId : null,
+      nombre: nombre.trim() || null,
+      celular: celular.trim() || null,
       medio_pago: medioPago,
       notas: notas.trim() || undefined,
       items: items.map(({ plato, cantidad }) => ({
@@ -76,11 +80,32 @@ export default function CheckoutPage() {
         <h2>¡Pedido confirmado!</h2>
         <p>Tu pedido #{success.id} ha sido registrado.</p>
         <p className="success-estado">Estado: {success.estado}</p>
-        <p className="success-time" style={{ color: 'var(--muted)', fontSize: 13, marginTop: 4 }}>
-          <i className="ti ti-clock"></i> Tiempo estimado: 15-25 min
-        </p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '100%', maxWidth: 300 }}>
-          <button className="btn btn-primary" onClick={() => navigate(`/pedido/${success.id}`)}>
+
+        <a
+          href={(() => {
+            const restoPhone = '5493815069332';
+            const itemsTexto = items.map(({ plato, cantidad }) =>
+              `${cantidad}x ${plato.nombre.toUpperCase()}: $${(plato.precio * cantidad).toFixed(2)}`
+            ).join('%0A');
+            const total = getTotal().toFixed(2);
+            const nombreCliente = nombre || 'Cliente';
+            const msg = `¡Hola! Te paso el resumen de mi pedido%0A%0APedido: #${success.id}%0ANombre: ${nombreCliente}%0ATeléfono: ${celular || '---'}%0A%0AForma de pago: ${medioPago}%0ATotal: $${total}%0A%0A${tipo === 'mesa' ? `Estoy en la Mesa ${mesaNumero}` : 'Retiro en el local'}%0A%0AMi pedido es:%0A%0A${itemsTexto}%0A%0ATOTAL: $${total}%0A%0AEspero tu respuesta para confirmar mi pedido 🙌`;
+            return `https://wa.me/${restoPhone}?text=${msg}`;
+          })()}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary btn-block"
+          style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginTop: 16,
+            background: '#25D366', color: '#fff', border: 'none', textDecoration: 'none', width: '100%', maxWidth: 300,
+          }}
+        >
+          <i className="ti ti-brand-whatsapp" style={{ fontSize: 20 }}></i>
+          Enviar por WhatsApp
+        </a>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '100%', maxWidth: 300, marginTop: 12 }}>
+          <button className="btn btn-outline" onClick={() => navigate(`/pedido/${success.id}`)}>
             <i className="ti ti-eye"></i> Ver seguimiento
           </button>
           <button className="btn btn-outline" onClick={() => navigate('/menu')}>
@@ -136,6 +161,30 @@ export default function CheckoutPage() {
           <Link to="/" style={{ marginLeft: 'auto', fontSize: 12, color: 'var(--muted)' }}>
             Cambiar
           </Link>
+        </div>
+      </div>
+
+      <div className="checkout-section">
+        <h2>Tus datos</h2>
+        <div style={{ display: 'flex', gap: 10 }}>
+          <div className="field" style={{ flex: 1 }}>
+            <label>Nombre</label>
+            <input
+              type="text"
+              placeholder="Tu nombre"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+            />
+          </div>
+          <div className="field" style={{ flex: 1 }}>
+            <label>Celular</label>
+            <input
+              type="tel"
+              placeholder="381 5069332"
+              value={celular}
+              onChange={(e) => setCelular(e.target.value)}
+            />
+          </div>
         </div>
       </div>
 

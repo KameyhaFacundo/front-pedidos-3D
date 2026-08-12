@@ -1512,6 +1512,66 @@ img { max-width: 100%; display: block; }
 .admin-pay.ok { color: var(--herb); }
 .admin-pay.pending { color: var(--gold); }
 
+.admin-order-customer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.admin-customer-whatsapp {
+  color: #25D366;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.admin-customer-whatsapp:hover {
+  opacity: 0.8;
+}
+
+.kanban-advance {
+  margin-top: 8px;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: opacity 0.2s;
+}
+
+.advance-prep {
+  background: rgba(232, 174, 45, 0.15);
+  color: var(--gold);
+}
+
+.advance-prep:hover { background: rgba(232, 174, 45, 0.25); }
+
+.advance-ready {
+  background: rgba(143, 168, 62, 0.15);
+  color: var(--herb);
+}
+
+.advance-ready:hover { background: rgba(143, 168, 62, 0.25); }
+
+.advance-done {
+  background: rgba(247, 241, 230, 0.08);
+  color: var(--cream);
+}
+
+.advance-done:hover { background: rgba(247, 241, 230, 0.14); }
+
 .admin-filters-seg {
   display: flex;
   gap: 0;

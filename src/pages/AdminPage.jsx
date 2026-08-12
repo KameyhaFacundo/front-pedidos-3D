@@ -9,6 +9,7 @@ import {
   deletePlato,
   togglePlatoDisponible,
   updatePedidoPago,
+  updatePedidoEstado,
   cancelarPedido,
 } from '../api/client';
 import { useSSE } from '../api/useSSE';
@@ -225,6 +226,15 @@ export default function AdminPage() {
     }
   };
 
+  const handleAvanzar = async (id, estado) => {
+    try {
+      await updatePedidoEstado(id, estado);
+      fetchPedidosYMetricas();
+    } catch (e) {
+      alert(e.message);
+    }
+  };
+
   const filteredPedidos = filtro
     ? pedidos.filter((p) => p.tipo === filtro)
     : pedidos;
@@ -349,6 +359,22 @@ export default function AdminPage() {
                             : 'Retiro'}
                         </span>
                       </div>
+                      {(pedido.nombre || pedido.celular) && (
+                        <div className="admin-order-customer">
+                          {pedido.nombre && <span>{pedido.nombre}</span>}
+                          {pedido.celular && (
+                            <a
+                              href={`https://wa.me/549${pedido.celular.replace(/\D/g, '')}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="admin-customer-whatsapp"
+                            >
+                              <i className="ti ti-brand-whatsapp"></i> {pedido.celular}
+                            </a>
+                          )}
+                        </div>
+                      )}
                       <div className="admin-order-items">
                         {pedido.items?.map((item) => (
                           <span key={item.id}>
@@ -364,6 +390,26 @@ export default function AdminPage() {
                           {pedido.estado_pago === 'pagado' ? 'Pagado' : 'Pendiente'}
                         </span>
                       </div>
+
+                      {key === 'nuevo' && (
+                        <button className="btn btn-sm btn-block kanban-advance advance-prep"
+                          onClick={(e) => { e.stopPropagation(); handleAvanzar(pedido.id, 'preparacion'); }}>
+                          <i className="ti ti-chef-hat"></i> A preparación
+                        </button>
+                      )}
+                      {key === 'preparacion' && (
+                        <button className="btn btn-sm btn-block kanban-advance advance-ready"
+                          onClick={(e) => { e.stopPropagation(); handleAvanzar(pedido.id, 'listo'); }}>
+                          <i className="ti ti-circle-check"></i> Marcar listo
+                        </button>
+                      )}
+                      {key === 'listo' && (
+                        <button className="btn btn-sm btn-block kanban-advance advance-done"
+                          onClick={(e) => { e.stopPropagation(); handleAvanzar(pedido.id, 'entregado'); }}>
+                          <i className="ti ti-truck-delivery"></i> Entregar
+                        </button>
+                      )}
+
                       {pedido.estado_pago === 'pendiente' && pedido.estado === 'entregado' && (
                         <button
                           className="btn btn-sm btn-block"
