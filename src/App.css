@@ -1,57 +1,57 @@
 :root {
-  --bg: #120F0B;
-  --surface: #1B160F;
-  --surface-2: #241D14;
-  --ember: #FF5A36;
-  --ember-dark: #CC3A1A;
-  --ember-dim: #B84226;
-  --herb: #8FA83E;
-  --gold: #E8AE2D;
-  --cream: #F7F1E6;
-  --muted: #9C9184;
-  --hair: rgba(247, 241, 230, 0.08);
-  --hover: rgba(247, 241, 230, 0.08);
+  --bg: #18120D;
+  --surface: #241B14;
+  --surface-2: #2E2318;
+  --ember: #D2653A;
+  --ember-dark: #A84D2B;
+  --ember-dim: #93442A;
+  --herb: #7C9459;
+  --gold: #D6A34A;
+  --cream: #F5EDE1;
+  --muted: #A0937F;
+  --hair: rgba(245, 237, 225, 0.08);
+  --hover: rgba(245, 237, 225, 0.08);
   --shadow: rgba(0, 0, 0, 0.5);
-  --ember-rgb: 255, 90, 54;
-  --gold-rgb: 232, 174, 45;
-  --herb-rgb: 143, 168, 62;
-  --on-brand: #2A0D04;
+  --ember-rgb: 210, 101, 58;
+  --gold-rgb: 214, 163, 74;
+  --herb-rgb: 124, 148, 89;
+  --on-brand: #2A140A;
   --radius: 18px;
   --radius-sm: 14px;
   --radius-pill: 100px;
-  --body-bg: #0A0906;
-  --mode-gradient: radial-gradient(ellipse at 50% 40%, #1a1508 0%, #0A0906 70%);
-  --qr-bg: #0A0906;
-  --done-dot: #514736;
-  --brand-glow: rgba(255, 90, 54, 0.16);
-  --ring: rgba(255, 90, 54, 0.22);
+  --body-bg: #100C08;
+  --mode-gradient: radial-gradient(ellipse at 50% 40%, #201709 0%, #100C08 70%);
+  --qr-bg: #100C08;
+  --done-dot: #4A3F30;
+  --brand-glow: rgba(210, 101, 58, 0.16);
+  --ring: rgba(210, 101, 58, 0.22);
   --accent: var(--gold);
 }
 
 [data-theme="light"] {
-  --bg: #F5F0E8;
+  --bg: #F7F1E6;
   --surface: #FFFFFF;
-  --surface-2: #EDE7DB;
-  --ember: #E8451E;
-  --ember-dark: #C43512;
-  --ember-dim: #A82E15;
-  --herb: #6B8A23;
-  --gold: #C4881A;
-  --cream: #2A2520;
-  --muted: #8C8276;
-  --hair: rgba(42, 37, 32, 0.08);
-  --hover: rgba(42, 37, 32, 0.06);
-  --shadow: rgba(42, 37, 32, 0.18);
-  --ember-rgb: 232, 69, 30;
-  --gold-rgb: 196, 136, 26;
-  --herb-rgb: 107, 138, 35;
+  --surface-2: #EFE6D6;
+  --ember: #B8502C;
+  --ember-dark: #96401F;
+  --ember-dim: #7F3819;
+  --herb: #5F7A3E;
+  --gold: #A87A28;
+  --cream: #2B2419;
+  --muted: #8A7C68;
+  --hair: rgba(43, 36, 25, 0.08);
+  --hover: rgba(43, 36, 25, 0.06);
+  --shadow: rgba(43, 36, 25, 0.18);
+  --ember-rgb: 184, 80, 44;
+  --gold-rgb: 168, 122, 40;
+  --herb-rgb: 95, 122, 62;
   --on-brand: #FFFFFF;
-  --body-bg: #EBE4D8;
-  --mode-gradient: radial-gradient(ellipse at 50% 40%, #E8E0D2 0%, #EBE4D8 70%);
-  --qr-bg: #F5F0E8;
-  --done-dot: #B9AFA0;
-  --brand-glow: rgba(232, 69, 30, 0.12);
-  --ring: rgba(232, 69, 30, 0.22);
+  --body-bg: #EFE7D8;
+  --mode-gradient: radial-gradient(ellipse at 50% 40%, #EBE1CC 0%, #EFE7D8 70%);
+  --qr-bg: #F7F1E6;
+  --done-dot: #C7BBA5;
+  --brand-glow: rgba(184, 80, 44, 0.12);
+  --ring: rgba(184, 80, 44, 0.22);
   --accent: var(--gold);
 }
 
@@ -419,11 +419,17 @@ img { max-width: 100%; display: block; }
   gap: 8px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 2px;
+  padding: 2px 20px 6px 0;
   scrollbar-width: none;
+  /* Some browsers/OS settings force a native scrollbar back on despite
+     scrollbar-width:none, and the last chip can end up truncated mid-word
+     at the container edge either way -- this fade makes "there's more"
+     read as intentional regardless of whether a scrollbar shows. */
+  mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent 100%);
 }
 
-.chips::-webkit-scrollbar { display: none; }
+.chips::-webkit-scrollbar { display: none; height: 0; }
 
 .chip {
   flex: none;
@@ -1045,6 +1051,28 @@ img { max-width: 100%; display: block; }
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* .menu-list's 2-column grid above keys off the browser *viewport*, not the
+   phone frame's own width -- on a wide desktop window the viewport is well
+   past 768px even though the modal itself is only ~390px, so it grid-ifies
+   into two cramped columns no matter how narrow the phone bezel is. Force
+   single column inside the modal regardless of the outer viewport size. */
+.demo-modal .menu-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Same viewport-vs-container mismatch as .menu-list above: .cart-item only
+   wraps its price/stepper/subtotal onto their own line below 480px of
+   *viewport* width, which the phone frame never triggers on a wide desktop
+   browser -- everything crams into one row and overlaps. Force the wrapped
+   layout unconditionally inside the modal. */
+.demo-modal .cart-item { flex-wrap: wrap; }
+.demo-modal .cart-item-subtotal {
+  width: 100%;
+  text-align: left;
+  padding-left: 76px;
 }
 
 @media (min-width: 1024px) {
@@ -4540,10 +4568,16 @@ img { max-width: 100%; display: block; }
 .landing-hero-title {
   font-family: 'Fraunces', serif;
   font-weight: 700;
-  font-size: 56px;
-  line-height: 1.05;
+  font-size: 68px;
+  line-height: 1.03;
   letter-spacing: -0.03em;
   margin-bottom: 24px;
+}
+
+.landing-hero-title em {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--ember);
 }
 
 .landing-rotating {
@@ -4609,11 +4643,100 @@ img { max-width: 100%; display: block; }
   font-size: 14px;
 }
 
+.landing-sala-card,
+.landing-paso,
+.landing-plan {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.landing-sala-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(var(--ember-rgb), 0.35);
+}
+
+.landing-paso:hover .landing-paso-num { transform: scale(1.08); }
+.landing-paso-num { transition: transform 0.25s ease; }
+
+.landing-plan:hover { transform: translateY(-6px); }
+.landing-plan.highlight:hover { transform: translateY(-6px) scale(1.01); }
+
+/* Testimonios — citas editoriales, zigzag, sin caja */
+.landing-testimonios {
+  display: flex;
+  flex-direction: column;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.landing-testimonio {
+  padding: 40px 0;
+  border-top: 1px solid var(--hair);
+}
+
+.landing-testimonio:last-child { border-bottom: 1px solid var(--hair); }
+
+.landing-testimonio.is-alt { text-align: right; }
+.landing-testimonio.is-alt .landing-testimonio-autor { flex-direction: row-reverse; }
+.landing-testimonio.is-alt .landing-testimonio-mark { transform: scaleX(-1); }
+
+.landing-testimonio-mark {
+  display: block;
+  font-size: 34px;
+  color: var(--gold);
+  opacity: 0.7;
+  margin-bottom: 12px;
+}
+
+.landing-testimonio-texto {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  color: var(--cream);
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.landing-testimonio-autor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.landing-testimonio.is-alt .landing-testimonio-quien { text-align: right; }
+
+.landing-testimonio-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(var(--ember-rgb), 0.15);
+  color: var(--ember);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 15px;
+  flex: none;
+}
+
+.landing-testimonio-nombre { font-size: 13.5px; font-weight: 700; color: var(--cream); }
+.landing-testimonio-local { font-size: 12px; color: var(--muted); }
+
+.landing-testimonio-stars {
+  color: var(--gold);
+  font-size: 12px;
+  display: flex;
+  gap: 2px;
+  margin-left: 4px;
+}
+
+.landing-testimonio.is-alt .landing-testimonio-stars { margin-left: 0; margin-right: 4px; }
+
 .landing-hero-actions {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 40px;
+  margin-bottom: 14px;
   flex-wrap: wrap;
 }
 
@@ -4631,6 +4754,10 @@ img { max-width: 100%; display: block; }
 .landing-hero-cta:hover { opacity: 0.9; }
 
 .landing-hero-demo {
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
   color: var(--cream);
   font-size: 14px;
   font-weight: 600;
@@ -4638,6 +4765,17 @@ img { max-width: 100%; display: block; }
   border-bottom: 1px solid var(--hair);
   padding-bottom: 2px;
 }
+
+.landing-hero-risk {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 12.5px;
+  margin-bottom: 32px;
+}
+
+.landing-hero-risk i { color: var(--herb); font-size: 15px; }
 
 .landing-hero-stats {
   display: flex;
@@ -4658,101 +4796,151 @@ img { max-width: 100%; display: block; }
   margin-top: 2px;
 }
 
-/* Mockup */
-.landing-hero-mock {
+/* Hero visual — editorial photo + overlapping proof pieces */
+.landing-hero-visual {
+  position: relative;
   flex: 0 0 auto;
-  width: 420px;
+  width: 400px;
 }
 
-.landing-mock-window {
-  background: var(--surface);
-  border: 1px solid var(--hair);
-  border-radius: 20px;
+.landing-hero-photo {
+  position: relative;
+  border-radius: 4px 120px 4px 4px;
   overflow: hidden;
-  box-shadow: var(--shadow);
+  border: 1px solid var(--hair);
+  box-shadow: 0 40px 80px -20px var(--shadow);
 }
 
-.landing-mock-bar {
+.landing-hero-photo img {
+  display: block;
+  width: 100%;
+  height: calc(520px + 56px);
+  margin-top: -28px;
+  object-fit: cover;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-hero-photo img { transform: none !important; }
+}
+
+.landing-hero-photo-badge {
+  cursor: pointer;
+  font-family: inherit;
+  position: absolute;
+  top: 20px;
+  left: 20px;
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--hair);
-  background: var(--surface-2);
-}
-
-.landing-mock-bar span {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--hair);
-}
-
-.landing-mock-url {
-  flex: 1;
-  margin-left: 8px;
-  background: var(--bg);
-  border-radius: 6px;
-  padding: 4px 10px;
-  font-size: 11px;
-  color: var(--muted);
-  text-align: center;
-}
-
-.landing-mock-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-
-.landing-mock-item {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  padding: 12px;
-  background: var(--bg);
-  border: 1px solid var(--hair);
-  border-radius: 12px;
-}
-
-.landing-mock-thumb {
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--ember), var(--gold));
-  flex: none;
-  opacity: 0.85;
-  display: block;
-  object-fit: cover;
-}
-
-.landing-mock-name {
-  font-size: 14px;
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  backdrop-filter: blur(6px);
+  color: var(--cream);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 12px;
   font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.landing-hero-photo-badge:hover { background: color-mix(in srgb, var(--bg) 90%, transparent); }
+.landing-hero-photo-badge i { color: var(--gold); font-size: 14px; }
+
+.landing-hero-photo figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 28px 22px 16px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.65), transparent);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.landing-hero-ticket {
+  position: absolute;
+  left: -56px;
+  bottom: -28px;
+  width: 220px;
+  background: var(--surface);
+  border: 1px solid var(--hair);
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: 0 20px 40px -12px var(--shadow);
+  transform: rotate(-3deg);
+  animation: landing-float-in 0.6s ease-out 0.4s both;
+}
+
+.landing-hero-ticket-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #25d366;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--hair);
+}
+
+.landing-hero-ticket-row {
+  display: flex;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.landing-hero-ticket-row span { color: var(--cream); font-weight: 700; }
+
+.landing-hero-ticket-total {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--hair);
+  font-size: 12.5px;
+  font-weight: 800;
   color: var(--cream);
 }
 
-.landing-mock-desc {
-  font-size: 12px;
-  color: var(--muted);
-}
-
-.landing-mock-price {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--gold);
-}
-
-.landing-mock-wa {
+.landing-hero-float {
+  position: absolute;
+  right: -20px;
+  top: 36px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(37, 211, 102, 0.12);
-  color: #25d366;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 12px;
-  border-radius: 12px;
-  justify-content: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--hair);
+  border-radius: 14px;
+  padding: 10px 16px 10px 10px;
+  box-shadow: 0 12px 32px var(--shadow);
+  animation: landing-float-in 0.6s ease-out 1.1s both, landing-float 3.6s ease-in-out 1.7s infinite;
 }
 
-.landing-mock-wa i { font-size: 18px; }
+.landing-hero-float-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(var(--gold-rgb), 0.18);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex: none;
+}
+
+.landing-hero-float-title { font-size: 12.5px; font-weight: 700; color: var(--cream); }
+.landing-hero-float-sub { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+@keyframes landing-float-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* Ticker */
 .landing-ticker {
@@ -4826,9 +5014,15 @@ img { max-width: 100%; display: block; }
 .landing-section-head h2 {
   font-family: 'Fraunces', serif;
   font-weight: 700;
-  font-size: 40px;
+  font-size: 44px;
   line-height: 1.1;
   letter-spacing: -0.02em;
+}
+
+.landing-section-head h2 em {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--ember);
 }
 
 .landing-section-sub {
@@ -4837,44 +5031,48 @@ img { max-width: 100%; display: block; }
   margin-top: 8px;
 }
 
-/* Pasos */
+/* Pasos — lista editorial, numeración grande tipo revista */
 .landing-pasos {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  display: flex;
+  flex-direction: column;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .landing-paso {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
+  gap: 36px;
+  padding: 32px 0;
+  border-top: 1px solid var(--hair);
+  text-align: left;
 }
 
+.landing-paso:last-child { border-bottom: 1px solid var(--hair); }
+
 .landing-paso-num {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 18px;
-  margin-bottom: 20px;
+  flex: none;
+  width: 96px;
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  opacity: 0.85;
 }
 
 .landing-paso h3 {
-  font-size: 18px;
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
   font-weight: 700;
   margin-bottom: 8px;
 }
 
 .landing-paso p {
   color: var(--muted);
-  font-size: 14px;
-  line-height: 1.6;
-  max-width: 280px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  max-width: 460px;
 }
 
 /* Features */
@@ -4930,6 +5128,75 @@ img { max-width: 100%; display: block; }
   color: var(--muted);
   font-size: 14px;
   line-height: 1.6;
+}
+
+/* Comparación */
+.landing-compare-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.landing-compare-scroll::-webkit-scrollbar { display: none; height: 0; }
+
+@media (max-width: 640px) {
+  .landing-compare-scroll {
+    mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent 100%);
+  }
+}
+
+.landing-compare {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+}
+
+.landing-compare th, .landing-compare td {
+  padding: 16px 18px;
+  text-align: center;
+  border-bottom: 1px solid var(--hair);
+  font-size: 13.5px;
+}
+
+.landing-compare thead th {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--cream);
+  padding-bottom: 20px;
+}
+
+.landing-compare tbody th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--cream);
+  white-space: nowrap;
+}
+
+.landing-compare td { color: var(--muted); }
+
+.landing-compare .is-pidevo {
+  background: rgba(var(--ember-rgb), 0.08);
+  color: var(--cream);
+  font-weight: 700;
+}
+
+.landing-compare thead th.is-pidevo {
+  color: var(--ember);
+  border-radius: 12px 12px 0 0;
+}
+
+.landing-compare tbody tr:last-child td.is-pidevo,
+.landing-compare tbody tr:last-child th.is-pidevo {
+  border-radius: 0 0 12px 12px;
+}
+
+.landing-compare-yes { color: var(--herb); font-size: 18px; }
+.landing-compare-no { color: var(--muted); font-size: 16px; opacity: 0.5; }
+
+@media (max-width: 640px) {
+  .landing-compare th, .landing-compare td { padding: 14px; font-size: 12.5px; }
 }
 
 /* Pricing toggle */
@@ -5276,21 +5543,47 @@ img { max-width: 100%; display: block; }
   50% { transform: translateY(-6px); }
 }
 
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { transition: none; }
+  .landing-hero-float { animation: none; }
+  .landing-badge-dot { animation: none; }
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .landing-hero-inner { flex-direction: column; }
-  .landing-hero-mock { width: 100%; max-width: 480px; }
-  .landing-hero-title { font-size: 42px; }
+  .landing-hero-visual { width: 100%; max-width: 420px; margin: 0 auto; }
+  .landing-hero-ticket { left: 16px; }
+  .landing-hero-float { right: 16px; }
+  .landing-hero-title { font-size: 46px; }
   .landing-pasos { grid-template-columns: 1fr; gap: 24px; }
   .landing-features { grid-template-columns: 1fr 1fr; }
+  .landing-testimonios { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .landing-plans { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
 }
 
 @media (max-width: 600px) {
   .landing-nav-links { display: none; }
-  .landing-nav-login { display: none; }
-  .landing-hero { padding: 48px 20px; }
-  .landing-hero-title { font-size: 34px; }
+  .landing-nav-inner { padding: 0 16px; gap: 10px; }
+  .landing-nav-logo { height: 26px; }
+  .landing-nav-login { font-size: 12px; white-space: nowrap; }
+  .landing-nav-cta { padding: 8px 12px; font-size: 12px; white-space: nowrap; }
+  .landing-hero { padding: 48px 20px 88px; }
+  .landing-hero-title { font-size: 36px; }
+  .landing-hero-risk { flex-wrap: wrap; }
+  .landing-hero-visual { max-width: 320px; }
+  .landing-hero-photo img { height: 380px; margin-top: 0; transform: none !important; }
+  .landing-hero-ticket { position: static; margin: -28px auto 0; transform: none; }
+  .landing-hero-float { position: static; margin: 12px auto 0; width: fit-content; }
   .landing-features { grid-template-columns: 1fr; }
   .landing-section { padding: 56px 20px; }
   .landing-section-head h2 { font-size: 30px; }
@@ -5344,6 +5637,107 @@ img { max-width: 100%; display: block; }
 .registro-note a {
   color: var(--ember);
   font-weight: 600;
+}
+
+/* ===== DEMO MODAL (landing "Probar demo interactiva") =====
+   Shown as a phone mockup, not a desktop panel -- Pidevo's real menu is a
+   QR/mobile experience, so previewing it in a phone frame is more honest
+   about what a customer actually sees than a wide desktop-shaped box. */
+.demo-modal-wrap {
+  position: relative;
+  animation: modal-in 0.25s ease-out;
+}
+
+.demo-modal-close {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--hair);
+  color: var(--cream);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.demo-modal {
+  width: 390px;
+  height: min(830px, 90vh);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border: 10px solid var(--surface-2);
+  border-radius: 44px;
+  color: var(--cream);
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  /* Any position:fixed descendant (PlatoDetailModal, ARViewer, Toast...)
+     would otherwise anchor to the real browser viewport and break out of
+     the phone frame. A transform on this ancestor makes it the containing
+     block for those instead, so they stay trapped inside the "screen". */
+  transform: translateZ(0);
+}
+
+.demo-modal-notch {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 22px;
+  background: var(--surface-2);
+  border-radius: 0 0 16px 16px;
+  z-index: 1;
+}
+
+.demo-modal-bar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 16px 10px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--hair);
+}
+
+.demo-modal-brand img { height: 20px; width: auto; display: block; }
+
+.demo-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.demo-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Feels like a native phone screen -- real mobile scrolling has no visible
+   scrollbar track, so hide them everywhere inside the frame (menu list,
+   cart, checkout, any modal that opens on top), not just this outer one. */
+.demo-modal, .demo-modal * {
+  scrollbar-width: none;
+}
+
+.demo-modal::-webkit-scrollbar,
+.demo-modal *::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+@media (max-width: 480px) {
+  .demo-modal { width: 92vw; height: min(820px, 88vh); border-width: 8px; border-radius: 32px; }
+  .demo-modal-close { top: -14px; right: 4vw; }
 }
 
 /* ===== NAVBAR EMPRESA ===== */

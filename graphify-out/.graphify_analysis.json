@@ -1,0 +1,401 @@
+{
+  "communities": {
+    "0": [
+      "src_api_client_login",
+      "src_api_client_registrarempresa",
+      "src_app",
+      "src_app_companylayout",
+      "src_app_navbar",
+      "src_app_protectedroute",
+      "src_app_redirecthumber",
+      "src_app_themetoggle",
+      "src_components_footer",
+      "src_components_footer_footer",
+      "src_components_footer_redes",
+      "src_components_registromodal",
+      "src_components_registromodal_registromodal",
+      "src_context_authcontext",
+      "src_context_authcontext_authcontext",
+      "src_context_authcontext_authprovider",
+      "src_context_authcontext_useauth",
+      "src_context_themecontext",
+      "src_context_themecontext_getscope",
+      "src_context_themecontext_getstoredthemes",
+      "src_context_themecontext_themecontext",
+      "src_context_themecontext_themeprovider",
+      "src_context_themecontext_usetheme",
+      "src_pages_adminpage_adminsidebar",
+      "src_pages_landingpage",
+      "src_pages_landingpage_faqs",
+      "src_pages_landingpage_features",
+      "src_pages_landingpage_fmt",
+      "src_pages_landingpage_landingpage",
+      "src_pages_landingpage_palabras",
+      "src_pages_landingpage_pasos",
+      "src_pages_landingpage_plans",
+      "src_pages_landingpage_sala_items",
+      "src_pages_landingpage_ticker",
+      "src_pages_loginpage",
+      "src_pages_loginpage_getslugfrompath",
+      "src_pages_loginpage_loginpage",
+      "src_pages_notfoundpage",
+      "src_pages_notfoundpage_notfoundpage"
+    ],
+    "1": [
+      "google_model_viewer",
+      "package",
+      "package_dependencies",
+      "package_dependencies_google_model_viewer",
+      "package_dependencies_qrcode",
+      "package_dependencies_react",
+      "package_dependencies_react_dom",
+      "package_dependencies_react_router_dom",
+      "package_dependencies_recharts",
+      "package_dependencies_serve",
+      "package_dependencies_tabler_icons_webfont",
+      "package_devdependencies",
+      "package_devdependencies_typescript",
+      "package_devdependencies_vite",
+      "package_engines",
+      "package_engines_node",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_scripts_preview",
+      "package_scripts_start",
+      "package_type",
+      "package_version",
+      "qrcode",
+      "react",
+      "react_dom",
+      "react_router_dom",
+      "recharts",
+      "serve",
+      "tabler_icons_webfont",
+      "typescript",
+      "vite"
+    ],
+    "2": [
+      "src_api_client_getmenu",
+      "src_api_client_registrararvista",
+      "src_components_arviewer",
+      "src_components_arviewer_arviewer",
+      "src_components_platodetailmodal",
+      "src_components_platodetailmodal_formatear",
+      "src_components_platodetailmodal_platodetailmodal",
+      "src_components_skeletons",
+      "src_components_skeletons_adminskeleton",
+      "src_components_skeletons_menuskeleton",
+      "src_components_skeletons_pageskeleton",
+      "src_components_toast",
+      "src_components_toast_toast",
+      "src_context_cartcontext",
+      "src_context_cartcontext_cartcontext",
+      "src_context_cartcontext_cartprovider",
+      "src_context_cartcontext_itemkey",
+      "src_context_cartcontext_loadcart",
+      "src_context_cartcontext_unitprice",
+      "src_context_cartcontext_usecart",
+      "src_context_ordermodecontext",
+      "src_context_ordermodecontext_ordermodecontext",
+      "src_context_ordermodecontext_ordermodeprovider",
+      "src_context_ordermodecontext_useordermode",
+      "src_pages_demopage",
+      "src_pages_demopage_demo_mesas",
+      "src_pages_demopage_demopage",
+      "src_pages_demopage_sample_platos",
+      "src_pages_menupage",
+      "src_pages_menupage_categorias",
+      "src_pages_menupage_menupage"
+    ],
+    "3": [
+      "src_api_client",
+      "src_api_client_cancelarpedido",
+      "src_api_client_createplato",
+      "src_api_client_deleteplato",
+      "src_api_client_getempresaslug",
+      "src_api_client_getme",
+      "src_api_client_getmesas",
+      "src_api_client_getmetricas",
+      "src_api_client_getpedidos",
+      "src_api_client_getplatos",
+      "src_api_client_gettoken",
+      "src_api_client_logout",
+      "src_api_client_request",
+      "src_api_client_toggleplatodisponible",
+      "src_api_client_updatepedidoestado",
+      "src_api_client_updatepedidopago",
+      "src_api_client_updateplato",
+      "src_components_qrmodal",
+      "src_components_qrmodal_qrmodal",
+      "src_pages_adminpage",
+      "src_pages_adminpage_adminpage",
+      "src_pages_adminpage_categoriaicon",
+      "src_pages_adminpage_categorias",
+      "src_pages_adminpage_columnas",
+      "src_pages_adminpage_empty_plato",
+      "src_pages_adminpage_formatearprecio",
+      "src_pages_adminpage_tiemporelativo"
+    ],
+    "4": [
+      "src_api_client_atenderllamado",
+      "src_api_client_getllamados",
+      "src_api_client_getpedido",
+      "src_api_client_llamarmozo",
+      "src_api_usesse",
+      "src_api_usesse_getbase",
+      "src_api_usesse_usesse",
+      "src_context_notificationcontext",
+      "src_context_notificationcontext_notificationcontext",
+      "src_context_notificationcontext_notificationprovider",
+      "src_context_notificationcontext_type_icons",
+      "src_context_notificationcontext_usenotify",
+      "src_pages_cocinapage",
+      "src_pages_cocinapage_cocinapage",
+      "src_pages_cocinapage_estado_colors",
+      "src_pages_cocinapage_estado_labels",
+      "src_pages_cocinapage_estados",
+      "src_pages_llamadospage",
+      "src_pages_llamadospage_llamadospage",
+      "src_pages_pedidotrackingpage",
+      "src_pages_pedidotrackingpage_estado_colors",
+      "src_pages_pedidotrackingpage_estado_info",
+      "src_pages_pedidotrackingpage_estados",
+      "src_pages_pedidotrackingpage_formatear",
+      "src_pages_pedidotrackingpage_pedidotrackingpage"
+    ],
+    "5": [
+      "src_api_client_createmesa",
+      "src_api_client_deletemesa",
+      "src_api_client_savelayout",
+      "src_api_client_togglemesaactiva",
+      "src_api_client_updatemesa",
+      "src_components_planoeditor",
+      "src_components_planoeditor_estado_dot",
+      "src_components_planoeditor_estado_labels",
+      "src_components_planoeditor_formatprecio",
+      "src_components_planoeditor_pctfromevent",
+      "src_components_planoeditor_planoeditor",
+      "src_components_planoutils",
+      "src_components_planoutils_clamp",
+      "src_components_planoutils_fixstyle",
+      "src_components_planoutils_mesasize",
+      "src_components_planoutils_mesastyle",
+      "src_components_planoutils_nextnumero",
+      "src_components_planoutils_plano_aspect",
+      "src_components_planoutils_plano_padding",
+      "src_components_planoutils_tipos_fijo",
+      "src_components_qrinstructionsmodal",
+      "src_components_qrinstructionsmodal_qrinstructionsmodal",
+      "src_pages_modeselectpage",
+      "src_pages_modeselectpage_modeselectpage"
+    ],
+    "6": [
+      "ref_dom",
+      "ref_es2023",
+      "ref_src",
+      "ref_vite_client",
+      "tsconfig",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_allowarbitraryextensions",
+      "tsconfig_compileroptions_allowjs",
+      "tsconfig_compileroptions_checkjs",
+      "tsconfig_compileroptions_lib",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduledetection",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_noemit",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_target",
+      "tsconfig_compileroptions_types",
+      "tsconfig_include"
+    ],
+    "7": [
+      "src_api_client_createpedido",
+      "src_api_client_getempresa",
+      "src_api_client_validarcupon",
+      "src_context_companycontext",
+      "src_context_companycontext_companycontext",
+      "src_context_companycontext_companyprovider",
+      "src_context_companycontext_getslugfrompath",
+      "src_context_companycontext_reserved",
+      "src_context_companycontext_usecompany",
+      "src_pages_cartpage",
+      "src_pages_cartpage_cartpage",
+      "src_pages_cartpage_formatear",
+      "src_pages_checkoutpage",
+      "src_pages_checkoutpage_checkoutpage",
+      "src_pages_checkoutpage_entregas",
+      "src_pages_checkoutpage_formatear"
+    ],
+    "8": [
+      "model_viewer",
+      "src_app_app",
+      "src_components_errorboundary",
+      "src_components_errorboundary_errorboundary",
+      "src_components_errorboundary_errorboundary_constructor",
+      "src_components_errorboundary_errorboundary_getderivedstatefromerror",
+      "src_components_errorboundary_errorboundary_render",
+      "src_main"
+    ]
+  },
+  "cohesion": {
+    "0": 0.08502024291497975,
+    "1": 0.058823529411764705,
+    "2": 0.11612903225806452,
+    "3": 0.1908831908831909,
+    "4": 0.13666666666666666,
+    "5": 0.16666666666666666,
+    "6": 0.1111111111111111,
+    "7": 0.20833333333333334,
+    "8": 0.2857142857142857
+  },
+  "gods": [
+    {
+      "id": "src_api_client_request",
+      "label": "request()",
+      "degree": 32
+    },
+    {
+      "id": "src_pages_adminpage_adminpage",
+      "label": "AdminPage()",
+      "degree": 18
+    },
+    {
+      "id": "src_context_cartcontext_usecart",
+      "label": "useCart()",
+      "degree": 15
+    },
+    {
+      "id": "src_components_planoeditor_planoeditor",
+      "label": "PlanoEditor()",
+      "degree": 13
+    },
+    {
+      "id": "src_context_companycontext_usecompany",
+      "label": "useCompany()",
+      "degree": 12
+    },
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 12
+    },
+    {
+      "id": "src_api_client_getmesas",
+      "label": "getMesas()",
+      "degree": 10
+    },
+    {
+      "id": "src_api_usesse_usesse",
+      "label": "useSSE()",
+      "degree": 10
+    },
+    {
+      "id": "src_context_notificationcontext_usenotify",
+      "label": "useNotify()",
+      "degree": 9
+    },
+    {
+      "id": "src_pages_checkoutpage_checkoutpage",
+      "label": "CheckoutPage()",
+      "degree": 9
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Navbar()",
+      "target": "useCart()",
+      "source_files": [
+        "src/App.jsx",
+        "src/context/CartContext.jsx"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "Navbar()",
+      "target": "useCompany()",
+      "source_files": [
+        "src/App.jsx",
+        "src/context/CompanyContext.jsx"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "ProtectedRoute()",
+      "target": "useCompany()",
+      "source_files": [
+        "src/App.jsx",
+        "src/context/CompanyContext.jsx"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "ThemeToggle()",
+      "target": "useTheme()",
+      "source_files": [
+        "src/App.jsx",
+        "src/context/ThemeContext.jsx"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "peripheral node `ThemeToggle()` unexpectedly reaches hub `useTheme()`"
+    },
+    {
+      "source": "RegistroModal()",
+      "target": "useNotify()",
+      "source_files": [
+        "src/components/RegistroModal.jsx",
+        "src/context/NotificationContext.jsx"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `AdminPage()` connect `Admin API Client` to `Auth & App Shell`, `Notifications & SSE`?",
+      "why": "High betweenness centrality (0.017) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `REDES`, `AuthContext`, `ThemeContext` to the rest of the system?",
+      "why": "65 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Auth & App Shell` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.08502024291497975 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Project Dependencies` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.058823529411764705 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Menu & AR Viewer` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.11612903225806452 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Notifications & SSE` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.13666666666666666 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `TypeScript Config` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

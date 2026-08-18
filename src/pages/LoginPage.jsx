@@ -51,9 +51,9 @@ export default function LoginPage() {
       <div className="login-bg-blob login-blob-2"></div>
 
       <div className="login-card">
-        <div className="login-brand">
+        <Link to="/" className="login-brand" aria-label="Volver a Pidevo">
           <img src="/pidevo.png" alt="Pidevo" className="brand-logo" />
-        </div>
+        </Link>
         <h1 className="login-title">Bienvenido de nuevo</h1>
         <p className="login-sub">Ingresá a tu panel de pedidos</p>
 

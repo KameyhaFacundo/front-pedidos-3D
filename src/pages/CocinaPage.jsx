@@ -12,7 +12,7 @@ const ESTADOS = [
 
 const ESTADO_COLORS = {
   nuevo: '#F0B429',
-  preparacion: '#FF5A36',
+  preparacion: '#D2653A',
   listo: '#9CB43D',
   entregado: '#A89C87',
 };

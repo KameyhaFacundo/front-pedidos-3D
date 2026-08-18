@@ -1,4 +1,5 @@
-import { Routes, Route, Link, useLocation, Navigate, Outlet } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Routes, Route, Link, useLocation, useNavigate, Navigate, Outlet } from 'react-router-dom';
 import { useCart } from './context/CartContext';
 import { OrderModeProvider } from './context/OrderModeContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
@@ -14,7 +15,6 @@ import LoginPage from './pages/LoginPage';
 import PedidoTrackingPage from './pages/PedidoTrackingPage';
 import NotFoundPage from './pages/NotFoundPage';
 import LandingPage from './pages/LandingPage';
-import DemoPage from './pages/DemoPage';
 import Toast from './components/Toast';
 import Footer from './components/Footer';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
@@ -86,12 +86,73 @@ function Navbar() {
   );
 }
 
+// Overlay used for /demo/* (launched from the landing with a
+// backgroundLocation so the landing stays mounted behind it) -- a visible
+// close button + backdrop makes it read as "a contained preview" without
+// needing to label it with the word "demo" anywhere.
+function DemoModal() {
+  const navigate = useNavigate();
+  const { itemCount } = useCart();
+  const close = () => navigate('/');
+
+  return (
+    <div className="overlay active" onClick={close}>
+      <div className="demo-modal-wrap" onClick={(e) => e.stopPropagation()}>
+        <button className="demo-modal-close" onClick={close} aria-label="Cerrar">
+          <i className="ti ti-x"></i>
+        </button>
+        <div className="demo-modal">
+          <div className="demo-modal-notch"></div>
+          <div className="demo-modal-bar">
+            <Link to="/demo" className="demo-modal-brand">
+              <img src="/pidevo.png" alt="Pidevo" />
+            </Link>
+            <div className="demo-modal-actions">
+              <ThemeToggle />
+              <Link to="/demo/carrito" className="nav-cart-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="9" cy="21" r="1" />
+                  <circle cx="20" cy="21" r="1" />
+                  <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
+                </svg>
+                {itemCount > 0 && <span className="nav-cart-badge">{itemCount}</span>}
+              </Link>
+            </div>
+          </div>
+          <div className="demo-modal-body">
+            <Outlet />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const location = useLocation();
+  const isDemoPath = location.pathname.startsWith('/demo');
+
+  // Wherever the app was last *not* on /demo/* -- kept passively in sync on
+  // every render, not threaded through each navigate()/Link call inside the
+  // demo flow (mode -> mesa -> menu -> cart -> checkout all use their own
+  // internal navigation with no idea a modal is open, so relying on
+  // react-router location.state to survive every hop is fragile; this
+  // ref-free "last background" tracker isn't).
+  const [backgroundLocation, setBackgroundLocation] = useState(null);
+  useEffect(() => {
+    if (!isDemoPath) setBackgroundLocation(location);
+  }, [location, isDemoPath]);
+
+  // Only render /demo/* as a modal-over-background when we actually have a
+  // background to show behind it. A direct load/refresh on /demo/menu has
+  // no prior page to fall back to -- render it as a normal full page then.
+  const isDemoOpen = isDemoPath && backgroundLocation !== null;
+  const bgPathname = (isDemoOpen ? backgroundLocation : location).pathname;
+
   const adminAreaRegex = /^\/([^\/]+\/)?(admin|cocina|llamados)/;
-  const isAdmin = adminAreaRegex.test(location.pathname);
-  const isLanding = location.pathname === '/' || location.pathname === '/landing';
-  const hideFooter = isLanding || /^\/(?:[^\/]+\/)?(?:admin|cocina|llamados|login)/.test(location.pathname);
+  const isAdmin = adminAreaRegex.test(bgPathname);
+  const isLanding = bgPathname === '/' || bgPathname === '/landing';
+  const hideFooter = isLanding || /^\/(?:[^\/]+\/)?(?:admin|cocina|llamados|login)/.test(bgPathname);
 
   return (
     <ThemeProvider>
@@ -99,14 +160,13 @@ export default function App() {
     <AuthProvider>
       <OrderModeProvider>
       <CompanyProvider>
-        <Navbar />
-        <main key={location.pathname} className={`page-fade ${isAdmin || isLanding ? '' : 'main-content'}`}>
+        {!isDemoOpen && <Navbar />}
+        <main key={bgPathname} className={`page-fade ${isAdmin || isLanding ? '' : 'main-content'}`}>
           <div className="app-content">
-            <Routes location={location}>
+            <Routes location={isDemoOpen ? backgroundLocation : location}>
               <Route path="/" element={<LandingPage />} />
               <Route path="/landing" element={<LandingPage />} />
               <Route path="/login" element={<LoginPage />} />
-                <Route path="/demo" element={<DemoPage />} />
                   <Route path="/pidevo" element={<Navigate to="/pidevo/menu?demo=1" replace />} />
                   <Route path="/pidevo/demo" element={<Navigate to="/pidevo/menu?demo=1" replace />} />
                   <Route path="/humber/*" element={<RedirectHumber />} />
@@ -147,6 +207,17 @@ export default function App() {
           </div>
           {!hideFooter && <Footer />}
         </main>
+        {isDemoOpen && (
+          <Routes>
+            <Route path="/demo/*" element={<DemoModal />}>
+              <Route index element={<ModeSelectPage />} />
+              <Route path="menu" element={<MenuPage />} />
+              <Route path="carrito" element={<CartPage />} />
+              <Route path="checkout" element={<CheckoutPage />} />
+              <Route path="pedido/:id" element={<PedidoTrackingPage />} />
+            </Route>
+          </Routes>
+        )}
         <Toast />
       </CompanyProvider>
       </OrderModeProvider>

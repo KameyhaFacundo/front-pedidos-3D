@@ -100,8 +100,10 @@ export default function ModeSelectPage() {
 
     return (
       <div className="mode-screen">
-        <div className="mode-eyebrow">Bienvenido a</div>
-        <div className="mode-logo">{empresa?.nombre || 'Pidevo'}</div>
+        <button type="button" className="back-link" onClick={() => setStep('mode')}>
+          <i className="ti ti-arrow-left"></i>
+          Volver
+        </button>
         <div className="mode-sub">¿En qué mesa estás?</div>
 
         {hasPlano ? (
@@ -179,10 +181,6 @@ export default function ModeSelectPage() {
 
   return (
     <div className="mode-screen">
-      <div className="mode-eyebrow">Bienvenido a</div>
-      <div className="mode-logo">{empresa?.nombre || 'Pidevo'}</div>
-      <div className="mode-sub">Elegí cómo vas a disfrutar tu pedido hoy.</div>
-
       <div className="mode-opt dine" onClick={() => handlePickMode('mesa')}>
         <div className="mode-icon">
           <i className="ti ti-tools-kitchen-2"></i>

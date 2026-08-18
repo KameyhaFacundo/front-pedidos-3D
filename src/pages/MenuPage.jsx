@@ -1,9 +1,9 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useSearchParams, useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import { getMenu, getMesas } from '../api/client';
 import { useCart } from '../context/CartContext';
 import { useOrderMode } from '../context/OrderModeContext';
+import { useCompany } from '../context/CompanyContext';
 import ARViewer from '../components/ARViewer';
 import PlatoDetailModal from '../components/PlatoDetailModal';
 import { MenuSkeleton } from '../components/Skeletons';
@@ -18,8 +18,7 @@ const CATEGORIAS = [
 
 export default function MenuPage() {
   const [searchParams] = useSearchParams();
-  const location = useLocation();
-  const isDemo = searchParams.get('demo') === '1' || location.pathname.includes('/demo');
+  const isDemo = searchParams.get('demo') === '1';
 
   // Demo defaults — will set slug and show 'Pidevo' while API loads
   const DEMO_COMPANY_SLUG = 'pidevo';
@@ -33,6 +32,7 @@ export default function MenuPage() {
   const [categoria, setCategoria] = useState('');
   const { addToCart, updateQuantity, items: cartItems } = useCart();
   const { tipo, mesaId } = useOrderMode();
+  const { path } = useCompany();
   const [mesas, setMesas] = useState([]);
 
   useEffect(() => {
@@ -131,6 +131,10 @@ export default function MenuPage() {
         </div>
       )}
       <header className="menu-header">
+        <Link to={path('/')} className="back-link">
+          <i className="ti ti-arrow-left"></i>
+          Volver
+        </Link>
         <div className="menu-eyebrow">
           {empresa?.nombre || 'Menú'} · {tipo === 'mesa' ? `Mesa ${mesaNumero || '...'}` : 'Para retirar'}
         </div>

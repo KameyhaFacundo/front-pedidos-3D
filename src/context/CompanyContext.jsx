@@ -4,7 +4,7 @@ import { getEmpresa } from '../api/client';
 
 const CompanyContext = createContext(null);
 
-const RESERVED = ['admin', 'cocina', 'llamados', 'login', 'landing', 'demo'];
+const RESERVED = ['admin', 'cocina', 'llamados', 'login', 'landing'];
 
 function getSlugFromPath(pathname) {
   const segments = pathname.split('/').filter(Boolean);
