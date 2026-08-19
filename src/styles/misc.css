@@ -1,0 +1,23 @@
+/* ===== NAVBAR EMPRESA ===== */
+.navbar-empresa {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--cream);
+}
+
+/* ===== BUSCAR PEDIDO MODAL ===== */
+.buscar-pedido-modal {
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg);
+  border: 1px solid var(--hair);
+  border-radius: 20px;
+  color: var(--cream);
+  animation: modal-in 0.25s ease-out;
+}
+
+.buscar-pedido-body {
+  padding: 16px 24px 24px;
+}

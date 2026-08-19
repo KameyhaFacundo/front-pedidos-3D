@@ -110,8 +110,8 @@
     "semantic_hash": "978e7f5171abbe9f1c72da6ea776bf1d"
   },
   "src/pages/AdminPage.jsx": {
-    "mtime": 1787109427.260332,
-    "ast_hash": "018daa330c389e62da0df4f49edf5870",
+    "mtime": 1787109918.87222,
+    "ast_hash": "f99b5aab91710c7d4bee41b9b399b8f4",
     "semantic_hash": ""
   },
   "src/pages/CartPage.jsx": {
@@ -245,8 +245,8 @@
     "semantic_hash": ""
   },
   "src/components/AdminSidebar.jsx": {
-    "mtime": 1787109067.7850335,
-    "ast_hash": "1a2495f74f1db852772867d8303fe95e",
+    "mtime": 1787109783.2418475,
+    "ast_hash": "2ea3d2060f0dbd0bf1747ce67df8b9e2",
     "semantic_hash": ""
   }
 }

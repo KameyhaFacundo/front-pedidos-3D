@@ -1,15 +1,16 @@
 {
-  "0": "App.jsx",
+  "0": "ThemeContext.jsx",
   "1": "useAuth",
   "2": "devDependencies",
   "3": "client.js",
-  "4": "PedidoTrackingPage.jsx",
+  "4": "App.jsx",
   "5": "MenuPage.jsx",
   "6": "TypeScript Config",
-  "7": "registrarArVista",
+  "7": "PlanoEditor.jsx",
   "8": "package.json",
   "9": "LandingPage.jsx",
   "10": "CLAUDE.md",
   "11": "eslint.config.js",
+  "12": "main.jsx",
   "14": "qrcode"
 }

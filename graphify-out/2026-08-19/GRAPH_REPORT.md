@@ -1,7 +1,7 @@
 # Graph Report - front-pedidos-3D  (2026-08-19)
 
 ## Corpus Check
-- 38 files · ~112,323 words
+- 38 files · ~112,425 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary

@@ -1,0 +1,306 @@
+/* ===== LOGIN ===== */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(1100px 600px at 10% -10%, var(--brand-glow), transparent 60%),
+              radial-gradient(900px 500px at 110% 110%, var(--brand-glow), transparent 55%),
+              var(--body-bg);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--hair) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.login-bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.login-blob-1 { width: 320px; height: 320px; top: -80px; left: -80px; background: var(--ember); }
+.login-blob-2 { width: 380px; height: 380px; bottom: -120px; right: -100px; background: var(--accent); }
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--surface);
+  border: 1px solid var(--hair);
+  border-radius: 20px;
+  padding: 36px 34px 28px;
+  box-shadow: 0 24px 60px -22px var(--shadow);
+  position: relative;
+  z-index: 1;
+}
+
+.login-brand {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.login-brand .brand-logo {
+  height: 46px;
+  width: auto;
+}
+
+.login-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--cream);
+  margin: 0 0 6px;
+}
+
+.login-sub {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 26px;
+}
+
+.login-error {
+  margin-bottom: 18px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.login-card .field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 7px;
+}
+
+.login-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-input-wrap > .ti {
+  position: absolute;
+  left: 14px;
+  color: var(--muted);
+  font-size: 17px;
+  pointer-events: none;
+}
+
+.field-exists .login-input-wrap { position: relative; }
+
+.login-input-wrap input {
+  width: 100%;
+  padding: 13px 14px;
+  padding-left: 44px;
+  background: var(--bg);
+  border: 1px solid var(--hair);
+  border-radius: 12px;
+  color: var(--cream);
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login-input-wrap input[type="password"],
+.login-input-wrap input:not([type="checkbox"]) { padding-right: 44px; }
+
+.login-input-wrap input:focus {
+  outline: none;
+  border-color: var(--ember);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+.login-eye {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  border-radius: 8px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.login-eye:hover { color: var(--cream); background: var(--hover); }
+
+.login-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4px 0 18px;
+}
+
+.login-remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.login-remember input {
+  accent-color: var(--ember);
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.login-remember span {
+  color: var(--text-secondary, var(--muted));
+}
+
+.login-forgot {
+  background: none;
+  border: none;
+  color: var(--ember);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.login-forgot:hover { text-decoration: underline; }
+
+.login-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  font-weight: 700;
+}
+
+.login-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--on-brand);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.login-footer {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--hair);
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--muted);
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.login-footer-link {
+  color: var(--ember);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.login-footer-link:hover { text-decoration: underline; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== QR MODAL ===== */
+.qr-modal {
+  background: var(--surface);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 360px;
+  width: 100%;
+}
+
+.qr-modal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.qr-modal canvas {
+  border-radius: 12px;
+  margin: 8px 0;
+}
+
+.qr-hint {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* ===== TOAST ===== */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface-2);
+  border: 1px solid var(--herb);
+  border-radius: var(--radius-pill);
+  padding: 10px 22px 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 9999;
+  cursor: pointer;
+  animation: toast-in 0.35s cubic-bezier(0.16, 1, 0.3, 1), toast-out 0.3s ease 1.5s forwards;
+  box-shadow: var(--shadow);
+}
+
+.toast-icon {
+  color: var(--herb);
+  font-size: 20px;
+  display: flex;
+}
+
+.toast-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--cream);
+}
+
+.toast-sub {
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(16px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes toast-out {
+  from { opacity: 1; transform: translateX(-50%) translateY(0); }
+  to   { opacity: 0; transform: translateX(-50%) translateY(16px); }
+}

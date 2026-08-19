@@ -1,0 +1,79 @@
+/* ===== MOBILE: evitar zoom en inputs (font-size >= 16px) ===== */
+@media (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* ===== MOBILE: plato detail modal como bottom sheet ===== */
+@media (max-width: 480px) {
+  .plato-modal {
+    align-self: flex-end;
+    max-width: 100%;
+    width: 100%;
+    max-height: 92dvh;
+    border-radius: 20px 20px 0 0;
+    border-bottom: none;
+  }
+
+  .plato-modal-hero {
+    height: 140px;
+  }
+
+  .plato-modal-body {
+    padding: 16px 16px 8px;
+  }
+
+  .plato-modal-title {
+    font-size: 1.25rem;
+  }
+
+  .plato-modal-footer {
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  }
+
+  .plato-section {
+    margin-bottom: 18px;
+  }
+}
+
+/* ===== MOBILE: admin plato modal ===== */
+@media (max-width: 480px) {
+  .plato-modal-admin {
+    width: 100%;
+    max-height: 100dvh;
+    border-radius: 0;
+    border: none;
+  }
+
+  .modal-header {
+    padding: 18px 18px 12px;
+  }
+
+  .modal-body {
+    padding: 0 18px 8px;
+  }
+
+  .photo-drop {
+    height: 140px;
+  }
+
+  .modal-footer {
+    padding: 14px 18px calc(14px + env(safe-area-inset-bottom));
+  }
+}
+
+/* ===== MOBILE: menú (header, toolbar, list) ===== */
+@media (max-width: 480px) {
+  .menu-header {
+    padding: 16px 16px 12px;
+  }
+
+  .menu-toolbar {
+    padding: 0 16px 14px;
+  }
+
+  .menu-list {
+    padding: 4px 16px;
+  }
+}
