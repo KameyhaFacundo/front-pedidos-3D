@@ -32,8 +32,8 @@ export default function LoginPage() {
     try {
       const data = await apiLogin(email, password);
       login(data.token, data.user);
-      const storedSlug = localStorage.getItem('pidevo_slug');
-      const slug = storedSlug || pathSlug;
+      const userSlug = data.user?.slug;
+      const slug = userSlug || pathSlug;
       if (slug) {
         localStorage.setItem('pidevo_slug', slug);
       }

@@ -4516,8 +4516,11 @@ img { max-width: 100%; display: block; }
   font-size: 13px;
   font-weight: 700;
   padding: 9px 18px;
+  border: none;
   border-radius: 10px;
   text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
   transition: opacity 0.2s;
 }
 
@@ -4746,8 +4749,11 @@ img { max-width: 100%; display: block; }
   font-size: 15px;
   font-weight: 700;
   padding: 14px 28px;
+  border: none;
   border-radius: 12px;
   text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
   transition: opacity 0.2s;
 }
 
@@ -5470,9 +5476,12 @@ img { max-width: 100%; display: block; }
   font-size: 15px;
   font-weight: 800;
   padding: 16px 32px;
+  border: none;
   border-radius: 12px;
   text-decoration: none;
   white-space: nowrap;
+  cursor: pointer;
+  font-family: inherit;
   transition: transform 0.2s;
 }
 
