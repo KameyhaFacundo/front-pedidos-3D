@@ -259,6 +259,25 @@ img { max-width: 100%; display: block; }
   margin-bottom: 20px;
 }
 
+.settings-card-compact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.settings-card-compact .settings-head {
+  margin-bottom: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.settings-card-compact .settings-sub {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .settings-head > i {
   font-size: 22px;
   color: var(--gold);

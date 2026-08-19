@@ -5,8 +5,8 @@
     "semantic_hash": ""
   },
   "src/App.jsx": {
-    "mtime": 1787109269.3132105,
-    "ast_hash": "f0770434429dddff693984e5ec2ea4f9",
+    "mtime": 1787162035.3956766,
+    "ast_hash": "ca243d07a11138ce21183a5093a2c9d0",
     "semantic_hash": ""
   },
   "src/api/client.js": {
@@ -140,8 +140,8 @@
     "semantic_hash": ""
   },
   "src/pages/LoginPage.jsx": {
-    "mtime": 1787107860.419386,
-    "ast_hash": "6c946ba827ee71157440a4caff7b5a09",
+    "mtime": 1787162046.0943215,
+    "ast_hash": "4a152c809e1ad1f194cadea6c383ac8b",
     "semantic_hash": ""
   },
   "src/pages/MenuPage.jsx": {
@@ -236,7 +236,7 @@
   },
   ".claude/settings.json": {
     "mtime": 1786846504.1987302,
-    "ast_hash": "",
+    "ast_hash": "d63945663ac5a70eebb1756ab927f4f5",
     "semantic_hash": ""
   },
   "eslint.config.js": {
@@ -245,8 +245,8 @@
     "semantic_hash": ""
   },
   "src/components/AdminSidebar.jsx": {
-    "mtime": 1787160932.8015199,
-    "ast_hash": "27e317e1d35a4671d797bd2198006fd1",
+    "mtime": 1787162016.1741667,
+    "ast_hash": "46d179dc8dce1c06228adc97cd3751a1",
     "semantic_hash": ""
   },
   "src/components/adminUtils.js": {
@@ -300,8 +300,8 @@
     "semantic_hash": ""
   },
   "src/components/admin/AdminEquipoView.jsx": {
-    "mtime": 1787160927.0263734,
-    "ast_hash": "e36fca92b69d1b29f0a4f437088502a0",
+    "mtime": 1787161976.1253164,
+    "ast_hash": "99a60be4713690c4c215dfe9885f9733",
     "semantic_hash": ""
   }
 }

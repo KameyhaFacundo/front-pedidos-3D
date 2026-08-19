@@ -1549,27 +1549,54 @@
 
 .settings-empty i { font-size: 16px; }
 
-.settings-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.settings-table-wrap {
+  overflow-x: auto;
+  margin: 0 -4px;
 }
 
-.settings-row {
+.settings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.settings-table thead th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  padding: 0 12px 10px;
+  border-bottom: 1px solid var(--hair);
+  white-space: nowrap;
+}
+
+.settings-table tbody td {
+  padding: 12px;
+  border-bottom: 1px solid var(--hair);
+  color: var(--cream);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.settings-table tbody tr:last-child td { border-bottom: none; }
+.settings-table tbody tr:hover td { background: var(--hover); }
+
+.settings-table tbody tr.editing td {
+  background: rgba(var(--gold-rgb), 0.14);
+}
+
+.settings-table td.col-actions {
+  text-align: right;
+}
+
+.settings-table td.col-actions .icon-btn { margin-left: 6px; }
+
+.settings-cell-main {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
-  background: var(--surface-2);
-  border-radius: var(--radius-md);
-  transition: background 0.15s;
-}
-
-.settings-row:hover { background: var(--hover); }
-
-.settings-row.editing {
-  background: rgba(var(--gold-rgb), 0.14);
-  outline: 1px solid rgba(var(--gold-rgb), 0.4);
+  gap: 10px;
 }
 
 .settings-cancel-edit {
@@ -1586,13 +1613,6 @@
 }
 
 .settings-cancel-edit:hover { color: var(--cream); }
-
-.settings-row-info {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-width: 0;
-}
 
 .settings-cupon-icon {
   width: 34px;
@@ -1611,11 +1631,6 @@
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 0.5px;
-}
-
-.settings-cupon-value {
-  font-size: 12px;
-  color: var(--muted);
 }
 
 .settings-status {

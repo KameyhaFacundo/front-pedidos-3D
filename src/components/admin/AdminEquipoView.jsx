@@ -122,20 +122,38 @@ export default function AdminEquipoView({ active, notify }) {
               <span>Todavía no hay personal invitado.</span>
             </div>
           ) : (
-            <div className="settings-list">
-              {staff.map((u) => (
-                <div key={u.id} className="settings-row">
-                  <div className="settings-avatar">{u.name?.charAt(0).toUpperCase()}</div>
-                  <div className="settings-row-info">
-                    <span className="settings-staff-name">{u.name}</span>
-                    <span className="settings-staff-email">{u.email}</span>
-                  </div>
-                  <span className={`role-badge role-${u.rol || 'admin'}`}>{ROL_LABELS[u.rol] || 'Admin'}</span>
-                  <button className="icon-btn danger" onClick={() => handleDeleteStaff(u)} aria-label={`Eliminar ${u.name}`}>
-                    <i className="ti ti-trash"></i>
-                  </button>
-                </div>
-              ))}
+            <div className="settings-table-wrap">
+              <table className="settings-table">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th className="col-actions">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {staff.map((u) => (
+                    <tr key={u.id}>
+                      <td>
+                        <div className="settings-cell-main">
+                          <div className="settings-avatar">{u.name?.charAt(0).toUpperCase()}</div>
+                          <span className="settings-staff-name">{u.name}</span>
+                        </div>
+                      </td>
+                      <td className="settings-staff-email">{u.email}</td>
+                      <td>
+                        <span className={`role-badge role-${u.rol || 'admin'}`}>{ROL_LABELS[u.rol] || 'Admin'}</span>
+                      </td>
+                      <td className="col-actions">
+                        <button className="icon-btn danger" onClick={() => handleDeleteStaff(u)} aria-label={`Eliminar ${u.name}`}>
+                          <i className="ti ti-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
         </div>

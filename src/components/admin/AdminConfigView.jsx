@@ -1,21 +1,15 @@
 import { useState, useEffect, useCallback } from 'react';
-import { soundEnabled, setSoundEnabled } from '../adminUtils';
 import { getCupones, createCupon, updateCupon, toggleCupon, deleteCupon } from '../../api/client';
+import LocalSettingsModal from './LocalSettingsModal';
 
 const EMPTY_CUPON = { codigo: '', descuento: '', tipo: 'fijo' };
 
 export default function AdminConfigView({ active, configForm, setConfigForm, onSave, saving, notify }) {
-  const [soundOn, setSoundOn] = useState(soundEnabled);
+  const [localModalOpen, setLocalModalOpen] = useState(false);
   const [cupones, setCupones] = useState([]);
   const [cuponForm, setCuponForm] = useState(EMPTY_CUPON);
   const [savingCupon, setSavingCupon] = useState(false);
   const [editingCuponId, setEditingCuponId] = useState(null);
-
-  const toggleSound = () => {
-    const v = !soundOn;
-    setSoundOn(v);
-    setSoundEnabled(v);
-  };
 
   const loadCupones = useCallback(() => {
     getCupones().then(setCupones).catch(() => {});
@@ -95,54 +89,30 @@ export default function AdminConfigView({ active, configForm, setConfigForm, onS
       </div>
 
       <div className="settings-page">
-      <div className="settings-card">
+      <div className="settings-card settings-card-compact">
         <div className="settings-head">
           <i className="ti ti-building-store"></i>
           <div>
             <div className="settings-title">Tu local</div>
-            <div className="settings-sub">Estos datos aparecen en el menú que ven tus clientes</div>
+            <div className="settings-sub">
+              {configForm.nombre || 'Sin nombre configurado'}
+              {configForm.whatsapp ? ` · WhatsApp ${configForm.whatsapp}` : ''}
+            </div>
           </div>
         </div>
-
-        <div className="field">
-          <label>Nombre del local</label>
-          <input
-            type="text"
-            value={configForm.nombre}
-            onChange={(e) => setConfigForm((prev) => ({ ...prev, nombre: e.target.value }))}
-            placeholder="Ej: Tu Hambur"
-          />
-        </div>
-
-        <div className="field">
-          <label>WhatsApp (con código de país, sin +)</label>
-          <input
-            type="text"
-            value={configForm.whatsapp}
-            onChange={(e) => setConfigForm((prev) => ({ ...prev, whatsapp: e.target.value }))}
-            placeholder="Ej: 5493815069332"
-          />
-        </div>
-
-        <div className="toggle-row settings-toggle">
-          <div>
-            <div className="t-label">Sonido en pedidos nuevos</div>
-            <div className="t-sub">Reproduce un beep cuando entra un pedido</div>
-          </div>
-          <div className={`switch ${soundOn ? 'on' : ''}`} onClick={toggleSound} />
-        </div>
-
-        <div className="settings-footer">
-          <button
-            className="modal-save"
-            disabled={saving || !configForm.nombre.trim()}
-            onClick={onSave}
-          >
-            <i className="ti ti-device-floppy"></i>
-            <span>{saving ? 'Guardando...' : 'Guardar cambios'}</span>
-          </button>
-        </div>
+        <button className="btn btn-outline btn-sm" onClick={() => setLocalModalOpen(true)}>
+          <i className="ti ti-pencil"></i> Editar
+        </button>
       </div>
+
+      <LocalSettingsModal
+        open={localModalOpen}
+        configForm={configForm}
+        setConfigForm={setConfigForm}
+        onSave={onSave}
+        saving={saving}
+        onClose={() => setLocalModalOpen(false)}
+      />
 
       <div className="settings-card">
         <div className="settings-head">
@@ -208,30 +178,48 @@ export default function AdminConfigView({ active, configForm, setConfigForm, onS
             <span>Todavía no creaste cupones.</span>
           </div>
         ) : (
-          <div className="settings-list">
-            {cupones.map((c) => (
-              <div key={c.id} className={`settings-row ${editingCuponId === c.id ? 'editing' : ''}`}>
-                <div className="settings-cupon-icon">
-                  <i className="ti ti-ticket"></i>
-                </div>
-                <div className="settings-row-info">
-                  <span className="settings-cupon-code">{c.codigo}</span>
-                  <span className="settings-cupon-value">
-                    {c.tipo === 'porcentaje' ? `${c.descuento}%` : `$${c.descuento}`}
-                  </span>
-                </div>
-                <span className={`settings-status ${c.activo ? 'on' : ''}`}>
-                  {c.activo ? 'Activo' : 'Inactivo'}
-                </span>
-                <div className={`switch ${c.activo ? 'on' : ''}`} onClick={() => handleToggleCupon(c)} />
-                <button className="icon-btn" onClick={() => handleEditCupon(c)} aria-label={`Editar ${c.codigo}`}>
-                  <i className="ti ti-pencil"></i>
-                </button>
-                <button className="icon-btn danger" onClick={() => handleDeleteCupon(c)} aria-label={`Eliminar ${c.codigo}`}>
-                  <i className="ti ti-trash"></i>
-                </button>
-              </div>
-            ))}
+          <div className="settings-table-wrap">
+            <table className="settings-table">
+              <thead>
+                <tr>
+                  <th>Cupón</th>
+                  <th>Descuento</th>
+                  <th>Estado</th>
+                  <th className="col-actions">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cupones.map((c) => (
+                  <tr key={c.id} className={editingCuponId === c.id ? 'editing' : ''}>
+                    <td>
+                      <div className="settings-cell-main">
+                        <div className="settings-cupon-icon">
+                          <i className="ti ti-ticket"></i>
+                        </div>
+                        <span className="settings-cupon-code">{c.codigo}</span>
+                      </div>
+                    </td>
+                    <td>{c.tipo === 'porcentaje' ? `${c.descuento}%` : `$${c.descuento}`}</td>
+                    <td>
+                      <div className="settings-cell-main">
+                        <div className={`switch ${c.activo ? 'on' : ''}`} onClick={() => handleToggleCupon(c)} />
+                        <span className={`settings-status ${c.activo ? 'on' : ''}`}>
+                          {c.activo ? 'Activo' : 'Inactivo'}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="col-actions">
+                      <button className="icon-btn" onClick={() => handleEditCupon(c)} aria-label={`Editar ${c.codigo}`}>
+                        <i className="ti ti-pencil"></i>
+                      </button>
+                      <button className="icon-btn danger" onClick={() => handleDeleteCupon(c)} aria-label={`Eliminar ${c.codigo}`}>
+                        <i className="ti ti-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         )}
       </div>

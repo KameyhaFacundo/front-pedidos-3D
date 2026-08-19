@@ -6,12 +6,12 @@
   "4": "AdminPage.jsx",
   "5": "App.jsx",
   "6": "TypeScript Config",
-  "7": "CompanyContext.jsx",
+  "7": "PlanoEditor.jsx",
   "8": "package.json",
   "9": "LandingPage.jsx",
   "10": "CLAUDE.md",
   "11": "eslint.config.js",
   "12": "adminUtils.js",
-  "13": "ErrorBoundary",
-  "14": "qrcode"
+  "13": "LoginPage.jsx",
+  "14": "Footer.jsx"
 }
