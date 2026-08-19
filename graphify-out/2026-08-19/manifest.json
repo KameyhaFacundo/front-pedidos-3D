@@ -15,9 +15,9 @@
     "semantic_hash": ""
   },
   "src/api/useSSE.js": {
-    "mtime": 1786543969.923262,
-    "ast_hash": "743caaab0b5a5496c9c918f160d6f2e3",
-    "semantic_hash": "743caaab0b5a5496c9c918f160d6f2e3"
+    "mtime": 1787154724.8107822,
+    "ast_hash": "ae6d359cb9830c38e531225ef56576ef",
+    "semantic_hash": ""
   },
   "src/components/ARViewer.jsx": {
     "mtime": 1786544397.4176383,
@@ -110,8 +110,8 @@
     "semantic_hash": "978e7f5171abbe9f1c72da6ea776bf1d"
   },
   "src/pages/AdminPage.jsx": {
-    "mtime": 1787154071.9708788,
-    "ast_hash": "d1ad73e7af70da1c7cda2cd8fac8c8c2",
+    "mtime": 1787160941.308542,
+    "ast_hash": "b5f7e4b59408ad6a6741ac2c5178d266",
     "semantic_hash": ""
   },
   "src/pages/CartPage.jsx": {
@@ -125,8 +125,8 @@
     "semantic_hash": "eec346959779d673f9a7af38e6bd3c8b"
   },
   "src/pages/CocinaPage.jsx": {
-    "mtime": 1787154142.9248874,
-    "ast_hash": "70112fb2b88952cf0285a50d067cb3fb",
+    "mtime": 1787154741.5755527,
+    "ast_hash": "fb4d77414e41f46361af489aa613f8d6",
     "semantic_hash": ""
   },
   "src/pages/LandingPage.jsx": {
@@ -245,8 +245,8 @@
     "semantic_hash": ""
   },
   "src/components/AdminSidebar.jsx": {
-    "mtime": 1787154245.3897128,
-    "ast_hash": "f9fac15ab29b38560a80a5b7bb6dbfd7",
+    "mtime": 1787160932.8015199,
+    "ast_hash": "27e317e1d35a4671d797bd2198006fd1",
     "semantic_hash": ""
   },
   "src/components/adminUtils.js": {
@@ -260,8 +260,8 @@
     "semantic_hash": ""
   },
   "src/components/admin/AdminConfigView.jsx": {
-    "mtime": 1787147399.0301294,
-    "ast_hash": "ec1217eebdd26764c37c495045947112",
+    "mtime": 1787160912.2869577,
+    "ast_hash": "de9f8fbc3d387affcc5e39bce894e128",
     "semantic_hash": ""
   },
   "src/components/admin/AdminMenuView.jsx": {
@@ -297,6 +297,11 @@
   ".github/workflows/ci.yml": {
     "mtime": 1787111367.0625916,
     "ast_hash": "66c7788a7e4a22e0f937a0d57521c038",
+    "semantic_hash": ""
+  },
+  "src/components/admin/AdminEquipoView.jsx": {
+    "mtime": 1787160927.0263734,
+    "ast_hash": "e36fca92b69d1b29f0a4f437088502a0",
     "semantic_hash": ""
   }
 }

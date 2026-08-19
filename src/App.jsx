@@ -21,10 +21,20 @@ import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { NotificationProvider } from './context/NotificationContext';
 import './App.css';
 
-function ProtectedRoute({ children }) {
-  const { isAuthenticated } = useAuth();
+function defaultRouteForRole(rol) {
+  if (rol === 'cocina') return 'cocina';
+  if (rol === 'mozo') return 'llamados';
+  return 'admin';
+}
+
+function ProtectedRoute({ children, allow }) {
+  const { isAuthenticated, user } = useAuth();
   const { slug } = useCompany();
   if (!isAuthenticated) return <Navigate to={slug ? `/${slug}/login` : '/login'} replace />;
+  const rol = user?.rol || 'admin';
+  if (allow && !allow.includes(rol)) {
+    return <Navigate to={`/${slug}/${defaultRouteForRole(rol)}`} replace />;
+  }
   return children;
 }
 
@@ -194,7 +204,7 @@ export default function App() {
                 <Route
                   path="admin"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRoute allow={['admin']}>
                       <AdminPage />
                     </ProtectedRoute>
                   }
@@ -202,7 +212,7 @@ export default function App() {
                 <Route
                   path="cocina"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRoute allow={['admin', 'cocina']}>
                       <CocinaPage />
                     </ProtectedRoute>
                   }
@@ -210,7 +220,7 @@ export default function App() {
                 <Route
                   path="llamados"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRoute allow={['admin', 'mozo']}>
                       <LlamadosPage />
                     </ProtectedRoute>
                   }

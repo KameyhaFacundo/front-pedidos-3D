@@ -1,9 +1,9 @@
 {
-  "0": "ThemeContext.jsx",
-  "1": "registrarArVista",
+  "0": "PedidoTrackingPage.jsx",
+  "1": "ThemeContext.jsx",
   "2": "devDependencies",
   "3": "client.js",
-  "4": "PedidoTrackingPage.jsx",
+  "4": "AdminPage.jsx",
   "5": "App.jsx",
   "6": "TypeScript Config",
   "7": "PlanoEditor.jsx",
@@ -12,5 +12,5 @@
   "10": "CLAUDE.md",
   "11": "eslint.config.js",
   "12": "adminUtils.js",
-  "13": "ErrorBoundary"
+  "13": "CartContext.jsx"
 }

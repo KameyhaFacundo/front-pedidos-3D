@@ -1,7 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getStaff, createStaff, deleteStaff } from '../../api/client';
 
-const EMPTY_STAFF = { nombre: '', email: '', password: '' };
+const EMPTY_STAFF = { nombre: '', email: '', password: '', rol: 'cocina' };
+
+const ROL_LABELS = { admin: 'Admin', cocina: 'Cocina', mozo: 'Mozo' };
 
 export default function AdminEquipoView({ active, notify }) {
   const [staff, setStaff] = useState([]);
@@ -27,6 +29,7 @@ export default function AdminEquipoView({ active, notify }) {
         nombre: staffForm.nombre.trim(),
         email: staffForm.email.trim(),
         password: staffForm.password,
+        rol: staffForm.rol,
       });
       setStaffForm(EMPTY_STAFF);
       loadStaff();
@@ -68,7 +71,7 @@ export default function AdminEquipoView({ active, notify }) {
             </div>
           </div>
 
-          <div className="staff-form">
+          <div className="staff-form staff-form-equipo">
             <div className="field">
               <label>Nombre</label>
               <input
@@ -96,6 +99,14 @@ export default function AdminEquipoView({ active, notify }) {
                 placeholder="Mínimo 6 caracteres"
               />
             </div>
+            <div className="field">
+              <label>Rol</label>
+              <select value={staffForm.rol} onChange={(e) => setStaffForm((prev) => ({ ...prev, rol: e.target.value }))}>
+                <option value="cocina">Cocina</option>
+                <option value="mozo">Mozo</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
             <div className="field field-btn">
               <label>Acción</label>
               <button className="modal-save" disabled={savingStaff} onClick={handleAddStaff}>
@@ -119,6 +130,7 @@ export default function AdminEquipoView({ active, notify }) {
                     <span className="settings-staff-name">{u.name}</span>
                     <span className="settings-staff-email">{u.email}</span>
                   </div>
+                  <span className={`role-badge role-${u.rol || 'admin'}`}>{ROL_LABELS[u.rol] || 'Admin'}</span>
                   <button className="icon-btn danger" onClick={() => handleDeleteStaff(u)} aria-label={`Eliminar ${u.name}`}>
                     <i className="ti ti-trash"></i>
                   </button>

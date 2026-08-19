@@ -1,19 +1,24 @@
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
 
 const ITEMS = [
-  { key: 'metricas', label: 'Métricas', icon: 'ti-chart-bar' },
-  { key: 'pedidos', label: 'Pedidos', icon: 'ti-receipt' },
-  { key: 'cocina', label: 'Cocina', icon: 'ti-chef-hat', route: 'cocina' },
-  { key: 'menu', label: 'Menú', icon: 'ti-tools-kitchen-2' },
-  { key: 'mesas', label: 'Mesas', icon: 'ti-layout-grid' },
-  { key: 'equipo', label: 'Equipo', icon: 'ti-users' },
-  { key: 'configuracion', label: 'Configuración', icon: 'ti-settings' },
+  { key: 'metricas', label: 'Métricas', icon: 'ti-chart-bar', roles: ['admin'] },
+  { key: 'pedidos', label: 'Pedidos', icon: 'ti-receipt', roles: ['admin'] },
+  { key: 'cocina', label: 'Cocina', icon: 'ti-chef-hat', route: 'cocina', roles: ['admin', 'cocina'] },
+  { key: 'llamados', label: 'Llamados', icon: 'ti-bell-ringing', route: 'llamados', roles: ['admin', 'mozo'] },
+  { key: 'menu', label: 'Menú', icon: 'ti-tools-kitchen-2', roles: ['admin'] },
+  { key: 'mesas', label: 'Mesas', icon: 'ti-layout-grid', roles: ['admin'] },
+  { key: 'equipo', label: 'Equipo', icon: 'ti-users', roles: ['admin'] },
+  { key: 'configuracion', label: 'Configuración', icon: 'ti-settings', roles: ['admin'] },
 ];
 
 export default function AdminSidebar({ view, setView: _setView, open, onToggle, onLogout, slug }) {
   const { theme, toggleTheme } = useTheme();
+  const { user } = useAuth();
   const navigate = useNavigate();
+  const rol = user?.rol || 'admin';
+  const items = ITEMS.filter((item) => item.roles.includes(rol));
 
   const handleClick = (item) => {
     navigate(item.route ? `/${slug}/${item.route}` : `/${slug}/admin?view=${item.key}`);
@@ -28,7 +33,7 @@ export default function AdminSidebar({ view, setView: _setView, open, onToggle, 
         </button>
       </div>
       <nav className="admin-nav">
-        {ITEMS.map((item) => (
+        {items.map((item) => (
           <div
             key={item.key}
             className={`admin-nav-item ${view === item.key ? 'active' : ''}`}

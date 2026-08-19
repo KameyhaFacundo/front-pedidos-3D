@@ -3,6 +3,12 @@ import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { login as apiLogin } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 
+function defaultRouteForRole(rol) {
+  if (rol === 'cocina') return 'cocina';
+  if (rol === 'mozo') return 'llamados';
+  return 'admin';
+}
+
 function getSlugFromPath(pathname) {
   const segments = pathname.split('/').filter(Boolean);
   const [first, second] = segments;
@@ -37,7 +43,7 @@ export default function LoginPage() {
       if (slug) {
         localStorage.setItem('pidevo_slug', slug);
       }
-      navigate(slug ? `/${slug}/admin` : '/');
+      navigate(slug ? `/${slug}/${defaultRouteForRole(data.user?.rol)}` : '/');
     } catch (err) {
       setError(err.message || 'Error al iniciar sesión');
     } finally {
