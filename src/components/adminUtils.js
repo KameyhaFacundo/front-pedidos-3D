@@ -80,6 +80,20 @@ export function descargarCSV(pedidos, slug) {
   URL.revokeObjectURL(url);
 }
 
+export function soundEnabled() {
+  try {
+    return localStorage.getItem('pidevo_sound_enabled') !== '0';
+  } catch {
+    return true;
+  }
+}
+
+export function setSoundEnabled(value) {
+  try {
+    localStorage.setItem('pidevo_sound_enabled', value ? '1' : '0');
+  } catch {}
+}
+
 export function playNewOrderSound() {
   try {
     const Ctx = window.AudioContext || window.webkitAudioContext;

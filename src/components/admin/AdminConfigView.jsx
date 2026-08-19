@@ -1,4 +1,14 @@
+import { useState } from 'react';
+import { soundEnabled, setSoundEnabled } from '../adminUtils';
+
 export default function AdminConfigView({ active, configForm, setConfigForm, onSave, saving }) {
+  const [soundOn, setSoundOn] = useState(soundEnabled);
+
+  const toggleSound = () => {
+    const v = !soundOn;
+    setSoundOn(v);
+    setSoundEnabled(v);
+  };
   return (
     <div className={`view ${active ? 'active' : ''}`}>
       <div className="admin-top">
@@ -35,6 +45,14 @@ export default function AdminConfigView({ active, configForm, setConfigForm, onS
             onChange={(e) => setConfigForm((prev) => ({ ...prev, whatsapp: e.target.value }))}
             placeholder="Ej: 5493815069332"
           />
+        </div>
+
+        <div className="toggle-row settings-toggle">
+          <div>
+            <div className="t-label">Sonido en pedidos nuevos</div>
+            <div className="t-sub">Reproduce un beep cuando entra un pedido</div>
+          </div>
+          <div className={`switch ${soundOn ? 'on' : ''}`} onClick={toggleSound} />
         </div>
 
         <div className="settings-footer">

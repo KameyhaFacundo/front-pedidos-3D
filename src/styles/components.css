@@ -1465,3 +1465,9 @@
 
 .metric-trend.up { background: rgba(var(--herb-rgb), 0.16); color: var(--herb); }
 .metric-trend.down { background: rgba(var(--ember-rgb), 0.16); color: var(--ember); }
+
+.settings-toggle {
+  margin: 22px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--hair);
+}

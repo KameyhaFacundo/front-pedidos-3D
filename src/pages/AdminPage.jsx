@@ -25,7 +25,7 @@ import PlatoModal from '../components/admin/PlatoModal';
 import { useNotify } from '../context/NotificationContext';
 import { useAuth } from '../context/AuthContext';
 import { useCompany } from '../context/CompanyContext';
-import { playNewOrderSound } from '../components/adminUtils';
+import { playNewOrderSound, soundEnabled } from '../components/adminUtils';
 
 export default function AdminPage() {
   const { notify, confirm } = useNotify();
@@ -85,7 +85,7 @@ export default function AdminPage() {
         if (p.estado === 'nuevo') nuevas.push(p);
       }
     });
-    if (nuevas.length > 0) playNewOrderSound();
+    if (nuevas.length > 0 && soundEnabled()) playNewOrderSound();
     setPedidos((prev) => {
       const map = new Map(prev.map((p) => [p.id, p]));
       updated.forEach((p) => map.set(p.id, p));
@@ -122,6 +122,12 @@ export default function AdminPage() {
   };
 
   useSSE(handleSSEUpdate);
+
+  const baseTitle = 'Pidevo Admin';
+  useEffect(() => {
+    const nuevos = pedidos.filter((p) => p.estado === 'nuevo').length;
+    document.title = nuevos > 0 ? `(${nuevos}) ${baseTitle}` : baseTitle;
+  }, [pedidos]);
 
   useEffect(() => {
     if (view === 'menu' || view === 'metricas') fetchPlatos();
