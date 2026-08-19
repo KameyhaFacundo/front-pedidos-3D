@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function QRInstructionsModal({ onClose }) {
   return (
     <div className="overlay active" onClick={onClose}>

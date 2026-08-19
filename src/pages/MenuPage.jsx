@@ -88,7 +88,7 @@ export default function MenuPage() {
         // redirect to mode select where the picker will open
         window.location.href = '/mode?open_picker=1';
       }
-    } catch (e) {}
+    } catch {}
   }, []);
 
   const [search, setSearch] = useState('');

@@ -1,13 +1,15 @@
 {
   "0": "App.jsx",
-  "1": "dependencies",
-  "2": "useCart",
+  "1": "useAuth",
+  "2": "devDependencies",
   "3": "client.js",
   "4": "PedidoTrackingPage.jsx",
-  "5": "useCompany",
+  "5": "MenuPage.jsx",
   "6": "TypeScript Config",
-  "7": "PlanoEditor.jsx",
+  "7": "registrarArVista",
   "8": "package.json",
   "9": "LandingPage.jsx",
-  "10": "CLAUDE.md"
+  "10": "CLAUDE.md",
+  "11": "eslint.config.js",
+  "14": "qrcode"
 }

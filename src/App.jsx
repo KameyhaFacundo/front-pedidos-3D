@@ -50,7 +50,6 @@ function RedirectHumber() {
 function Navbar() {
   const location = useLocation();
   const { itemCount } = useCart();
-  const { isAuthenticated, logout } = useAuth();
   const { path, empresa } = useCompany();
 
   const isLanding = location.pathname === '/' || location.pathname === '/landing';

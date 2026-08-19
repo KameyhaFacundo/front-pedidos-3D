@@ -8,7 +8,7 @@ export default function QRModal({ mesa, onClose }) {
       const base = import.meta.env.VITE_APP_URL || window.location.origin;
       // prefer stored slug, otherwise derive from current path
       let slug = null;
-      try { slug = localStorage.getItem('pidevo_slug'); } catch (e) {}
+      try { slug = localStorage.getItem('pidevo_slug'); } catch {}
       if (!slug) {
         const m = window.location.pathname.match(/^\/([^\/]+)(?:\/|$)/);
         if (m && !['admin', 'cocina', 'login', 'llamados', 'landing'].includes(m[1])) slug = m[1];

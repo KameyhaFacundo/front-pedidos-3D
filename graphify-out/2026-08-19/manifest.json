@@ -1,17 +1,17 @@
 {
   "package.json": {
-    "mtime": 1786845885.539562,
-    "ast_hash": "90b374f56f431075eda43396e5fec137",
-    "semantic_hash": "90b374f56f431075eda43396e5fec137"
+    "mtime": 1787109131.9990156,
+    "ast_hash": "53d9bdae798a96d3c5a20ae7e1861aa1",
+    "semantic_hash": ""
   },
   "src/App.jsx": {
-    "mtime": 1787108308.050151,
-    "ast_hash": "cf7cee7fb77b54b014ce857e333f8cb3",
+    "mtime": 1787109269.3132105,
+    "ast_hash": "f0770434429dddff693984e5ec2ea4f9",
     "semantic_hash": ""
   },
   "src/api/client.js": {
-    "mtime": 1787108469.6961966,
-    "ast_hash": "7bd0d2076891f2b155850843b4abbbc3",
+    "mtime": 1787108914.8626616,
+    "ast_hash": "05ba72817e30c68e5af9621bc50fb01b",
     "semantic_hash": ""
   },
   "src/api/useSSE.js": {
@@ -35,24 +35,24 @@
     "semantic_hash": "98e99fb595ccb9daa97229bb28ca2b33"
   },
   "src/components/PlanoEditor.jsx": {
-    "mtime": 1786560820.231093,
-    "ast_hash": "9e97d1fe53897ba794f11bc94176d87d",
-    "semantic_hash": "9e97d1fe53897ba794f11bc94176d87d"
+    "mtime": 1787109708.8701298,
+    "ast_hash": "3e860cdf91494032105b8162667b3ecf",
+    "semantic_hash": ""
   },
   "src/components/PlatoDetailModal.jsx": {
-    "mtime": 1786547180.790032,
-    "ast_hash": "4ff209c4371b75cf57c549956e10a128",
-    "semantic_hash": "4ff209c4371b75cf57c549956e10a128"
+    "mtime": 1787109521.5576203,
+    "ast_hash": "bfb24c854a108ee384ebd5856f108a17",
+    "semantic_hash": ""
   },
   "src/components/QRInstructionsModal.jsx": {
-    "mtime": 1786560512.554588,
-    "ast_hash": "f26fda267c65d97ffd464f84ba8e45d5",
-    "semantic_hash": "f26fda267c65d97ffd464f84ba8e45d5"
+    "mtime": 1787109334.2327983,
+    "ast_hash": "b436526fdae2880750b215794c6dbd2a",
+    "semantic_hash": ""
   },
   "src/components/QRModal.jsx": {
-    "mtime": 1786560612.1237292,
-    "ast_hash": "d22dc65fadb0c1d9d71fe5c985c336f2",
-    "semantic_hash": "d22dc65fadb0c1d9d71fe5c985c336f2"
+    "mtime": 1787109340.5901093,
+    "ast_hash": "265c36d93c0bd3233b95f1d97863ef25",
+    "semantic_hash": ""
   },
   "src/components/RegistroModal.jsx": {
     "mtime": 1786558289.7819142,
@@ -110,8 +110,8 @@
     "semantic_hash": "978e7f5171abbe9f1c72da6ea776bf1d"
   },
   "src/pages/AdminPage.jsx": {
-    "mtime": 1787108537.5317583,
-    "ast_hash": "fbbf3fa4ad2e142868b3e4c55f5ea111",
+    "mtime": 1787109427.260332,
+    "ast_hash": "018daa330c389e62da0df4f49edf5870",
     "semantic_hash": ""
   },
   "src/pages/CartPage.jsx": {
@@ -145,13 +145,13 @@
     "semantic_hash": ""
   },
   "src/pages/MenuPage.jsx": {
-    "mtime": 1787108297.6562939,
-    "ast_hash": "0befe6674d366e9d112d8785c785f195",
+    "mtime": 1787109470.9386184,
+    "ast_hash": "c27dfc6ff6c9b6ab3afddfba0404ac24",
     "semantic_hash": ""
   },
   "src/pages/ModeSelectPage.jsx": {
-    "mtime": 1786855782.1359017,
-    "ast_hash": "b0ce264591892e0c4c644d0a5b1fd85d",
+    "mtime": 1787109742.256816,
+    "ast_hash": "b113fb8f98e8b0e9fc9bb2d81e7ddc2d",
     "semantic_hash": ""
   },
   "src/pages/NotFoundPage.jsx": {
@@ -160,9 +160,9 @@
     "semantic_hash": "4715f58bf3ded7b4dea8dfd6a7f73c66"
   },
   "src/pages/PedidoTrackingPage.jsx": {
-    "mtime": 1786569426.6320546,
-    "ast_hash": "0b95923dbdd53c1d8e1431e905338acc",
-    "semantic_hash": "0b95923dbdd53c1d8e1431e905338acc"
+    "mtime": 1787109263.151157,
+    "ast_hash": "cc235b46b472860c589e08b7ca0eeb35",
+    "semantic_hash": ""
   },
   "tsconfig.json": {
     "mtime": 1786457559.6847067,
@@ -236,7 +236,17 @@
   },
   ".claude/settings.json": {
     "mtime": 1786846504.1987302,
-    "ast_hash": "d63945663ac5a70eebb1756ab927f4f5",
+    "ast_hash": "",
+    "semantic_hash": ""
+  },
+  "eslint.config.js": {
+    "mtime": 1787109478.396843,
+    "ast_hash": "9fd2935dee3cd7ed1ad4a96b703981a3",
+    "semantic_hash": ""
+  },
+  "src/components/AdminSidebar.jsx": {
+    "mtime": 1787109067.7850335,
+    "ast_hash": "1a2495f74f1db852772867d8303fe95e",
     "semantic_hash": ""
   }
 }

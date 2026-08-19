@@ -5,7 +5,6 @@ import { useCompany } from '../context/CompanyContext';
 import { getMesas } from '../api/client';
 import { TIPOS_FIJO, mesaStyle, fixStyle } from '../components/planoUtils';
 import QRInstructionsModal from '../components/QRInstructionsModal';
-import { useLocation } from 'react-router-dom';
 
 export default function ModeSelectPage() {
   const navigate = useNavigate();
@@ -17,7 +16,6 @@ export default function ModeSelectPage() {
   const [mesaSeleccionada, setMesaSeleccionada] = useState('');
   const [ocupadaMsg, setOcupadaMsg] = useState(false);
   const [showQrInstructions, setShowQrInstructions] = useState(false);
-  const location = useLocation();
 
   const lastOrder = (() => {
     try {
@@ -114,7 +112,6 @@ export default function ModeSelectPage() {
                 if (!cfg) return null;
                 return (
                   <div key={i} className={`plano-item plano-fix plano-fix-${fix.tipo}`} style={fixStyle(fix)}>
-                    <i className={`ti ${cfg.icon}`}></i>
                     <span>{cfg.label}</span>
                   </div>
                 );

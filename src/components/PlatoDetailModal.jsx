@@ -5,10 +5,12 @@ function formatear(n) {
   return '$' + Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
+const EMPTY = [];
+
 export default function PlatoDetailModal({ plato, onClose }) {
   const { addToCart } = useCart();
-  const presentaciones = plato?.presentaciones || [];
-  const agregados = plato?.agregados || [];
+  const presentaciones = plato?.presentaciones || EMPTY;
+  const agregados = plato?.agregados || EMPTY;
 
   const [presentacion, setPresentacion] = useState(null);
   const [seleccion, setSeleccion] = useState({});

@@ -27,6 +27,7 @@ export default function PlanoEditor({ mesas, busyIds, ordersPorMesa = {}, onQrMe
   const [dirty, setDirty] = useState(false);
   const canvasRef = useRef(null);
   const dragRef = useRef(null);
+  const endDragRef = useRef(null);
 
   useEffect(() => {
     setLocalMesas(mesas);
@@ -94,7 +95,10 @@ export default function PlanoEditor({ mesas, busyIds, ordersPorMesa = {}, onQrMe
     }
   };
 
-  useEffect(() => () => endDrag(), []);
+  useEffect(() => {
+    endDragRef.current = endDrag;
+  });
+  useEffect(() => () => endDragRef.current && endDragRef.current(), []);
 
   const addMesa = async () => {
     const numero = nextNumero(localMesas);
@@ -178,7 +182,7 @@ export default function PlanoEditor({ mesas, busyIds, ordersPorMesa = {}, onQrMe
       });
       await Promise.all(ops);
       await saveLayout(
-        fixtures.map(({ key, ...f }) => f)
+        fixtures.map(({ key: _key, ...f }) => f)
       );
       setDirty(false);
       notify('Plano guardado', 'success');
@@ -232,7 +236,6 @@ export default function PlanoEditor({ mesas, busyIds, ordersPorMesa = {}, onQrMe
               style={fixStyle(fix)}
               onPointerDown={(e) => { beginDrag('fix', fix.key, e); setSelected({ kind: 'fix', id: fix.key }); }}
             >
-              <i className={`ti ${cfg.icon}`}></i>
               <span>{cfg.label}</span>
             </div>
           );

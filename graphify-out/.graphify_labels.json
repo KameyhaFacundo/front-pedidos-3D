@@ -1,17 +1,15 @@
 {
-  "0": "ThemeContext.jsx",
-  "1": "AuthContext.jsx",
-  "2": "CartContext.jsx",
+  "0": "App.jsx",
+  "1": "useAuth",
+  "2": "devDependencies",
   "3": "client.js",
   "4": "PedidoTrackingPage.jsx",
-  "5": "App.jsx",
+  "5": "MenuPage.jsx",
   "6": "TypeScript Config",
-  "7": "PlanoEditor.jsx",
+  "7": "registrarArVista",
   "8": "package.json",
   "9": "LandingPage.jsx",
   "10": "CLAUDE.md",
-  "11": "CompanyContext.jsx",
-  "12": "Skeletons.jsx",
-  "13": "registrarArVista",
+  "11": "eslint.config.js",
   "14": "qrcode"
 }

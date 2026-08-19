@@ -8,7 +8,6 @@ import {
   createPlato,
   updatePlato,
   deletePlato,
-  togglePlatoDisponible,
   updatePedidoPago,
   updatePedidoEstado,
   cancelarPedido,
@@ -19,8 +18,8 @@ import {
 import { useSSE } from '../api/useSSE';
 import QRModal from '../components/QRModal';
 import PlanoEditor from '../components/PlanoEditor';
+import AdminSidebar from '../components/AdminSidebar';
 import { AdminSkeleton } from '../components/Skeletons';
-import { useTheme } from '../context/ThemeContext';
 import { useNotify } from '../context/NotificationContext';
 import { useAuth } from '../context/AuthContext';
 import { useCompany } from '../context/CompanyContext';
@@ -81,7 +80,7 @@ export default function AdminPage() {
   const [platos, setPlatos] = useState([]);
   const [mesas, setMesas] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filtro, setFiltro] = useState('');
+  const [filtro] = useState('');
   const [menuSearch, setMenuSearch] = useState('');
   const [configForm, setConfigForm] = useState({ nombre: '', whatsapp: '' });
   const [savingConfig, setSavingConfig] = useState(false);
@@ -280,15 +279,6 @@ export default function AdminPage() {
     }, { confirmText: 'Eliminar', danger: true });
   };
 
-  const handleToggleDisponible = async (id) => {
-    try {
-      await togglePlatoDisponible(id);
-      fetchPlatos();
-    } catch (e) {
-      notify(e.message, 'error');
-    }
-  };
-
   const handlePagar = async (id) => {
     try {
       await updatePedidoPago(id);
@@ -373,7 +363,6 @@ export default function AdminPage() {
       cateCounts[cat] = (cateCounts[cat] || 0) + (item.cantidad || 1);
     });
   });
-  const maxCate = Math.max(1, ...Object.values(cateCounts));
   const cateLabels = { principales: 'Principales', entradas: 'Entradas', postres: 'Postres', bebidas: 'Bebidas' };
 
   const hourlyData = (() => {
@@ -409,19 +398,18 @@ export default function AdminPage() {
   })();
   const maxVentasDia = Math.max(1, ...diasData.map((d) => d.ventas));
 
+  const rangoFechas = (() => {
+    const f = (d) => d.toLocaleDateString('es-AR', { day: 'numeric', month: 'short' });
+    return diasData.length ? `${f(diasData[0])} – ${f(diasData[diasData.length - 1])}` : '';
+  })();
+
+  const totalItemsVendidos = pedidos.reduce((sum, p) => {
+    if (p.estado === 'cancelado') return sum;
+    return sum + (p.items || []).reduce((s, i) => s + (i.cantidad || 1), 0);
+  }, 0);
+
   const cateEntries = Object.entries(cateCounts).sort((a, b) => b[1] - a[1]);
   const totalCateItems = cateEntries.reduce((s, [, c]) => s + c, 0) || 1;
-
-  const arVistasData = (() => {
-    if (!metricas?.ar_vistas) return [];
-    const arVistas = metricas.ar_vistas;
-    return platosMasPedidos.map(([nombre, pedidosCount]) => {
-      const plato = platos.find((p) => p.nombre === nombre);
-      const vistas = plato ? (arVistas[plato.id] || 0) : 0;
-      const conversion = pedidosCount > 0 ? Math.round((pedidosCount / Math.max(vistas, 1)) * 100) : 0;
-      return { nombre, vistas, pedidos: pedidosCount, conversion };
-    });
-  })();
 
   if (loading) return <AdminSkeleton />;
 
@@ -700,7 +688,7 @@ export default function AdminPage() {
                       onClick={async () => {
                         const base = import.meta.env.VITE_APP_URL || window.location.origin;
                         let slug = null;
-                        try { slug = localStorage.getItem('pidevo_slug'); } catch (e) {}
+                        try { slug = localStorage.getItem('pidevo_slug'); } catch {}
                         if (!slug) {
                           const m = window.location.pathname.match(/^\/([^\/]+)(?:\/|$)/);
                           if (m && !['admin', 'cocina', 'login', 'llamados', 'landing'].includes(m[1])) slug = m[1];
@@ -749,8 +737,8 @@ export default function AdminPage() {
         <div className={`view ${view === 'metricas' ? 'active' : ''}`}>
           <div className="admin-top">
             <div>
-              <div className="admin-title">Métricas</div>
-              <div className="admin-subtitle">Últimos 7 días</div>
+            <div className="admin-title">Métricas</div>
+            <div className="admin-subtitle">Últimos 7 días · {rangoFechas}</div>
             </div>
           </div>
 
@@ -779,7 +767,7 @@ export default function AdminPage() {
             <div className="kpi-card kpi-muted">
               <div className="kpi-icon"><i className="ti ti-tools-kitchen-2"></i></div>
               <div className="kpi-body">
-                <div className="kpi-value">{platosMasPedidos.length}</div>
+                <div className="kpi-value">{totalItemsVendidos}</div>
                 <div className="kpi-label">Platos vendidos</div>
               </div>
             </div>
@@ -788,12 +776,15 @@ export default function AdminPage() {
           <div className="metric-grid">
             <div className="metric-block">
               <div className="metric-block-head">
-                <h3>Facturación por día</h3>
+                <div className="metric-block-title">
+                  <span className="metric-block-icon block-ember"><i className="ti ti-chart-line"></i></span>
+                  <h3>Facturación por día</h3>
+                </div>
                 <span className="metric-hint">últimos 7 días</span>
               </div>
               <div className="day-chart">
-                {diasData.map((d) => (
-                  <div key={d.key} className="day-bar-wrap">
+                {diasData.map((d, idx) => (
+                  <div key={d.key} className={`day-bar-wrap ${idx === diasData.length - 1 ? 'today' : ''}`}>
                     <div className="day-bar-val">{d.ventas > 0 ? `$${Math.round(d.ventas).toLocaleString('es-AR')}` : ''}</div>
                     <div className="day-bar-track">
                       <div
@@ -809,7 +800,10 @@ export default function AdminPage() {
 
             <div className="metric-block">
               <div className="metric-block-head">
-                <h3>Pedidos por hora</h3>
+                <div className="metric-block-title">
+                  <span className="metric-block-icon block-gold"><i className="ti ti-clock-hour"></i></span>
+                  <h3>Pedidos por hora</h3>
+                </div>
                 <span className="metric-hint">distribución diaria</span>
               </div>
               <div className="hour-chart">
@@ -826,7 +820,10 @@ export default function AdminPage() {
 
             <div className="metric-block">
               <div className="metric-block-head">
-                <h3>Platos más pedidos</h3>
+                <div className="metric-block-title">
+                  <span className="metric-block-icon block-herb"><i className="ti ti-trophy"></i></span>
+                  <h3>Platos más pedidos</h3>
+                </div>
                 <span className="metric-hint">ranking</span>
               </div>
               {platosMasPedidos.length === 0 && (
@@ -853,7 +850,10 @@ export default function AdminPage() {
 
             <div className="metric-block">
               <div className="metric-block-head">
-                <h3>Por categoría</h3>
+                <div className="metric-block-title">
+                  <span className="metric-block-icon block-muted"><i className="ti ti-category-2"></i></span>
+                  <h3>Por categoría</h3>
+                </div>
                 <span className="metric-hint">volumen de venta</span>
               </div>
               {cateEntries.length === 0 && (
@@ -1167,49 +1167,5 @@ export default function AdminPage() {
 
       <QRModal mesa={qrMesa} onClose={() => setQrMesa(null)} />
     </div>
-  );
-}
-
-function AdminSidebar({ view, setView, open, onToggle, onLogout }) {
-  const { theme, toggleTheme } = useTheme();
-  const items = [
-    { key: 'pedidos', label: 'Pedidos', icon: 'ti-receipt' },
-    { key: 'menu', label: 'Menú', icon: 'ti-tools-kitchen-2' },
-    { key: 'mesas', label: 'Mesas', icon: 'ti-layout-grid' },
-    { key: 'metricas', label: 'Métricas', icon: 'ti-chart-bar' },
-    { key: 'configuracion', label: 'Configuración', icon: 'ti-settings' },
-  ];
-
-  return (
-    <aside className={`admin-sidebar ${open ? 'open' : ''}`}>
-      <div className="admin-sidebar-header">
-        <div className="admin-brand"><img src="/pidevo.png" alt="Pidevo" className="brand-logo" /></div>
-        <button className="hamburger in-sidebar" onClick={onToggle} aria-label="Cerrar menú">
-          <i className="ti ti-x"></i>
-        </button>
-      </div>
-      <nav className="admin-nav">
-        {items.map(({ key, label, icon }) => (
-          <div
-            key={key}
-            className={`admin-nav-item ${view === key ? 'active' : ''}`}
-            onClick={() => setView(key)}
-          >
-            <i className={`ti ${icon}`}></i>
-            {label}
-          </div>
-        ))}
-      </nav>
-      <div className="admin-sidebar-bottom">
-        <button className="theme-toggle admin-theme-toggle" onClick={toggleTheme}>
-          <i className={`ti ${theme === 'dark' ? 'ti-sun' : 'ti-moon'}`}></i>
-          {theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
-        </button>
-        <button className="admin-logout" onClick={onLogout}>
-          <i className="ti ti-logout"></i>
-          Cerrar sesión
-        </button>
-      </div>
-    </aside>
   );
 }

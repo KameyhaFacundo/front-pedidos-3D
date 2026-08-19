@@ -66,22 +66,15 @@ export default function PedidoTrackingPage() {
     [id]
   );
 
-  if (hasToken) {
-    useSSE(handleSSE);
-  } else {
-    useEffect(() => {
-      const interval = setInterval(fetchPedido, 5000);
-      return () => clearInterval(interval);
-    }, [fetchPedido]);
-  }
+  useSSE(handleSSE);
 
-  // Fallback polling for token users in case SSE misses events
+  // Polling: token users cada 8s (fallback por si SSE pierde eventos);
+  // sin token cada 5s (no hay SSE disponible).
   useEffect(() => {
-    if (!hasToken) return;
     const interval = setInterval(() => {
       fetchPedido();
-      setLastUpdated(new Date());
-    }, 8000);
+      if (hasToken) setLastUpdated(new Date());
+    }, hasToken ? 8000 : 5000);
     return () => clearInterval(interval);
   }, [fetchPedido, hasToken]);
 
