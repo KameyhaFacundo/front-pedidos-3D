@@ -1471,3 +1471,42 @@
   padding-top: 20px;
   border-top: 1px solid var(--hair);
 }
+
+.pedidos-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.pedidos-filtro {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--hair);
+  background: transparent;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.pedidos-filtro:hover { color: var(--cream); background: var(--surface-2); }
+
+.pedidos-filtro.active {
+  background: rgba(var(--ember-rgb), 0.16);
+  border-color: rgba(var(--ember-rgb), 0.4);
+  color: var(--ember);
+}
+
+.pedidos-filtro-count {
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--surface-2);
+  padding: 1px 7px;
+  border-radius: var(--radius-pill);
+  font-variant-numeric: tabular-nums;
+}

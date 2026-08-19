@@ -194,7 +194,7 @@ export default function AdminPage() {
 
   return (
     <div className="admin-layout">
-      <AdminSidebar view={view} setView={setView} open={sidebarOpen} onToggle={() => setSidebarOpen((v) => !v)} onLogout={handleLogout} />
+      <AdminSidebar view={view} setView={setView} open={sidebarOpen} onToggle={() => setSidebarOpen((v) => !v)} onLogout={handleLogout} slug={slug} />
       {sidebarOpen && <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />}
 
       <div className="admin-main">

@@ -1,7 +1,7 @@
 {
   "package.json": {
-    "mtime": 1787109131.9990156,
-    "ast_hash": "53d9bdae798a96d3c5a20ae7e1861aa1",
+    "mtime": 1787110562.0240698,
+    "ast_hash": "3ff11008ba7a55d94eba019110b3816f",
     "semantic_hash": ""
   },
   "src/App.jsx": {
@@ -110,8 +110,8 @@
     "semantic_hash": "978e7f5171abbe9f1c72da6ea776bf1d"
   },
   "src/pages/AdminPage.jsx": {
-    "mtime": 1787109918.87222,
-    "ast_hash": "f99b5aab91710c7d4bee41b9b399b8f4",
+    "mtime": 1787111036.347266,
+    "ast_hash": "639c377548f742ff568817c1b460c192",
     "semantic_hash": ""
   },
   "src/pages/CartPage.jsx": {
@@ -247,6 +247,51 @@
   "src/components/AdminSidebar.jsx": {
     "mtime": 1787109783.2418475,
     "ast_hash": "2ea3d2060f0dbd0bf1747ce67df8b9e2",
+    "semantic_hash": ""
+  },
+  "src/components/adminUtils.js": {
+    "mtime": 1787110834.5382903,
+    "ast_hash": "f57cdd52adf2e328ca3a8e1d7a91de70",
+    "semantic_hash": ""
+  },
+  "src/components/adminUtils.test.js": {
+    "mtime": 1787110810.052901,
+    "ast_hash": "63d1a01a29415f786419fb635f65940f",
+    "semantic_hash": ""
+  },
+  "src/components/admin/AdminConfigView.jsx": {
+    "mtime": 1787110307.5774596,
+    "ast_hash": "34332568472d933515fd6b355abc1cb3",
+    "semantic_hash": ""
+  },
+  "src/components/admin/AdminMenuView.jsx": {
+    "mtime": 1787110256.3363237,
+    "ast_hash": "4328e8a567640b061fc38cce808b2540",
+    "semantic_hash": ""
+  },
+  "src/components/admin/AdminMesasView.jsx": {
+    "mtime": 1787110281.061422,
+    "ast_hash": "6c4a911e2fe03f06699399a6b7cf0dd8",
+    "semantic_hash": ""
+  },
+  "src/components/admin/AdminMetricasView.jsx": {
+    "mtime": 1787110745.332456,
+    "ast_hash": "c807e8c40a157f5feeafb31b6fe9202d",
+    "semantic_hash": ""
+  },
+  "src/components/admin/AdminPedidosView.jsx": {
+    "mtime": 1787110793.661753,
+    "ast_hash": "47eb19b4589b979eb34d3dfa62b32cb3",
+    "semantic_hash": ""
+  },
+  "src/components/admin/PlatoModal.jsx": {
+    "mtime": 1787110339.5355754,
+    "ast_hash": "1cb054dc8d21dc8dcd8ab25106d750bf",
+    "semantic_hash": ""
+  },
+  "src/components/planoUtils.test.js": {
+    "mtime": 1787110651.4557333,
+    "ast_hash": "6b390780b7af48528b8ca8aefb450c64",
     "semantic_hash": ""
   }
 }

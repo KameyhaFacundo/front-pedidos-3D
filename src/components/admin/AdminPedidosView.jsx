@@ -1,7 +1,17 @@
+import { useState } from 'react';
 import { COLUMNAS, formatearPrecio, tiempoRelativo, descargarCSV } from '../adminUtils';
 
+const FILTROS = [
+  { key: '', label: 'Todos' },
+  { key: 'mesa', label: 'Mesa' },
+  { key: 'envio', label: 'Envío' },
+  { key: 'retiro', label: 'Retiro' },
+];
+
 export default function AdminPedidosView({ active, pedidos, metricas, slug, onAvanzar, onPagar, onCancelar }) {
-  const porColumna = (estado) => pedidos.filter((p) => p.estado === estado);
+  const [filtro, setFiltro] = useState('');
+  const visibles = filtro ? pedidos.filter((p) => p.tipo === filtro) : pedidos;
+  const porColumna = (estado) => visibles.filter((p) => p.estado === estado);
 
   return (
     <div className={`view ${active ? 'active' : ''}`}>
@@ -13,6 +23,21 @@ export default function AdminPedidosView({ active, pedidos, metricas, slug, onAv
         <button className="btn btn-sm" onClick={() => descargarCSV(pedidos, slug)}>
           <i className="ti ti-download"></i> Exportar CSV
         </button>
+      </div>
+
+      <div className="pedidos-filtros">
+        {FILTROS.map(({ key, label }) => {
+          const count = key ? pedidos.filter((p) => p.tipo === key).length : pedidos.length;
+          return (
+            <button
+              key={key}
+              className={`pedidos-filtro ${filtro === key ? 'active' : ''}`}
+              onClick={() => setFiltro(key)}
+            >
+              {label} <span className="pedidos-filtro-count">{count}</span>
+            </button>
+          );
+        })}
       </div>
 
       <div className="admin-metrics">

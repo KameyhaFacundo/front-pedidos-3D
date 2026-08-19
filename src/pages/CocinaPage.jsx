@@ -1,7 +1,8 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { getPedidos, updatePedidoEstado, cancelarPedido } from '../api/client';
 import { useSSE } from '../api/useSSE';
 import { useNotify } from '../context/NotificationContext';
+import { playNewOrderSound, soundEnabled } from '../components/adminUtils';
 
 const ESTADOS = [
   { key: '', label: 'Todos' },
@@ -31,10 +32,12 @@ export default function CocinaPage() {
   const [error, setError] = useState(null);
   const [filtro, setFiltro] = useState('');
   const [updating, setUpdating] = useState(null);
+  const seenIdsRef = useRef(new Set());
 
   const fetchPedidos = useCallback(() => {
     getPedidos(filtro || undefined)
       .then((data) => {
+        data.forEach((p) => seenIdsRef.current.add(p.id));
         setPedidos(data);
         setLoading(false);
         setError(null);
@@ -51,6 +54,14 @@ export default function CocinaPage() {
   }, [fetchPedidos]);
 
   const handleSSEUpdate = useCallback((updated) => {
+    const nuevas = [];
+    updated.forEach((p) => {
+      if (!seenIdsRef.current.has(p.id)) {
+        seenIdsRef.current.add(p.id);
+        if (p.estado === 'nuevo') nuevas.push(p);
+      }
+    });
+    if (nuevas.length > 0 && soundEnabled()) playNewOrderSound();
     setPedidos((prev) => {
       const map = new Map(prev.map((p) => [p.id, p]));
       updated.forEach((p) => map.set(p.id, p));
@@ -59,6 +70,12 @@ export default function CocinaPage() {
   }, []);
 
   useSSE(handleSSEUpdate);
+
+  const baseTitle = 'Pidevo Cocina';
+  useEffect(() => {
+    const nuevos = pedidos.filter((p) => p.estado === 'nuevo').length;
+    document.title = nuevos > 0 ? `(${nuevos}) ${baseTitle}` : baseTitle;
+  }, [pedidos]);
 
   const handleEstadoChange = async (pedidoId, nuevoEstado) => {
     setUpdating(pedidoId);

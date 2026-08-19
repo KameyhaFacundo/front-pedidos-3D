@@ -1,15 +1,26 @@
+import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 
 const ITEMS = [
   { key: 'metricas', label: 'Métricas', icon: 'ti-chart-bar' },
   { key: 'pedidos', label: 'Pedidos', icon: 'ti-receipt' },
+  { key: 'cocina', label: 'Cocina', icon: 'ti-chef-hat', route: 'cocina' },
   { key: 'menu', label: 'Menú', icon: 'ti-tools-kitchen-2' },
   { key: 'mesas', label: 'Mesas', icon: 'ti-layout-grid' },
   { key: 'configuracion', label: 'Configuración', icon: 'ti-settings' },
 ];
 
-export default function AdminSidebar({ view, setView, open, onToggle, onLogout }) {
+export default function AdminSidebar({ view, setView, open, onToggle, onLogout, slug }) {
   const { theme, toggleTheme } = useTheme();
+  const navigate = useNavigate();
+
+  const handleClick = (item) => {
+    if (item.route) {
+      navigate(`/${slug}/${item.route}`);
+    } else {
+      setView(item.key);
+    }
+  };
 
   return (
     <aside className={`admin-sidebar ${open ? 'open' : ''}`}>
@@ -20,14 +31,14 @@ export default function AdminSidebar({ view, setView, open, onToggle, onLogout }
         </button>
       </div>
       <nav className="admin-nav">
-        {ITEMS.map(({ key, label, icon }) => (
+        {ITEMS.map((item) => (
           <div
-            key={key}
-            className={`admin-nav-item ${view === key ? 'active' : ''}`}
-            onClick={() => setView(key)}
+            key={item.key}
+            className={`admin-nav-item ${view === item.key ? 'active' : ''}`}
+            onClick={() => handleClick(item)}
           >
-            <i className={`ti ${icon}`}></i>
-            {label}
+            <i className={`ti ${item.icon}`}></i>
+            {item.label}
           </div>
         ))}
       </nav>

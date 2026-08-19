@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { getLlamados, atenderLlamado } from '../api/client';
 import { useSSE } from '../api/useSSE';
+import { playNewOrderSound, soundEnabled } from '../components/adminUtils';
 
 export default function LlamadosPage() {
   const [llamados, setLlamados] = useState([]);
@@ -8,10 +9,20 @@ export default function LlamadosPage() {
   const [error, setError] = useState(null);
   const [attending, setAttending] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
+  const seenIdsRef = useRef(new Set());
+  const primeraCargaRef = useRef(true);
 
   const fetchLlamados = useCallback(() => {
     getLlamados()
       .then((data) => {
+        if (primeraCargaRef.current) {
+          primeraCargaRef.current = false;
+          data.forEach((l) => seenIdsRef.current.add(l.id));
+        } else {
+          const nuevas = data.filter((l) => !seenIdsRef.current.has(l.id));
+          nuevas.forEach((l) => seenIdsRef.current.add(l.id));
+          if (nuevas.length > 0 && soundEnabled()) playNewOrderSound();
+        }
         setLlamados(data);
         setLoading(false);
         setError(null);
@@ -27,6 +38,11 @@ export default function LlamadosPage() {
   }, [fetchLlamados]);
 
   useSSE(null, fetchLlamados);
+
+  const baseTitle = 'Pidevo Llamados';
+  useEffect(() => {
+    document.title = llamados.length > 0 ? `(${llamados.length}) ${baseTitle}` : baseTitle;
+  }, [llamados]);
 
   const handleAtender = async (llamadoId, mesaNumero) => {
     setAttending(llamadoId);

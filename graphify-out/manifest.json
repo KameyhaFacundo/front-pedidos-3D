@@ -110,8 +110,8 @@
     "semantic_hash": "978e7f5171abbe9f1c72da6ea776bf1d"
   },
   "src/pages/AdminPage.jsx": {
-    "mtime": 1787111036.347266,
-    "ast_hash": "639c377548f742ff568817c1b460c192",
+    "mtime": 1787111429.703807,
+    "ast_hash": "56926a22d210d615bd85f46e602ede85",
     "semantic_hash": ""
   },
   "src/pages/CartPage.jsx": {
@@ -250,8 +250,8 @@
     "semantic_hash": ""
   },
   "src/components/adminUtils.js": {
-    "mtime": 1787110834.5382903,
-    "ast_hash": "f57cdd52adf2e328ca3a8e1d7a91de70",
+    "mtime": 1787111389.207061,
+    "ast_hash": "41925ae8bce061017ee6241d13ab75ea",
     "semantic_hash": ""
   },
   "src/components/adminUtils.test.js": {
@@ -260,8 +260,8 @@
     "semantic_hash": ""
   },
   "src/components/admin/AdminConfigView.jsx": {
-    "mtime": 1787110307.5774596,
-    "ast_hash": "34332568472d933515fd6b355abc1cb3",
+    "mtime": 1787111401.891211,
+    "ast_hash": "3aaa558316b78ad21a51921c6d2b8542",
     "semantic_hash": ""
   },
   "src/components/admin/AdminMenuView.jsx": {
@@ -292,6 +292,11 @@
   "src/components/planoUtils.test.js": {
     "mtime": 1787110651.4557333,
     "ast_hash": "6b390780b7af48528b8ca8aefb450c64",
+    "semantic_hash": ""
+  },
+  ".github/workflows/ci.yml": {
+    "mtime": 1787111367.0625916,
+    "ast_hash": "66c7788a7e4a22e0f937a0d57521c038",
     "semantic_hash": ""
   }
 }
