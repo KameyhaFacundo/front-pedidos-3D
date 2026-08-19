@@ -41,10 +41,17 @@ export default function CocinaPage() {
   const [filtro, setFiltro] = useState('');
   const [updating, setUpdating] = useState(null);
   const seenIdsRef = useRef(new Set());
+  const primeraCargaRef = useRef(true);
 
   const fetchPedidos = useCallback(() => {
     getPedidos(filtro || undefined)
       .then((data) => {
+        const nuevas = data.filter((p) => !seenIdsRef.current.has(p.id) && p.estado === 'nuevo');
+        if (primeraCargaRef.current) {
+          primeraCargaRef.current = false;
+        } else if (nuevas.length > 0 && soundEnabled()) {
+          playNewOrderSound();
+        }
         data.forEach((p) => seenIdsRef.current.add(p.id));
         setPedidos(data);
         setLoading(false);
@@ -73,11 +80,24 @@ export default function CocinaPage() {
     setPedidos((prev) => {
       const map = new Map(prev.map((p) => [p.id, p]));
       updated.forEach((p) => map.set(p.id, p));
-      return Array.from(map.values()).sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      let list = Array.from(map.values());
+      if (filtro) list = list.filter((p) => p.estado === filtro);
+      return list.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
     });
-  }, []);
+  }, [filtro]);
 
-  useSSE(handleSSEUpdate);
+  useSSE(handleSSEUpdate, null, fetchPedidos);
+
+  useEffect(() => {
+    const id = setInterval(fetchPedidos, 30000);
+    return () => clearInterval(id);
+  }, [fetchPedidos]);
+
+  useEffect(() => {
+    const onFocus = () => fetchPedidos();
+    window.addEventListener('focus', onFocus);
+    return () => window.removeEventListener('focus', onFocus);
+  }, [fetchPedidos]);
 
   const baseTitle = 'Pidevo Cocina';
   useEffect(() => {

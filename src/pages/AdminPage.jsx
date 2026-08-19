@@ -22,6 +22,7 @@ import AdminMenuView from '../components/admin/AdminMenuView';
 import AdminMesasView from '../components/admin/AdminMesasView';
 import AdminMetricasView from '../components/admin/AdminMetricasView';
 import AdminConfigView from '../components/admin/AdminConfigView';
+import AdminEquipoView from '../components/admin/AdminEquipoView';
 import PlatoModal from '../components/admin/PlatoModal';
 import { useNotify } from '../context/NotificationContext';
 import { useAuth } from '../context/AuthContext';
@@ -270,6 +271,8 @@ export default function AdminPage() {
         />
 
         <AdminMetricasView active={view === 'metricas'} pedidos={pedidos} />
+
+        <AdminEquipoView active={view === 'equipo'} notify={notify} />
 
         <AdminConfigView
           active={view === 'configuracion'}

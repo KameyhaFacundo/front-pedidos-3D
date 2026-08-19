@@ -1,18 +1,15 @@
 import { useState, useEffect, useCallback } from 'react';
 import { soundEnabled, setSoundEnabled } from '../adminUtils';
-import { getCupones, createCupon, toggleCupon, deleteCupon, getStaff, createStaff, deleteStaff } from '../../api/client';
+import { getCupones, createCupon, updateCupon, toggleCupon, deleteCupon } from '../../api/client';
 
 const EMPTY_CUPON = { codigo: '', descuento: '', tipo: 'fijo' };
-const EMPTY_STAFF = { nombre: '', email: '', password: '' };
 
 export default function AdminConfigView({ active, configForm, setConfigForm, onSave, saving, notify }) {
   const [soundOn, setSoundOn] = useState(soundEnabled);
   const [cupones, setCupones] = useState([]);
   const [cuponForm, setCuponForm] = useState(EMPTY_CUPON);
   const [savingCupon, setSavingCupon] = useState(false);
-  const [staff, setStaff] = useState([]);
-  const [staffForm, setStaffForm] = useState(EMPTY_STAFF);
-  const [savingStaff, setSavingStaff] = useState(false);
+  const [editingCuponId, setEditingCuponId] = useState(null);
 
   const toggleSound = () => {
     const v = !soundOn;
@@ -24,34 +21,44 @@ export default function AdminConfigView({ active, configForm, setConfigForm, onS
     getCupones().then(setCupones).catch(() => {});
   }, []);
 
-  const loadStaff = useCallback(() => {
-    getStaff().then(setStaff).catch(() => {});
-  }, []);
-
   useEffect(() => {
-    if (active) {
-      loadCupones();
-      loadStaff();
-    }
-  }, [active, loadCupones, loadStaff]);
+    if (active) loadCupones();
+  }, [active, loadCupones]);
 
-  const handleAddCupon = async () => {
+  const handleEditCupon = (c) => {
+    setEditingCuponId(c.id);
+    setCuponForm({ codigo: c.codigo, descuento: c.descuento, tipo: c.tipo });
+  };
+
+  const handleCancelEditCupon = () => {
+    setEditingCuponId(null);
+    setCuponForm(EMPTY_CUPON);
+  };
+
+  const handleSubmitCupon = async () => {
     if (!cuponForm.codigo.trim() || cuponForm.descuento === '') {
       notify('Completá el código y el descuento', 'error');
       return;
     }
     setSavingCupon(true);
     try {
-      await createCupon({
+      const data = {
         codigo: cuponForm.codigo.trim(),
         descuento: Number(cuponForm.descuento),
         tipo: cuponForm.tipo,
-      });
+      };
+      if (editingCuponId) {
+        await updateCupon(editingCuponId, data);
+        notify('Cupón actualizado', 'success');
+      } else {
+        await createCupon(data);
+        notify('Cupón creado', 'success');
+      }
       setCuponForm(EMPTY_CUPON);
+      setEditingCuponId(null);
       loadCupones();
-      notify('Cupón creado', 'success');
     } catch (err) {
-      notify(err.message || 'Error al crear el cupón', 'error');
+      notify(err.message || 'Error al guardar el cupón', 'error');
     } finally {
       setSavingCupon(false);
     }
@@ -70,43 +77,11 @@ export default function AdminConfigView({ active, configForm, setConfigForm, onS
     if (!window.confirm(`¿Eliminar el cupón ${c.codigo}?`)) return;
     try {
       await deleteCupon(c.id);
+      if (editingCuponId === c.id) handleCancelEditCupon();
       loadCupones();
       notify('Cupón eliminado', 'success');
     } catch (err) {
       notify(err.message || 'Error al eliminar el cupón', 'error');
-    }
-  };
-
-  const handleAddStaff = async () => {
-    if (!staffForm.nombre.trim() || !staffForm.email.trim() || !staffForm.password) {
-      notify('Completá todos los campos', 'error');
-      return;
-    }
-    setSavingStaff(true);
-    try {
-      await createStaff({
-        nombre: staffForm.nombre.trim(),
-        email: staffForm.email.trim(),
-        password: staffForm.password,
-      });
-      setStaffForm(EMPTY_STAFF);
-      loadStaff();
-      notify('Usuario invitado', 'success');
-    } catch (err) {
-      notify(err.message || 'Error al invitar', 'error');
-    } finally {
-      setSavingStaff(false);
-    }
-  };
-
-  const handleDeleteStaff = async (u) => {
-    if (!window.confirm(`¿Eliminar el acceso de ${u.name}?`)) return;
-    try {
-      await deleteStaff(u.id);
-      loadStaff();
-      notify('Usuario eliminado', 'success');
-    } catch (err) {
-      notify(err.message || 'Error al eliminar', 'error');
     }
   };
 
@@ -119,6 +94,7 @@ export default function AdminConfigView({ active, configForm, setConfigForm, onS
         </div>
       </div>
 
+      <div className="settings-page">
       <div className="settings-card">
         <div className="settings-head">
           <i className="ti ti-building-store"></i>
@@ -162,14 +138,15 @@ export default function AdminConfigView({ active, configForm, setConfigForm, onS
             disabled={saving || !configForm.nombre.trim()}
             onClick={onSave}
           >
-            {saving ? 'Guardando...' : 'Guardar cambios'}
+            <i className="ti ti-device-floppy"></i>
+            <span>{saving ? 'Guardando...' : 'Guardar cambios'}</span>
           </button>
         </div>
       </div>
 
       <div className="settings-card">
         <div className="settings-head">
-          <i className="ti ti-ticket"></i>
+          <i className="ti ti-ticket icon-ember"></i>
           <div>
             <div className="settings-title">Cupones de descuento</div>
             <div className="settings-sub">Los clientes los aplican al finalizar su pedido</div>
@@ -204,24 +181,52 @@ export default function AdminConfigView({ active, configForm, setConfigForm, onS
               <option value="porcentaje">Porcentaje (%)</option>
             </select>
           </div>
-          <button className="modal-save" disabled={savingCupon} onClick={handleAddCupon}>
-            {savingCupon ? 'Creando...' : 'Agregar cupón'}
-          </button>
+          <div className="field field-btn">
+            <label>Acción</label>
+            <button className="modal-save" disabled={savingCupon} onClick={handleSubmitCupon}>
+              <i className={`ti ${editingCuponId ? 'ti-device-floppy' : 'ti-plus'}`}></i>
+              <span>
+                {savingCupon
+                  ? 'Guardando...'
+                  : editingCuponId
+                  ? 'Guardar cambios'
+                  : 'Agregar cupón'}
+              </span>
+            </button>
+          </div>
         </div>
 
+        {editingCuponId && (
+          <button className="settings-cancel-edit" onClick={handleCancelEditCupon}>
+            Cancelar edición
+          </button>
+        )}
+
         {cupones.length === 0 ? (
-          <p className="settings-empty">Todavía no creaste cupones.</p>
+          <div className="settings-empty">
+            <i className="ti ti-ticket-off"></i>
+            <span>Todavía no creaste cupones.</span>
+          </div>
         ) : (
           <div className="settings-list">
             {cupones.map((c) => (
-              <div key={c.id} className="settings-row">
+              <div key={c.id} className={`settings-row ${editingCuponId === c.id ? 'editing' : ''}`}>
+                <div className="settings-cupon-icon">
+                  <i className="ti ti-ticket"></i>
+                </div>
                 <div className="settings-row-info">
                   <span className="settings-cupon-code">{c.codigo}</span>
                   <span className="settings-cupon-value">
                     {c.tipo === 'porcentaje' ? `${c.descuento}%` : `$${c.descuento}`}
                   </span>
                 </div>
+                <span className={`settings-status ${c.activo ? 'on' : ''}`}>
+                  {c.activo ? 'Activo' : 'Inactivo'}
+                </span>
                 <div className={`switch ${c.activo ? 'on' : ''}`} onClick={() => handleToggleCupon(c)} />
+                <button className="icon-btn" onClick={() => handleEditCupon(c)} aria-label={`Editar ${c.codigo}`}>
+                  <i className="ti ti-pencil"></i>
+                </button>
                 <button className="icon-btn danger" onClick={() => handleDeleteCupon(c)} aria-label={`Eliminar ${c.codigo}`}>
                   <i className="ti ti-trash"></i>
                 </button>
@@ -230,66 +235,6 @@ export default function AdminConfigView({ active, configForm, setConfigForm, onS
           </div>
         )}
       </div>
-
-      <div className="settings-card">
-        <div className="settings-head">
-          <i className="ti ti-users"></i>
-          <div>
-            <div className="settings-title">Equipo</div>
-            <div className="settings-sub">Invita a tu personal para que accedan al panel</div>
-          </div>
-        </div>
-
-        <div className="staff-form">
-          <div className="field">
-            <label>Nombre</label>
-            <input
-              type="text"
-              value={staffForm.nombre}
-              onChange={(e) => setStaffForm((prev) => ({ ...prev, nombre: e.target.value }))}
-              placeholder="Ej: Cocinero"
-            />
-          </div>
-          <div className="field">
-            <label>Email</label>
-            <input
-              type="email"
-              value={staffForm.email}
-              onChange={(e) => setStaffForm((prev) => ({ ...prev, email: e.target.value }))}
-              placeholder="Ej: cocina@milocal.com"
-            />
-          </div>
-          <div className="field">
-            <label>Contraseña</label>
-            <input
-              type="password"
-              value={staffForm.password}
-              onChange={(e) => setStaffForm((prev) => ({ ...prev, password: e.target.value }))}
-              placeholder="Mínimo 6 caracteres"
-            />
-          </div>
-          <button className="modal-save" disabled={savingStaff} onClick={handleAddStaff}>
-            {savingStaff ? 'Invitando...' : 'Invitar'}
-          </button>
-        </div>
-
-        {staff.length === 0 ? (
-          <p className="settings-empty">Todavía no hay personal invitado.</p>
-        ) : (
-          <div className="settings-list">
-            {staff.map((u) => (
-              <div key={u.id} className="settings-row">
-                <div className="settings-row-info">
-                  <span className="settings-staff-name">{u.name}</span>
-                  <span className="settings-staff-email">{u.email}</span>
-                </div>
-                <button className="icon-btn danger" onClick={() => handleDeleteStaff(u)} aria-label={`Eliminar ${u.name}`}>
-                  <i className="ti ti-trash"></i>
-                </button>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
     </div>
   );

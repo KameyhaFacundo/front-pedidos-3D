@@ -7,6 +7,7 @@ const ITEMS = [
   { key: 'cocina', label: 'Cocina', icon: 'ti-chef-hat', route: 'cocina' },
   { key: 'menu', label: 'Menú', icon: 'ti-tools-kitchen-2' },
   { key: 'mesas', label: 'Mesas', icon: 'ti-layout-grid' },
+  { key: 'equipo', label: 'Equipo', icon: 'ti-users' },
   { key: 'configuracion', label: 'Configuración', icon: 'ti-settings' },
 ];
 

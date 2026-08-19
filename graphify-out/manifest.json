@@ -15,9 +15,9 @@
     "semantic_hash": ""
   },
   "src/api/useSSE.js": {
-    "mtime": 1786543969.923262,
-    "ast_hash": "743caaab0b5a5496c9c918f160d6f2e3",
-    "semantic_hash": "743caaab0b5a5496c9c918f160d6f2e3"
+    "mtime": 1787154724.8107822,
+    "ast_hash": "ae6d359cb9830c38e531225ef56576ef",
+    "semantic_hash": ""
   },
   "src/components/ARViewer.jsx": {
     "mtime": 1786544397.4176383,
@@ -125,8 +125,8 @@
     "semantic_hash": "eec346959779d673f9a7af38e6bd3c8b"
   },
   "src/pages/CocinaPage.jsx": {
-    "mtime": 1787154142.9248874,
-    "ast_hash": "70112fb2b88952cf0285a50d067cb3fb",
+    "mtime": 1787154741.5755527,
+    "ast_hash": "fb4d77414e41f46361af489aa613f8d6",
     "semantic_hash": ""
   },
   "src/pages/LandingPage.jsx": {
@@ -236,7 +236,7 @@
   },
   ".claude/settings.json": {
     "mtime": 1786846504.1987302,
-    "ast_hash": "d63945663ac5a70eebb1756ab927f4f5",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "eslint.config.js": {
@@ -260,8 +260,8 @@
     "semantic_hash": ""
   },
   "src/components/admin/AdminConfigView.jsx": {
-    "mtime": 1787147399.0301294,
-    "ast_hash": "ec1217eebdd26764c37c495045947112",
+    "mtime": 1787160645.3037772,
+    "ast_hash": "8d68a22fd3e890f6a0e69b7ba2a75b83",
     "semantic_hash": ""
   },
   "src/components/admin/AdminMenuView.jsx": {
