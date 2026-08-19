@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
   getPedidos,
   getMetricas,
@@ -33,7 +33,17 @@ export default function AdminPage() {
   const { logout } = useAuth();
   const { slug } = useCompany();
   const navigate = useNavigate();
-  const [view, setView] = useState('pedidos');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [view, setView] = useState(searchParams.get('view') || 'pedidos');
+
+  useEffect(() => {
+    const v = searchParams.get('view');
+    if (v && v !== view) setView(v);
+  }, [searchParams, view]);
+
+  useEffect(() => {
+    setSearchParams({ view }, { replace: true });
+  }, [view, setSearchParams]);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [pedidos, setPedidos] = useState([]);
   const [metricas, setMetricas] = useState(null);

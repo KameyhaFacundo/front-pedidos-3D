@@ -10,16 +10,12 @@ const ITEMS = [
   { key: 'configuracion', label: 'Configuración', icon: 'ti-settings' },
 ];
 
-export default function AdminSidebar({ view, setView, open, onToggle, onLogout, slug }) {
+export default function AdminSidebar({ view, setView: _setView, open, onToggle, onLogout, slug }) {
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const handleClick = (item) => {
-    if (item.route) {
-      navigate(`/${slug}/${item.route}`);
-    } else {
-      setView(item.key);
-    }
+    navigate(item.route ? `/${slug}/${item.route}` : `/${slug}/admin?view=${item.key}`);
   };
 
   return (

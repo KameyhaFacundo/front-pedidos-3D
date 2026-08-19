@@ -1,9 +1,17 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { getLlamados, atenderLlamado } from '../api/client';
+import { useNavigate } from 'react-router-dom';
+import { getLlamados, atenderLlamado, logout as apiLogout } from '../api/client';
 import { useSSE } from '../api/useSSE';
+import { useAuth } from '../context/AuthContext';
+import { useCompany } from '../context/CompanyContext';
+import AdminSidebar from '../components/AdminSidebar';
 import { playNewOrderSound, soundEnabled } from '../components/adminUtils';
 
 export default function LlamadosPage() {
+  const { logout } = useAuth();
+  const { slug } = useCompany();
+  const navigate = useNavigate();
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [llamados, setLlamados] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -58,16 +66,49 @@ export default function LlamadosPage() {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      await apiLogout();
+    } catch {}
+    logout();
+    navigate(slug ? `/${slug}/login` : '/');
+  };
+
   if (loading) {
     return (
-      <div className="page-center">
-        <div className="spinner" />
-        <p>Cargando llamados...</p>
+      <div className="admin-layout">
+        <AdminSidebar
+          view="llamados"
+          setView={() => {}}
+          open={sidebarOpen}
+          onToggle={() => setSidebarOpen((v) => !v)}
+          onLogout={handleLogout}
+          slug={slug}
+        />
+        {sidebarOpen && <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />}
+        <div className="admin-main">
+          <div className="page-center">
+            <div className="spinner" />
+            <p>Cargando llamados...</p>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
+    <div className="admin-layout">
+      <AdminSidebar
+        view="llamados"
+        setView={() => {}}
+        open={sidebarOpen}
+        onToggle={() => setSidebarOpen((v) => !v)}
+        onLogout={handleLogout}
+        slug={slug}
+      />
+      {sidebarOpen && <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />}
+
+      <div className="admin-main">
     <div className="llamados-page">
       <header className="cocina-header llamados-header">
         <h1>
@@ -118,6 +159,8 @@ export default function LlamadosPage() {
           ))}
         </div>
       )}
+      </div>
+    </div>
     </div>
   );
 }

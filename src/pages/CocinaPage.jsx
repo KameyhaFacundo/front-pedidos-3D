@@ -1,7 +1,11 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { getPedidos, updatePedidoEstado, cancelarPedido } from '../api/client';
+import { useNavigate } from 'react-router-dom';
+import { getPedidos, updatePedidoEstado, cancelarPedido, logout as apiLogout } from '../api/client';
 import { useSSE } from '../api/useSSE';
 import { useNotify } from '../context/NotificationContext';
+import { useAuth } from '../context/AuthContext';
+import { useCompany } from '../context/CompanyContext';
+import AdminSidebar from '../components/AdminSidebar';
 import { playNewOrderSound, soundEnabled } from '../components/adminUtils';
 
 const ESTADOS = [
@@ -27,6 +31,10 @@ const ESTADO_LABELS = {
 
 export default function CocinaPage() {
   const { confirm } = useNotify();
+  const { logout } = useAuth();
+  const { slug } = useCompany();
+  const navigate = useNavigate();
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [pedidos, setPedidos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -108,7 +116,27 @@ export default function CocinaPage() {
     return date.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
   };
 
+  const handleLogout = async () => {
+    try {
+      await apiLogout();
+    } catch {}
+    logout();
+    navigate(slug ? `/${slug}/login` : '/');
+  };
+
   return (
+    <div className="admin-layout">
+      <AdminSidebar
+        view="cocina"
+        setView={() => {}}
+        open={sidebarOpen}
+        onToggle={() => setSidebarOpen((v) => !v)}
+        onLogout={handleLogout}
+        slug={slug}
+      />
+      {sidebarOpen && <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />}
+
+      <div className="admin-main">
     <div className="cocina-page">
       <header className="cocina-header">
         <h1>
@@ -280,6 +308,8 @@ export default function CocinaPage() {
           ))}
         </div>
       )}
+      </div>
+      </div>
     </div>
   );
 }
