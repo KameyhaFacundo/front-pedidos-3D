@@ -1,12 +1,12 @@
 {
   "0": "App.jsx",
   "1": "dependencies",
-  "2": "MenuPage.jsx",
+  "2": "useCart",
   "3": "client.js",
   "4": "PedidoTrackingPage.jsx",
-  "5": "PlanoEditor.jsx",
+  "5": "MenuPage.jsx",
   "6": "TypeScript Config",
-  "7": "CheckoutPage.jsx",
+  "7": "PlanoEditor.jsx",
   "8": "package.json",
   "9": "LandingPage.jsx",
   "10": "CLAUDE.md"

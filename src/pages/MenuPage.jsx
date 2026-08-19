@@ -21,7 +21,7 @@ export default function MenuPage() {
   const isDemo = searchParams.get('demo') === '1';
 
   // Demo defaults — will set slug and show 'Pidevo' while API loads
-  const DEMO_COMPANY_SLUG = 'pidevo';
+  const DEMO_COMPANY_SLUG = 'demo';
 
   const [platos, setPlatos] = useState([]);
   const [empresa, setEmpresa] = useState(null);

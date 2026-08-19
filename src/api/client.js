@@ -84,6 +84,13 @@ export function getEmpresa() {
   return request('/empresa');
 }
 
+export function updateEmpresa(data) {
+  return request('/empresa', {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  });
+}
+
 export function getPedido(id, token) {
   const query = token ? `?token=${encodeURIComponent(token)}` : '';
   return request(`/pedidos/${id}${query}`);

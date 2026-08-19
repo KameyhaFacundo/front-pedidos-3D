@@ -5,8 +5,8 @@
     "semantic_hash": "90b374f56f431075eda43396e5fec137"
   },
   "src/App.jsx": {
-    "mtime": 1786853990.6689322,
-    "ast_hash": "c9d6456b7e3fcb77c3ac1f8ad99250b6",
+    "mtime": 1787108308.050151,
+    "ast_hash": "cf7cee7fb77b54b014ce857e333f8cb3",
     "semantic_hash": ""
   },
   "src/api/client.js": {
@@ -145,8 +145,8 @@
     "semantic_hash": ""
   },
   "src/pages/MenuPage.jsx": {
-    "mtime": 1786855626.8537164,
-    "ast_hash": "f957743be7349cb614fbcdaba565bb68",
+    "mtime": 1787108297.6562939,
+    "ast_hash": "0befe6674d366e9d112d8785c785f195",
     "semantic_hash": ""
   },
   "src/pages/ModeSelectPage.jsx": {
@@ -236,7 +236,7 @@
   },
   ".claude/settings.json": {
     "mtime": 1786846504.1987302,
-    "ast_hash": "d63945663ac5a70eebb1756ab927f4f5",
+    "ast_hash": "",
     "semantic_hash": ""
   }
 }

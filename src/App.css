@@ -211,6 +211,73 @@ img { max-width: 100%; display: block; }
   border-top: 1px solid var(--hair);
 }
 
+.admin-logout {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 9px;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 10px;
+  background: none;
+  color: var(--muted);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.admin-logout i { font-size: 18px; }
+
+.admin-logout:hover {
+  background: rgba(255, 90, 54, 0.12);
+  color: var(--ember);
+}
+
+.settings-card {
+  max-width: 560px;
+  background: var(--surface);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.settings-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.settings-head > i {
+  font-size: 26px;
+  color: var(--gold);
+  background: var(--surface-2);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.settings-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.settings-sub {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.settings-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
 .main-content {
   max-width: 1200px;
   margin: 0 auto;

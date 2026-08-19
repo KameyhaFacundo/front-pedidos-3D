@@ -43,7 +43,7 @@ function CompanyLayout() {
 
 function RedirectHumber() {
   const loc = useLocation();
-  const to = loc.pathname.replace(/^\/humber/, '/pidevo') + loc.search;
+  const to = loc.pathname.replace(/^\/humber/, '/demo') + loc.search;
   return <Navigate to={to} replace />;
 }
 
@@ -167,8 +167,8 @@ export default function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/landing" element={<LandingPage />} />
               <Route path="/login" element={<LoginPage />} />
-                  <Route path="/pidevo" element={<Navigate to="/pidevo/menu?demo=1" replace />} />
-                  <Route path="/pidevo/demo" element={<Navigate to="/pidevo/menu?demo=1" replace />} />
+                  <Route path="/pidevo" element={<Navigate to="/demo/menu?demo=1" replace />} />
+                  <Route path="/pidevo/demo" element={<Navigate to="/demo/menu?demo=1" replace />} />
                   <Route path="/humber/*" element={<RedirectHumber />} />
               <Route path="/:slug/*" element={<CompanyLayout />}>
                 <Route index element={<ModeSelectPage />} />

@@ -1,14 +1,15 @@
 {
-  "0": "useAuth",
+  "0": "App.jsx",
   "1": "dependencies",
   "2": "CartContext.jsx",
-  "3": "client.js",
+  "3": "AdminPage.jsx",
   "4": "PedidoTrackingPage.jsx",
-  "5": "App.jsx",
+  "5": "useCompany",
   "6": "TypeScript Config",
-  "7": "PlanoEditor.jsx",
+  "7": "client.js",
   "8": "package.json",
   "9": "LandingPage.jsx",
   "10": "CLAUDE.md",
+  "11": "MenuPage.jsx",
   "12": "ThemeContext.jsx"
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   getPedidos,
   getMetricas,
@@ -11,6 +12,9 @@ import {
   updatePedidoPago,
   updatePedidoEstado,
   cancelarPedido,
+  getEmpresa,
+  updateEmpresa,
+  logout as apiLogout,
 } from '../api/client';
 import { useSSE } from '../api/useSSE';
 import QRModal from '../components/QRModal';
@@ -19,6 +23,8 @@ import PlanoEditor from '../components/PlanoEditor';
 import { AdminSkeleton } from '../components/Skeletons';
 import { useTheme } from '../context/ThemeContext';
 import { useNotify } from '../context/NotificationContext';
+import { useAuth } from '../context/AuthContext';
+import { useCompany } from '../context/CompanyContext';
 
 function formatearPrecio(n) {
   return '$' + Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -66,6 +72,9 @@ const EMPTY_PLATO = {
 
 export default function AdminPage() {
   const { notify, confirm } = useNotify();
+  const { logout } = useAuth();
+  const { slug } = useCompany();
+  const navigate = useNavigate();
   const [view, setView] = useState('pedidos');
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [pedidos, setPedidos] = useState([]);
@@ -75,6 +84,8 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [filtro, setFiltro] = useState('');
   const [menuSearch, setMenuSearch] = useState('');
+  const [configForm, setConfigForm] = useState({ nombre: '', whatsapp: '' });
+  const [savingConfig, setSavingConfig] = useState(false);
 
   const [showModal, setShowModal] = useState(false);
   const [editingPlato, setEditingPlato] = useState(null);
@@ -129,11 +140,44 @@ export default function AdminPage() {
     });
   }, []);
 
+  const handleSaveConfig = async () => {
+    if (!configForm.nombre.trim()) {
+      notify('Ingresá el nombre del local', 'error');
+      return;
+    }
+    setSavingConfig(true);
+    try {
+      const empresa = await updateEmpresa({
+        nombre: configForm.nombre.trim(),
+        whatsapp: configForm.whatsapp.trim(),
+      });
+      setConfigForm({ nombre: empresa.nombre || '', whatsapp: empresa.whatsapp || '' });
+      notify('Datos guardados', 'success');
+    } catch (err) {
+      notify(err.message || 'Error al guardar', 'error');
+    } finally {
+      setSavingConfig(false);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await apiLogout();
+    } catch {}
+    logout();
+    navigate(slug ? `/${slug}/login` : '/');
+  };
+
   useSSE(handleSSEUpdate);
 
   useEffect(() => {
     if (view === 'menu' || view === 'metricas') fetchPlatos();
     if (view === 'mesas') fetchMesasData();
+    if (view === 'configuracion') {
+      getEmpresa().then((e) => {
+        if (e) setConfigForm({ nombre: e.nombre || '', whatsapp: e.whatsapp || '' });
+      }).catch(() => {});
+    }
   }, [view, fetchPlatos, fetchMesasData]);
 
   const openCreateModal = () => {
@@ -384,7 +428,7 @@ export default function AdminPage() {
 
   return (
     <div className="admin-layout">
-      <AdminSidebar view={view} setView={setView} open={sidebarOpen} onToggle={() => setSidebarOpen((v) => !v)} />
+      <AdminSidebar view={view} setView={setView} open={sidebarOpen} onToggle={() => setSidebarOpen((v) => !v)} onLogout={handleLogout} />
       {sidebarOpen && <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />}
 
       <div className="admin-main">
@@ -834,9 +878,57 @@ export default function AdminPage() {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* MODAL */}
+        {/* CONFIGURACION */}
+        <div className={`view ${view === 'configuracion' ? 'active' : ''}`}>
+          <div className="admin-top">
+            <div>
+              <div className="admin-title">Configuración</div>
+              <div className="admin-subtitle">Datos de tu negocio</div>
+            </div>
+          </div>
+
+          <div className="settings-card">
+            <div className="settings-head">
+              <i className="ti ti-building-store"></i>
+              <div>
+                <div className="settings-title">Tu local</div>
+                <div className="settings-sub">Estos datos aparecen en el menú que ven tus clientes</div>
+              </div>
+            </div>
+
+            <div className="field">
+              <label>Nombre del local</label>
+              <input
+                type="text"
+                value={configForm.nombre}
+                onChange={(e) => setConfigForm((prev) => ({ ...prev, nombre: e.target.value }))}
+                placeholder="Ej: Tu Hambur"
+              />
+            </div>
+
+            <div className="field">
+              <label>WhatsApp (con código de país, sin +)</label>
+              <input
+                type="text"
+                value={configForm.whatsapp}
+                onChange={(e) => setConfigForm((prev) => ({ ...prev, whatsapp: e.target.value }))}
+                placeholder="Ej: 5493815069332"
+              />
+            </div>
+
+            <div className="settings-footer">
+              <button
+                className="modal-save"
+                disabled={savingConfig || !configForm.nombre.trim()}
+                onClick={handleSaveConfig}
+              >
+                {savingConfig ? 'Guardando...' : 'Guardar cambios'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className={`overlay ${showModal ? 'active' : ''}`} onClick={closeModal}>
         <div className="modal plato-modal-admin" onClick={(e) => e.stopPropagation()}>
           <div className="modal-header">
@@ -1078,13 +1170,14 @@ export default function AdminPage() {
   );
 }
 
-function AdminSidebar({ view, setView, open, onToggle }) {
+function AdminSidebar({ view, setView, open, onToggle, onLogout }) {
   const { theme, toggleTheme } = useTheme();
   const items = [
     { key: 'pedidos', label: 'Pedidos', icon: 'ti-receipt' },
     { key: 'menu', label: 'Menú', icon: 'ti-tools-kitchen-2' },
     { key: 'mesas', label: 'Mesas', icon: 'ti-layout-grid' },
     { key: 'metricas', label: 'Métricas', icon: 'ti-chart-bar' },
+    { key: 'configuracion', label: 'Configuración', icon: 'ti-settings' },
   ];
 
   return (
@@ -1111,6 +1204,10 @@ function AdminSidebar({ view, setView, open, onToggle }) {
         <button className="theme-toggle admin-theme-toggle" onClick={toggleTheme}>
           <i className={`ti ${theme === 'dark' ? 'ti-sun' : 'ti-moon'}`}></i>
           {theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
+        </button>
+        <button className="admin-logout" onClick={onLogout}>
+          <i className="ti ti-logout"></i>
+          Cerrar sesión
         </button>
       </div>
     </aside>
