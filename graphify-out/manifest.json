@@ -110,8 +110,8 @@
     "semantic_hash": "978e7f5171abbe9f1c72da6ea776bf1d"
   },
   "src/pages/AdminPage.jsx": {
-    "mtime": 1787147553.2912526,
-    "ast_hash": "ac26773f2b60efd2e049cc1fb88404c0",
+    "mtime": 1787154071.9708788,
+    "ast_hash": "d1ad73e7af70da1c7cda2cd8fac8c8c2",
     "semantic_hash": ""
   },
   "src/pages/CartPage.jsx": {
@@ -125,8 +125,8 @@
     "semantic_hash": "eec346959779d673f9a7af38e6bd3c8b"
   },
   "src/pages/CocinaPage.jsx": {
-    "mtime": 1787111727.8790734,
-    "ast_hash": "ef54836f40567b0fe87d16a875f6bb39",
+    "mtime": 1787154142.9248874,
+    "ast_hash": "70112fb2b88952cf0285a50d067cb3fb",
     "semantic_hash": ""
   },
   "src/pages/LandingPage.jsx": {
@@ -135,8 +135,8 @@
     "semantic_hash": ""
   },
   "src/pages/LlamadosPage.jsx": {
-    "mtime": 1787111750.684535,
-    "ast_hash": "cf91ee1ce1f4c4066bb1632de0eeb2ed",
+    "mtime": 1787154107.779194,
+    "ast_hash": "ede48366ea905f4843c672e6a62e4e4b",
     "semantic_hash": ""
   },
   "src/pages/LoginPage.jsx": {
@@ -245,8 +245,8 @@
     "semantic_hash": ""
   },
   "src/components/AdminSidebar.jsx": {
-    "mtime": 1787112157.979837,
-    "ast_hash": "314a36ecf1b44c28ff86da5feb9b61c9",
+    "mtime": 1787154245.3897128,
+    "ast_hash": "f9fac15ab29b38560a80a5b7bb6dbfd7",
     "semantic_hash": ""
   },
   "src/components/adminUtils.js": {
