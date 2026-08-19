@@ -18,7 +18,6 @@ import {
 } from '../api/client';
 import { useSSE } from '../api/useSSE';
 import QRModal from '../components/QRModal';
-import QRCode from 'qrcode';
 import PlanoEditor from '../components/PlanoEditor';
 import { AdminSkeleton } from '../components/Skeletons';
 import { useTheme } from '../context/ThemeContext';
@@ -712,6 +711,7 @@ export default function AdminPage() {
                             params.set('mesa', mesa.id);
                             params.set('open_picker', '1');
                             const url = slug ? `${base}/${slug}/?${params.toString()}` : `${base}/?${params.toString()}`;
+                            const { default: QRCode } = await import('qrcode');
                             const dataUrl = await QRCode.toDataURL(url, { width: 480, margin: 2, color: { dark: '#1B160F', light: '#F7F1E6' } });
                             const a = document.createElement('a');
                             const filename = `${(slug || 'pidevo')}_mesa_${mesa.numero}.png`;

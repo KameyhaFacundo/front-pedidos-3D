@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import QRCode from 'qrcode';
 
 export default function QRModal({ mesa, onClose }) {
   const canvasRef = useRef(null);
@@ -18,10 +17,12 @@ export default function QRModal({ mesa, onClose }) {
       params.set('mesa', mesa.id);
       params.set('open_picker', '1');
       const url = slug ? `${base}/${slug}/?${params.toString()}` : `${base}/?${params.toString()}`;
-      QRCode.toCanvas(canvasRef.current, url, {
-        width: 240,
-        margin: 2,
-        color: { dark: '#1B160F', light: '#F7F1E6' },
+      import('qrcode').then(({ default: QRCode }) => {
+        QRCode.toCanvas(canvasRef.current, url, {
+          width: 240,
+          margin: 2,
+          color: { dark: '#1B160F', light: '#F7F1E6' },
+        });
       });
     }
   }, [mesa]);

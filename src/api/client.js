@@ -40,7 +40,7 @@ export async function request(endpoint, options = {}) {
       : null;
     const loginPath = slug ? `/${slug}/login` : '/login';
     const isAdminRoute = /^\/([^\/]+\/)?(admin|cocina|llamados)/.test(path);
-    if (isAdminRoute || localStorage.getItem('token_before_401') || slug) {
+    if (isAdminRoute || slug) {
       window.location.href = loginPath;
     }
     throw new Error('Sesión expirada');
@@ -180,7 +180,7 @@ export function createPlato(data) {
 
 export function updatePlato(id, data) {
   const isFormData = data instanceof FormData;
-  data.append('_method', 'PUT');
+  if (isFormData) data.append('_method', 'PUT');
   return request(`/platos/${id}`, {
     method: 'POST',
     headers: isFormData ? {} : { 'Content-Type': 'application/json' },

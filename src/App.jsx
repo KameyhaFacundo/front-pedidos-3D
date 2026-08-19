@@ -95,6 +95,21 @@ function DemoModal() {
   const { itemCount } = useCart();
   const close = () => navigate('/');
 
+  // La demo escribe pidevo_slug (slug de la empresa demo). Al cerrarla,
+  // restauramos el slug previo para no dejar contaminado el localStorage.
+  useEffect(() => {
+    let prev = null;
+    try {
+      prev = localStorage.getItem('pidevo_slug');
+    } catch {}
+    return () => {
+      try {
+        if (prev) localStorage.setItem('pidevo_slug', prev);
+        else localStorage.removeItem('pidevo_slug');
+      } catch {}
+    };
+  }, []);
+
   return (
     <div className="overlay active" onClick={close}>
       <div className="demo-modal-wrap" onClick={(e) => e.stopPropagation()}>

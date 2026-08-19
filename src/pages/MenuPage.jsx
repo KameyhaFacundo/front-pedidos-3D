@@ -37,10 +37,19 @@ export default function MenuPage() {
 
   useEffect(() => {
     if (isDemo) {
+      let prev = null;
       try {
+        prev = localStorage.getItem('pidevo_slug');
         localStorage.setItem('pidevo_slug', DEMO_COMPANY_SLUG);
       } catch {}
       setEmpresa({ nombre: 'Pidevo', slug: DEMO_COMPANY_SLUG });
+      getMesas().then(setMesas).catch(() => {});
+      return () => {
+        try {
+          if (prev) localStorage.setItem('pidevo_slug', prev);
+          else localStorage.removeItem('pidevo_slug');
+        } catch {}
+      };
     }
     getMesas().then(setMesas).catch(() => {});
   }, [isDemo]);

@@ -1,6 +1,6 @@
 {
-  "0": "useAuth",
-  "1": "dependencies",
+  "0": "ThemeContext.jsx",
+  "1": "AuthContext.jsx",
   "2": "CartContext.jsx",
   "3": "client.js",
   "4": "PedidoTrackingPage.jsx",
@@ -10,5 +10,8 @@
   "8": "package.json",
   "9": "LandingPage.jsx",
   "10": "CLAUDE.md",
-  "12": "ThemeContext.jsx"
+  "11": "CompanyContext.jsx",
+  "12": "Skeletons.jsx",
+  "13": "registrarArVista",
+  "14": "qrcode"
 }

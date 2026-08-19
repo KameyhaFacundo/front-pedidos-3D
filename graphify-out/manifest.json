@@ -1,17 +1,17 @@
 {
   "package.json": {
-    "mtime": 1786845885.539562,
-    "ast_hash": "90b374f56f431075eda43396e5fec137",
-    "semantic_hash": "90b374f56f431075eda43396e5fec137"
+    "mtime": 1787108969.505264,
+    "ast_hash": "ec9440d11323b8443015519384d41cbd",
+    "semantic_hash": ""
   },
   "src/App.jsx": {
-    "mtime": 1787108308.050151,
-    "ast_hash": "cf7cee7fb77b54b014ce857e333f8cb3",
+    "mtime": 1787108919.8824475,
+    "ast_hash": "24e6901f8702d1285ede4e6220370119",
     "semantic_hash": ""
   },
   "src/api/client.js": {
-    "mtime": 1787108469.6961966,
-    "ast_hash": "7bd0d2076891f2b155850843b4abbbc3",
+    "mtime": 1787108914.8626616,
+    "ast_hash": "05ba72817e30c68e5af9621bc50fb01b",
     "semantic_hash": ""
   },
   "src/api/useSSE.js": {
@@ -50,9 +50,9 @@
     "semantic_hash": "f26fda267c65d97ffd464f84ba8e45d5"
   },
   "src/components/QRModal.jsx": {
-    "mtime": 1786560612.1237292,
-    "ast_hash": "d22dc65fadb0c1d9d71fe5c985c336f2",
-    "semantic_hash": "d22dc65fadb0c1d9d71fe5c985c336f2"
+    "mtime": 1787108932.526088,
+    "ast_hash": "ed3681ba7ec79020e4762145cb003a89",
+    "semantic_hash": ""
   },
   "src/components/RegistroModal.jsx": {
     "mtime": 1786558289.7819142,
@@ -110,8 +110,8 @@
     "semantic_hash": "978e7f5171abbe9f1c72da6ea776bf1d"
   },
   "src/pages/AdminPage.jsx": {
-    "mtime": 1787108537.5317583,
-    "ast_hash": "fbbf3fa4ad2e142868b3e4c55f5ea111",
+    "mtime": 1787108940.6582835,
+    "ast_hash": "c8faa67cebbc80fc38ad4445181efb1b",
     "semantic_hash": ""
   },
   "src/pages/CartPage.jsx": {
@@ -145,8 +145,8 @@
     "semantic_hash": ""
   },
   "src/pages/MenuPage.jsx": {
-    "mtime": 1787108297.6562939,
-    "ast_hash": "0befe6674d366e9d112d8785c785f195",
+    "mtime": 1787108990.5896623,
+    "ast_hash": "dc5287de9f1c459377b35ed85c58aa41",
     "semantic_hash": ""
   },
   "src/pages/ModeSelectPage.jsx": {

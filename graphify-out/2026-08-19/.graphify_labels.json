@@ -1,15 +1,13 @@
 {
   "0": "App.jsx",
   "1": "dependencies",
-  "2": "CartContext.jsx",
-  "3": "AdminPage.jsx",
+  "2": "useCart",
+  "3": "client.js",
   "4": "PedidoTrackingPage.jsx",
   "5": "useCompany",
   "6": "TypeScript Config",
-  "7": "client.js",
+  "7": "PlanoEditor.jsx",
   "8": "package.json",
   "9": "LandingPage.jsx",
-  "10": "CLAUDE.md",
-  "11": "MenuPage.jsx",
-  "12": "ThemeContext.jsx"
+  "10": "CLAUDE.md"
 }
