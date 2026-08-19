@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { categoriaIcon, formatearPrecio } from '../adminUtils';
 
-export default function AdminMenuView({ active, platos, onNew, onEdit }) {
+export default function AdminMenuView({ active, platos, onNew, onEdit, onMove }) {
   const [menuSearch, setMenuSearch] = useState('');
 
   return (
@@ -40,7 +40,7 @@ export default function AdminMenuView({ active, platos, onNew, onEdit }) {
             const q = menuSearch.toLowerCase();
             return p.nombre.toLowerCase().includes(q) || (p.descripcion || '').toLowerCase().includes(q);
           })
-          .map((plato) => {
+          .map((plato, index) => {
             const icon = categoriaIcon(plato.categoria);
             return (
               <div
@@ -49,6 +49,24 @@ export default function AdminMenuView({ active, platos, onNew, onEdit }) {
                 onClick={() => onEdit(plato)}
                 style={{ cursor: 'pointer' }}
               >
+                <div className="dish-move">
+                  <button
+                    className="dish-move-btn"
+                    disabled={index === 0}
+                    onClick={(e) => { e.stopPropagation(); onMove(index, -1); }}
+                    aria-label="Mover arriba"
+                  >
+                    <i className="ti ti-chevron-up"></i>
+                  </button>
+                  <button
+                    className="dish-move-btn"
+                    disabled={index === platos.length - 1}
+                    onClick={(e) => { e.stopPropagation(); onMove(index, 1); }}
+                    aria-label="Mover abajo"
+                  >
+                    <i className="ti ti-chevron-down"></i>
+                  </button>
+                </div>
                 <div className="dish-thumb" style={{ background: 'var(--surface)' }}>
                   {plato.foto ? (
                     <img

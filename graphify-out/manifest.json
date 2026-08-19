@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   "src/api/client.js": {
-    "mtime": 1787108914.8626616,
-    "ast_hash": "05ba72817e30c68e5af9621bc50fb01b",
+    "mtime": 1787147378.0107887,
+    "ast_hash": "5a17df0fd0511f09b03377fb1ccad2b4",
     "semantic_hash": ""
   },
   "src/api/useSSE.js": {
@@ -110,8 +110,8 @@
     "semantic_hash": "978e7f5171abbe9f1c72da6ea776bf1d"
   },
   "src/pages/AdminPage.jsx": {
-    "mtime": 1787111429.703807,
-    "ast_hash": "56926a22d210d615bd85f46e602ede85",
+    "mtime": 1787147553.2912526,
+    "ast_hash": "ac26773f2b60efd2e049cc1fb88404c0",
     "semantic_hash": ""
   },
   "src/pages/CartPage.jsx": {
@@ -125,8 +125,8 @@
     "semantic_hash": "eec346959779d673f9a7af38e6bd3c8b"
   },
   "src/pages/CocinaPage.jsx": {
-    "mtime": 1786856602.9923944,
-    "ast_hash": "876584adc511c10fbafecb7948dc73ce",
+    "mtime": 1787111727.8790734,
+    "ast_hash": "ef54836f40567b0fe87d16a875f6bb39",
     "semantic_hash": ""
   },
   "src/pages/LandingPage.jsx": {
@@ -135,9 +135,9 @@
     "semantic_hash": ""
   },
   "src/pages/LlamadosPage.jsx": {
-    "mtime": 1786543981.014503,
-    "ast_hash": "343d04c0203e228617e0a8789308c9c9",
-    "semantic_hash": "343d04c0203e228617e0a8789308c9c9"
+    "mtime": 1787111750.684535,
+    "ast_hash": "cf91ee1ce1f4c4066bb1632de0eeb2ed",
+    "semantic_hash": ""
   },
   "src/pages/LoginPage.jsx": {
     "mtime": 1787107860.419386,
@@ -236,7 +236,7 @@
   },
   ".claude/settings.json": {
     "mtime": 1786846504.1987302,
-    "ast_hash": "d63945663ac5a70eebb1756ab927f4f5",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "eslint.config.js": {
@@ -245,8 +245,8 @@
     "semantic_hash": ""
   },
   "src/components/AdminSidebar.jsx": {
-    "mtime": 1787109783.2418475,
-    "ast_hash": "2ea3d2060f0dbd0bf1747ce67df8b9e2",
+    "mtime": 1787112157.979837,
+    "ast_hash": "314a36ecf1b44c28ff86da5feb9b61c9",
     "semantic_hash": ""
   },
   "src/components/adminUtils.js": {
@@ -260,13 +260,13 @@
     "semantic_hash": ""
   },
   "src/components/admin/AdminConfigView.jsx": {
-    "mtime": 1787111401.891211,
-    "ast_hash": "3aaa558316b78ad21a51921c6d2b8542",
+    "mtime": 1787147399.0301294,
+    "ast_hash": "ec1217eebdd26764c37c495045947112",
     "semantic_hash": ""
   },
   "src/components/admin/AdminMenuView.jsx": {
-    "mtime": 1787110256.3363237,
-    "ast_hash": "4328e8a567640b061fc38cce808b2540",
+    "mtime": 1787147522.4358926,
+    "ast_hash": "f0803b08f47943156ada0191ef3f42f0",
     "semantic_hash": ""
   },
   "src/components/admin/AdminMesasView.jsx": {
@@ -280,8 +280,8 @@
     "semantic_hash": ""
   },
   "src/components/admin/AdminPedidosView.jsx": {
-    "mtime": 1787110793.661753,
-    "ast_hash": "47eb19b4589b979eb34d3dfa62b32cb3",
+    "mtime": 1787147492.1794074,
+    "ast_hash": "9d8a8ab2d5d09f97f51c840149b2aa94",
     "semantic_hash": ""
   },
   "src/components/admin/PlatoModal.jsx": {

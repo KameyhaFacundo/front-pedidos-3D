@@ -234,3 +234,57 @@ export function validarCupon(codigo) {
     body: JSON.stringify({ codigo }),
   });
 }
+
+export function getCupones() {
+  return request('/cupones');
+}
+
+export function createCupon(data) {
+  return request('/cupones', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export function updateCupon(id, data) {
+  return request(`/cupones/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  });
+}
+
+export function toggleCupon(id) {
+  return request(`/cupones/${id}/toggle`, {
+    method: 'PATCH',
+  });
+}
+
+export function deleteCupon(id) {
+  return request(`/cupones/${id}`, {
+    method: 'DELETE',
+  });
+}
+
+export function getStaff() {
+  return request('/staff');
+}
+
+export function createStaff(data) {
+  return request('/staff', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export function deleteStaff(id) {
+  return request(`/staff/${id}`, {
+    method: 'DELETE',
+  });
+}
+
+export function reordenarPlatos(platos) {
+  return request('/platos/orden', {
+    method: 'PUT',
+    body: JSON.stringify({ platos }),
+  });
+}

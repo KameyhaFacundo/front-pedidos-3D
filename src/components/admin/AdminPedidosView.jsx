@@ -8,10 +8,30 @@ const FILTROS = [
   { key: 'retiro', label: 'Retiro' },
 ];
 
-export default function AdminPedidosView({ active, pedidos, metricas, slug, onAvanzar, onPagar, onCancelar }) {
+export default function AdminPedidosView({ active, pedidos, metricas, slug, empresa, onAvanzar, onPagar, onCancelar }) {
   const [filtro, setFiltro] = useState('');
   const visibles = filtro ? pedidos.filter((p) => p.tipo === filtro) : pedidos;
   const porColumna = (estado) => visibles.filter((p) => p.estado === estado);
+
+  const waNumero = (empresa?.whatsapp || '').replace(/\D/g, '');
+
+  const waLink = (pedido) => {
+    if (!waNumero) return null;
+    const lineas = [`Nuevo pedido #${pedido.id}`];
+    lineas.push(`Tipo: ${pedido.tipo === 'mesa' ? `Mesa ${pedido.mesa?.numero ?? '?'}` : pedido.tipo}`);
+    if (pedido.nombre) lineas.push(`Cliente: ${pedido.nombre}`);
+    if (pedido.direccion) lineas.push(`Dirección: ${pedido.direccion}`);
+    pedido.items?.forEach((it) => {
+      let l = `• ${it.cantidad}x ${it.plato?.nombre || 'Plato'}`;
+      if (it.presentacion_nombre) l += ` (${it.presentacion_nombre})`;
+      if (it.agregados?.length > 0) l += ` + ${it.agregados.map((a) => a.nombre).join(', ')}`;
+      if (it.observacion) l += ` — "${it.observacion}"`;
+      lineas.push(l);
+    });
+    const total = pedido.items?.reduce((s, it) => s + Number(it.subtotal || 0), 0) || 0;
+    lineas.push(`Total: $${(total - Number(pedido.descuento || 0)).toFixed(2)}`);
+    return `https://wa.me/${waNumero}?text=${encodeURIComponent(lineas.join('\n'))}`;
+  };
 
   return (
     <div className={`view ${active ? 'active' : ''}`}>
@@ -92,6 +112,18 @@ export default function AdminPedidosView({ active, pedidos, metricas, slug, onAv
                           ? 'Envío'
                           : 'Retiro'}
                     </span>
+                    {waLink(pedido) && (
+                      <a
+                        className="admin-order-whatsapp"
+                        href={waLink(pedido)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        title="Enviar por WhatsApp"
+                      >
+                        <i className="ti ti-brand-whatsapp"></i>
+                      </a>
+                    )}
                   </div>
 
                   {(pedido.nombre || pedido.celular) && (

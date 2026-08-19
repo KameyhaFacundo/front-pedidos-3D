@@ -10,6 +10,7 @@ import {
   cancelarPedido,
   getEmpresa,
   updateEmpresa,
+  reordenarPlatos,
   logout as apiLogout,
 } from '../api/client';
 import { useSSE } from '../api/useSSE';
@@ -38,6 +39,7 @@ export default function AdminPage() {
   const [metricas, setMetricas] = useState(null);
   const [platos, setPlatos] = useState([]);
   const [mesas, setMesas] = useState([]);
+  const [empresa, setEmpresa] = useState(null);
   const [loading, setLoading] = useState(true);
   const [configForm, setConfigForm] = useState({ nombre: '', whatsapp: '' });
   const [savingConfig, setSavingConfig] = useState(false);
@@ -75,6 +77,7 @@ export default function AdminPage() {
 
   useEffect(() => {
     fetchPedidosYMetricas();
+    getEmpresa().then(setEmpresa).catch(() => {});
   }, [fetchPedidosYMetricas]);
 
   const handleSSEUpdate = useCallback((updated) => {
@@ -170,6 +173,20 @@ export default function AdminPage() {
     }
   };
 
+  const handleMovePlato = async (index, dir) => {
+    const j = index + dir;
+    if (j < 0 || j >= platos.length) return;
+    const next = [...platos];
+    [next[index], next[j]] = [next[j], next[index]];
+    setPlatos(next);
+    try {
+      await reordenarPlatos(next.map((p) => p.id));
+    } catch (e) {
+      notify(e.message, 'error');
+      fetchPlatos();
+    }
+  };
+
   const pedidosActivos = pedidos.filter((p) =>
     ['nuevo', 'preparacion', 'listo'].includes(p.estado)
   );
@@ -217,6 +234,7 @@ export default function AdminPage() {
           pedidos={pedidos}
           metricas={metricas}
           slug={slug}
+          empresa={empresa}
           onAvanzar={handleAvanzar}
           onPagar={handlePagar}
           onCancelar={handleCancelar}
@@ -227,6 +245,7 @@ export default function AdminPage() {
           platos={platos}
           onNew={() => { setModalPlato(null); setModalOpen(true); }}
           onEdit={(plato) => { setModalPlato(plato); setModalOpen(true); }}
+          onMove={handleMovePlato}
         />
 
         <AdminMesasView
@@ -248,6 +267,7 @@ export default function AdminPage() {
           setConfigForm={setConfigForm}
           onSave={handleSaveConfig}
           saving={savingConfig}
+          notify={notify}
         />
       </div>
 

@@ -3,7 +3,7 @@
   "1": "useNotify",
   "2": "devDependencies",
   "3": "client.js",
-  "4": "PedidoTrackingPage.jsx",
+  "4": "CocinaPage.jsx",
   "5": "App.jsx",
   "6": "TypeScript Config",
   "7": "PlanoEditor.jsx",
@@ -12,5 +12,5 @@
   "10": "CLAUDE.md",
   "11": "eslint.config.js",
   "12": "adminUtils.js",
-  "14": "qrcode"
+  "13": "Skeletons.jsx"
 }

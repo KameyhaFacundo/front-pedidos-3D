@@ -32,13 +32,13 @@
       "label": "AdminSidebar()",
       "file_type": "code",
       "source_file": "src/components/AdminSidebar.jsx",
-      "source_location": "L11",
+      "source_location": "L13",
       "_callable": true,
       "_origin": "ast",
+      "id": "src_components_adminsidebar_adminsidebar",
       "community": 0,
       "community_name": "ThemeContext.jsx",
-      "norm_label": "adminsidebar()",
-      "id": "src_components_adminsidebar_adminsidebar"
+      "norm_label": "adminsidebar()"
     },
     {
       "label": "getScope()",
@@ -209,16 +209,28 @@
       "id": "src_pages_loginpage_loginpage"
     },
     {
+      "label": "AdminConfigView()",
+      "file_type": "code",
+      "source_file": "src/components/admin/AdminConfigView.jsx",
+      "source_location": "L4",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "adminUtils.js",
+      "norm_label": "adminconfigview()",
+      "id": "src_components_admin_adminconfigview_adminconfigview"
+    },
+    {
       "label": "AdminMenuView()",
       "file_type": "code",
       "source_file": "src/components/admin/AdminMenuView.jsx",
       "source_location": "L4",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_components_admin_adminmenuview_adminmenuview",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "adminmenuview()"
+      "norm_label": "adminmenuview()",
+      "id": "src_components_admin_adminmenuview_adminmenuview"
     },
     {
       "label": "AdminMetricasView()",
@@ -227,16 +239,16 @@
       "source_location": "L3",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_components_admin_adminmetricasview_adminmetricasview",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "adminmetricasview()"
+      "norm_label": "adminmetricasview()",
+      "id": "src_components_admin_adminmetricasview_adminmetricasview"
     },
     {
       "label": "AdminPedidosView()",
       "file_type": "code",
       "source_file": "src/components/admin/AdminPedidosView.jsx",
-      "source_location": "L3",
+      "source_location": "L11",
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_admin_adminpedidosview_adminpedidosview",
@@ -248,13 +260,13 @@
       "label": "calcularMetricas()",
       "file_type": "code",
       "source_file": "src/components/adminUtils.js",
-      "source_location": "L106",
+      "source_location": "L120",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_components_adminutils_calcularmetricas",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "calcularmetricas()"
+      "norm_label": "calcularmetricas()",
+      "id": "src_components_adminutils_calcularmetricas"
     },
     {
       "label": "categoriaIcon()",
@@ -263,10 +275,10 @@
       "source_location": "L12",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_components_adminutils_categoriaicon",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "categoriaicon()"
+      "norm_label": "categoriaicon()",
+      "id": "src_components_adminutils_categoriaicon"
     },
     {
       "label": "descargarCSV()",
@@ -275,10 +287,10 @@
       "source_location": "L70",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_components_adminutils_descargarcsv",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "descargarcsv()"
+      "norm_label": "descargarcsv()",
+      "id": "src_components_adminutils_descargarcsv"
     },
     {
       "label": "formatearPrecio()",
@@ -287,10 +299,10 @@
       "source_location": "L1",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_components_adminutils_formatearprecio",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "formatearprecio()"
+      "norm_label": "formatearprecio()",
+      "id": "src_components_adminutils_formatearprecio"
     },
     {
       "label": "pedidosToCSV()",
@@ -299,10 +311,34 @@
       "source_location": "L52",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_components_adminutils_pedidostocsv",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "pedidostocsv()"
+      "norm_label": "pedidostocsv()",
+      "id": "src_components_adminutils_pedidostocsv"
+    },
+    {
+      "label": "setSoundEnabled()",
+      "file_type": "code",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L91",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "adminUtils.js",
+      "norm_label": "setsoundenabled()",
+      "id": "src_components_adminutils_setsoundenabled"
+    },
+    {
+      "label": "soundEnabled()",
+      "file_type": "code",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L83",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "adminUtils.js",
+      "norm_label": "soundenabled()",
+      "id": "src_components_adminutils_soundenabled"
     },
     {
       "label": "tiempoRelativo()",
@@ -311,10 +347,10 @@
       "source_location": "L5",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_components_adminutils_tiemporelativo",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "tiemporelativo()"
+      "norm_label": "tiemporelativo()",
+      "id": "src_components_adminutils_tiemporelativo"
     },
     {
       "label": "totalPedido()",
@@ -323,10 +359,46 @@
       "source_location": "L47",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_components_adminutils_totalpedido",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "totalpedido()"
+      "norm_label": "totalpedido()",
+      "id": "src_components_adminutils_totalpedido"
+    },
+    {
+      "label": "AdminSkeleton()",
+      "file_type": "code",
+      "source_file": "src/components/Skeletons.jsx",
+      "source_location": "L31",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Skeletons.jsx",
+      "norm_label": "adminskeleton()",
+      "id": "src_components_skeletons_adminskeleton"
+    },
+    {
+      "label": "MenuSkeleton()",
+      "file_type": "code",
+      "source_file": "src/components/Skeletons.jsx",
+      "source_location": "L1",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Skeletons.jsx",
+      "norm_label": "menuskeleton()",
+      "id": "src_components_skeletons_menuskeleton"
+    },
+    {
+      "label": "PageSkeleton()",
+      "file_type": "code",
+      "source_file": "src/components/Skeletons.jsx",
+      "source_location": "L52",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Skeletons.jsx",
+      "norm_label": "pageskeleton()",
+      "id": "src_components_skeletons_pageskeleton"
     },
     {
       "label": "cancelarPedido()",
@@ -557,52 +629,16 @@
       "id": "src_api_client_updateplato"
     },
     {
-      "label": "AdminConfigView()",
-      "file_type": "code",
-      "source_file": "src/components/admin/AdminConfigView.jsx",
-      "source_location": "L1",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_admin_adminconfigview_adminconfigview",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "adminconfigview()"
-    },
-    {
-      "label": "AdminMesasView()",
-      "file_type": "code",
-      "source_file": "src/components/admin/AdminMesasView.jsx",
-      "source_location": "L3",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_admin_adminmesasview_adminmesasview",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "adminmesasview()"
-    },
-    {
       "label": "PlatoModal()",
       "file_type": "code",
       "source_file": "src/components/admin/PlatoModal.jsx",
       "source_location": "L6",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_components_admin_platomodal_platomodal",
       "community": 3,
       "community_name": "client.js",
-      "norm_label": "platomodal()"
-    },
-    {
-      "label": "playNewOrderSound()",
-      "file_type": "code",
-      "source_file": "src/components/adminUtils.js",
-      "source_location": "L83",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_adminutils_playnewordersound",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "playnewordersound()"
+      "norm_label": "platomodal()",
+      "id": "src_components_admin_platomodal_platomodal"
     },
     {
       "label": "ARViewer()",
@@ -644,13 +680,13 @@
       "label": "CocinaPage()",
       "file_type": "code",
       "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L27",
+      "source_location": "L28",
       "_callable": true,
       "_origin": "ast",
+      "id": "src_pages_cocinapage_cocinapage",
       "community": 3,
       "community_name": "client.js",
-      "norm_label": "cocinapage()",
-      "id": "src_pages_cocinapage_cocinapage"
+      "norm_label": "cocinapage()"
     },
     {
       "label": "atenderLlamado()",
@@ -660,7 +696,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "PedidoTrackingPage.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "atenderllamado()",
       "id": "src_api_client_atenderllamado"
     },
@@ -672,7 +708,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "PedidoTrackingPage.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "getllamados()",
       "id": "src_api_client_getllamados"
     },
@@ -684,7 +720,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "PedidoTrackingPage.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "getpedido()",
       "id": "src_api_client_getpedido"
     },
@@ -696,7 +732,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "PedidoTrackingPage.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "llamarmozo()",
       "id": "src_api_client_llamarmozo"
     },
@@ -708,7 +744,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "PedidoTrackingPage.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "getbase()",
       "id": "src_api_usesse_getbase"
     },
@@ -720,21 +756,33 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "PedidoTrackingPage.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "usesse()",
       "id": "src_api_usesse_usesse"
+    },
+    {
+      "label": "playNewOrderSound()",
+      "file_type": "code",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L97",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "playnewordersound()",
+      "id": "src_components_adminutils_playnewordersound"
     },
     {
       "label": "LlamadosPage()",
       "file_type": "code",
       "source_file": "src/pages/LlamadosPage.jsx",
-      "source_location": "L5",
+      "source_location": "L6",
       "_callable": true,
       "_origin": "ast",
+      "id": "src_pages_llamadospage_llamadospage",
       "community": 4,
-      "community_name": "PedidoTrackingPage.jsx",
-      "norm_label": "llamadospage()",
-      "id": "src_pages_llamadospage_llamadospage"
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "llamadospage()"
     },
     {
       "label": "formatear()",
@@ -744,7 +792,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "PedidoTrackingPage.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "formatear()",
       "id": "src_pages_pedidotrackingpage_formatear"
     },
@@ -756,7 +804,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "PedidoTrackingPage.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "pedidotrackingpage()",
       "id": "src_pages_pedidotrackingpage_pedidotrackingpage"
     },
@@ -927,42 +975,6 @@
       "community_name": "App.jsx",
       "norm_label": "platodetailmodal()",
       "id": "src_components_platodetailmodal_platodetailmodal"
-    },
-    {
-      "label": "AdminSkeleton()",
-      "file_type": "code",
-      "source_file": "src/components/Skeletons.jsx",
-      "source_location": "L31",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "adminskeleton()",
-      "id": "src_components_skeletons_adminskeleton"
-    },
-    {
-      "label": "MenuSkeleton()",
-      "file_type": "code",
-      "source_file": "src/components/Skeletons.jsx",
-      "source_location": "L1",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "menuskeleton()",
-      "id": "src_components_skeletons_menuskeleton"
-    },
-    {
-      "label": "PageSkeleton()",
-      "file_type": "code",
-      "source_file": "src/components/Skeletons.jsx",
-      "source_location": "L52",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "pageskeleton()",
-      "id": "src_components_skeletons_pageskeleton"
     },
     {
       "label": "Toast()",
@@ -1229,6 +1241,18 @@
       "id": "src_api_client_updatemesa"
     },
     {
+      "label": "AdminMesasView()",
+      "file_type": "code",
+      "source_file": "src/components/admin/AdminMesasView.jsx",
+      "source_location": "L3",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "PlanoEditor.jsx",
+      "norm_label": "adminmesasview()",
+      "id": "src_components_admin_adminmesasview_adminmesasview"
+    },
+    {
       "label": "formatPrecio()",
       "file_type": "code",
       "source_file": "src/components/PlanoEditor.jsx",
@@ -1426,21 +1450,21 @@
       "source_file": "src/components/AdminSidebar.jsx",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "src_components_adminsidebar",
       "community": 0,
       "community_name": "ThemeContext.jsx",
-      "norm_label": "adminsidebar.jsx",
-      "id": "src_components_adminsidebar"
+      "norm_label": "adminsidebar.jsx"
     },
     {
       "label": "ITEMS",
       "file_type": "code",
       "source_file": "src/components/AdminSidebar.jsx",
-      "source_location": "L3",
+      "source_location": "L4",
       "_origin": "ast",
+      "id": "src_components_adminsidebar_items",
       "community": 0,
       "community_name": "ThemeContext.jsx",
-      "norm_label": "items",
-      "id": "src_components_adminsidebar_items"
+      "norm_label": "items"
     },
     {
       "label": "ThemeContext.jsx",
@@ -1575,15 +1599,26 @@
       "id": "eslint_config"
     },
     {
+      "label": "AdminConfigView.jsx",
+      "file_type": "code",
+      "source_file": "src/components/admin/AdminConfigView.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "adminUtils.js",
+      "norm_label": "adminconfigview.jsx",
+      "id": "src_components_admin_adminconfigview"
+    },
+    {
       "label": "AdminMenuView.jsx",
       "file_type": "code",
       "source_file": "src/components/admin/AdminMenuView.jsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_components_admin_adminmenuview",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "adminmenuview.jsx"
+      "norm_label": "adminmenuview.jsx",
+      "id": "src_components_admin_adminmenuview"
     },
     {
       "label": "AdminMetricasView.jsx",
@@ -1591,10 +1626,10 @@
       "source_file": "src/components/admin/AdminMetricasView.jsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_components_admin_adminmetricasview",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "adminmetricasview.jsx"
+      "norm_label": "adminmetricasview.jsx",
+      "id": "src_components_admin_adminmetricasview"
     },
     {
       "label": "AdminPedidosView.jsx",
@@ -1608,15 +1643,26 @@
       "norm_label": "adminpedidosview.jsx"
     },
     {
+      "label": "FILTROS",
+      "file_type": "code",
+      "source_file": "src/components/admin/AdminPedidosView.jsx",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "src_components_admin_adminpedidosview_filtros",
+      "community": 12,
+      "community_name": "adminUtils.js",
+      "norm_label": "filtros"
+    },
+    {
       "label": "adminUtils.js",
       "file_type": "code",
       "source_file": "src/components/adminUtils.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_components_adminutils",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "adminutils.js"
+      "norm_label": "adminutils.js",
+      "id": "src_components_adminutils"
     },
     {
       "label": "CATE_LABELS",
@@ -1624,10 +1670,10 @@
       "source_file": "src/components/adminUtils.js",
       "source_location": "L45",
       "_origin": "ast",
-      "id": "src_components_adminutils_cate_labels",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "cate_labels"
+      "norm_label": "cate_labels",
+      "id": "src_components_adminutils_cate_labels"
     },
     {
       "label": "COLUMNAS",
@@ -1635,10 +1681,10 @@
       "source_file": "src/components/adminUtils.js",
       "source_location": "L29",
       "_origin": "ast",
-      "id": "src_components_adminutils_columnas",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "columnas"
+      "norm_label": "columnas",
+      "id": "src_components_adminutils_columnas"
     },
     {
       "label": "adminUtils.test.js",
@@ -1646,21 +1692,21 @@
       "source_file": "src/components/adminUtils.test.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_components_adminutils_test",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "adminutils.test.js"
+      "norm_label": "adminutils.test.js",
+      "id": "src_components_adminutils_test"
     },
     {
-      "label": "qrcode",
+      "label": "Skeletons.jsx",
       "file_type": "code",
-      "source_file": "qrcode",
-      "confidence": "EXTRACTED",
+      "source_file": "src/components/Skeletons.jsx",
+      "source_location": "L1",
       "_origin": "ast",
-      "id": "qrcode_qrcode",
-      "community": 14,
-      "community_name": "qrcode",
-      "norm_label": "qrcode"
+      "community": 13,
+      "community_name": "Skeletons.jsx",
+      "norm_label": "skeletons.jsx",
+      "id": "src_components_skeletons"
     },
     {
       "label": "devDependencies",
@@ -1668,10 +1714,10 @@
       "source_file": "package.json",
       "source_location": "L17",
       "_origin": "ast",
-      "id": "package_devdependencies",
       "community": 2,
       "community_name": "devDependencies",
-      "norm_label": "devdependencies"
+      "norm_label": "devdependencies",
+      "id": "package_devdependencies"
     },
     {
       "label": "eslint",
@@ -1679,10 +1725,10 @@
       "source_file": "package.json",
       "source_location": "L19",
       "_origin": "ast",
-      "id": "package_devdependencies_eslint",
       "community": 2,
       "community_name": "devDependencies",
-      "norm_label": "eslint"
+      "norm_label": "eslint",
+      "id": "package_devdependencies_eslint"
     },
     {
       "label": "@eslint/js",
@@ -1690,10 +1736,10 @@
       "source_file": "package.json",
       "source_location": "L18",
       "_origin": "ast",
-      "id": "package_devdependencies_eslint_js",
       "community": 2,
       "community_name": "devDependencies",
-      "norm_label": "@eslint/js"
+      "norm_label": "@eslint/js",
+      "id": "package_devdependencies_eslint_js"
     },
     {
       "label": "eslint-plugin-react-hooks",
@@ -1701,10 +1747,10 @@
       "source_file": "package.json",
       "source_location": "L20",
       "_origin": "ast",
-      "id": "package_devdependencies_eslint_plugin_react_hooks",
       "community": 2,
       "community_name": "devDependencies",
-      "norm_label": "eslint-plugin-react-hooks"
+      "norm_label": "eslint-plugin-react-hooks",
+      "id": "package_devdependencies_eslint_plugin_react_hooks"
     },
     {
       "label": "eslint-plugin-react-refresh",
@@ -1712,10 +1758,10 @@
       "source_file": "package.json",
       "source_location": "L21",
       "_origin": "ast",
-      "id": "package_devdependencies_eslint_plugin_react_refresh",
       "community": 2,
       "community_name": "devDependencies",
-      "norm_label": "eslint-plugin-react-refresh"
+      "norm_label": "eslint-plugin-react-refresh",
+      "id": "package_devdependencies_eslint_plugin_react_refresh"
     },
     {
       "label": "globals",
@@ -1723,10 +1769,10 @@
       "source_file": "package.json",
       "source_location": "L22",
       "_origin": "ast",
-      "id": "package_devdependencies_globals",
       "community": 2,
       "community_name": "devDependencies",
-      "norm_label": "globals"
+      "norm_label": "globals",
+      "id": "package_devdependencies_globals"
     },
     {
       "label": "typescript",
@@ -1734,10 +1780,10 @@
       "source_file": "package.json",
       "source_location": "L23",
       "_origin": "ast",
-      "id": "package_devdependencies_typescript",
       "community": 2,
       "community_name": "devDependencies",
-      "norm_label": "typescript"
+      "norm_label": "typescript",
+      "id": "package_devdependencies_typescript"
     },
     {
       "label": "vite",
@@ -1745,10 +1791,10 @@
       "source_file": "package.json",
       "source_location": "L24",
       "_origin": "ast",
-      "id": "package_devdependencies_vite",
       "community": 2,
       "community_name": "devDependencies",
-      "norm_label": "vite"
+      "norm_label": "vite",
+      "id": "package_devdependencies_vite"
     },
     {
       "label": "vitest",
@@ -1756,10 +1802,10 @@
       "source_file": "package.json",
       "source_location": "L25",
       "_origin": "ast",
-      "id": "package_devdependencies_vitest",
       "community": 2,
       "community_name": "devDependencies",
-      "norm_label": "vitest"
+      "norm_label": "vitest",
+      "id": "package_devdependencies_vitest"
     },
     {
       "label": "eslint",
@@ -1767,10 +1813,10 @@
       "source_file": "package.json",
       "source_location": "L19",
       "_origin": "ast",
-      "id": "eslint",
       "community": 2,
       "community_name": "devDependencies",
-      "norm_label": "eslint"
+      "norm_label": "eslint",
+      "id": "eslint"
     },
     {
       "label": "@eslint/js",
@@ -1778,10 +1824,10 @@
       "source_file": "package.json",
       "source_location": "L18",
       "_origin": "ast",
-      "id": "eslint_js",
       "community": 2,
       "community_name": "devDependencies",
-      "norm_label": "@eslint/js"
+      "norm_label": "@eslint/js",
+      "id": "eslint_js"
     },
     {
       "label": "eslint-plugin-react-hooks",
@@ -1789,10 +1835,10 @@
       "source_file": "package.json",
       "source_location": "L20",
       "_origin": "ast",
-      "id": "eslint_plugin_react_hooks",
       "community": 2,
       "community_name": "devDependencies",
-      "norm_label": "eslint-plugin-react-hooks"
+      "norm_label": "eslint-plugin-react-hooks",
+      "id": "eslint_plugin_react_hooks"
     },
     {
       "label": "eslint-plugin-react-refresh",
@@ -1800,10 +1846,10 @@
       "source_file": "package.json",
       "source_location": "L21",
       "_origin": "ast",
-      "id": "eslint_plugin_react_refresh",
       "community": 2,
       "community_name": "devDependencies",
-      "norm_label": "eslint-plugin-react-refresh"
+      "norm_label": "eslint-plugin-react-refresh",
+      "id": "eslint_plugin_react_refresh"
     },
     {
       "label": "globals",
@@ -1811,10 +1857,10 @@
       "source_file": "package.json",
       "source_location": "L22",
       "_origin": "ast",
-      "id": "globals",
       "community": 2,
       "community_name": "devDependencies",
-      "norm_label": "globals"
+      "norm_label": "globals",
+      "id": "globals"
     },
     {
       "label": "typescript",
@@ -1822,10 +1868,10 @@
       "source_file": "package.json",
       "source_location": "L23",
       "_origin": "ast",
-      "id": "typescript",
       "community": 2,
       "community_name": "devDependencies",
-      "norm_label": "typescript"
+      "norm_label": "typescript",
+      "id": "typescript"
     },
     {
       "label": "vite",
@@ -1833,10 +1879,10 @@
       "source_file": "package.json",
       "source_location": "L24",
       "_origin": "ast",
-      "id": "vite",
       "community": 2,
       "community_name": "devDependencies",
-      "norm_label": "vite"
+      "norm_label": "vite",
+      "id": "vite"
     },
     {
       "label": "vitest",
@@ -1844,10 +1890,10 @@
       "source_file": "package.json",
       "source_location": "L25",
       "_origin": "ast",
-      "id": "vitest",
       "community": 2,
       "community_name": "devDependencies",
-      "norm_label": "vitest"
+      "norm_label": "vitest",
+      "id": "vitest"
     },
     {
       "label": "client.js",
@@ -1861,37 +1907,15 @@
       "id": "src_api_client"
     },
     {
-      "label": "AdminConfigView.jsx",
-      "file_type": "code",
-      "source_file": "src/components/admin/AdminConfigView.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_components_admin_adminconfigview",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "adminconfigview.jsx"
-    },
-    {
-      "label": "AdminMesasView.jsx",
-      "file_type": "code",
-      "source_file": "src/components/admin/AdminMesasView.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_components_admin_adminmesasview",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "adminmesasview.jsx"
-    },
-    {
       "label": "PlatoModal.jsx",
       "file_type": "code",
       "source_file": "src/components/admin/PlatoModal.jsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_components_admin_platomodal",
       "community": 3,
       "community_name": "client.js",
-      "norm_label": "platomodal.jsx"
+      "norm_label": "platomodal.jsx",
+      "id": "src_components_admin_platomodal"
     },
     {
       "label": "CATEGORIAS",
@@ -1899,10 +1923,10 @@
       "source_file": "src/components/adminUtils.js",
       "source_location": "L22",
       "_origin": "ast",
-      "id": "src_components_adminutils_categorias",
       "community": 3,
       "community_name": "client.js",
-      "norm_label": "categorias"
+      "norm_label": "categorias",
+      "id": "src_components_adminutils_categorias"
     },
     {
       "label": "EMPTY_PLATO",
@@ -1910,10 +1934,10 @@
       "source_file": "src/components/adminUtils.js",
       "source_location": "L37",
       "_origin": "ast",
-      "id": "src_components_adminutils_empty_plato",
       "community": 3,
       "community_name": "client.js",
-      "norm_label": "empty_plato"
+      "norm_label": "empty_plato",
+      "id": "src_components_adminutils_empty_plato"
     },
     {
       "label": "ARViewer.jsx",
@@ -1949,59 +1973,59 @@
       "norm_label": "adminpage.jsx"
     },
     {
-      "label": "CocinaPage.jsx",
-      "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "cocinapage.jsx",
-      "id": "src_pages_cocinapage"
-    },
-    {
-      "label": "ESTADO_COLORS",
-      "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L13",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "estado_colors",
-      "id": "src_pages_cocinapage_estado_colors"
-    },
-    {
-      "label": "ESTADO_LABELS",
-      "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L20",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "estado_labels",
-      "id": "src_pages_cocinapage_estado_labels"
-    },
-    {
-      "label": "ESTADOS",
-      "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L6",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "estados",
-      "id": "src_pages_cocinapage_estados"
-    },
-    {
       "label": "useSSE.js",
       "file_type": "code",
       "source_file": "src/api/useSSE.js",
       "source_location": "L1",
       "_origin": "ast",
       "community": 4,
-      "community_name": "PedidoTrackingPage.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "usesse.js",
       "id": "src_api_usesse"
+    },
+    {
+      "label": "CocinaPage.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_cocinapage",
+      "community": 4,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "cocinapage.jsx"
+    },
+    {
+      "label": "ESTADO_COLORS",
+      "file_type": "code",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "src_pages_cocinapage_estado_colors",
+      "community": 4,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "estado_colors"
+    },
+    {
+      "label": "ESTADO_LABELS",
+      "file_type": "code",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "src_pages_cocinapage_estado_labels",
+      "community": 4,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "estado_labels"
+    },
+    {
+      "label": "ESTADOS",
+      "file_type": "code",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "src_pages_cocinapage_estados",
+      "community": 4,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "estados"
     },
     {
       "label": "LlamadosPage.jsx",
@@ -2009,10 +2033,10 @@
       "source_file": "src/pages/LlamadosPage.jsx",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "src_pages_llamadospage",
       "community": 4,
-      "community_name": "PedidoTrackingPage.jsx",
-      "norm_label": "llamadospage.jsx",
-      "id": "src_pages_llamadospage"
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "llamadospage.jsx"
     },
     {
       "label": "PedidoTrackingPage.jsx",
@@ -2021,7 +2045,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 4,
-      "community_name": "PedidoTrackingPage.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "pedidotrackingpage.jsx",
       "id": "src_pages_pedidotrackingpage"
     },
@@ -2032,7 +2056,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "community": 4,
-      "community_name": "PedidoTrackingPage.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "estado_colors",
       "id": "src_pages_pedidotrackingpage_estado_colors"
     },
@@ -2043,7 +2067,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "community": 4,
-      "community_name": "PedidoTrackingPage.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "estado_info",
       "id": "src_pages_pedidotrackingpage_estado_info"
     },
@@ -2054,7 +2078,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "community": 4,
-      "community_name": "PedidoTrackingPage.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "estados",
       "id": "src_pages_pedidotrackingpage_estados"
     },
@@ -2123,17 +2147,6 @@
       "community_name": "App.jsx",
       "norm_label": "empty",
       "id": "src_components_platodetailmodal_empty"
-    },
-    {
-      "label": "Skeletons.jsx",
-      "file_type": "code",
-      "source_file": "src/components/Skeletons.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "skeletons.jsx",
-      "id": "src_components_skeletons"
     },
     {
       "label": "Toast.jsx",
@@ -2499,6 +2512,17 @@
       "id": "ref_vite_client"
     },
     {
+      "label": "AdminMesasView.jsx",
+      "file_type": "code",
+      "source_file": "src/components/admin/AdminMesasView.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "PlanoEditor.jsx",
+      "norm_label": "adminmesasview.jsx",
+      "id": "src_components_admin_adminmesasview"
+    },
+    {
       "label": "PlanoEditor.jsx",
       "file_type": "code",
       "source_file": "src/components/PlanoEditor.jsx",
@@ -2570,10 +2594,10 @@
       "source_file": "src/components/planoUtils.test.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_components_planoutils_test",
       "community": 7,
       "community_name": "PlanoEditor.jsx",
-      "norm_label": "planoutils.test.js"
+      "norm_label": "planoutils.test.js",
+      "id": "src_components_planoutils_test"
     },
     {
       "label": "TIPOS_FIJO",
@@ -2614,10 +2638,10 @@
       "source_file": "package.json",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "package",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "package.json"
+      "norm_label": "package.json",
+      "id": "package"
     },
     {
       "label": "dependencies",
@@ -2625,10 +2649,10 @@
       "source_file": "package.json",
       "source_location": "L27",
       "_origin": "ast",
-      "id": "package_dependencies",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "dependencies"
+      "norm_label": "dependencies",
+      "id": "package_dependencies"
     },
     {
       "label": "@google/model-viewer",
@@ -2636,10 +2660,10 @@
       "source_file": "package.json",
       "source_location": "L28",
       "_origin": "ast",
-      "id": "package_dependencies_google_model_viewer",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "@google/model-viewer"
+      "norm_label": "@google/model-viewer",
+      "id": "package_dependencies_google_model_viewer"
     },
     {
       "label": "qrcode",
@@ -2647,10 +2671,10 @@
       "source_file": "package.json",
       "source_location": "L30",
       "_origin": "ast",
-      "id": "package_dependencies_qrcode",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "qrcode"
+      "norm_label": "qrcode",
+      "id": "package_dependencies_qrcode"
     },
     {
       "label": "react",
@@ -2658,10 +2682,10 @@
       "source_file": "package.json",
       "source_location": "L31",
       "_origin": "ast",
-      "id": "package_dependencies_react",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "react"
+      "norm_label": "react",
+      "id": "package_dependencies_react"
     },
     {
       "label": "react-dom",
@@ -2669,10 +2693,10 @@
       "source_file": "package.json",
       "source_location": "L32",
       "_origin": "ast",
-      "id": "package_dependencies_react_dom",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "react-dom"
+      "norm_label": "react-dom",
+      "id": "package_dependencies_react_dom"
     },
     {
       "label": "react-router-dom",
@@ -2680,10 +2704,10 @@
       "source_file": "package.json",
       "source_location": "L33",
       "_origin": "ast",
-      "id": "package_dependencies_react_router_dom",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "react-router-dom"
+      "norm_label": "react-router-dom",
+      "id": "package_dependencies_react_router_dom"
     },
     {
       "label": "serve",
@@ -2691,10 +2715,10 @@
       "source_file": "package.json",
       "source_location": "L34",
       "_origin": "ast",
-      "id": "package_dependencies_serve",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "serve"
+      "norm_label": "serve",
+      "id": "package_dependencies_serve"
     },
     {
       "label": "@tabler/icons-webfont",
@@ -2702,10 +2726,10 @@
       "source_file": "package.json",
       "source_location": "L29",
       "_origin": "ast",
-      "id": "package_dependencies_tabler_icons_webfont",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "@tabler/icons-webfont"
+      "norm_label": "@tabler/icons-webfont",
+      "id": "package_dependencies_tabler_icons_webfont"
     },
     {
       "label": "engines",
@@ -2713,10 +2737,10 @@
       "source_file": "package.json",
       "source_location": "L6",
       "_origin": "ast",
-      "id": "package_engines",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "engines"
+      "norm_label": "engines",
+      "id": "package_engines"
     },
     {
       "label": "node",
@@ -2724,10 +2748,10 @@
       "source_file": "package.json",
       "source_location": "L7",
       "_origin": "ast",
-      "id": "package_engines_node",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "node"
+      "norm_label": "node",
+      "id": "package_engines_node"
     },
     {
       "label": "name",
@@ -2735,10 +2759,10 @@
       "source_file": "package.json",
       "source_location": "L2",
       "_origin": "ast",
-      "id": "package_name",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "name"
+      "norm_label": "name",
+      "id": "package_name"
     },
     {
       "label": "private",
@@ -2746,10 +2770,10 @@
       "source_file": "package.json",
       "source_location": "L3",
       "_origin": "ast",
-      "id": "package_private",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "private"
+      "norm_label": "private",
+      "id": "package_private"
     },
     {
       "label": "scripts",
@@ -2757,10 +2781,10 @@
       "source_file": "package.json",
       "source_location": "L9",
       "_origin": "ast",
-      "id": "package_scripts",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "scripts"
+      "norm_label": "scripts",
+      "id": "package_scripts"
     },
     {
       "label": "build",
@@ -2768,10 +2792,10 @@
       "source_file": "package.json",
       "source_location": "L11",
       "_origin": "ast",
-      "id": "package_scripts_build",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "build"
+      "norm_label": "build",
+      "id": "package_scripts_build"
     },
     {
       "label": "dev",
@@ -2779,10 +2803,10 @@
       "source_file": "package.json",
       "source_location": "L10",
       "_origin": "ast",
-      "id": "package_scripts_dev",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "dev"
+      "norm_label": "dev",
+      "id": "package_scripts_dev"
     },
     {
       "label": "lint",
@@ -2790,10 +2814,10 @@
       "source_file": "package.json",
       "source_location": "L14",
       "_origin": "ast",
-      "id": "package_scripts_lint",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "lint"
+      "norm_label": "lint",
+      "id": "package_scripts_lint"
     },
     {
       "label": "preview",
@@ -2801,10 +2825,10 @@
       "source_file": "package.json",
       "source_location": "L12",
       "_origin": "ast",
-      "id": "package_scripts_preview",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "preview"
+      "norm_label": "preview",
+      "id": "package_scripts_preview"
     },
     {
       "label": "start",
@@ -2812,10 +2836,10 @@
       "source_file": "package.json",
       "source_location": "L13",
       "_origin": "ast",
-      "id": "package_scripts_start",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "start"
+      "norm_label": "start",
+      "id": "package_scripts_start"
     },
     {
       "label": "test",
@@ -2823,10 +2847,10 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "package_scripts_test",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "test"
+      "norm_label": "test",
+      "id": "package_scripts_test"
     },
     {
       "label": "type",
@@ -2834,10 +2858,10 @@
       "source_file": "package.json",
       "source_location": "L5",
       "_origin": "ast",
-      "id": "package_type",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "type"
+      "norm_label": "type",
+      "id": "package_type"
     },
     {
       "label": "version",
@@ -2845,10 +2869,10 @@
       "source_file": "package.json",
       "source_location": "L4",
       "_origin": "ast",
-      "id": "package_version",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "version"
+      "norm_label": "version",
+      "id": "package_version"
     },
     {
       "label": "@google/model-viewer",
@@ -2856,10 +2880,10 @@
       "source_file": "package.json",
       "source_location": "L28",
       "_origin": "ast",
-      "id": "google_model_viewer",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "@google/model-viewer"
+      "norm_label": "@google/model-viewer",
+      "id": "google_model_viewer"
     },
     {
       "label": "qrcode",
@@ -2867,10 +2891,10 @@
       "source_file": "package.json",
       "source_location": "L30",
       "_origin": "ast",
-      "id": "package_json_qrcode",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "qrcode"
+      "norm_label": "qrcode",
+      "id": "package_json_qrcode"
     },
     {
       "label": "react",
@@ -2878,10 +2902,10 @@
       "source_file": "package.json",
       "source_location": "L31",
       "_origin": "ast",
-      "id": "react",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "react"
+      "norm_label": "react",
+      "id": "react"
     },
     {
       "label": "react-dom",
@@ -2889,10 +2913,10 @@
       "source_file": "package.json",
       "source_location": "L32",
       "_origin": "ast",
-      "id": "react_dom",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "react-dom"
+      "norm_label": "react-dom",
+      "id": "react_dom"
     },
     {
       "label": "react-router-dom",
@@ -2900,10 +2924,10 @@
       "source_file": "package.json",
       "source_location": "L33",
       "_origin": "ast",
-      "id": "react_router_dom",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "react-router-dom"
+      "norm_label": "react-router-dom",
+      "id": "react_router_dom"
     },
     {
       "label": "serve",
@@ -2911,10 +2935,10 @@
       "source_file": "package.json",
       "source_location": "L34",
       "_origin": "ast",
-      "id": "serve",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "serve"
+      "norm_label": "serve",
+      "id": "serve"
     },
     {
       "label": "@tabler/icons-webfont",
@@ -2922,10 +2946,10 @@
       "source_file": "package.json",
       "source_location": "L29",
       "_origin": "ast",
-      "id": "tabler_icons_webfont",
       "community": 8,
       "community_name": "package.json",
-      "norm_label": "@tabler/icons-webfont"
+      "norm_label": "@tabler/icons-webfont",
+      "id": "tabler_icons_webfont"
     },
     {
       "label": "LandingPage.jsx",
@@ -3512,6 +3536,18 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "src/components/admin/AdminConfigView.jsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_admin_adminconfigview_adminconfigview",
+      "target": "src_components_adminutils_setsoundenabled"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "src/components/admin/AdminMenuView.jsx",
       "source_location": "L44",
       "weight": 1.0,
@@ -3561,7 +3597,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/admin/AdminPedidosView.jsx",
-      "source_location": "L121",
+      "source_location": "L146",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_admin_adminpedidosview_adminpedidosview",
@@ -3573,7 +3609,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/admin/AdminPedidosView.jsx",
-      "source_location": "L13",
+      "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_admin_adminpedidosview_adminpedidosview",
@@ -3585,7 +3621,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/admin/AdminPedidosView.jsx",
-      "source_location": "L30",
+      "source_location": "L55",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_admin_adminpedidosview_adminpedidosview",
@@ -3645,7 +3681,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/AdminSidebar.jsx",
-      "source_location": "L12",
+      "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_adminsidebar_adminsidebar",
@@ -3656,12 +3692,12 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/components/adminUtils.js",
-      "source_location": "L120",
+      "source_location": "L134",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils_calcularmetricas",
-      "target": "src_components_adminutils_totalpedido",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_totalpedido"
     },
     {
       "relation": "calls",
@@ -3671,9 +3707,9 @@
       "source_location": "L71",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils_descargarcsv",
-      "target": "src_components_adminutils_pedidostocsv",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_pedidostocsv"
     },
     {
       "relation": "calls",
@@ -3683,9 +3719,9 @@
       "source_location": "L65",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils_pedidostocsv",
-      "target": "src_components_adminutils_totalpedido",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_totalpedido"
     },
     {
       "relation": "calls",
@@ -4041,7 +4077,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/AdminPage.jsx",
-      "source_location": "L130",
+      "source_location": "L136",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_adminpage_adminpage",
@@ -4053,7 +4089,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/AdminPage.jsx",
-      "source_location": "L138",
+      "source_location": "L144",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_adminpage_adminpage",
@@ -4065,7 +4101,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/AdminPage.jsx",
-      "source_location": "L149",
+      "source_location": "L155",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_adminpage_adminpage",
@@ -4077,7 +4113,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/AdminPage.jsx",
-      "source_location": "L160",
+      "source_location": "L166",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_adminpage_adminpage",
@@ -4178,6 +4214,18 @@
       "_origin": "ast",
       "source": "src_pages_adminpage_adminpage",
       "target": "src_components_adminutils_playnewordersound"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/AdminPage.jsx",
+      "source_location": "L88",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_adminpage_adminpage",
+      "target": "src_components_adminutils_soundenabled"
     },
     {
       "relation": "calls",
@@ -4305,7 +4353,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_cocinapage_cocinapage",
@@ -4317,7 +4365,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L36",
+      "source_location": "L38",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_cocinapage_cocinapage",
@@ -4329,7 +4377,31 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L61",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_cocinapage_cocinapage",
+      "target": "src_components_adminutils_playnewordersound"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_cocinapage_cocinapage",
+      "target": "src_components_adminutils_soundenabled"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L72",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_cocinapage_cocinapage",
@@ -4341,7 +4413,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L66",
+      "source_location": "L83",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_cocinapage_cocinapage",
@@ -4353,7 +4425,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L79",
+      "source_location": "L96",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_cocinapage_cocinapage",
@@ -4437,7 +4509,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/LlamadosPage.jsx",
-      "source_location": "L13",
+      "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_llamadospage_llamadospage",
@@ -4449,7 +4521,31 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/LlamadosPage.jsx",
-      "source_location": "L29",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_llamadospage_llamadospage",
+      "target": "src_components_adminutils_playnewordersound"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/LlamadosPage.jsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_llamadospage_llamadospage",
+      "target": "src_components_adminutils_soundenabled"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/LlamadosPage.jsx",
+      "source_location": "L40",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_llamadospage_llamadospage",
@@ -4461,7 +4557,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/LlamadosPage.jsx",
-      "source_location": "L34",
+      "source_location": "L50",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_llamadospage_llamadospage",
@@ -4751,9 +4847,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_dependencies_google_model_viewer",
-      "target": "google_model_viewer",
-      "confidence_score": 1.0
+      "target": "google_model_viewer"
     },
     {
       "relation": "imports",
@@ -4763,9 +4859,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_dependencies_qrcode",
-      "target": "package_json_qrcode",
-      "confidence_score": 1.0
+      "target": "package_json_qrcode"
     },
     {
       "relation": "imports",
@@ -4775,9 +4871,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_dependencies_react",
-      "target": "react",
-      "confidence_score": 1.0
+      "target": "react"
     },
     {
       "relation": "imports",
@@ -4787,9 +4883,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_dependencies_react_dom",
-      "target": "react_dom",
-      "confidence_score": 1.0
+      "target": "react_dom"
     },
     {
       "relation": "imports",
@@ -4799,9 +4895,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_dependencies_react_router_dom",
-      "target": "react_router_dom",
-      "confidence_score": 1.0
+      "target": "react_router_dom"
     },
     {
       "relation": "imports",
@@ -4811,9 +4907,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_dependencies_serve",
-      "target": "serve",
-      "confidence_score": 1.0
+      "target": "serve"
     },
     {
       "relation": "imports",
@@ -4823,9 +4919,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_dependencies_tabler_icons_webfont",
-      "target": "tabler_icons_webfont",
-      "confidence_score": 1.0
+      "target": "tabler_icons_webfont"
     },
     {
       "relation": "imports",
@@ -4835,9 +4931,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_devdependencies_eslint",
-      "target": "eslint",
-      "confidence_score": 1.0
+      "target": "eslint"
     },
     {
       "relation": "imports",
@@ -4847,9 +4943,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_devdependencies_eslint_js",
-      "target": "eslint_js",
-      "confidence_score": 1.0
+      "target": "eslint_js"
     },
     {
       "relation": "imports",
@@ -4859,9 +4955,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_devdependencies_eslint_plugin_react_hooks",
-      "target": "eslint_plugin_react_hooks",
-      "confidence_score": 1.0
+      "target": "eslint_plugin_react_hooks"
     },
     {
       "relation": "imports",
@@ -4871,9 +4967,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_devdependencies_eslint_plugin_react_refresh",
-      "target": "eslint_plugin_react_refresh",
-      "confidence_score": 1.0
+      "target": "eslint_plugin_react_refresh"
     },
     {
       "relation": "imports",
@@ -4883,9 +4979,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_devdependencies_globals",
-      "target": "globals",
-      "confidence_score": 1.0
+      "target": "globals"
     },
     {
       "relation": "imports",
@@ -4895,9 +4991,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_devdependencies_typescript",
-      "target": "typescript",
-      "confidence_score": 1.0
+      "target": "typescript"
     },
     {
       "relation": "imports",
@@ -4907,9 +5003,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_devdependencies_vite",
-      "target": "vite",
-      "confidence_score": 1.0
+      "target": "vite"
     },
     {
       "relation": "imports",
@@ -4919,9 +5015,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_devdependencies_vitest",
-      "target": "vitest",
-      "confidence_score": 1.0
+      "target": "vitest"
     },
     {
       "relation": "imports",
@@ -5083,13 +5179,37 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/components/admin/AdminConfigView.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "confidence_score": 1.0,
+      "source": "src_components_admin_adminconfigview",
+      "target": "src_components_adminutils_setsoundenabled"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/admin/AdminConfigView.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "confidence_score": 1.0,
+      "source": "src_components_admin_adminconfigview",
+      "target": "src_components_adminutils_soundenabled"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/components/admin/AdminMenuView.jsx",
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminmenuview",
-      "target": "src_components_adminutils_categoriaicon",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_categoriaicon"
     },
     {
       "relation": "imports",
@@ -5099,9 +5219,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminmenuview",
-      "target": "src_components_adminutils_formatearprecio",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_formatearprecio"
     },
     {
       "relation": "imports",
@@ -5111,9 +5231,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminmetricasview",
-      "target": "src_components_adminutils_calcularmetricas",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_calcularmetricas"
     },
     {
       "relation": "imports",
@@ -5123,9 +5243,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminmetricasview",
-      "target": "src_components_adminutils_cate_labels",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_cate_labels"
     },
     {
       "relation": "imports",
@@ -5135,16 +5255,16 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminmetricasview",
-      "target": "src_components_adminutils_formatearprecio",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_formatearprecio"
     },
     {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/admin/AdminPedidosView.jsx",
-      "source_location": "L1",
+      "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_admin_adminpedidosview",
@@ -5156,7 +5276,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/admin/AdminPedidosView.jsx",
-      "source_location": "L1",
+      "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_admin_adminpedidosview",
@@ -5168,7 +5288,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/admin/AdminPedidosView.jsx",
-      "source_location": "L1",
+      "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_admin_adminpedidosview",
@@ -5180,7 +5300,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/admin/AdminPedidosView.jsx",
-      "source_location": "L1",
+      "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_admin_adminpedidosview",
@@ -5195,9 +5315,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_platomodal",
-      "target": "src_api_client_createplato",
-      "confidence_score": 1.0
+      "target": "src_api_client_createplato"
     },
     {
       "relation": "imports",
@@ -5207,9 +5327,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_platomodal",
-      "target": "src_api_client_deleteplato",
-      "confidence_score": 1.0
+      "target": "src_api_client_deleteplato"
     },
     {
       "relation": "imports",
@@ -5219,9 +5339,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_platomodal",
-      "target": "src_api_client_updateplato",
-      "confidence_score": 1.0
+      "target": "src_api_client_updateplato"
     },
     {
       "relation": "imports",
@@ -5231,9 +5351,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_platomodal",
-      "target": "src_context_notificationcontext_usenotify",
-      "confidence_score": 1.0
+      "target": "src_context_notificationcontext_usenotify"
     },
     {
       "relation": "imports",
@@ -5243,9 +5363,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_platomodal",
-      "target": "src_components_adminutils_categorias",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_categorias"
     },
     {
       "relation": "imports",
@@ -5255,21 +5375,33 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_platomodal",
-      "target": "src_components_adminutils_empty_plato",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_empty_plato"
     },
     {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/AdminSidebar.jsx",
-      "source_location": "L1",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_adminsidebar",
+      "target": "src_context_themecontext_usetheme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/adminUtils.test.js",
+      "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
       "confidence_score": 1.0,
-      "source": "src_components_adminsidebar",
-      "target": "src_context_themecontext_usetheme"
+      "source": "src_components_adminutils_test",
+      "target": "src_components_adminutils_calcularmetricas"
     },
     {
       "relation": "imports",
@@ -5279,9 +5411,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils_test",
-      "target": "src_components_adminutils_calcularmetricas",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_categoriaicon"
     },
     {
       "relation": "imports",
@@ -5291,9 +5423,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils_test",
-      "target": "src_components_adminutils_categoriaicon",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_formatearprecio"
     },
     {
       "relation": "imports",
@@ -5303,9 +5435,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils_test",
-      "target": "src_components_adminutils_formatearprecio",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_pedidostocsv"
     },
     {
       "relation": "imports",
@@ -5315,9 +5447,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils_test",
-      "target": "src_components_adminutils_pedidostocsv",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_tiemporelativo"
     },
     {
       "relation": "imports",
@@ -5327,21 +5459,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils_test",
-      "target": "src_components_adminutils_tiemporelativo",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/adminUtils.test.js",
-      "source_location": "L2",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_components_adminutils_test",
-      "target": "src_components_adminutils_totalpedido",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_totalpedido"
     },
     {
       "relation": "imports",
@@ -5495,9 +5615,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_planoutils_test",
-      "target": "src_components_planoutils_clamp",
-      "confidence_score": 1.0
+      "target": "src_components_planoutils_clamp"
     },
     {
       "relation": "imports",
@@ -5507,9 +5627,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_planoutils_test",
-      "target": "src_components_planoutils_fixstyle",
-      "confidence_score": 1.0
+      "target": "src_components_planoutils_fixstyle"
     },
     {
       "relation": "imports",
@@ -5519,9 +5639,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_planoutils_test",
-      "target": "src_components_planoutils_mesasize",
-      "confidence_score": 1.0
+      "target": "src_components_planoutils_mesasize"
     },
     {
       "relation": "imports",
@@ -5531,9 +5651,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_planoutils_test",
-      "target": "src_components_planoutils_mesastyle",
-      "confidence_score": 1.0
+      "target": "src_components_planoutils_mesastyle"
     },
     {
       "relation": "imports",
@@ -5543,9 +5663,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_planoutils_test",
-      "target": "src_components_planoutils_nextnumero",
-      "confidence_score": 1.0
+      "target": "src_components_planoutils_nextnumero"
     },
     {
       "relation": "imports",
@@ -5555,9 +5675,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_planoutils_test",
-      "target": "src_components_planoutils_tipos_fijo",
-      "confidence_score": 1.0
+      "target": "src_components_planoutils_tipos_fijo"
     },
     {
       "relation": "imports",
@@ -5684,6 +5804,18 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/pages/AdminPage.jsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_adminpage",
+      "target": "src_components_adminsidebar_adminsidebar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/AdminPage.jsx",
       "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
@@ -5701,66 +5833,6 @@
       "_origin": "ast",
       "source": "src_pages_adminpage",
       "target": "src_components_admin_adminpedidosview_adminpedidosview",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/AdminPage.jsx",
-      "source_location": "L20",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_pages_adminpage",
-      "target": "src_components_admin_adminmenuview_adminmenuview",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/AdminPage.jsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_pages_adminpage",
-      "target": "src_components_admin_adminmesasview_adminmesasview",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/AdminPage.jsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_pages_adminpage",
-      "target": "src_components_admin_adminmetricasview_adminmetricasview",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/AdminPage.jsx",
-      "source_location": "L23",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_pages_adminpage",
-      "target": "src_components_admin_adminconfigview_adminconfigview",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/AdminPage.jsx",
-      "source_location": "L24",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_pages_adminpage",
-      "target": "src_components_admin_platomodal_platomodal",
       "confidence_score": 1.0
     },
     {
@@ -5809,6 +5881,18 @@
       "_origin": "ast",
       "source": "src_pages_adminpage",
       "target": "src_components_adminutils_playnewordersound",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/AdminPage.jsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_adminpage",
+      "target": "src_components_adminutils_soundenabled",
       "confidence_score": 1.0
     },
     {
@@ -6035,9 +6119,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_cocinapage",
-      "target": "src_api_client_cancelarpedido"
+      "target": "src_api_client_cancelarpedido",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -6047,9 +6131,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_cocinapage",
-      "target": "src_api_client_getpedidos"
+      "target": "src_api_client_getpedidos",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -6059,9 +6143,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_cocinapage",
-      "target": "src_api_client_updatepedidoestado"
+      "target": "src_api_client_updatepedidoestado",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -6071,9 +6155,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_cocinapage",
-      "target": "src_api_usesse_usesse"
+      "target": "src_api_usesse_usesse",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -6083,9 +6167,33 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_cocinapage",
-      "target": "src_context_notificationcontext_usenotify"
+      "target": "src_context_notificationcontext_usenotify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_cocinapage",
+      "target": "src_components_adminutils_playnewordersound",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_cocinapage",
+      "target": "src_components_adminutils_soundenabled",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -6107,9 +6215,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_llamadospage",
-      "target": "src_api_client_atenderllamado"
+      "target": "src_api_client_atenderllamado",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -6119,9 +6227,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_llamadospage",
-      "target": "src_api_client_getllamados"
+      "target": "src_api_client_getllamados",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -6131,9 +6239,33 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_llamadospage",
-      "target": "src_api_usesse_usesse"
+      "target": "src_api_usesse_usesse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/LlamadosPage.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_llamadospage",
+      "target": "src_components_adminutils_playnewordersound",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/LlamadosPage.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_llamadospage",
+      "target": "src_components_adminutils_soundenabled",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -6619,13 +6751,25 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/components/admin/AdminConfigView.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "confidence_score": 1.0,
+      "source": "src_components_admin_adminconfigview",
+      "target": "src_components_adminutils"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/components/admin/AdminMenuView.jsx",
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminmenuview",
-      "target": "src_components_adminutils",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils"
     },
     {
       "relation": "imports_from",
@@ -6635,9 +6779,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminmesasview",
-      "target": "src_components_planoeditor",
-      "confidence_score": 1.0
+      "target": "src_components_planoeditor"
     },
     {
       "relation": "imports_from",
@@ -6647,16 +6791,16 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminmetricasview",
-      "target": "src_components_adminutils",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils"
     },
     {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/admin/AdminPedidosView.jsx",
-      "source_location": "L1",
+      "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_admin_adminpedidosview",
@@ -6671,9 +6815,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_platomodal",
-      "target": "src_api_client",
-      "confidence_score": 1.0
+      "target": "src_api_client"
     },
     {
       "relation": "imports_from",
@@ -6683,9 +6827,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_platomodal",
-      "target": "src_context_notificationcontext",
-      "confidence_score": 1.0
+      "target": "src_context_notificationcontext"
     },
     {
       "relation": "imports_from",
@@ -6695,21 +6839,21 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_platomodal",
-      "target": "src_components_adminutils",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils"
     },
     {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/AdminSidebar.jsx",
-      "source_location": "L1",
+      "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_components_adminsidebar",
-      "target": "src_context_themecontext"
+      "target": "src_context_themecontext",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -6719,9 +6863,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils_test",
-      "target": "src_components_adminutils",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils"
     },
     {
       "relation": "imports_from",
@@ -6767,9 +6911,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_planoutils_test",
-      "target": "src_components_planoutils",
-      "confidence_score": 1.0
+      "target": "src_components_planoutils"
     },
     {
       "relation": "imports_from",
@@ -7139,9 +7283,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_cocinapage",
-      "target": "src_api_client"
+      "target": "src_api_client",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -7151,9 +7295,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_cocinapage",
-      "target": "src_api_usesse"
+      "target": "src_api_usesse",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -7163,9 +7307,21 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_cocinapage",
-      "target": "src_context_notificationcontext"
+      "target": "src_context_notificationcontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_cocinapage",
+      "target": "src_components_adminutils",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -7187,9 +7343,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_llamadospage",
-      "target": "src_api_client"
+      "target": "src_api_client",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -7199,9 +7355,21 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_llamadospage",
-      "target": "src_api_usesse"
+      "target": "src_api_usesse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/LlamadosPage.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_llamadospage",
+      "target": "src_components_adminutils",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -7437,9 +7605,9 @@
       "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_devdependencies",
-      "confidence_score": 1.0
+      "target": "package_devdependencies"
     },
     {
       "relation": "contains",
@@ -7448,9 +7616,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_name",
-      "confidence_score": 1.0
+      "target": "package_name"
     },
     {
       "relation": "contains",
@@ -7459,9 +7627,9 @@
       "source_location": "L27",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_dependencies",
-      "confidence_score": 1.0
+      "target": "package_dependencies"
     },
     {
       "relation": "contains",
@@ -7470,9 +7638,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_private",
-      "confidence_score": 1.0
+      "target": "package_private"
     },
     {
       "relation": "contains",
@@ -7481,9 +7649,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_version",
-      "confidence_score": 1.0
+      "target": "package_version"
     },
     {
       "relation": "contains",
@@ -7492,9 +7660,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_type",
-      "confidence_score": 1.0
+      "target": "package_type"
     },
     {
       "relation": "contains",
@@ -7503,9 +7671,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_engines",
-      "confidence_score": 1.0
+      "target": "package_engines"
     },
     {
       "relation": "contains",
@@ -7514,9 +7682,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_scripts",
-      "confidence_score": 1.0
+      "target": "package_scripts"
     },
     {
       "relation": "contains",
@@ -7525,9 +7693,9 @@
       "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_google_model_viewer",
-      "confidence_score": 1.0
+      "target": "package_dependencies_google_model_viewer"
     },
     {
       "relation": "contains",
@@ -7536,9 +7704,9 @@
       "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_tabler_icons_webfont",
-      "confidence_score": 1.0
+      "target": "package_dependencies_tabler_icons_webfont"
     },
     {
       "relation": "contains",
@@ -7547,9 +7715,9 @@
       "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_qrcode",
-      "confidence_score": 1.0
+      "target": "package_dependencies_qrcode"
     },
     {
       "relation": "contains",
@@ -7558,9 +7726,9 @@
       "source_location": "L31",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_react",
-      "confidence_score": 1.0
+      "target": "package_dependencies_react"
     },
     {
       "relation": "contains",
@@ -7569,9 +7737,9 @@
       "source_location": "L32",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_react_dom",
-      "confidence_score": 1.0
+      "target": "package_dependencies_react_dom"
     },
     {
       "relation": "contains",
@@ -7580,9 +7748,9 @@
       "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_react_router_dom",
-      "confidence_score": 1.0
+      "target": "package_dependencies_react_router_dom"
     },
     {
       "relation": "contains",
@@ -7591,9 +7759,9 @@
       "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_serve",
-      "confidence_score": 1.0
+      "target": "package_dependencies_serve"
     },
     {
       "relation": "contains",
@@ -7602,9 +7770,9 @@
       "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_devdependencies",
-      "target": "package_devdependencies_eslint_js",
-      "confidence_score": 1.0
+      "target": "package_devdependencies_eslint_js"
     },
     {
       "relation": "contains",
@@ -7613,9 +7781,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_devdependencies",
-      "target": "package_devdependencies_eslint",
-      "confidence_score": 1.0
+      "target": "package_devdependencies_eslint"
     },
     {
       "relation": "contains",
@@ -7624,9 +7792,9 @@
       "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_devdependencies",
-      "target": "package_devdependencies_eslint_plugin_react_hooks",
-      "confidence_score": 1.0
+      "target": "package_devdependencies_eslint_plugin_react_hooks"
     },
     {
       "relation": "contains",
@@ -7635,9 +7803,9 @@
       "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_devdependencies",
-      "target": "package_devdependencies_eslint_plugin_react_refresh",
-      "confidence_score": 1.0
+      "target": "package_devdependencies_eslint_plugin_react_refresh"
     },
     {
       "relation": "contains",
@@ -7646,9 +7814,9 @@
       "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_devdependencies",
-      "target": "package_devdependencies_globals",
-      "confidence_score": 1.0
+      "target": "package_devdependencies_globals"
     },
     {
       "relation": "contains",
@@ -7657,9 +7825,9 @@
       "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_devdependencies",
-      "target": "package_devdependencies_typescript",
-      "confidence_score": 1.0
+      "target": "package_devdependencies_typescript"
     },
     {
       "relation": "contains",
@@ -7668,9 +7836,9 @@
       "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_devdependencies",
-      "target": "package_devdependencies_vite",
-      "confidence_score": 1.0
+      "target": "package_devdependencies_vite"
     },
     {
       "relation": "contains",
@@ -7679,9 +7847,9 @@
       "source_location": "L25",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_devdependencies",
-      "target": "package_devdependencies_vitest",
-      "confidence_score": 1.0
+      "target": "package_devdependencies_vitest"
     },
     {
       "relation": "contains",
@@ -7690,9 +7858,9 @@
       "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_engines",
-      "target": "package_engines_node",
-      "confidence_score": 1.0
+      "target": "package_engines_node"
     },
     {
       "relation": "contains",
@@ -7701,9 +7869,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_scripts",
-      "target": "package_scripts_dev",
-      "confidence_score": 1.0
+      "target": "package_scripts_dev"
     },
     {
       "relation": "contains",
@@ -7712,9 +7880,9 @@
       "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_scripts",
-      "target": "package_scripts_build",
-      "confidence_score": 1.0
+      "target": "package_scripts_build"
     },
     {
       "relation": "contains",
@@ -7723,9 +7891,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_scripts",
-      "target": "package_scripts_preview",
-      "confidence_score": 1.0
+      "target": "package_scripts_preview"
     },
     {
       "relation": "contains",
@@ -7734,9 +7902,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_scripts",
-      "target": "package_scripts_start",
-      "confidence_score": 1.0
+      "target": "package_scripts_start"
     },
     {
       "relation": "contains",
@@ -7745,9 +7913,9 @@
       "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_scripts",
-      "target": "package_scripts_lint",
-      "confidence_score": 1.0
+      "target": "package_scripts_lint"
     },
     {
       "relation": "contains",
@@ -7756,9 +7924,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "package_scripts",
-      "target": "package_scripts_test",
-      "confidence_score": 1.0
+      "target": "package_scripts_test"
     },
     {
       "relation": "contains",
@@ -8226,12 +8394,12 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/admin/AdminConfigView.jsx",
-      "source_location": "L1",
+      "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminconfigview",
-      "target": "src_components_admin_adminconfigview_adminconfigview",
-      "confidence_score": 1.0
+      "target": "src_components_admin_adminconfigview_adminconfigview"
     },
     {
       "relation": "contains",
@@ -8240,9 +8408,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminmenuview",
-      "target": "src_components_admin_adminmenuview_adminmenuview",
-      "confidence_score": 1.0
+      "target": "src_components_admin_adminmenuview_adminmenuview"
     },
     {
       "relation": "contains",
@@ -8251,9 +8419,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminmesasview",
-      "target": "src_components_admin_adminmesasview_adminmesasview",
-      "confidence_score": 1.0
+      "target": "src_components_admin_adminmesasview_adminmesasview"
     },
     {
       "relation": "contains",
@@ -8262,15 +8430,15 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminmetricasview",
-      "target": "src_components_admin_adminmetricasview_adminmetricasview",
-      "confidence_score": 1.0
+      "target": "src_components_admin_adminmetricasview_adminmetricasview"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/admin/AdminPedidosView.jsx",
-      "source_location": "L3",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_admin_adminpedidosview",
@@ -8280,35 +8448,46 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/components/admin/AdminPedidosView.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_admin_adminpedidosview",
+      "target": "src_components_admin_adminpedidosview_filtros",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/components/admin/PlatoModal.jsx",
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_platomodal",
-      "target": "src_components_admin_platomodal_platomodal",
+      "target": "src_components_admin_platomodal_platomodal"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/AdminSidebar.jsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_adminsidebar",
+      "target": "src_components_adminsidebar_adminsidebar",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/AdminSidebar.jsx",
-      "source_location": "L11",
+      "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_components_adminsidebar",
-      "target": "src_components_adminsidebar_adminsidebar"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/AdminSidebar.jsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "src_components_adminsidebar",
-      "target": "src_components_adminsidebar_items"
+      "target": "src_components_adminsidebar_items",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8317,20 +8496,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils",
-      "target": "src_components_adminutils_formatearprecio",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/adminUtils.js",
-      "source_location": "L106",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_components_adminutils",
-      "target": "src_components_adminutils_calcularmetricas",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_formatearprecio"
     },
     {
       "relation": "contains",
@@ -8339,9 +8507,20 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils",
-      "target": "src_components_adminutils_categoriaicon",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_categoriaicon"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L120",
+      "weight": 1.0,
+      "_origin": "ast",
+      "confidence_score": 1.0,
+      "source": "src_components_adminutils",
+      "target": "src_components_adminutils_calcularmetricas"
     },
     {
       "relation": "contains",
@@ -8350,9 +8529,9 @@
       "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils",
-      "target": "src_components_adminutils_categorias",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_categorias"
     },
     {
       "relation": "contains",
@@ -8361,9 +8540,9 @@
       "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils",
-      "target": "src_components_adminutils_columnas",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_columnas"
     },
     {
       "relation": "contains",
@@ -8372,9 +8551,9 @@
       "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils",
-      "target": "src_components_adminutils_empty_plato",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_empty_plato"
     },
     {
       "relation": "contains",
@@ -8383,9 +8562,9 @@
       "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils",
-      "target": "src_components_adminutils_cate_labels",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_cate_labels"
     },
     {
       "relation": "contains",
@@ -8394,9 +8573,9 @@
       "source_location": "L47",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils",
-      "target": "src_components_adminutils_totalpedido",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_totalpedido"
     },
     {
       "relation": "contains",
@@ -8405,9 +8584,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils",
-      "target": "src_components_adminutils_tiemporelativo",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_tiemporelativo"
     },
     {
       "relation": "contains",
@@ -8416,9 +8595,9 @@
       "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils",
-      "target": "src_components_adminutils_pedidostocsv",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_pedidostocsv"
     },
     {
       "relation": "contains",
@@ -8427,9 +8606,9 @@
       "source_location": "L70",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils",
-      "target": "src_components_adminutils_descargarcsv",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_descargarcsv"
     },
     {
       "relation": "contains",
@@ -8438,9 +8617,31 @@
       "source_location": "L83",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_adminutils",
-      "target": "src_components_adminutils_playnewordersound",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_soundenabled"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L91",
+      "weight": 1.0,
+      "_origin": "ast",
+      "confidence_score": 1.0,
+      "source": "src_components_adminutils",
+      "target": "src_components_adminutils_setsoundenabled"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L97",
+      "weight": 1.0,
+      "_origin": "ast",
+      "confidence_score": 1.0,
+      "source": "src_components_adminutils",
+      "target": "src_components_adminutils_playnewordersound"
     },
     {
       "relation": "contains",
@@ -9095,45 +9296,45 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_cocinapage",
-      "target": "src_pages_cocinapage_estado_colors"
+      "target": "src_pages_cocinapage_estado_colors",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_cocinapage",
-      "target": "src_pages_cocinapage_estado_labels"
+      "target": "src_pages_cocinapage_estado_labels",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_cocinapage",
-      "target": "src_pages_cocinapage_cocinapage"
+      "target": "src_pages_cocinapage_cocinapage",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_cocinapage",
-      "target": "src_pages_cocinapage_estados"
+      "target": "src_pages_cocinapage_estados",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -9304,12 +9505,12 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/pages/LlamadosPage.jsx",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_llamadospage",
-      "target": "src_pages_llamadospage_llamadospage"
+      "target": "src_pages_llamadospage_llamadospage",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -9631,8 +9832,20 @@
       "confidence_score": 0.5,
       "source": "src_context_themecontext_themeprovider",
       "target": "src_context_themecontext_getstoredthemes"
+    },
+    {
+      "relation": "indirect_call",
+      "context": "argument",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/components/admin/AdminConfigView.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_admin_adminconfigview_adminconfigview",
+      "target": "src_components_adminutils_soundenabled"
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d507c0cec9a5c19531dde614af0ac25ea437e274"
+  "built_at_commit": "8c5d19cdd1bd02c8462396435d15d4a3002c75b8"
 }

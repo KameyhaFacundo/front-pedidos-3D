@@ -1,10 +1,10 @@
 {
   "0": "ThemeContext.jsx",
-  "1": "useNotify",
+  "1": "useAuth",
   "2": "devDependencies",
   "3": "client.js",
-  "4": "PedidoTrackingPage.jsx",
-  "5": "App.jsx",
+  "4": "App.jsx",
+  "5": "MenuPage.jsx",
   "6": "TypeScript Config",
   "7": "PlanoEditor.jsx",
   "8": "package.json",
@@ -12,6 +12,6 @@
   "10": "CLAUDE.md",
   "11": "eslint.config.js",
   "12": "adminUtils.js",
-  "13": "CartContext.jsx",
-  "14": "Footer.jsx"
+  "13": "main.jsx",
+  "14": "qrcode"
 }
