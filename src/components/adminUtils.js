@@ -88,31 +88,59 @@ export function soundEnabled() {
   }
 }
 
+let sharedCtx = null;
+
+function getAudioContext() {
+  const Ctx = window.AudioContext || window.webkitAudioContext;
+  if (!Ctx) return null;
+  if (!sharedCtx || sharedCtx.state === 'closed') {
+    sharedCtx = new Ctx();
+  }
+  if (sharedCtx.state === 'suspended') {
+    sharedCtx.resume();
+  }
+  return sharedCtx;
+}
+
 export function setSoundEnabled(value) {
   try {
     localStorage.setItem('pidevo_sound_enabled', value ? '1' : '0');
+    if (value) getAudioContext();
   } catch {}
+}
+
+function beep(ctx, freq, t0, duration, gainValue = 0.12) {
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = 'sine';
+  osc.frequency.value = freq;
+  gain.gain.setValueAtTime(0.0001, t0);
+  gain.gain.exponentialRampToValueAtTime(gainValue, t0 + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.0001, t0 + duration - 0.02);
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start(t0);
+  osc.stop(t0 + duration);
 }
 
 export function playNewOrderSound() {
   try {
-    const Ctx = window.AudioContext || window.webkitAudioContext;
-    if (!Ctx) return;
-    const ctx = new Ctx();
+    const ctx = getAudioContext();
+    if (!ctx) return;
     const now = ctx.currentTime;
-    [880, 1174.66].forEach((freq, i) => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = 'sine';
-      osc.frequency.value = freq;
-      const t0 = now + i * 0.18;
-      gain.gain.setValueAtTime(0.0001, t0);
-      gain.gain.exponentialRampToValueAtTime(0.12, t0 + 0.02);
-      gain.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.16);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start(t0);
-      osc.stop(t0 + 0.18);
+    beep(ctx, 880, now, 0.18);
+    beep(ctx, 1174.66, now + 0.18, 0.22);
+  } catch {}
+}
+
+export function playCallSound() {
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    // Timbre de llamado: 3 notas tipo campana
+    [523.25, 659.25, 783.99].forEach((freq, i) => {
+      beep(ctx, freq, now + i * 0.22, 0.38, 0.15);
     });
   } catch {}
 }

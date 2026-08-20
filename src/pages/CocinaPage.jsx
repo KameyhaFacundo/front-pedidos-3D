@@ -6,7 +6,7 @@ import { useNotify } from '../context/NotificationContext';
 import { useAuth } from '../context/AuthContext';
 import { useCompany } from '../context/CompanyContext';
 import AdminSidebar from '../components/AdminSidebar';
-import { playNewOrderSound, soundEnabled } from '../components/adminUtils';
+import { playNewOrderSound, soundEnabled, setSoundEnabled } from '../components/adminUtils';
 
 const ESTADOS = [
   { key: '', label: 'Todos' },
@@ -54,8 +54,15 @@ export default function CocinaPage() {
   const [filtro, setFiltro] = useState('');
   const [agrupar, setAgrupar] = useState(true);
   const [updating, setUpdating] = useState(null);
+  const [soundOn, setSoundOn] = useState(soundEnabled);
   const seenIdsRef = useRef(new Set());
   const primeraCargaRef = useRef(true);
+
+  const toggleSound = () => {
+    const next = !soundOn;
+    setSoundOn(next);
+    setSoundEnabled(next);
+  };
 
   const fetchPedidos = useCallback(() => {
     getPedidos(filtro || undefined)
@@ -63,7 +70,7 @@ export default function CocinaPage() {
         const nuevas = data.filter((p) => !seenIdsRef.current.has(p.id) && p.estado === 'nuevo');
         if (primeraCargaRef.current) {
           primeraCargaRef.current = false;
-        } else if (nuevas.length > 0 && soundEnabled()) {
+        } else if (nuevas.length > 0 && soundOn) {
           playNewOrderSound();
         }
         data.forEach((p) => seenIdsRef.current.add(p.id));
@@ -75,7 +82,7 @@ export default function CocinaPage() {
         setError(err.message);
         setLoading(false);
       });
-  }, [filtro]);
+  }, [filtro, soundOn]);
 
   useEffect(() => {
     setLoading(true);
@@ -90,7 +97,7 @@ export default function CocinaPage() {
         if (p.estado === 'nuevo') nuevas.push(p);
       }
     });
-    if (nuevas.length > 0 && soundEnabled()) playNewOrderSound();
+    if (nuevas.length > 0 && soundOn) playNewOrderSound();
     setPedidos((prev) => {
       const map = new Map(prev.map((p) => [p.id, p]));
       updated.forEach((p) => map.set(p.id, p));
@@ -98,7 +105,7 @@ export default function CocinaPage() {
       if (filtro) list = list.filter((p) => p.estado === filtro);
       return list.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
     });
-  }, [filtro]);
+  }, [filtro, soundOn]);
 
   useSSE(handleSSEUpdate, null, fetchPedidos);
 
@@ -386,6 +393,14 @@ ${rows.map((r) => `<div class="item">${r.texto}<div class="muted">#${r.id} · ${
           </svg>
           Cocina
         </h1>
+        <button
+          className={`sound-toggle ${soundOn ? 'on' : ''}`}
+          onClick={toggleSound}
+          title={soundOn ? 'Silenciar' : 'Activar sonido'}
+        >
+          <i className={`ti ${soundOn ? 'ti-volume' : 'ti-volume-off'}`}></i>
+          <span>{soundOn ? 'Sonido on' : 'Sonido off'}</span>
+        </button>
       </header>
 
       <div className="filter-tabs">

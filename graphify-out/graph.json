@@ -17,28 +17,76 @@
       "norm_label": "errorboundary"
     },
     {
-      "label": "getBase()",
+      "label": "getPedido()",
       "file_type": "code",
-      "source_file": "src/api/useSSE.js",
-      "source_location": "L3",
+      "source_file": "src/api/client.js",
+      "source_location": "L107",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_api_usesse_getbase",
+      "id": "src_api_client_getpedido",
       "community": 0,
       "community_name": "PedidoTrackingPage.jsx",
-      "norm_label": "getbase()"
+      "norm_label": "getpedido()"
     },
     {
-      "label": "useSSE()",
+      "label": "llamarMozo()",
       "file_type": "code",
-      "source_file": "src/api/useSSE.js",
+      "source_file": "src/api/client.js",
+      "source_location": "L193",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_llamarmozo",
+      "community": 0,
+      "community_name": "PedidoTrackingPage.jsx",
+      "norm_label": "llamarmozo()"
+    },
+    {
+      "label": "registrarEmpresa()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L76",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_registrarempresa",
+      "community": 0,
+      "community_name": "PedidoTrackingPage.jsx",
+      "norm_label": "registrarempresa()"
+    },
+    {
+      "label": "RegistroModal()",
+      "file_type": "code",
+      "source_file": "src/components/RegistroModal.jsx",
+      "source_location": "L7",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_registromodal_registromodal",
+      "community": 0,
+      "community_name": "PedidoTrackingPage.jsx",
+      "norm_label": "registromodal()"
+    },
+    {
+      "label": "NotificationProvider()",
+      "file_type": "code",
+      "source_file": "src/context/NotificationContext.jsx",
       "source_location": "L11",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_api_usesse_usesse",
+      "id": "src_context_notificationcontext_notificationprovider",
       "community": 0,
       "community_name": "PedidoTrackingPage.jsx",
-      "norm_label": "usesse()"
+      "norm_label": "notificationprovider()"
+    },
+    {
+      "label": "useNotify()",
+      "file_type": "code",
+      "source_file": "src/context/NotificationContext.jsx",
+      "source_location": "L83",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_notificationcontext_usenotify",
+      "community": 0,
+      "community_name": "PedidoTrackingPage.jsx",
+      "norm_label": "usenotify()"
     },
     {
       "label": "formatear()",
@@ -257,22 +305,10 @@
       "norm_label": "hoylocal()"
     },
     {
-      "label": "LocalSettingsModal()",
-      "file_type": "code",
-      "source_file": "src/components/admin/LocalSettingsModal.jsx",
-      "source_location": "L14",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_admin_localsettingsmodal_localsettingsmodal",
-      "community": 12,
-      "community_name": "adminUtils.js",
-      "norm_label": "localsettingsmodal()"
-    },
-    {
       "label": "calcularMetricas()",
       "file_type": "code",
       "source_file": "src/components/adminUtils.js",
-      "source_location": "L120",
+      "source_location": "L148",
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_adminutils_calcularmetricas",
@@ -329,30 +365,6 @@
       "norm_label": "pedidostocsv()"
     },
     {
-      "label": "setSoundEnabled()",
-      "file_type": "code",
-      "source_file": "src/components/adminUtils.js",
-      "source_location": "L91",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_adminutils_setsoundenabled",
-      "community": 12,
-      "community_name": "adminUtils.js",
-      "norm_label": "setsoundenabled()"
-    },
-    {
-      "label": "soundEnabled()",
-      "file_type": "code",
-      "source_file": "src/components/adminUtils.js",
-      "source_location": "L83",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_adminutils_soundenabled",
-      "community": 12,
-      "community_name": "adminUtils.js",
-      "norm_label": "soundenabled()"
-    },
-    {
       "label": "tiempoRelativo()",
       "file_type": "code",
       "source_file": "src/components/adminUtils.js",
@@ -377,6 +389,90 @@
       "norm_label": "totalpedido()"
     },
     {
+      "label": "getEmpresa()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L95",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_getempresa",
+      "community": 13,
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "getempresa()"
+    },
+    {
+      "label": "login()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L69",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_login",
+      "community": 13,
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "login()"
+    },
+    {
+      "label": "CompanyProvider()",
+      "file_type": "code",
+      "source_file": "src/context/CompanyContext.jsx",
+      "source_location": "L15",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_companycontext_companyprovider",
+      "community": 13,
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "companyprovider()"
+    },
+    {
+      "label": "getSlugFromPath()",
+      "file_type": "code",
+      "source_file": "src/context/CompanyContext.jsx",
+      "source_location": "L9",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_companycontext_getslugfrompath",
+      "community": 13,
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "getslugfrompath()"
+    },
+    {
+      "label": "defaultRouteForRole()",
+      "file_type": "code",
+      "source_file": "src/pages/LoginPage.jsx",
+      "source_location": "L6",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_pages_loginpage_defaultrouteforrole",
+      "community": 13,
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "defaultrouteforrole()"
+    },
+    {
+      "label": "getSlugFromPath()",
+      "file_type": "code",
+      "source_file": "src/pages/LoginPage.jsx",
+      "source_location": "L12",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_pages_loginpage_getslugfrompath",
+      "community": 13,
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "getslugfrompath()"
+    },
+    {
+      "label": "LoginPage()",
+      "file_type": "code",
+      "source_file": "src/pages/LoginPage.jsx",
+      "source_location": "L18",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_pages_loginpage_loginpage",
+      "community": 13,
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "loginpage()"
+    },
+    {
       "label": "atenderLlamado()",
       "file_type": "code",
       "source_file": "src/api/client.js",
@@ -385,20 +481,20 @@
       "_origin": "ast",
       "id": "src_api_client_atenderllamado",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
+      "community_name": "AdminPage.jsx",
       "norm_label": "atenderllamado()"
     },
     {
-      "label": "getEmpresa()",
+      "label": "cancelarPedido()",
       "file_type": "code",
       "source_file": "src/api/client.js",
-      "source_location": "L95",
+      "source_location": "L260",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_api_client_getempresa",
+      "id": "src_api_client_cancelarpedido",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
-      "norm_label": "getempresa()"
+      "community_name": "AdminPage.jsx",
+      "norm_label": "cancelarpedido()"
     },
     {
       "label": "getLlamados()",
@@ -409,20 +505,128 @@
       "_origin": "ast",
       "id": "src_api_client_getllamados",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
+      "community_name": "AdminPage.jsx",
       "norm_label": "getllamados()"
     },
     {
-      "label": "login()",
+      "label": "getMetricas()",
       "file_type": "code",
       "source_file": "src/api/client.js",
-      "source_location": "L69",
+      "source_location": "L199",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_api_client_login",
+      "id": "src_api_client_getmetricas",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
-      "norm_label": "login()"
+      "community_name": "AdminPage.jsx",
+      "norm_label": "getmetricas()"
+    },
+    {
+      "label": "getPedidos()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L112",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_getpedidos",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "getpedidos()"
+    },
+    {
+      "label": "getPlatos()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L203",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_getplatos",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "getplatos()"
+    },
+    {
+      "label": "logout()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L83",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_logout",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "logout()"
+    },
+    {
+      "label": "reordenarPlatos()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L320",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_reordenarplatos",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "reordenarplatos()"
+    },
+    {
+      "label": "updateEmpresa()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L100",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_updateempresa",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "updateempresa()"
+    },
+    {
+      "label": "updatePedidoEstado()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L149",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_updatepedidoestado",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "updatepedidoestado()"
+    },
+    {
+      "label": "updatePedidoPago()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L248",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_updatepedidopago",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "updatepedidopago()"
+    },
+    {
+      "label": "getBase()",
+      "file_type": "code",
+      "source_file": "src/api/useSSE.js",
+      "source_location": "L3",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_usesse_getbase",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "getbase()"
+    },
+    {
+      "label": "useSSE()",
+      "file_type": "code",
+      "source_file": "src/api/useSSE.js",
+      "source_location": "L11",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_usesse_usesse",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "usesse()"
     },
     {
       "label": "ThemeToggle()",
@@ -433,8 +637,20 @@
       "_origin": "ast",
       "id": "src_app_themetoggle",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
+      "community_name": "AdminPage.jsx",
       "norm_label": "themetoggle()"
+    },
+    {
+      "label": "LocalSettingsModal()",
+      "file_type": "code",
+      "source_file": "src/components/admin/LocalSettingsModal.jsx",
+      "source_location": "L14",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_admin_localsettingsmodal_localsettingsmodal",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "localsettingsmodal()"
     },
     {
       "label": "AdminSidebar()",
@@ -445,8 +661,92 @@
       "_origin": "ast",
       "id": "src_components_adminsidebar_adminsidebar",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
+      "community_name": "AdminPage.jsx",
       "norm_label": "adminsidebar()"
+    },
+    {
+      "label": "beep()",
+      "file_type": "code",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L112",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_adminutils_beep",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "beep()"
+    },
+    {
+      "label": "getAudioContext()",
+      "file_type": "code",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L93",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_adminutils_getaudiocontext",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "getaudiocontext()"
+    },
+    {
+      "label": "playCallSound()",
+      "file_type": "code",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L136",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_adminutils_playcallsound",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "playcallsound()"
+    },
+    {
+      "label": "playNewOrderSound()",
+      "file_type": "code",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L126",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_adminutils_playnewordersound",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "playnewordersound()"
+    },
+    {
+      "label": "setSoundEnabled()",
+      "file_type": "code",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L105",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_adminutils_setsoundenabled",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "setsoundenabled()"
+    },
+    {
+      "label": "soundEnabled()",
+      "file_type": "code",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L83",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_adminutils_soundenabled",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "soundenabled()"
+    },
+    {
+      "label": "QRModal()",
+      "file_type": "code",
+      "source_file": "src/components/QRModal.jsx",
+      "source_location": "L3",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_qrmodal_qrmodal",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "qrmodal()"
     },
     {
       "label": "AuthProvider()",
@@ -457,7 +757,7 @@
       "_origin": "ast",
       "id": "src_context_authcontext_authprovider",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
+      "community_name": "AdminPage.jsx",
       "norm_label": "authprovider()"
     },
     {
@@ -469,68 +769,8 @@
       "_origin": "ast",
       "id": "src_context_authcontext_useauth",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
+      "community_name": "AdminPage.jsx",
       "norm_label": "useauth()"
-    },
-    {
-      "label": "CompanyProvider()",
-      "file_type": "code",
-      "source_file": "src/context/CompanyContext.jsx",
-      "source_location": "L15",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_companycontext_companyprovider",
-      "community": 15,
-      "community_name": "LlamadosPage.jsx",
-      "norm_label": "companyprovider()"
-    },
-    {
-      "label": "getSlugFromPath()",
-      "file_type": "code",
-      "source_file": "src/context/CompanyContext.jsx",
-      "source_location": "L9",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_companycontext_getslugfrompath",
-      "community": 15,
-      "community_name": "LlamadosPage.jsx",
-      "norm_label": "getslugfrompath()"
-    },
-    {
-      "label": "getScope()",
-      "file_type": "code",
-      "source_file": "src/context/ThemeContext.jsx",
-      "source_location": "L19",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_themecontext_getscope",
-      "community": 15,
-      "community_name": "LlamadosPage.jsx",
-      "norm_label": "getscope()"
-    },
-    {
-      "label": "getStoredThemes()",
-      "file_type": "code",
-      "source_file": "src/context/ThemeContext.jsx",
-      "source_location": "L8",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_themecontext_getstoredthemes",
-      "community": 15,
-      "community_name": "LlamadosPage.jsx",
-      "norm_label": "getstoredthemes()"
-    },
-    {
-      "label": "ThemeProvider()",
-      "file_type": "code",
-      "source_file": "src/context/ThemeContext.jsx",
-      "source_location": "L24",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_themecontext_themeprovider",
-      "community": 15,
-      "community_name": "LlamadosPage.jsx",
-      "norm_label": "themeprovider()"
     },
     {
       "label": "useTheme()",
@@ -541,8 +781,68 @@
       "_origin": "ast",
       "id": "src_context_themecontext_usetheme",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
+      "community_name": "AdminPage.jsx",
       "norm_label": "usetheme()"
+    },
+    {
+      "label": "AdminPage()",
+      "file_type": "code",
+      "source_file": "src/pages/AdminPage.jsx",
+      "source_location": "L55",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_pages_adminpage_adminpage",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "adminpage()"
+    },
+    {
+      "label": "backendToFormHorarios()",
+      "file_type": "code",
+      "source_file": "src/pages/AdminPage.jsx",
+      "source_location": "L34",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_pages_adminpage_backendtoformhorarios",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "backendtoformhorarios()"
+    },
+    {
+      "label": "formToBackendHorarios()",
+      "file_type": "code",
+      "source_file": "src/pages/AdminPage.jsx",
+      "source_location": "L44",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_pages_adminpage_formtobackendhorarios",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "formtobackendhorarios()"
+    },
+    {
+      "label": "CocinaPage()",
+      "file_type": "code",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L44",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_pages_cocinapage_cocinapage",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "cocinapage()"
+    },
+    {
+      "label": "tiempoEnEstado()",
+      "file_type": "code",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L32",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_pages_cocinapage_tiempoenestado",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "tiempoenestado()"
     },
     {
       "label": "LlamadosPage()",
@@ -553,80 +853,8 @@
       "_origin": "ast",
       "id": "src_pages_llamadospage_llamadospage",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
+      "community_name": "AdminPage.jsx",
       "norm_label": "llamadospage()"
-    },
-    {
-      "label": "defaultRouteForRole()",
-      "file_type": "code",
-      "source_file": "src/pages/LoginPage.jsx",
-      "source_location": "L6",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_pages_loginpage_defaultrouteforrole",
-      "community": 15,
-      "community_name": "LlamadosPage.jsx",
-      "norm_label": "defaultrouteforrole()"
-    },
-    {
-      "label": "getSlugFromPath()",
-      "file_type": "code",
-      "source_file": "src/pages/LoginPage.jsx",
-      "source_location": "L12",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_pages_loginpage_getslugfrompath",
-      "community": 15,
-      "community_name": "LlamadosPage.jsx",
-      "norm_label": "getslugfrompath()"
-    },
-    {
-      "label": "LoginPage()",
-      "file_type": "code",
-      "source_file": "src/pages/LoginPage.jsx",
-      "source_location": "L18",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_pages_loginpage_loginpage",
-      "community": 15,
-      "community_name": "LlamadosPage.jsx",
-      "norm_label": "loginpage()"
-    },
-    {
-      "label": "registrarArVista()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L254",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_registrararvista",
-      "community": 3,
-      "community_name": "ARViewer.jsx",
-      "norm_label": "registrararvista()"
-    },
-    {
-      "label": "ARViewer()",
-      "file_type": "code",
-      "source_file": "src/components/ARViewer.jsx",
-      "source_location": "L4",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_arviewer_arviewer",
-      "community": 3,
-      "community_name": "ARViewer.jsx",
-      "norm_label": "arviewer()"
-    },
-    {
-      "label": "cancelarPedido()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L260",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_cancelarpedido",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "cancelarpedido()"
     },
     {
       "label": "createCupon()",
@@ -737,54 +965,6 @@
       "norm_label": "getme()"
     },
     {
-      "label": "getMesas()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L156",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_getmesas",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "getmesas()"
-    },
-    {
-      "label": "getMetricas()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L199",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_getmetricas",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "getmetricas()"
-    },
-    {
-      "label": "getPedidos()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L112",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_getpedidos",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "getpedidos()"
-    },
-    {
-      "label": "getPlatos()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L203",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_getplatos",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "getplatos()"
-    },
-    {
       "label": "getStaff()",
       "file_type": "code",
       "source_file": "src/api/client.js",
@@ -821,40 +1001,16 @@
       "norm_label": "isdemomode()"
     },
     {
-      "label": "logout()",
+      "label": "registrarArVista()",
       "file_type": "code",
       "source_file": "src/api/client.js",
-      "source_location": "L83",
+      "source_location": "L254",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_api_client_logout",
+      "id": "src_api_client_registrararvista",
       "community": 4,
       "community_name": "client.js",
-      "norm_label": "logout()"
-    },
-    {
-      "label": "registrarEmpresa()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L76",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_registrarempresa",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "registrarempresa()"
-    },
-    {
-      "label": "reordenarPlatos()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L320",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_reordenarplatos",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "reordenarplatos()"
+      "norm_label": "registrararvista()"
     },
     {
       "label": "request()",
@@ -905,42 +1061,6 @@
       "norm_label": "updatecupon()"
     },
     {
-      "label": "updateEmpresa()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L100",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_updateempresa",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "updateempresa()"
-    },
-    {
-      "label": "updatePedidoEstado()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L149",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_updatepedidoestado",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "updatepedidoestado()"
-    },
-    {
-      "label": "updatePedidoPago()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L248",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_updatepedidopago",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "updatepedidopago()"
-    },
-    {
       "label": "updatePlato()",
       "file_type": "code",
       "source_file": "src/api/client.js",
@@ -989,124 +1109,16 @@
       "norm_label": "platomodal()"
     },
     {
-      "label": "playNewOrderSound()",
+      "label": "ARViewer()",
       "file_type": "code",
-      "source_file": "src/components/adminUtils.js",
-      "source_location": "L97",
+      "source_file": "src/components/ARViewer.jsx",
+      "source_location": "L4",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_components_adminutils_playnewordersound",
+      "id": "src_components_arviewer_arviewer",
       "community": 4,
       "community_name": "client.js",
-      "norm_label": "playnewordersound()"
-    },
-    {
-      "label": "QRModal()",
-      "file_type": "code",
-      "source_file": "src/components/QRModal.jsx",
-      "source_location": "L3",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_qrmodal_qrmodal",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "qrmodal()"
-    },
-    {
-      "label": "RegistroModal()",
-      "file_type": "code",
-      "source_file": "src/components/RegistroModal.jsx",
-      "source_location": "L7",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_registromodal_registromodal",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "registromodal()"
-    },
-    {
-      "label": "NotificationProvider()",
-      "file_type": "code",
-      "source_file": "src/context/NotificationContext.jsx",
-      "source_location": "L11",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_notificationcontext_notificationprovider",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "notificationprovider()"
-    },
-    {
-      "label": "useNotify()",
-      "file_type": "code",
-      "source_file": "src/context/NotificationContext.jsx",
-      "source_location": "L83",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_notificationcontext_usenotify",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "usenotify()"
-    },
-    {
-      "label": "AdminPage()",
-      "file_type": "code",
-      "source_file": "src/pages/AdminPage.jsx",
-      "source_location": "L55",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_pages_adminpage_adminpage",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "adminpage()"
-    },
-    {
-      "label": "backendToFormHorarios()",
-      "file_type": "code",
-      "source_file": "src/pages/AdminPage.jsx",
-      "source_location": "L34",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_pages_adminpage_backendtoformhorarios",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "backendtoformhorarios()"
-    },
-    {
-      "label": "formToBackendHorarios()",
-      "file_type": "code",
-      "source_file": "src/pages/AdminPage.jsx",
-      "source_location": "L44",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_pages_adminpage_formtobackendhorarios",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "formtobackendhorarios()"
-    },
-    {
-      "label": "CocinaPage()",
-      "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L44",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_pages_cocinapage_cocinapage",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "cocinapage()"
-    },
-    {
-      "label": "tiempoEnEstado()",
-      "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L32",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_pages_cocinapage_tiempoenestado",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "tiempoenestado()"
+      "norm_label": "arviewer()"
     },
     {
       "label": "crearPreferencia()",
@@ -1145,16 +1157,16 @@
       "norm_label": "getmenu()"
     },
     {
-      "label": "llamarMozo()",
+      "label": "getMesas()",
       "file_type": "code",
       "source_file": "src/api/client.js",
-      "source_location": "L193",
+      "source_location": "L156",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_api_client_llamarmozo",
+      "id": "src_api_client_getmesas",
       "community": 5,
       "community_name": "App.jsx",
-      "norm_label": "llamarmozo()"
+      "norm_label": "getmesas()"
     },
     {
       "label": "validarCupon()",
@@ -1493,6 +1505,54 @@
       "norm_label": "ordermodeprovider()"
     },
     {
+      "label": "useOrderMode()",
+      "file_type": "code",
+      "source_file": "src/context/OrderModeContext.jsx",
+      "source_location": "L36",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_ordermodecontext_useordermode",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "useordermode()"
+    },
+    {
+      "label": "getScope()",
+      "file_type": "code",
+      "source_file": "src/context/ThemeContext.jsx",
+      "source_location": "L19",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_themecontext_getscope",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "getscope()"
+    },
+    {
+      "label": "getStoredThemes()",
+      "file_type": "code",
+      "source_file": "src/context/ThemeContext.jsx",
+      "source_location": "L8",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_themecontext_getstoredthemes",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "getstoredthemes()"
+    },
+    {
+      "label": "ThemeProvider()",
+      "file_type": "code",
+      "source_file": "src/context/ThemeContext.jsx",
+      "source_location": "L24",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_themecontext_themeprovider",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "themeprovider()"
+    },
+    {
       "label": "disableAutofill()",
       "file_type": "code",
       "source_file": "src/main.jsx",
@@ -1611,18 +1671,6 @@
       "community": 7,
       "community_name": "PlanoEditor.jsx",
       "norm_label": "deletemesa()"
-    },
-    {
-      "label": "getPedido()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L107",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_getpedido",
-      "community": 7,
-      "community_name": "PlanoEditor.jsx",
-      "norm_label": "getpedido()"
     },
     {
       "label": "saveLayout()",
@@ -1781,18 +1829,6 @@
       "norm_label": "qrinstructionsmodal()"
     },
     {
-      "label": "useOrderMode()",
-      "file_type": "code",
-      "source_file": "src/context/OrderModeContext.jsx",
-      "source_location": "L36",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_ordermodecontext_useordermode",
-      "community": 7,
-      "community_name": "PlanoEditor.jsx",
-      "norm_label": "useordermode()"
-    },
-    {
       "label": "ModeSelectPage()",
       "file_type": "code",
       "source_file": "src/pages/ModeSelectPage.jsx",
@@ -1877,15 +1913,48 @@
       "norm_label": "usescrollreveal()"
     },
     {
-      "label": "useSSE.js",
+      "label": "RegistroModal.jsx",
       "file_type": "code",
-      "source_file": "src/api/useSSE.js",
+      "source_file": "src/components/RegistroModal.jsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_api_usesse",
+      "id": "src_components_registromodal",
       "community": 0,
       "community_name": "PedidoTrackingPage.jsx",
-      "norm_label": "usesse.js"
+      "norm_label": "registromodal.jsx"
+    },
+    {
+      "label": "NotificationContext.jsx",
+      "file_type": "code",
+      "source_file": "src/context/NotificationContext.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_context_notificationcontext",
+      "community": 0,
+      "community_name": "PedidoTrackingPage.jsx",
+      "norm_label": "notificationcontext.jsx"
+    },
+    {
+      "label": "NotificationContext",
+      "file_type": "code",
+      "source_file": "src/context/NotificationContext.jsx",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "src_context_notificationcontext_notificationcontext",
+      "community": 0,
+      "community_name": "PedidoTrackingPage.jsx",
+      "norm_label": "notificationcontext"
+    },
+    {
+      "label": "TYPE_ICONS",
+      "file_type": "code",
+      "source_file": "src/context/NotificationContext.jsx",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "src_context_notificationcontext_type_icons",
+      "community": 0,
+      "community_name": "PedidoTrackingPage.jsx",
+      "norm_label": "type_icons"
     },
     {
       "label": "PedidoTrackingPage.jsx",
@@ -2064,28 +2133,6 @@
       "norm_label": "filtros"
     },
     {
-      "label": "LocalSettingsModal.jsx",
-      "file_type": "code",
-      "source_file": "src/components/admin/LocalSettingsModal.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_components_admin_localsettingsmodal",
-      "community": 12,
-      "community_name": "adminUtils.js",
-      "norm_label": "localsettingsmodal.jsx"
-    },
-    {
-      "label": "DIAS",
-      "file_type": "code",
-      "source_file": "src/components/admin/LocalSettingsModal.jsx",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "src_components_admin_localsettingsmodal_dias",
-      "community": 12,
-      "community_name": "adminUtils.js",
-      "norm_label": "dias"
-    },
-    {
       "label": "adminUtils.js",
       "file_type": "code",
       "source_file": "src/components/adminUtils.js",
@@ -2108,17 +2155,6 @@
       "norm_label": "cate_labels"
     },
     {
-      "label": "CATEGORIAS",
-      "file_type": "code",
-      "source_file": "src/components/adminUtils.js",
-      "source_location": "L22",
-      "_origin": "ast",
-      "id": "src_components_adminutils_categorias",
-      "community": 12,
-      "community_name": "adminUtils.js",
-      "norm_label": "categorias"
-    },
-    {
       "label": "COLUMNAS",
       "file_type": "code",
       "source_file": "src/components/adminUtils.js",
@@ -2128,17 +2164,6 @@
       "community": 12,
       "community_name": "adminUtils.js",
       "norm_label": "columnas"
-    },
-    {
-      "label": "EMPTY_PLATO",
-      "file_type": "code",
-      "source_file": "src/components/adminUtils.js",
-      "source_location": "L37",
-      "_origin": "ast",
-      "id": "src_components_adminutils_empty_plato",
-      "community": 12,
-      "community_name": "adminUtils.js",
-      "norm_label": "empty_plato"
     },
     {
       "label": "adminUtils.test.js",
@@ -2152,15 +2177,48 @@
       "norm_label": "adminutils.test.js"
     },
     {
-      "label": "qrcode",
+      "label": "CompanyContext.jsx",
       "file_type": "code",
-      "source_file": "qrcode",
-      "confidence": "EXTRACTED",
+      "source_file": "src/context/CompanyContext.jsx",
+      "source_location": "L1",
       "_origin": "ast",
-      "id": "qrcode_qrcode",
+      "id": "src_context_companycontext",
       "community": 13,
-      "community_name": "qrcode",
-      "norm_label": "qrcode"
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "companycontext.jsx"
+    },
+    {
+      "label": "CompanyContext",
+      "file_type": "code",
+      "source_file": "src/context/CompanyContext.jsx",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "src_context_companycontext_companycontext",
+      "community": 13,
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "companycontext"
+    },
+    {
+      "label": "RESERVED",
+      "file_type": "code",
+      "source_file": "src/context/CompanyContext.jsx",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "src_context_companycontext_reserved",
+      "community": 13,
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "reserved"
+    },
+    {
+      "label": "LoginPage.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/LoginPage.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_loginpage",
+      "community": 13,
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "loginpage.jsx"
     },
     {
       "label": "manifest.json",
@@ -2339,6 +2397,39 @@
       "norm_label": "shopping"
     },
     {
+      "label": "useSSE.js",
+      "file_type": "code",
+      "source_file": "src/api/useSSE.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_api_usesse",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "usesse.js"
+    },
+    {
+      "label": "LocalSettingsModal.jsx",
+      "file_type": "code",
+      "source_file": "src/components/admin/LocalSettingsModal.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_components_admin_localsettingsmodal",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "localsettingsmodal.jsx"
+    },
+    {
+      "label": "DIAS",
+      "file_type": "code",
+      "source_file": "src/components/admin/LocalSettingsModal.jsx",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "src_components_admin_localsettingsmodal_dias",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "dias"
+    },
+    {
       "label": "AdminSidebar.jsx",
       "file_type": "code",
       "source_file": "src/components/AdminSidebar.jsx",
@@ -2346,7 +2437,7 @@
       "_origin": "ast",
       "id": "src_components_adminsidebar",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
+      "community_name": "AdminPage.jsx",
       "norm_label": "adminsidebar.jsx"
     },
     {
@@ -2357,8 +2448,19 @@
       "_origin": "ast",
       "id": "src_components_adminsidebar_items",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
+      "community_name": "AdminPage.jsx",
       "norm_label": "items"
+    },
+    {
+      "label": "QRModal.jsx",
+      "file_type": "code",
+      "source_file": "src/components/QRModal.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_components_qrmodal",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "qrmodal.jsx"
     },
     {
       "label": "AuthContext.jsx",
@@ -2368,7 +2470,7 @@
       "_origin": "ast",
       "id": "src_context_authcontext",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
+      "community_name": "AdminPage.jsx",
       "norm_label": "authcontext.jsx"
     },
     {
@@ -2379,63 +2481,74 @@
       "_origin": "ast",
       "id": "src_context_authcontext_authcontext",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
+      "community_name": "AdminPage.jsx",
       "norm_label": "authcontext"
     },
     {
-      "label": "CompanyContext.jsx",
+      "label": "AdminPage.jsx",
       "file_type": "code",
-      "source_file": "src/context/CompanyContext.jsx",
+      "source_file": "src/pages/AdminPage.jsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_context_companycontext",
+      "id": "src_pages_adminpage",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
-      "norm_label": "companycontext.jsx"
+      "community_name": "AdminPage.jsx",
+      "norm_label": "adminpage.jsx"
     },
     {
-      "label": "CompanyContext",
+      "label": "DIAS_HORARIOS",
       "file_type": "code",
-      "source_file": "src/context/CompanyContext.jsx",
-      "source_location": "L5",
+      "source_file": "src/pages/AdminPage.jsx",
+      "source_location": "L32",
       "_origin": "ast",
-      "id": "src_context_companycontext_companycontext",
+      "id": "src_pages_adminpage_dias_horarios",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
-      "norm_label": "companycontext"
+      "community_name": "AdminPage.jsx",
+      "norm_label": "dias_horarios"
     },
     {
-      "label": "RESERVED",
+      "label": "CocinaPage.jsx",
       "file_type": "code",
-      "source_file": "src/context/CompanyContext.jsx",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "src_context_companycontext_reserved",
-      "community": 15,
-      "community_name": "LlamadosPage.jsx",
-      "norm_label": "reserved"
-    },
-    {
-      "label": "ThemeContext.jsx",
-      "file_type": "code",
-      "source_file": "src/context/ThemeContext.jsx",
+      "source_file": "src/pages/CocinaPage.jsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_context_themecontext",
+      "id": "src_pages_cocinapage",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
-      "norm_label": "themecontext.jsx"
+      "community_name": "AdminPage.jsx",
+      "norm_label": "cocinapage.jsx"
     },
     {
-      "label": "ThemeContext",
+      "label": "ESTADO_COLORS",
       "file_type": "code",
-      "source_file": "src/context/ThemeContext.jsx",
-      "source_location": "L4",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L18",
       "_origin": "ast",
-      "id": "src_context_themecontext_themecontext",
+      "id": "src_pages_cocinapage_estado_colors",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
-      "norm_label": "themecontext"
+      "community_name": "AdminPage.jsx",
+      "norm_label": "estado_colors"
+    },
+    {
+      "label": "ESTADO_LABELS",
+      "file_type": "code",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "src_pages_cocinapage_estado_labels",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "estado_labels"
+    },
+    {
+      "label": "ESTADOS",
+      "file_type": "code",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "src_pages_cocinapage_estados",
+      "community": 15,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "estados"
     },
     {
       "label": "LlamadosPage.jsx",
@@ -2445,19 +2558,8 @@
       "_origin": "ast",
       "id": "src_pages_llamadospage",
       "community": 15,
-      "community_name": "LlamadosPage.jsx",
+      "community_name": "AdminPage.jsx",
       "norm_label": "llamadospage.jsx"
-    },
-    {
-      "label": "LoginPage.jsx",
-      "file_type": "code",
-      "source_file": "src/pages/LoginPage.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_pages_loginpage",
-      "community": 15,
-      "community_name": "LlamadosPage.jsx",
-      "norm_label": "loginpage.jsx"
     },
     {
       "label": "sw.js",
@@ -2669,37 +2771,26 @@
       "norm_label": "vitest"
     },
     {
+      "label": "qrcode",
+      "file_type": "code",
+      "source_file": "qrcode",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "qrcode_qrcode",
+      "community": 3,
+      "community_name": "qrcode",
+      "norm_label": "qrcode"
+    },
+    {
       "label": "@google/model-viewer",
       "file_type": "code",
       "source_file": "@google/model-viewer",
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "model_viewer",
-      "community": 3,
-      "community_name": "ARViewer.jsx",
+      "community": 4,
+      "community_name": "client.js",
       "norm_label": "@google/model-viewer"
-    },
-    {
-      "label": "ARViewer.jsx",
-      "file_type": "code",
-      "source_file": "src/components/ARViewer.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_components_arviewer",
-      "community": 3,
-      "community_name": "ARViewer.jsx",
-      "norm_label": "arviewer.jsx"
-    },
-    {
-      "label": "ARViewer",
-      "file_type": "code",
-      "source_file": "src/pages/MenuPage.jsx",
-      "source_location": "L10",
-      "_origin": "ast",
-      "id": "src_pages_menupage_arviewer",
-      "community": 3,
-      "community_name": "ARViewer.jsx",
-      "norm_label": "arviewer"
     },
     {
       "label": "client.js",
@@ -2779,125 +2870,48 @@
       "norm_label": "platomodal.jsx"
     },
     {
-      "label": "QRModal.jsx",
+      "label": "CATEGORIAS",
       "file_type": "code",
-      "source_file": "src/components/QRModal.jsx",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "src_components_adminutils_categorias",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "categorias"
+    },
+    {
+      "label": "EMPTY_PLATO",
+      "file_type": "code",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "src_components_adminutils_empty_plato",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "empty_plato"
+    },
+    {
+      "label": "ARViewer.jsx",
+      "file_type": "code",
+      "source_file": "src/components/ARViewer.jsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_components_qrmodal",
+      "id": "src_components_arviewer",
       "community": 4,
       "community_name": "client.js",
-      "norm_label": "qrmodal.jsx"
+      "norm_label": "arviewer.jsx"
     },
     {
-      "label": "RegistroModal.jsx",
+      "label": "ARViewer",
       "file_type": "code",
-      "source_file": "src/components/RegistroModal.jsx",
-      "source_location": "L1",
+      "source_file": "src/pages/MenuPage.jsx",
+      "source_location": "L10",
       "_origin": "ast",
-      "id": "src_components_registromodal",
+      "id": "src_pages_menupage_arviewer",
       "community": 4,
       "community_name": "client.js",
-      "norm_label": "registromodal.jsx"
-    },
-    {
-      "label": "NotificationContext.jsx",
-      "file_type": "code",
-      "source_file": "src/context/NotificationContext.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_context_notificationcontext",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "notificationcontext.jsx"
-    },
-    {
-      "label": "NotificationContext",
-      "file_type": "code",
-      "source_file": "src/context/NotificationContext.jsx",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "src_context_notificationcontext_notificationcontext",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "notificationcontext"
-    },
-    {
-      "label": "TYPE_ICONS",
-      "file_type": "code",
-      "source_file": "src/context/NotificationContext.jsx",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "src_context_notificationcontext_type_icons",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "type_icons"
-    },
-    {
-      "label": "AdminPage.jsx",
-      "file_type": "code",
-      "source_file": "src/pages/AdminPage.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_pages_adminpage",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "adminpage.jsx"
-    },
-    {
-      "label": "DIAS_HORARIOS",
-      "file_type": "code",
-      "source_file": "src/pages/AdminPage.jsx",
-      "source_location": "L32",
-      "_origin": "ast",
-      "id": "src_pages_adminpage_dias_horarios",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "dias_horarios"
-    },
-    {
-      "label": "CocinaPage.jsx",
-      "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_pages_cocinapage",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "cocinapage.jsx"
-    },
-    {
-      "label": "ESTADO_COLORS",
-      "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L18",
-      "_origin": "ast",
-      "id": "src_pages_cocinapage_estado_colors",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "estado_colors"
-    },
-    {
-      "label": "ESTADO_LABELS",
-      "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L25",
-      "_origin": "ast",
-      "id": "src_pages_cocinapage_estado_labels",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "estado_labels"
-    },
-    {
-      "label": "ESTADOS",
-      "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L11",
-      "_origin": "ast",
-      "id": "src_pages_cocinapage_estados",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "estados"
+      "norm_label": "arviewer"
     },
     {
       "label": "App.jsx",
@@ -3041,6 +3055,28 @@
       "community": 5,
       "community_name": "App.jsx",
       "norm_label": "ordermodecontext"
+    },
+    {
+      "label": "ThemeContext.jsx",
+      "file_type": "code",
+      "source_file": "src/context/ThemeContext.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_context_themecontext",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "themecontext.jsx"
+    },
+    {
+      "label": "ThemeContext",
+      "file_type": "code",
+      "source_file": "src/context/ThemeContext.jsx",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "src_context_themecontext_themecontext",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "themecontext"
     },
     {
       "label": "main.jsx",
@@ -4882,7 +4918,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/components/adminUtils.js",
-      "source_location": "L134",
+      "source_location": "L162",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_adminutils_calcularmetricas",
@@ -4911,6 +4947,66 @@
       "_origin": "ast",
       "source": "src_components_adminutils_pedidostocsv",
       "target": "src_components_adminutils_totalpedido",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L138",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_adminutils_playcallsound",
+      "target": "src_components_adminutils_getaudiocontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L143",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_adminutils_playcallsound",
+      "target": "src_components_adminutils_beep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L128",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_adminutils_playnewordersound",
+      "target": "src_components_adminutils_getaudiocontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L131",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_adminutils_playnewordersound",
+      "target": "src_components_adminutils_beep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L108",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_adminutils_setsoundenabled",
+      "target": "src_components_adminutils_getaudiocontext",
       "confidence_score": 1.0
     },
     {
@@ -5675,7 +5771,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L103",
+      "source_location": "L110",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_cocinapage_cocinapage",
@@ -5687,7 +5783,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L130",
+      "source_location": "L137",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_cocinapage_cocinapage",
@@ -5699,7 +5795,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L143",
+      "source_location": "L150",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_cocinapage_cocinapage",
@@ -5711,7 +5807,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L162",
+      "source_location": "L169",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_cocinapage_cocinapage",
@@ -5722,7 +5818,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L225",
+      "source_location": "L232",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_cocinapage_cocinapage",
@@ -5771,7 +5867,19 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L61",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_cocinapage_cocinapage",
+      "target": "src_components_adminutils_setsoundenabled"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L68",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_cocinapage_cocinapage",
@@ -5783,19 +5891,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L66",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_pages_cocinapage_cocinapage",
-      "target": "src_components_adminutils_soundenabled"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L67",
+      "source_location": "L74",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_cocinapage_cocinapage",
@@ -5903,7 +5999,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/LlamadosPage.jsx",
-      "source_location": "L24",
+      "source_location": "L25",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_llamadospage_llamadospage",
@@ -5915,23 +6011,11 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/LlamadosPage.jsx",
-      "source_location": "L32",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_llamadospage_llamadospage",
-      "target": "src_components_adminutils_playnewordersound"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/pages/LlamadosPage.jsx",
-      "source_location": "L32",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_pages_llamadospage_llamadospage",
-      "target": "src_components_adminutils_soundenabled"
+      "target": "src_components_adminutils_playcallsound"
     },
     {
       "relation": "calls",
@@ -5943,6 +6027,18 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_llamadospage_llamadospage",
+      "target": "src_components_adminutils_setsoundenabled"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/LlamadosPage.jsx",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_llamadospage_llamadospage",
       "target": "src_api_usesse_usesse"
     },
     {
@@ -5951,7 +6047,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/LlamadosPage.jsx",
-      "source_location": "L58",
+      "source_location": "L65",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_llamadospage_llamadospage",
@@ -5963,7 +6059,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/LlamadosPage.jsx",
-      "source_location": "L73",
+      "source_location": "L80",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_llamadospage_llamadospage",
@@ -8152,6 +8248,18 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_cocinapage",
+      "target": "src_components_adminutils_setsoundenabled",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_cocinapage",
       "target": "src_components_adminutils_soundenabled",
       "confidence_score": 1.0
     },
@@ -8260,7 +8368,19 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_llamadospage",
-      "target": "src_components_adminutils_playnewordersound",
+      "target": "src_components_adminutils_playcallsound",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/LlamadosPage.jsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_llamadospage",
+      "target": "src_components_adminutils_setsoundenabled",
       "confidence_score": 1.0
     },
     {
@@ -11198,6 +11318,28 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/adminUtils.js",
+      "source_location": "L105",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_adminutils",
+      "target": "src_components_adminutils_setsoundenabled",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L112",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_adminutils",
+      "target": "src_components_adminutils_beep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/adminUtils.js",
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
@@ -11209,7 +11351,29 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/adminUtils.js",
-      "source_location": "L120",
+      "source_location": "L126",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_adminutils",
+      "target": "src_components_adminutils_playnewordersound",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L136",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_adminutils",
+      "target": "src_components_adminutils_playcallsound",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L148",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_adminutils",
@@ -11319,22 +11483,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/adminUtils.js",
-      "source_location": "L91",
+      "source_location": "L93",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_adminutils",
-      "target": "src_components_adminutils_setsoundenabled",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/adminUtils.js",
-      "source_location": "L97",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_components_adminutils",
-      "target": "src_components_adminutils_playnewordersound",
+      "target": "src_components_adminutils_getaudiocontext",
       "confidence_score": 1.0
     },
     {
@@ -12696,8 +12849,32 @@
       "_origin": "ast",
       "source": "src_components_admin_localsettingsmodal_localsettingsmodal",
       "target": "src_components_adminutils_soundenabled"
+    },
+    {
+      "relation": "indirect_call",
+      "context": "argument",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_cocinapage_cocinapage",
+      "target": "src_components_adminutils_soundenabled"
+    },
+    {
+      "relation": "indirect_call",
+      "context": "argument",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/pages/LlamadosPage.jsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_llamadospage_llamadospage",
+      "target": "src_components_adminutils_soundenabled"
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9693be866f33dc880d6a348199564528e5d312b9"
+  "built_at_commit": "500808c132a85940c97a9a56f1a0a3b3d0856276"
 }

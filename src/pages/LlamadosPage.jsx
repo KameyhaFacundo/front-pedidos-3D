@@ -5,7 +5,7 @@ import { useSSE } from '../api/useSSE';
 import { useAuth } from '../context/AuthContext';
 import { useCompany } from '../context/CompanyContext';
 import AdminSidebar from '../components/AdminSidebar';
-import { playNewOrderSound, soundEnabled } from '../components/adminUtils';
+import { playCallSound, soundEnabled, setSoundEnabled } from '../components/adminUtils';
 
 export default function LlamadosPage() {
   const { logout } = useAuth();
@@ -17,6 +17,7 @@ export default function LlamadosPage() {
   const [error, setError] = useState(null);
   const [attending, setAttending] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
+  const [soundOn, setSoundOn] = useState(soundEnabled);
   const seenIdsRef = useRef(new Set());
   const primeraCargaRef = useRef(true);
 
@@ -29,7 +30,7 @@ export default function LlamadosPage() {
         } else {
           const nuevas = data.filter((l) => !seenIdsRef.current.has(l.id));
           nuevas.forEach((l) => seenIdsRef.current.add(l.id));
-          if (nuevas.length > 0 && soundEnabled()) playNewOrderSound();
+          if (nuevas.length > 0 && soundOn) playCallSound();
         }
         setLlamados(data);
         setLoading(false);
@@ -39,7 +40,13 @@ export default function LlamadosPage() {
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  }, [soundOn]);
+
+  const toggleSound = () => {
+    const next = !soundOn;
+    setSoundOn(next);
+    setSoundEnabled(next);
+  };
 
   useEffect(() => {
     fetchLlamados();
@@ -117,6 +124,14 @@ export default function LlamadosPage() {
           </svg>
           Llamados
         </h1>
+        <button
+          className={`sound-toggle ${soundOn ? 'on' : ''}`}
+          onClick={toggleSound}
+          title={soundOn ? 'Silenciar' : 'Activar sonido'}
+        >
+          <i className={`ti ${soundOn ? 'ti-volume' : 'ti-volume-off'}`}></i>
+          <span>{soundOn ? 'Sonido on' : 'Sonido off'}</span>
+        </button>
       </header>
 
       {error && (

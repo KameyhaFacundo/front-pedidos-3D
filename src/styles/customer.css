@@ -862,7 +862,13 @@
 /* ===== COCINA PAGE ===== */
 .cocina-page { padding: 0 22px 2rem; }
 
-.cocina-header { padding: 16px 0 12px; }
+.cocina-header { 
+  padding: 16px 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
 
 .cocina-header h1 {
   font-family: 'Fraunces', serif;
@@ -872,6 +878,32 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.sound-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--surface-2);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-pill);
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.sound-toggle:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.sound-toggle.on {
+  color: var(--herb);
+  border-color: rgba(156, 180, 61, 0.5);
+  background: rgba(156, 180, 61, 0.1);
 }
 
 .filter-tabs {

@@ -1,7 +1,7 @@
 # Graph Report - front-pedidos-3D  (2026-08-20)
 
 ## Corpus Check
-- 53 files · ~120,921 words
+- 53 files · ~120,955 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `2135ec3d`
+- Built from commit: `500808c1`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -41,20 +41,20 @@
 6. `CocinaPage()` - 13 edges
 7. `PlanoEditor()` - 13 edges
 8. `compilerOptions` - 12 edges
-9. `useNotify()` - 11 edges
-10. `CheckoutPage()` - 11 edges
+9. `CheckoutPage()` - 11 edges
+10. `useNotify()` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `LocalSettingsModal()` --indirect_call--> `soundEnabled()`  [INFERRED]
   src/components/admin/LocalSettingsModal.jsx → src/components/adminUtils.js
-- `RegistroModal()` --calls--> `login()`  [EXTRACTED]
-  src/components/RegistroModal.jsx → src/api/client.js
-- `MenuPage()` --calls--> `getMenu()`  [EXTRACTED]
-  src/pages/MenuPage.jsx → src/api/client.js
-- `PlanoEditor()` --calls--> `getEmpresa()`  [EXTRACTED]
-  src/components/PlanoEditor.jsx → src/api/client.js
-- `CompanyProvider()` --calls--> `getEmpresa()`  [EXTRACTED]
-  src/context/CompanyContext.jsx → src/api/client.js
+- `PedidoTrackingPage()` --calls--> `useSSE()`  [EXTRACTED]
+  src/pages/PedidoTrackingPage.jsx → src/api/useSSE.js
+- `PedidoTrackingPage()` --calls--> `useCompany()`  [EXTRACTED]
+  src/pages/PedidoTrackingPage.jsx → src/context/CompanyContext.jsx
+- `PedidoTrackingPage()` --calls--> `useNotify()`  [EXTRACTED]
+  src/pages/PedidoTrackingPage.jsx → src/context/NotificationContext.jsx
+- `LlamadosPage()` --calls--> `atenderLlamado()`  [EXTRACTED]
+  src/pages/LlamadosPage.jsx → src/api/client.js
 
 ## Import Cycles
 - None detected.
@@ -118,7 +118,7 @@ Cohesion: 0.12
 Nodes (31): cancelarPedido(), getPedidos(), logout(), registrarEmpresa(), updatePedidoEstado(), getBase(), useSSE(), AdminSidebar() (+23 more)
 
 ## Knowledge Gaps
-- **97 isolated node(s):** `ESTADO_COLORS`, `ESTADO_INFO`, `ESTADOS`, `DEMO_EMPRESA`, `DEMO_MESAS` (+92 more)
+- **97 isolated node(s):** `ENTREGAS`, `ESTADO_COLORS`, `ESTADO_INFO`, `ESTADOS`, `DEMO_EMPRESA` (+92 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -129,7 +129,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.019) - this node is a cross-community bridge._
 - **Why does `useCompany()` connect `App.jsx` to `PedidoTrackingPage.jsx`, `PlanoEditor.jsx`, `AdminPage.jsx`?**
   _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **What connects `ESTADO_COLORS`, `ESTADO_INFO`, `ESTADOS` to the rest of the system?**
+- **What connects `ENTREGAS`, `ESTADO_COLORS`, `ESTADO_INFO` to the rest of the system?**
   _97 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
