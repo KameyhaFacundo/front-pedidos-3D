@@ -11,9 +11,8 @@
   "9": "LandingPage.jsx",
   "10": "CLAUDE.md",
   "11": "eslint.config.js",
-  "12": "adminUtils.js",
-  "13": "getEmpresa",
+  "13": "AuthContext.jsx",
   "14": "manifest.json",
-  "15": "AdminPage.jsx",
+  "15": "adminUtils.js",
   "16": "sw.js"
 }

@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { useCompany } from '../context/CompanyContext';
 import AdminSidebar from '../components/AdminSidebar';
 import { playCallSound, soundEnabled, setSoundEnabled } from '../components/adminUtils';
+import { notifEnabled, setNotifEnabled, requestNotificationPermission, sendNotification } from '../utils/notifications';
 
 export default function LlamadosPage() {
   const { logout } = useAuth();
@@ -18,8 +19,21 @@ export default function LlamadosPage() {
   const [attending, setAttending] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
   const [soundOn, setSoundOn] = useState(soundEnabled);
+  const [notifOn, setNotifOn] = useState(notifEnabled);
   const seenIdsRef = useRef(new Set());
   const primeraCargaRef = useRef(true);
+
+  const notifyNewCalls = useCallback((nuevas) => {
+    if (nuevas.length === 0) return;
+    if (soundOn) playCallSound();
+    nuevas.forEach((l) => {
+      const mesaNum = l.mesa?.numero ?? l.mesa_id ?? '?';
+      sendNotification('Llamado de mesa', {
+        body: `Mesa ${mesaNum} solicita atención`,
+        tag: `llamado-${l.id}`,
+      });
+    });
+  }, [soundOn]);
 
   const fetchLlamados = useCallback(() => {
     getLlamados()
@@ -30,7 +44,7 @@ export default function LlamadosPage() {
         } else {
           const nuevas = data.filter((l) => !seenIdsRef.current.has(l.id));
           nuevas.forEach((l) => seenIdsRef.current.add(l.id));
-          if (nuevas.length > 0 && soundOn) playCallSound();
+          if (nuevas.length > 0) notifyNewCalls(nuevas);
         }
         setLlamados(data);
         setLoading(false);
@@ -40,12 +54,24 @@ export default function LlamadosPage() {
         setError(err.message);
         setLoading(false);
       });
-  }, [soundOn]);
+  }, [notifyNewCalls]);
 
   const toggleSound = () => {
     const next = !soundOn;
     setSoundOn(next);
     setSoundEnabled(next);
+  };
+
+  const toggleNotif = async () => {
+    if (notifOn) {
+      setNotifOn(false);
+      setNotifEnabled(false);
+      return;
+    }
+    const perm = await requestNotificationPermission();
+    const granted = perm === 'granted';
+    setNotifOn(granted);
+    setNotifEnabled(granted);
   };
 
   useEffect(() => {
@@ -124,14 +150,24 @@ export default function LlamadosPage() {
           </svg>
           Llamados
         </h1>
-        <button
-          className={`sound-toggle ${soundOn ? 'on' : ''}`}
-          onClick={toggleSound}
-          title={soundOn ? 'Silenciar' : 'Activar sonido'}
-        >
-          <i className={`ti ${soundOn ? 'ti-volume' : 'ti-volume-off'}`}></i>
-          <span>{soundOn ? 'Sonido on' : 'Sonido off'}</span>
-        </button>
+        <div className="cocina-header-actions">
+          <button
+            className={`sound-toggle ${soundOn ? 'on' : ''}`}
+            onClick={toggleSound}
+            title={soundOn ? 'Silenciar' : 'Activar sonido'}
+          >
+            <i className={`ti ${soundOn ? 'ti-volume' : 'ti-volume-off'}`}></i>
+            <span>{soundOn ? 'Sonido on' : 'Sonido off'}</span>
+          </button>
+          <button
+            className={`notif-toggle ${notifOn ? 'on' : ''}`}
+            onClick={toggleNotif}
+            title={notifOn ? 'Notificaciones on' : 'Notificaciones off'}
+          >
+            <i className={`ti ${notifOn ? 'ti-bell-ringing' : 'ti-bell-off'}`}></i>
+            <span>{notifOn ? 'Notif. on' : 'Notif. off'}</span>
+          </button>
+        </div>
       </header>
 
       {error && (

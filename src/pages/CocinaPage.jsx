@@ -7,6 +7,7 @@ import { useAuth } from '../context/AuthContext';
 import { useCompany } from '../context/CompanyContext';
 import AdminSidebar from '../components/AdminSidebar';
 import { playNewOrderSound, soundEnabled, setSoundEnabled } from '../components/adminUtils';
+import { notifEnabled, setNotifEnabled, requestNotificationPermission, sendNotification } from '../utils/notifications';
 
 const ESTADOS = [
   { key: '', label: 'Todos' },
@@ -55,6 +56,7 @@ export default function CocinaPage() {
   const [agrupar, setAgrupar] = useState(true);
   const [updating, setUpdating] = useState(null);
   const [soundOn, setSoundOn] = useState(soundEnabled);
+  const [notifOn, setNotifOn] = useState(notifEnabled);
   const seenIdsRef = useRef(new Set());
   const primeraCargaRef = useRef(true);
 
@@ -64,14 +66,39 @@ export default function CocinaPage() {
     setSoundEnabled(next);
   };
 
+  const toggleNotif = async () => {
+    if (notifOn) {
+      setNotifOn(false);
+      setNotifEnabled(false);
+      return;
+    }
+    const perm = await requestNotificationPermission();
+    const granted = perm === 'granted';
+    setNotifOn(granted);
+    setNotifEnabled(granted);
+  };
+
+  const notifyNewOrders = useCallback((nuevas) => {
+    if (nuevas.length === 0) return;
+    if (soundOn) playNewOrderSound();
+    nuevas.forEach((p) => {
+      const mesa = p.tipo === 'mesa' ? `Mesa ${p.mesa?.numero ?? p.mesa_id ?? '?'}` : p.tipo;
+      const total = p.items?.reduce((s, it) => s + Number(it.subtotal || 0), 0) || 0;
+      sendNotification('Nuevo pedido', {
+        body: `#${p.id} · ${mesa} · $${total.toFixed(2)}`,
+        tag: `pedido-${p.id}`,
+      });
+    });
+  }, [soundOn]);
+
   const fetchPedidos = useCallback(() => {
     getPedidos(filtro || undefined)
       .then((data) => {
         const nuevas = data.filter((p) => !seenIdsRef.current.has(p.id) && p.estado === 'nuevo');
         if (primeraCargaRef.current) {
           primeraCargaRef.current = false;
-        } else if (nuevas.length > 0 && soundOn) {
-          playNewOrderSound();
+        } else if (nuevas.length > 0) {
+          notifyNewOrders(nuevas);
         }
         data.forEach((p) => seenIdsRef.current.add(p.id));
         setPedidos(data);
@@ -82,7 +109,7 @@ export default function CocinaPage() {
         setError(err.message);
         setLoading(false);
       });
-  }, [filtro, soundOn]);
+  }, [filtro, notifyNewOrders]);
 
   useEffect(() => {
     setLoading(true);
@@ -97,7 +124,7 @@ export default function CocinaPage() {
         if (p.estado === 'nuevo') nuevas.push(p);
       }
     });
-    if (nuevas.length > 0 && soundOn) playNewOrderSound();
+    if (nuevas.length > 0) notifyNewOrders(nuevas);
     setPedidos((prev) => {
       const map = new Map(prev.map((p) => [p.id, p]));
       updated.forEach((p) => map.set(p.id, p));
@@ -105,7 +132,7 @@ export default function CocinaPage() {
       if (filtro) list = list.filter((p) => p.estado === filtro);
       return list.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
     });
-  }, [filtro, soundOn]);
+  }, [filtro, notifyNewOrders]);
 
   useSSE(handleSSEUpdate, null, fetchPedidos);
 
@@ -393,14 +420,24 @@ ${rows.map((r) => `<div class="item">${r.texto}<div class="muted">#${r.id} · ${
           </svg>
           Cocina
         </h1>
-        <button
-          className={`sound-toggle ${soundOn ? 'on' : ''}`}
-          onClick={toggleSound}
-          title={soundOn ? 'Silenciar' : 'Activar sonido'}
-        >
-          <i className={`ti ${soundOn ? 'ti-volume' : 'ti-volume-off'}`}></i>
-          <span>{soundOn ? 'Sonido on' : 'Sonido off'}</span>
-        </button>
+        <div className="cocina-header-actions">
+          <button
+            className={`sound-toggle ${soundOn ? 'on' : ''}`}
+            onClick={toggleSound}
+            title={soundOn ? 'Silenciar' : 'Activar sonido'}
+          >
+            <i className={`ti ${soundOn ? 'ti-volume' : 'ti-volume-off'}`}></i>
+            <span>{soundOn ? 'Sonido on' : 'Sonido off'}</span>
+          </button>
+          <button
+            className={`notif-toggle ${notifOn ? 'on' : ''}`}
+            onClick={toggleNotif}
+            title={notifOn ? 'Notificaciones on' : 'Notificaciones off'}
+          >
+            <i className={`ti ${notifOn ? 'ti-bell-ringing' : 'ti-bell-off'}`}></i>
+            <span>{notifOn ? 'Notif. on' : 'Notif. off'}</span>
+          </button>
+        </div>
       </header>
 
       <div className="filter-tabs">

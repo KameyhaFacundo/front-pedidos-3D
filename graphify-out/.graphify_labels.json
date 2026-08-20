@@ -2,7 +2,7 @@
   "0": "PedidoTrackingPage.jsx",
   "1": "mock.js",
   "2": "devDependencies",
-  "3": "qrcode",
+  "3": "CartContext.jsx",
   "4": "client.js",
   "5": "App.jsx",
   "6": "TypeScript Config",
@@ -11,9 +11,10 @@
   "9": "LandingPage.jsx",
   "10": "CLAUDE.md",
   "11": "eslint.config.js",
-  "12": "adminUtils.js",
-  "13": "CompanyContext.jsx",
+  "12": "MenuPage.jsx",
+  "13": "CocinaPage.jsx",
   "14": "manifest.json",
-  "15": "AdminPage.jsx",
-  "16": "sw.js"
+  "15": "adminUtils.js",
+  "16": "sw.js",
+  "17": "qrcode"
 }
