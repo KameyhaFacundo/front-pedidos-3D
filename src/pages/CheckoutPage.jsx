@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useOrderMode } from '../context/OrderModeContext';
 import { useCompany } from '../context/CompanyContext';
-import { getMesas, createPedido, validarCupon } from '../api/client';
+import { getMesas, createPedido, validarCupon, crearPreferencia } from '../api/client';
 
 function formatear(n) {
   return '$' + Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -50,8 +50,11 @@ export default function CheckoutPage() {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [resumen, setResumen] = useState(null);
+  const [propinaTipo, setPropinaTipo] = useState('pct');
   const [propinaPct, setPropinaPct] = useState(0);
+  const [propinaFija, setPropinaFija] = useState('');
   const cerrado = empresa?.abierto === false;
+  const mpEnabled = empresa?.mp_enabled === true;
 
   useEffect(() => {
     getMesas()
@@ -78,7 +81,9 @@ export default function CheckoutPage() {
   }, [cupon, subtotal]);
 
   const baseTotal = subtotal - descuento;
-  const propina = Math.round(baseTotal * (propinaPct / 100) * 100) / 100;
+  const propina = propinaTipo === 'fijo'
+    ? (Number(propinaFija) || 0)
+    : Math.round(baseTotal * (propinaPct / 100) * 100) / 100;
   const total = baseTotal + propina;
 
   const handleValidarCupon = async () => {
@@ -101,13 +106,15 @@ export default function CheckoutPage() {
       setError('El local está cerrado por ahora');
       return;
     }
-    if (!nombre.trim()) {
-      setError('Ingresá tu nombre');
-      return;
-    }
-    if (!celular.trim()) {
-      setError('Ingresá tu teléfono');
-      return;
+    if (entrega !== 'mesa') {
+      if (!nombre.trim()) {
+        setError('Ingresá tu nombre');
+        return;
+      }
+      if (!celular.trim()) {
+        setError('Ingresá tu teléfono');
+        return;
+      }
     }
     if (entrega === 'mesa' && !mesasDisponibles.some((m) => m.id === Number(mesaId))) {
       setError('Seleccioná tu mesa');
@@ -125,8 +132,8 @@ export default function CheckoutPage() {
       tipo: entrega,
       mesa_id: entrega === 'mesa' ? (Number(mesaId) || null) : null,
       direccion: entrega === 'envio' ? direccion.trim() || null : null,
-      nombre: nombre.trim(),
-      celular: celular.trim(),
+      nombre: entrega === 'mesa' ? null : nombre.trim() || null,
+      celular: entrega === 'mesa' ? null : celular.trim() || null,
       medio_pago: medioPago,
       cupon_codigo: cupon ? cupon.codigo : undefined,
       items: items.map((item) => ({
@@ -152,6 +159,23 @@ export default function CheckoutPage() {
       localStorage.removeItem('pedido3d_last_order');
       setSuccess(result);
       clearCart();
+
+      if (medioPago === 'mercadopago') {
+        const returnUrl = `${window.location.origin}${path(`/pedido/${result.id}?t=${result.token}`)}`;
+        const pref = await crearPreferencia({
+          pedido_id: result.id,
+          token: result.token,
+          monto: total,
+          return_url: returnUrl,
+        });
+        if (pref?.init_point) {
+          window.location.href = pref.init_point;
+        } else {
+          setError('No se pudo iniciar el pago. Tu pedido fue registrado igualmente.');
+        }
+        setSubmitting(false);
+        return;
+      }
     } catch (err) {
       setError(err.message);
     } finally {
@@ -177,8 +201,8 @@ export default function CheckoutPage() {
       '¡Hola! Te paso el resumen de mi pedido',
       '',
       `Pedido: #${success.id}`,
-      `Nombre: ${nombre}`,
-      `Teléfono: ${celular}`,
+      ...(nombre ? [`Nombre: ${nombre}`] : []),
+      ...(celular ? [`Teléfono: ${celular}`] : []),
       '',
       `Forma de pago: ${medioPago}`,
       `Entrega: ${entregaLabel}${entrega === 'mesa' && mesaNumero ? ` (Mesa ${mesaNumero})` : ''}${entrega === 'envio' && direccion ? ` - ${direccion}` : ''}`,
@@ -255,27 +279,36 @@ export default function CheckoutPage() {
         </div>
       )}
 
-      <div className="checkout-section">
-        <h2>Nombre y apellido</h2>
-        <input
-          className="input-text"
-          type="text"
-          placeholder="Necesitamos saber cómo te llamás"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-        />
-      </div>
+      {entrega === 'mesa' ? (
+        <div className="checkout-section checkout-mesa-nota">
+          <i className="ti ti-users"></i>
+          <span>Pedís desde tu mesa, no necesitás dejar tus datos.</span>
+        </div>
+      ) : (
+        <>
+          <div className="checkout-section">
+            <h2>Nombre y apellido</h2>
+            <input
+              className="input-text"
+              type="text"
+              placeholder="Necesitamos saber cómo te llamás"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+            />
+          </div>
 
-      <div className="checkout-section">
-        <h2>Teléfono</h2>
-        <input
-          className="input-text"
-          type="tel"
-          placeholder="Necesitamos un medio de contacto"
-          value={celular}
-          onChange={(e) => setCelular(e.target.value)}
-        />
-      </div>
+          <div className="checkout-section">
+            <h2>Teléfono</h2>
+            <input
+              className="input-text"
+              type="tel"
+              placeholder="Necesitamos un medio de contacto"
+              value={celular}
+              onChange={(e) => setCelular(e.target.value)}
+            />
+          </div>
+        </>
+      )}
 
       <div className="checkout-section">
         <h2>Forma de entrega</h2>
@@ -350,6 +383,21 @@ export default function CheckoutPage() {
               <span>Transferencia</span>
             </div>
           </label>
+          {mpEnabled && (
+            <label className={`radio-card ${medioPago === 'mercadopago' ? 'active' : ''}`}>
+              <input
+                type="radio"
+                name="medioPago"
+                value="mercadopago"
+                checked={medioPago === 'mercadopago'}
+                onChange={(e) => setMedioPago(e.target.value)}
+              />
+              <div className="radio-content">
+                <i className="ti ti-credit-card"></i>
+                <span>Mercado Pago</span>
+              </div>
+            </label>
+          )}
         </div>
       </div>
 
@@ -386,13 +434,33 @@ export default function CheckoutPage() {
           {[0, 10, 15, 20].map((pct) => (
             <button
               key={pct}
-              className={`chip ${propinaPct === pct ? 'active' : ''}`}
-              onClick={() => setPropinaPct(pct)}
+              className={`chip ${propinaTipo === 'pct' && propinaPct === pct ? 'active' : ''}`}
+              onClick={() => { setPropinaTipo('pct'); setPropinaPct(pct); }}
             >
               {pct === 0 ? 'Sin propina' : `${pct}%`}
             </button>
           ))}
+          <button
+            className={`chip ${propinaTipo === 'fijo' ? 'active' : ''}`}
+            onClick={() => { setPropinaTipo('fijo'); setPropinaFija(''); }}
+          >
+            En plata
+          </button>
         </div>
+        {propinaTipo === 'fijo' && (
+          <div className="propina-fija">
+            <input
+              className="input-text"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="Ej: 500"
+              value={propinaFija}
+              onChange={(e) => setPropinaFija(e.target.value)}
+            />
+            <span>La dejás en efectivo, en la mesa</span>
+          </div>
+        )}
       </div>
 
       <div className="checkout-section">
@@ -424,7 +492,7 @@ export default function CheckoutPage() {
           )}
           {propina > 0 && (
             <div className="summary-row">
-              <span>Propina ({propinaPct}%)</span>
+              <span>Propina{propinaTipo === 'pct' ? ` (${propinaPct}%)` : ''}</span>
               <span>{formatear(propina)}</span>
             </div>
           )}

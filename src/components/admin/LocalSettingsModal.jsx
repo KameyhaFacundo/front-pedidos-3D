@@ -1,6 +1,16 @@
 import { useState, useRef } from 'react';
 import { soundEnabled, setSoundEnabled } from '../adminUtils';
 
+const DIAS = [
+  { key: 'lun', label: 'Lunes' },
+  { key: 'mar', label: 'Martes' },
+  { key: 'mie', label: 'Miércoles' },
+  { key: 'jue', label: 'Jueves' },
+  { key: 'vie', label: 'Viernes' },
+  { key: 'sab', label: 'Sábado' },
+  { key: 'dom', label: 'Domingo' },
+];
+
 export default function LocalSettingsModal({ open, configForm, setConfigForm, logoFile, setLogoFile, setLogoRemoved, logoPreview, onSave, saving, onClose }) {
   const [soundOn, setSoundOn] = useState(soundEnabled);
   const fileRef = useRef(null);
@@ -22,6 +32,16 @@ export default function LocalSettingsModal({ open, configForm, setConfigForm, lo
     setLogoFile(null);
     setLogoRemoved(true);
     if (fileRef.current) fileRef.current.value = '';
+  };
+
+  const setDia = (key, campo, valor) => {
+    setConfigForm((prev) => ({
+      ...prev,
+      horarios: {
+        ...prev.horarios,
+        [key]: { ...(prev.horarios?.[key] || { abierto: false, rangos: '' }), [campo]: valor },
+      },
+    }));
   };
 
   return (
@@ -122,6 +142,39 @@ export default function LocalSettingsModal({ open, configForm, setConfigForm, lo
               onChange={(e) => setConfigForm((prev) => ({ ...prev, tiempo_estimado: e.target.value === '' ? '' : Number(e.target.value) }))}
               placeholder="Ej: 25"
             />
+          </div>
+
+          <div className="field">
+            <label>Horarios de apertura</label>
+            <p className="logo-upload-hint">
+              Si configurás horarios, el local se abre y cierra solo. La opción "Local abierto" solo aplica si no hay horarios.
+            </p>
+            <div className="horarios-grid">
+              {DIAS.map(({ key, label }) => {
+                const dia = configForm.horarios?.[key] || { abierto: false, rangos: '' };
+                return (
+                  <div key={key} className={`horario-row ${dia.abierto ? 'on' : ''}`}>
+                    <div className="horario-label">{label}</div>
+                    <div
+                      className={`switch sm ${dia.abierto ? 'on' : ''}`}
+                      onClick={() => setDia(key, 'abierto', !dia.abierto)}
+                      title={dia.abierto ? 'Cerrar este día' : 'Abrir este día'}
+                    />
+                    {dia.abierto ? (
+                      <input
+                        className="input-text horario-rangos"
+                        type="text"
+                        value={dia.rangos}
+                        onChange={(e) => setDia(key, 'rangos', e.target.value)}
+                        placeholder="12:00-15:00, 20:00-23:00"
+                      />
+                    ) : (
+                      <span className="horario-cerrado">Cerrado</span>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           <div className="toggle-row settings-toggle">

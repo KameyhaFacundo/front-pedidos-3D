@@ -1479,6 +1479,24 @@
   margin-bottom: 16px;
 }
 
+.csv-export-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.csv-export-date {
+  background: var(--surface-2);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-pill);
+  color: var(--cream);
+  padding: 6px 10px;
+  font-size: 12.5px;
+  outline: none;
+  color-scheme: dark;
+}
+
 .pedidos-search {
   position: relative;
   display: flex;

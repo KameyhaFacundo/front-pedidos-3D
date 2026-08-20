@@ -6,6 +6,8 @@ const DEMO_EMPRESA = {
   whatsapp: '5493815069332',
   activo: true,
   abierto: true,
+  horarios: null,
+  mp_enabled: false,
   tiempo_estimado: 25,
 };
 
@@ -232,6 +234,9 @@ export function handleMock(endpoint, options = {}) {
       return resolve({ id: 1, codigo: 'DEMO10', descuento: 10, tipo: 'porcentaje' });
     }
     return reject('El cupón ingresado no es válido.');
+  }
+  if (method === 'POST' && path === '/pagos/mp/preference') {
+    return reject('Pago online no configurado en la demo');
   }
   if (method === 'POST' && /^\/mesas\/\d+\/llamar$/.test(path)) {
     return resolve({ message: 'Mozo llamado a la mesa' });

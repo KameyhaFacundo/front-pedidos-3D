@@ -29,6 +29,29 @@ import { useAuth } from '../context/AuthContext';
 import { useCompany } from '../context/CompanyContext';
 import { playNewOrderSound, soundEnabled } from '../components/adminUtils';
 
+const DIAS_HORARIOS = ['dom', 'lun', 'mar', 'mie', 'jue', 'vie', 'sab'];
+
+function backendToFormHorarios(h) {
+  const out = {};
+  if (h && typeof h === 'object') {
+    DIAS_HORARIOS.forEach((d) => {
+      out[d] = { abierto: Boolean(h[d]), rangos: h[d] || '' };
+    });
+  }
+  return out;
+}
+
+function formToBackendHorarios(form) {
+  const out = {};
+  DIAS_HORARIOS.forEach((d) => {
+    const dia = form?.[d];
+    if (dia?.abierto && dia.rangos && dia.rangos.trim()) {
+      out[d] = dia.rangos.trim().replace(/\s*,\s*/g, ',');
+    }
+  });
+  return out;
+}
+
 export default function AdminPage() {
   const { notify, confirm } = useNotify();
   const { logout } = useAuth();
@@ -52,7 +75,7 @@ export default function AdminPage() {
   const [mesas, setMesas] = useState([]);
   const [empresa, setEmpresa] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [configForm, setConfigForm] = useState({ nombre: '', whatsapp: '', logo: '', abierto: true, tiempo_estimado: '' });
+  const [configForm, setConfigForm] = useState({ nombre: '', whatsapp: '', logo: '', abierto: true, horarios: {}, tiempo_estimado: '' });
   const [logoFile, setLogoFile] = useState(null);
   const [logoRemoved, setLogoRemoved] = useState(false);
   const [savingConfig, setSavingConfig] = useState(false);
@@ -116,10 +139,12 @@ export default function AdminPage() {
     }
     setSavingConfig(true);
     try {
+      const horariosBack = formToBackendHorarios(configForm.horarios);
       const base = {
         nombre: configForm.nombre.trim(),
         whatsapp: configForm.whatsapp.trim(),
         abierto: Boolean(configForm.abierto),
+        horarios: horariosBack,
         tiempo_estimado: configForm.tiempo_estimado === '' || configForm.tiempo_estimado == null
           ? null
           : Number(configForm.tiempo_estimado),
@@ -127,7 +152,13 @@ export default function AdminPage() {
       let body;
       if (logoFile) {
         const fd = new FormData();
-        Object.entries(base).forEach(([k, v]) => fd.append(k, v));
+        Object.entries(base).forEach(([k, v]) => {
+          if (k === 'horarios') {
+            Object.entries(v || {}).forEach(([dk, dv]) => fd.append(`horarios[${dk}]`, dv));
+          } else {
+            fd.append(k, v);
+          }
+        });
         fd.append('logo', logoFile);
         body = fd;
       } else if (logoRemoved) {
@@ -136,7 +167,7 @@ export default function AdminPage() {
         body = JSON.stringify(base);
       }
       const empresa = await updateEmpresa(body);
-      setConfigForm({ nombre: empresa.nombre || '', whatsapp: empresa.whatsapp || '', logo: empresa.logo || '', abierto: empresa.abierto !== false, tiempo_estimado: empresa.tiempo_estimado ?? '' });
+      setConfigForm({ nombre: empresa.nombre || '', whatsapp: empresa.whatsapp || '', logo: empresa.logo || '', abierto: empresa.abierto !== false, horarios: backendToFormHorarios(empresa.horarios), tiempo_estimado: empresa.tiempo_estimado ?? '' });
       setLogoFile(null);
       setLogoRemoved(false);
       setEmpresa(empresa);
@@ -169,7 +200,7 @@ export default function AdminPage() {
     if (view === 'mesas') fetchMesasData();
     if (view === 'configuracion') {
       getEmpresa().then((e) => {
-        if (e) setConfigForm({ nombre: e.nombre || '', whatsapp: e.whatsapp || '', logo: e.logo || '', abierto: e.abierto !== false, tiempo_estimado: e.tiempo_estimado ?? '' });
+        if (e) setConfigForm({ nombre: e.nombre || '', whatsapp: e.whatsapp || '', logo: e.logo || '', abierto: e.abierto !== false, horarios: backendToFormHorarios(e.horarios), tiempo_estimado: e.tiempo_estimado ?? '' });
       }).catch(() => {});
     }
   }, [view, fetchPlatos, fetchMesasData]);
@@ -269,6 +300,7 @@ export default function AdminPage() {
           metricas={metricas}
           slug={slug}
           empresa={empresa}
+          notify={notify}
           onAvanzar={handleAvanzar}
           onPagar={handlePagar}
           onCancelar={handleCancelar}

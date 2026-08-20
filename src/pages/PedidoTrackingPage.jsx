@@ -175,6 +175,11 @@ export default function PedidoTrackingPage() {
       </div>
       <div className="tracking-meta">
         <div className="tracking-updated">{lastUpdated ? `Actualizado: ${new Date(lastUpdated).toLocaleTimeString()}` : ''}</div>
+        {pedido.estado_pago === 'pagado' && (
+          <span className="tracking-pago-ok">
+            <i className="ti ti-circle-check"></i> Pago confirmado
+          </span>
+        )}
         <button className="btn btn-sm" onClick={() => { setLoading(true); fetchPedido(); setLastUpdated(new Date()); }}>Actualizar</button>
       </div>
 

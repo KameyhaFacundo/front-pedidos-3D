@@ -116,8 +116,30 @@ export function getPedidos(estado, page = 1) {
   return request(`/pedidos?${params}`).then((res) => res.data || res);
 }
 
+export function getPedidosRango(desde, hasta, page = 1, acumulador = []) {
+  const params = new URLSearchParams();
+  if (desde) params.append('desde', desde);
+  if (hasta) params.append('hasta', hasta);
+  params.append('page', page);
+  params.append('per_page', '100');
+  return request(`/pedidos?${params}`).then((res) => {
+    const lista = res.data || [];
+    const todas = acumulador.concat(lista);
+    const lastPage = res.last_page || res.meta?.last_page || 1;
+    if (page < lastPage) return getPedidosRango(desde, hasta, page + 1, todas);
+    return todas;
+  });
+}
+
 export function createPedido(data) {
   return request('/pedidos', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export function crearPreferencia(data) {
+  return request('/pagos/mp/preference', {
     method: 'POST',
     body: JSON.stringify(data),
   });

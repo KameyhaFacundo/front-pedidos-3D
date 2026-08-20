@@ -29,6 +29,18 @@ const ESTADO_LABELS = {
   entregado: 'Entregado',
 };
 
+function tiempoEnEstado(pedido, ahora) {
+  const base = pedido.estado === 'nuevo' ? pedido.created_at : pedido.updated_at || pedido.created_at;
+  const t = new Date(base).getTime();
+  if (!t || Number.isNaN(t)) return null;
+  const mins = Math.max(0, Math.floor((ahora - t) / 60000));
+  if (mins < 1) return { mins: 0, label: 'recién' };
+  if (mins === 1) return { mins: 1, label: 'hace 1 min' };
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  return { mins, label: h > 0 ? `hace ${h}h ${m}m` : `hace ${m} min` };
+}
+
 export default function CocinaPage() {
   const { confirm } = useNotify();
   const { logout } = useAuth();
@@ -38,6 +50,7 @@ export default function CocinaPage() {
   const [pedidos, setPedidos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [ahora, setAhora] = useState(Date.now());
   const [filtro, setFiltro] = useState('');
   const [agrupar, setAgrupar] = useState(true);
   const [updating, setUpdating] = useState(null);
@@ -93,6 +106,11 @@ export default function CocinaPage() {
     const id = setInterval(fetchPedidos, 30000);
     return () => clearInterval(id);
   }, [fetchPedidos]);
+
+  useEffect(() => {
+    const id = setInterval(() => setAhora(Date.now()), 30000);
+    return () => clearInterval(id);
+  }, []);
 
   useEffect(() => {
     const onFocus = () => fetchPedidos();
@@ -203,7 +221,10 @@ ${rows.map((r) => `<div class="item">${r.texto}<div class="muted">#${r.id} · ${
     return { groups, sueltos };
   }, [pedidos, agrupar]);
 
-  const renderPedidoCard = (pedido) => (
+  const renderPedidoCard = (pedido) => {
+    const timer = tiempoEnEstado(pedido, ahora);
+    const late = (pedido.estado === 'preparacion' && timer?.mins >= 15) || (pedido.estado === 'listo' && timer?.mins >= 10);
+    return (
     <div key={pedido.id} className="pedido-card">
       <div className="pedido-card-header">
         <span className="pedido-id">#{pedido.id}</span>
@@ -229,6 +250,11 @@ ${rows.map((r) => `<div class="item">${r.texto}<div class="muted">#${r.id} · ${
           {pedido.tipo === 'mesa' ? `Mesa ${pedido.mesa?.numero ?? pedido.mesa_id ?? '?'}` : 'Retiro'}
         </span>
         <span className="pedido-hora">{formatTime(pedido.created_at)}</span>
+        {timer && (
+          <span className={`pedido-timer ${late ? 'late' : ''}`} title="Tiempo en este estado">
+            <i className="ti ti-timer"></i> {timer.label}
+          </span>
+        )}
       </div>
 
       <ul className="pedido-items">
@@ -335,6 +361,7 @@ ${rows.map((r) => `<div class="item">${r.texto}<div class="muted">#${r.id} · ${
       </div>
     </div>
   );
+  };
 
   return (
     <div className="admin-layout">

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { COLUMNAS, formatearPrecio, tiempoRelativo, descargarCSV } from '../adminUtils';
+import { getPedidosRango } from '../../api/client';
 
 const FILTROS = [
   { key: '', label: 'Todos' },
@@ -8,10 +9,30 @@ const FILTROS = [
   { key: 'retiro', label: 'Retiro' },
 ];
 
-export default function AdminPedidosView({ active, pedidos, metricas, slug, empresa, onAvanzar, onPagar, onCancelar }) {
+export default function AdminPedidosView({ active, pedidos, metricas, slug, empresa, notify, onAvanzar, onPagar, onCancelar }) {
   const [filtro, setFiltro] = useState('');
   const [busqueda, setBusqueda] = useState('');
   const [verCancelados, setVerCancelados] = useState(false);
+  const [rangoDesde, setRangoDesde] = useState('');
+  const [rangoHasta, setRangoHasta] = useState('');
+  const [exportando, setExportando] = useState(false);
+
+  const handleExportar = async () => {
+    if (exportando) return;
+    setExportando(true);
+    try {
+      if (rangoDesde || rangoHasta) {
+        const lista = await getPedidosRango(rangoDesde || undefined, rangoHasta || undefined);
+        descargarCSV(lista, slug);
+      } else {
+        descargarCSV(pedidos, slug);
+      }
+    } catch (e) {
+      notify?.('Error al exportar: ' + (e.message || 'desconocido'), 'error');
+    } finally {
+      setExportando(false);
+    }
+  };
 
   const visibles = pedidos.filter((p) => {
     if (filtro && p.tipo !== filtro) return false;
@@ -60,9 +81,25 @@ export default function AdminPedidosView({ active, pedidos, metricas, slug, empr
           <div className="admin-title">Pedidos de hoy</div>
           <div className="admin-subtitle">Actualizado en tiempo real</div>
         </div>
-        <button className="btn btn-sm" onClick={() => descargarCSV(pedidos, slug)}>
-          <i className="ti ti-download"></i> Exportar CSV
-        </button>
+        <div className="csv-export-bar">
+          <input
+            type="date"
+            className="csv-export-date"
+            value={rangoDesde}
+            onChange={(e) => setRangoDesde(e.target.value)}
+            title="Desde"
+          />
+          <input
+            type="date"
+            className="csv-export-date"
+            value={rangoHasta}
+            onChange={(e) => setRangoHasta(e.target.value)}
+            title="Hasta"
+          />
+          <button className="btn btn-sm" onClick={handleExportar} disabled={exportando}>
+            <i className="ti ti-download"></i> {exportando ? 'Exportando...' : 'Exportar CSV'}
+          </button>
+        </div>
       </div>
 
       <div className="pedidos-search">
