@@ -33,15 +33,16 @@ export async function request(endpoint, options = {}) {
   };
 
   // La demo pública corre 100% con datos ficticios: no toca el backend
-  // ni crea pedidos reales.
-  if (isDemoMode()) {
+  // ni crea pedidos reales. El login y la autenticación SIEMPRE van al backend real.
+  const esAuth = ['/login', '/logout', '/me', '/registro'].some((p) => endpoint.startsWith(p));
+  if (isDemoMode() && !esAuth) {
     const { handleMock } = await import('./mock');
     return handleMock(endpoint, options);
   }
 
   const response = await fetch(url, config);
 
-  if (response.status === 401) {
+  if (response.status === 401 && !endpoint.startsWith('/login')) {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     const path = window.location.pathname;

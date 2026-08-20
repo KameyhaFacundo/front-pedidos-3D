@@ -1,16 +1,16 @@
 # Graph Report - front-pedidos-3D  (2026-08-20)
 
 ## Corpus Check
-- 53 files · ~120,837 words
+- 53 files · ~120,898 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 335 nodes · 755 edges · 17 communities (15 shown, 2 thin omitted)
+- 335 nodes · 756 edges · 17 communities (15 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.65)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `46e15c32`
+- Built from commit: `8c09a5d0`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -18,7 +18,7 @@
 - PedidoTrackingPage.jsx
 - mock.js
 - devDependencies
-- getEmpresa
+- MenuPage.jsx
 - client.js
 - App.jsx
 - TypeScript Config
@@ -27,9 +27,9 @@
 - LandingPage.jsx
 - CLAUDE.md
 - adminUtils.js
-- CartContext.jsx
-- manifest.json
 - AdminPage.jsx
+- manifest.json
+- CompanyContext.jsx
 - sw.js
 
 ## God Nodes (most connected - your core abstractions)
@@ -47,14 +47,14 @@
 ## Surprising Connections (you probably didn't know these)
 - `LocalSettingsModal()` --indirect_call--> `soundEnabled()`  [INFERRED]
   src/components/admin/LocalSettingsModal.jsx → src/components/adminUtils.js
-- `RegistroModal()` --calls--> `login()`  [EXTRACTED]
-  src/components/RegistroModal.jsx → src/api/client.js
-- `PlatoModal()` --calls--> `useNotify()`  [EXTRACTED]
-  src/components/admin/PlatoModal.jsx → src/context/NotificationContext.jsx
-- `PedidoTrackingPage()` --calls--> `useNotify()`  [EXTRACTED]
-  src/pages/PedidoTrackingPage.jsx → src/context/NotificationContext.jsx
-- `PedidoTrackingPage()` --calls--> `useSSE()`  [EXTRACTED]
-  src/pages/PedidoTrackingPage.jsx → src/api/useSSE.js
+- `LoginPage()` --calls--> `useAuth()`  [EXTRACTED]
+  src/pages/LoginPage.jsx → src/context/AuthContext.jsx
+- `MenuPage()` --calls--> `getMenu()`  [EXTRACTED]
+  src/pages/MenuPage.jsx → src/api/client.js
+- `MenuPage()` --calls--> `llamarMozo()`  [EXTRACTED]
+  src/pages/MenuPage.jsx → src/api/client.js
+- `MenuPage()` --calls--> `useCart()`  [EXTRACTED]
+  src/pages/MenuPage.jsx → src/context/CartContext.jsx
 
 ## Import Cycles
 - None detected.
@@ -73,17 +73,17 @@ Nodes (10): crearPedido(), DEMO_EMPRESA, DEMO_MESAS, DEMO_PLATOS, estadoSegunEla
 Cohesion: 0.12
 Nodes (17): eslint, @eslint/js, eslint-plugin-react-hooks, eslint-plugin-react-refresh, globals, devDependencies, eslint, @eslint/js (+9 more)
 
-### Community 3 - "getEmpresa"
-Cohesion: 0.60
-Nodes (5): getEmpresa(), login(), defaultRouteForRole(), getSlugFromPath(), LoginPage()
+### Community 3 - "MenuPage.jsx"
+Cohesion: 0.14
+Nodes (19): crearPreferencia(), createPedido(), getMesas(), registrarArVista(), validarCupon(), ARViewer(), AdminSkeleton(), MenuSkeleton() (+11 more)
 
 ### Community 4 - "client.js"
-Cohesion: 0.11
-Nodes (36): atenderLlamado(), createCupon(), createPlato(), createStaff(), deleteCupon(), deletePlato(), deleteStaff(), getCupones() (+28 more)
+Cohesion: 0.12
+Nodes (33): atenderLlamado(), createCupon(), createPlato(), createStaff(), deleteCupon(), deletePlato(), deleteStaff(), getCupones() (+25 more)
 
 ### Community 5 - "App.jsx"
-Cohesion: 0.08
-Nodes (41): crearPreferencia(), createPedido(), getMesas(), validarCupon(), App(), defaultRouteForRole(), DemoModal(), Navbar() (+33 more)
+Cohesion: 0.07
+Nodes (31): App(), defaultRouteForRole(), DemoModal(), Navbar(), ProtectedRoute(), ThemeToggle(), ErrorBoundary, Footer() (+23 more)
 
 ### Community 6 - "TypeScript Config"
 Cohesion: 0.11
@@ -105,37 +105,37 @@ Nodes (15): AnimatedStat(), COMPARACION, FAQS, FEATURES, fmt(), LandingPage(), P
 Cohesion: 0.19
 Nodes (18): getPedidosRango(), AdminMenuView(), AdminMetricasView(), AdminPedidosView(), FILTROS, hoyLocal(), DIAS, LocalSettingsModal() (+10 more)
 
-### Community 13 - "CartContext.jsx"
-Cohesion: 0.19
-Nodes (9): ErrorBoundary, CartContext, CartProvider(), getCartKey(), getSlugFromPath(), itemKey(), loadCart(), RESERVED (+1 more)
+### Community 13 - "AdminPage.jsx"
+Cohesion: 0.14
+Nodes (30): cancelarPedido(), getPedidos(), logout(), registrarEmpresa(), updatePedidoEstado(), getBase(), useSSE(), AdminSidebar() (+22 more)
 
 ### Community 14 - "manifest.json"
 Cohesion: 0.12
 Nodes (15): background_color, categories, description, display, icons, lang, name, orientation (+7 more)
 
-### Community 15 - "AdminPage.jsx"
-Cohesion: 0.12
-Nodes (31): cancelarPedido(), getPedidos(), logout(), registrarEmpresa(), updatePedidoEstado(), getBase(), useSSE(), AdminSidebar() (+23 more)
+### Community 15 - "CompanyContext.jsx"
+Cohesion: 0.29
+Nodes (9): getEmpresa(), login(), CompanyContext, CompanyProvider(), getSlugFromPath(), RESERVED, defaultRouteForRole(), getSlugFromPath() (+1 more)
 
 ## Knowledge Gaps
-- **97 isolated node(s):** `FILTROS`, `NotificationContext`, `TYPE_ICONS`, `ESTADO_COLORS`, `ESTADO_INFO` (+92 more)
+- **97 isolated node(s):** `CATEGORIAS`, `ESTADO_COLORS`, `ESTADO_INFO`, `ESTADOS`, `DEMO_EMPRESA` (+92 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `request()` connect `client.js` to `PedidoTrackingPage.jsx`, `mock.js`, `getEmpresa`, `App.jsx`, `PlanoEditor.jsx`, `adminUtils.js`, `AdminPage.jsx`?**
+- **Why does `request()` connect `client.js` to `PedidoTrackingPage.jsx`, `mock.js`, `MenuPage.jsx`, `PlanoEditor.jsx`, `adminUtils.js`, `AdminPage.jsx`, `CompanyContext.jsx`?**
   _High betweenness centrality (0.019) - this node is a cross-community bridge._
-- **Why does `useCompany()` connect `App.jsx` to `PedidoTrackingPage.jsx`, `PlanoEditor.jsx`, `AdminPage.jsx`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **What connects `FILTROS`, `NotificationContext`, `TYPE_ICONS` to the rest of the system?**
+- **Why does `useCompany()` connect `AdminPage.jsx` to `PedidoTrackingPage.jsx`, `MenuPage.jsx`, `App.jsx`, `PlanoEditor.jsx`, `CompanyContext.jsx`?**
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+- **What connects `CATEGORIAS`, `ESTADO_COLORS`, `ESTADO_INFO` to the rest of the system?**
   _97 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
+- **Should `MenuPage.jsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.13666666666666666 - nodes in this community are weakly interconnected._
 - **Should `client.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.10975609756097561 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.12462462462462462 - nodes in this community are weakly interconnected._
 - **Should `App.jsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.07826694619147449 - nodes in this community are weakly interconnected._
-- **Should `TypeScript Config` be split into smaller, more focused modules?**
-  _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0730804810360777 - nodes in this community are weakly interconnected._

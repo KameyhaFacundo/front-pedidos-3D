@@ -11,8 +11,8 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 13,
-      "community_name": "CartContext.jsx",
+      "community": 5,
+      "community_name": "App.jsx",
       "norm_label": "errorboundary",
       "id": "src_components_errorboundary_errorboundary"
     },
@@ -239,10 +239,10 @@
       "source_location": "L18",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_components_admin_adminpedidosview_adminpedidosview",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "adminpedidosview()"
+      "norm_label": "adminpedidosview()",
+      "id": "src_components_admin_adminpedidosview_adminpedidosview"
     },
     {
       "label": "hoyLocal()",
@@ -251,10 +251,10 @@
       "source_location": "L5",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_components_admin_adminpedidosview_hoylocal",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "hoylocal()"
+      "norm_label": "hoylocal()",
+      "id": "src_components_admin_adminpedidosview_hoylocal"
     },
     {
       "label": "LocalSettingsModal()",
@@ -365,133 +365,13 @@
       "id": "src_components_adminutils_totalpedido"
     },
     {
-      "label": ".constructor()",
-      "file_type": "code",
-      "source_file": "src/components/ErrorBoundary.jsx",
-      "source_location": "L4",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "CartContext.jsx",
-      "norm_label": ".constructor()",
-      "id": "src_components_errorboundary_errorboundary_constructor"
-    },
-    {
-      "label": ".getDerivedStateFromError()",
-      "file_type": "code",
-      "source_file": "src/components/ErrorBoundary.jsx",
-      "source_location": "L9",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "CartContext.jsx",
-      "norm_label": ".getderivedstatefromerror()",
-      "id": "src_components_errorboundary_errorboundary_getderivedstatefromerror"
-    },
-    {
-      "label": ".render()",
-      "file_type": "code",
-      "source_file": "src/components/ErrorBoundary.jsx",
-      "source_location": "L13",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "CartContext.jsx",
-      "norm_label": ".render()",
-      "id": "src_components_errorboundary_errorboundary_render"
-    },
-    {
-      "label": "CartProvider()",
-      "file_type": "code",
-      "source_file": "src/context/CartContext.jsx",
-      "source_location": "L46",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "CartContext.jsx",
-      "norm_label": "cartprovider()",
-      "id": "src_context_cartcontext_cartprovider"
-    },
-    {
-      "label": "getCartKey()",
-      "file_type": "code",
-      "source_file": "src/context/CartContext.jsx",
-      "source_location": "L14",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "CartContext.jsx",
-      "norm_label": "getcartkey()",
-      "id": "src_context_cartcontext_getcartkey"
-    },
-    {
-      "label": "getSlugFromPath()",
-      "file_type": "code",
-      "source_file": "src/context/CartContext.jsx",
-      "source_location": "L9",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "CartContext.jsx",
-      "norm_label": "getslugfrompath()",
-      "id": "src_context_cartcontext_getslugfrompath"
-    },
-    {
-      "label": "itemKey()",
-      "file_type": "code",
-      "source_file": "src/context/CartContext.jsx",
-      "source_location": "L28",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "CartContext.jsx",
-      "norm_label": "itemkey()",
-      "id": "src_context_cartcontext_itemkey"
-    },
-    {
-      "label": "loadCart()",
-      "file_type": "code",
-      "source_file": "src/context/CartContext.jsx",
-      "source_location": "L18",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "CartContext.jsx",
-      "norm_label": "loadcart()",
-      "id": "src_context_cartcontext_loadcart"
-    },
-    {
-      "label": "unitPrice()",
-      "file_type": "code",
-      "source_file": "src/context/CartContext.jsx",
-      "source_location": "L36",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "CartContext.jsx",
-      "norm_label": "unitprice()",
-      "id": "src_context_cartcontext_unitprice"
-    },
-    {
-      "label": "disableAutofill()",
-      "file_type": "code",
-      "source_file": "src/main.jsx",
-      "source_location": "L15",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "CartContext.jsx",
-      "norm_label": "disableautofill()",
-      "id": "src_main_disableautofill"
-    },
-    {
       "label": "cancelarPedido()",
       "file_type": "code",
       "source_file": "src/api/client.js",
       "source_location": "L259",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "cancelarpedido()",
       "id": "src_api_client_cancelarpedido"
@@ -503,7 +383,7 @@
       "source_location": "L111",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "getpedidos()",
       "id": "src_api_client_getpedidos"
@@ -515,7 +395,7 @@
       "source_location": "L82",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "logout()",
       "id": "src_api_client_logout"
@@ -527,7 +407,7 @@
       "source_location": "L75",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "registrarempresa()",
       "id": "src_api_client_registrarempresa"
@@ -539,7 +419,7 @@
       "source_location": "L148",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "updatepedidoestado()",
       "id": "src_api_client_updatepedidoestado"
@@ -551,7 +431,7 @@
       "source_location": "L3",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "getbase()",
       "id": "src_api_usesse_getbase"
@@ -563,7 +443,7 @@
       "source_location": "L11",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "usesse()",
       "id": "src_api_usesse_usesse"
@@ -575,7 +455,7 @@
       "source_location": "L16",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "adminsidebar()",
       "id": "src_components_adminsidebar_adminsidebar"
@@ -587,7 +467,7 @@
       "source_location": "L97",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "playnewordersound()",
       "id": "src_components_adminutils_playnewordersound"
@@ -599,7 +479,7 @@
       "source_location": "L83",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "soundenabled()",
       "id": "src_components_adminutils_soundenabled"
@@ -611,7 +491,7 @@
       "source_location": "L3",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "qrmodal()",
       "id": "src_components_qrmodal_qrmodal"
@@ -623,46 +503,10 @@
       "source_location": "L7",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "registromodal()",
       "id": "src_components_registromodal_registromodal"
-    },
-    {
-      "label": "AdminSkeleton()",
-      "file_type": "code",
-      "source_file": "src/components/Skeletons.jsx",
-      "source_location": "L31",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "adminskeleton()",
-      "id": "src_components_skeletons_adminskeleton"
-    },
-    {
-      "label": "MenuSkeleton()",
-      "file_type": "code",
-      "source_file": "src/components/Skeletons.jsx",
-      "source_location": "L1",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "menuskeleton()",
-      "id": "src_components_skeletons_menuskeleton"
-    },
-    {
-      "label": "PageSkeleton()",
-      "file_type": "code",
-      "source_file": "src/components/Skeletons.jsx",
-      "source_location": "L52",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "pageskeleton()",
-      "id": "src_components_skeletons_pageskeleton"
     },
     {
       "label": "useAuth()",
@@ -671,10 +515,22 @@
       "source_location": "L45",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "useauth()",
       "id": "src_context_authcontext_useauth"
+    },
+    {
+      "label": "useCompany()",
+      "file_type": "code",
+      "source_file": "src/context/CompanyContext.jsx",
+      "source_location": "L44",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "usecompany()",
+      "id": "src_context_companycontext_usecompany"
     },
     {
       "label": "NotificationProvider()",
@@ -683,7 +539,7 @@
       "source_location": "L11",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "notificationprovider()",
       "id": "src_context_notificationcontext_notificationprovider"
@@ -695,7 +551,7 @@
       "source_location": "L83",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "usenotify()",
       "id": "src_context_notificationcontext_usenotify"
@@ -707,7 +563,7 @@
       "source_location": "L55",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "adminpage()",
       "id": "src_pages_adminpage_adminpage"
@@ -719,7 +575,7 @@
       "source_location": "L34",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "backendtoformhorarios()",
       "id": "src_pages_adminpage_backendtoformhorarios"
@@ -731,7 +587,7 @@
       "source_location": "L44",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "formtobackendhorarios()",
       "id": "src_pages_adminpage_formtobackendhorarios"
@@ -743,7 +599,7 @@
       "source_location": "L44",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "cocinapage()",
       "id": "src_pages_cocinapage_cocinapage"
@@ -755,7 +611,7 @@
       "source_location": "L32",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "tiempoenestado()",
       "id": "src_pages_cocinapage_tiempoenestado"
@@ -767,7 +623,7 @@
       "source_location": "L10",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "community_name": "AdminPage.jsx",
       "norm_label": "llamadospage()",
       "id": "src_pages_llamadospage_llamadospage"
@@ -779,8 +635,8 @@
       "source_location": "L94",
       "_callable": true,
       "_origin": "ast",
-      "community": 3,
-      "community_name": "getEmpresa",
+      "community": 15,
+      "community_name": "CompanyContext.jsx",
       "norm_label": "getempresa()",
       "id": "src_api_client_getempresa"
     },
@@ -791,10 +647,34 @@
       "source_location": "L68",
       "_callable": true,
       "_origin": "ast",
-      "community": 3,
-      "community_name": "getEmpresa",
+      "community": 15,
+      "community_name": "CompanyContext.jsx",
       "norm_label": "login()",
       "id": "src_api_client_login"
+    },
+    {
+      "label": "CompanyProvider()",
+      "file_type": "code",
+      "source_file": "src/context/CompanyContext.jsx",
+      "source_location": "L15",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "companyprovider()",
+      "id": "src_context_companycontext_companyprovider"
+    },
+    {
+      "label": "getSlugFromPath()",
+      "file_type": "code",
+      "source_file": "src/context/CompanyContext.jsx",
+      "source_location": "L9",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "getslugfrompath()",
+      "id": "src_context_companycontext_getslugfrompath"
     },
     {
       "label": "defaultRouteForRole()",
@@ -803,10 +683,10 @@
       "source_location": "L6",
       "_callable": true,
       "_origin": "ast",
-      "community": 3,
-      "community_name": "getEmpresa",
-      "norm_label": "defaultrouteforrole()",
-      "id": "src_pages_loginpage_defaultrouteforrole"
+      "id": "src_pages_loginpage_defaultrouteforrole",
+      "community": 15,
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "defaultrouteforrole()"
     },
     {
       "label": "getSlugFromPath()",
@@ -815,10 +695,10 @@
       "source_location": "L12",
       "_callable": true,
       "_origin": "ast",
-      "community": 3,
-      "community_name": "getEmpresa",
-      "norm_label": "getslugfrompath()",
-      "id": "src_pages_loginpage_getslugfrompath"
+      "id": "src_pages_loginpage_getslugfrompath",
+      "community": 15,
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "getslugfrompath()"
     },
     {
       "label": "LoginPage()",
@@ -827,10 +707,202 @@
       "source_location": "L18",
       "_callable": true,
       "_origin": "ast",
+      "id": "src_pages_loginpage_loginpage",
+      "community": 15,
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "loginpage()"
+    },
+    {
+      "label": "crearPreferencia()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L141",
+      "_callable": true,
+      "_origin": "ast",
       "community": 3,
-      "community_name": "getEmpresa",
-      "norm_label": "loginpage()",
-      "id": "src_pages_loginpage_loginpage"
+      "community_name": "MenuPage.jsx",
+      "norm_label": "crearpreferencia()",
+      "id": "src_api_client_crearpreferencia"
+    },
+    {
+      "label": "createPedido()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L134",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "createpedido()",
+      "id": "src_api_client_createpedido"
+    },
+    {
+      "label": "getMesas()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L155",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "getmesas()",
+      "id": "src_api_client_getmesas"
+    },
+    {
+      "label": "registrarArVista()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L253",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "registrararvista()",
+      "id": "src_api_client_registrararvista"
+    },
+    {
+      "label": "validarCupon()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L265",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "validarcupon()",
+      "id": "src_api_client_validarcupon"
+    },
+    {
+      "label": "ARViewer()",
+      "file_type": "code",
+      "source_file": "src/components/ARViewer.jsx",
+      "source_location": "L4",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "arviewer()",
+      "id": "src_components_arviewer_arviewer"
+    },
+    {
+      "label": "AdminSkeleton()",
+      "file_type": "code",
+      "source_file": "src/components/Skeletons.jsx",
+      "source_location": "L31",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "adminskeleton()",
+      "id": "src_components_skeletons_adminskeleton"
+    },
+    {
+      "label": "MenuSkeleton()",
+      "file_type": "code",
+      "source_file": "src/components/Skeletons.jsx",
+      "source_location": "L1",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "menuskeleton()",
+      "id": "src_components_skeletons_menuskeleton"
+    },
+    {
+      "label": "PageSkeleton()",
+      "file_type": "code",
+      "source_file": "src/components/Skeletons.jsx",
+      "source_location": "L52",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "pageskeleton()",
+      "id": "src_components_skeletons_pageskeleton"
+    },
+    {
+      "label": "loadInitial()",
+      "file_type": "code",
+      "source_file": "src/context/OrderModeContext.jsx",
+      "source_location": "L7",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "loadinitial()",
+      "id": "src_context_ordermodecontext_loadinitial"
+    },
+    {
+      "label": "OrderModeProvider()",
+      "file_type": "code",
+      "source_file": "src/context/OrderModeContext.jsx",
+      "source_location": "L18",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "ordermodeprovider()",
+      "id": "src_context_ordermodecontext_ordermodeprovider"
+    },
+    {
+      "label": "useOrderMode()",
+      "file_type": "code",
+      "source_file": "src/context/OrderModeContext.jsx",
+      "source_location": "L36",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "useordermode()",
+      "id": "src_context_ordermodecontext_useordermode"
+    },
+    {
+      "label": "CheckoutPage()",
+      "file_type": "code",
+      "source_file": "src/pages/CheckoutPage.jsx",
+      "source_location": "L33",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "checkoutpage()",
+      "id": "src_pages_checkoutpage_checkoutpage"
+    },
+    {
+      "label": "formatear()",
+      "file_type": "code",
+      "source_file": "src/pages/CheckoutPage.jsx",
+      "source_location": "L8",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "formatear()",
+      "id": "src_pages_checkoutpage_formatear"
+    },
+    {
+      "label": "itemsToTexto()",
+      "file_type": "code",
+      "source_file": "src/pages/CheckoutPage.jsx",
+      "source_location": "L12",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "itemstotexto()",
+      "id": "src_pages_checkoutpage_itemstotexto"
+    },
+    {
+      "label": "MenuPage()",
+      "file_type": "code",
+      "source_file": "src/pages/MenuPage.jsx",
+      "source_location": "L20",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_pages_menupage_menupage",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "menupage()"
     },
     {
       "label": "atenderLlamado()",
@@ -1037,18 +1109,6 @@
       "id": "src_api_client_isdemomode"
     },
     {
-      "label": "registrarArVista()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L253",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "registrararvista()",
-      "id": "src_api_client_registrararvista"
-    },
-    {
       "label": "reordenarPlatos()",
       "file_type": "code",
       "source_file": "src/api/client.js",
@@ -1181,66 +1241,6 @@
       "id": "src_components_admin_platomodal_platomodal"
     },
     {
-      "label": "ARViewer()",
-      "file_type": "code",
-      "source_file": "src/components/ARViewer.jsx",
-      "source_location": "L4",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "arviewer()",
-      "id": "src_components_arviewer_arviewer"
-    },
-    {
-      "label": "crearPreferencia()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L141",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "crearpreferencia()",
-      "id": "src_api_client_crearpreferencia"
-    },
-    {
-      "label": "createPedido()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L134",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "createpedido()",
-      "id": "src_api_client_createpedido"
-    },
-    {
-      "label": "getMesas()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L155",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "getmesas()",
-      "id": "src_api_client_getmesas"
-    },
-    {
-      "label": "validarCupon()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L265",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "validarcupon()",
-      "id": "src_api_client_validarcupon"
-    },
-    {
       "label": "App()",
       "file_type": "code",
       "source_file": "src/App.jsx",
@@ -1337,6 +1337,42 @@
       "id": "src_app_themetoggle"
     },
     {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "src/components/ErrorBoundary.jsx",
+      "source_location": "L4",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": ".constructor()",
+      "id": "src_components_errorboundary_errorboundary_constructor"
+    },
+    {
+      "label": ".getDerivedStateFromError()",
+      "file_type": "code",
+      "source_file": "src/components/ErrorBoundary.jsx",
+      "source_location": "L9",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": ".getderivedstatefromerror()",
+      "id": "src_components_errorboundary_errorboundary_getderivedstatefromerror"
+    },
+    {
+      "label": ".render()",
+      "file_type": "code",
+      "source_file": "src/components/ErrorBoundary.jsx",
+      "source_location": "L13",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": ".render()",
+      "id": "src_components_errorboundary_errorboundary_render"
+    },
+    {
       "label": "Footer()",
       "file_type": "code",
       "source_file": "src/components/Footer.jsx",
@@ -1397,6 +1433,78 @@
       "id": "src_context_authcontext_authprovider"
     },
     {
+      "label": "CartProvider()",
+      "file_type": "code",
+      "source_file": "src/context/CartContext.jsx",
+      "source_location": "L46",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "cartprovider()",
+      "id": "src_context_cartcontext_cartprovider"
+    },
+    {
+      "label": "getCartKey()",
+      "file_type": "code",
+      "source_file": "src/context/CartContext.jsx",
+      "source_location": "L14",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "getcartkey()",
+      "id": "src_context_cartcontext_getcartkey"
+    },
+    {
+      "label": "getSlugFromPath()",
+      "file_type": "code",
+      "source_file": "src/context/CartContext.jsx",
+      "source_location": "L9",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "getslugfrompath()",
+      "id": "src_context_cartcontext_getslugfrompath"
+    },
+    {
+      "label": "itemKey()",
+      "file_type": "code",
+      "source_file": "src/context/CartContext.jsx",
+      "source_location": "L28",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "itemkey()",
+      "id": "src_context_cartcontext_itemkey"
+    },
+    {
+      "label": "loadCart()",
+      "file_type": "code",
+      "source_file": "src/context/CartContext.jsx",
+      "source_location": "L18",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "loadcart()",
+      "id": "src_context_cartcontext_loadcart"
+    },
+    {
+      "label": "unitPrice()",
+      "file_type": "code",
+      "source_file": "src/context/CartContext.jsx",
+      "source_location": "L36",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "unitprice()",
+      "id": "src_context_cartcontext_unitprice"
+    },
+    {
       "label": "useCart()",
       "file_type": "code",
       "source_file": "src/context/CartContext.jsx",
@@ -1407,78 +1515,6 @@
       "community_name": "App.jsx",
       "norm_label": "usecart()",
       "id": "src_context_cartcontext_usecart"
-    },
-    {
-      "label": "CompanyProvider()",
-      "file_type": "code",
-      "source_file": "src/context/CompanyContext.jsx",
-      "source_location": "L15",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "companyprovider()",
-      "id": "src_context_companycontext_companyprovider"
-    },
-    {
-      "label": "getSlugFromPath()",
-      "file_type": "code",
-      "source_file": "src/context/CompanyContext.jsx",
-      "source_location": "L9",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "getslugfrompath()",
-      "id": "src_context_companycontext_getslugfrompath"
-    },
-    {
-      "label": "useCompany()",
-      "file_type": "code",
-      "source_file": "src/context/CompanyContext.jsx",
-      "source_location": "L44",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "usecompany()",
-      "id": "src_context_companycontext_usecompany"
-    },
-    {
-      "label": "loadInitial()",
-      "file_type": "code",
-      "source_file": "src/context/OrderModeContext.jsx",
-      "source_location": "L7",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "loadinitial()",
-      "id": "src_context_ordermodecontext_loadinitial"
-    },
-    {
-      "label": "OrderModeProvider()",
-      "file_type": "code",
-      "source_file": "src/context/OrderModeContext.jsx",
-      "source_location": "L18",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "ordermodeprovider()",
-      "id": "src_context_ordermodecontext_ordermodeprovider"
-    },
-    {
-      "label": "useOrderMode()",
-      "file_type": "code",
-      "source_file": "src/context/OrderModeContext.jsx",
-      "source_location": "L36",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "useordermode()",
-      "id": "src_context_ordermodecontext_useordermode"
     },
     {
       "label": "getScope()",
@@ -1529,6 +1565,18 @@
       "id": "src_context_themecontext_usetheme"
     },
     {
+      "label": "disableAutofill()",
+      "file_type": "code",
+      "source_file": "src/main.jsx",
+      "source_location": "L15",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "disableautofill()",
+      "id": "src_main_disableautofill"
+    },
+    {
       "label": "CartPage()",
       "file_type": "code",
       "source_file": "src/pages/CartPage.jsx",
@@ -1551,54 +1599,6 @@
       "community_name": "App.jsx",
       "norm_label": "formatear()",
       "id": "src_pages_cartpage_formatear"
-    },
-    {
-      "label": "CheckoutPage()",
-      "file_type": "code",
-      "source_file": "src/pages/CheckoutPage.jsx",
-      "source_location": "L33",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "checkoutpage()",
-      "id": "src_pages_checkoutpage_checkoutpage"
-    },
-    {
-      "label": "formatear()",
-      "file_type": "code",
-      "source_file": "src/pages/CheckoutPage.jsx",
-      "source_location": "L8",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "formatear()",
-      "id": "src_pages_checkoutpage_formatear"
-    },
-    {
-      "label": "itemsToTexto()",
-      "file_type": "code",
-      "source_file": "src/pages/CheckoutPage.jsx",
-      "source_location": "L12",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "itemstotexto()",
-      "id": "src_pages_checkoutpage_itemstotexto"
-    },
-    {
-      "label": "MenuPage()",
-      "file_type": "code",
-      "source_file": "src/pages/MenuPage.jsx",
-      "source_location": "L20",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "menupage()",
-      "id": "src_pages_menupage_menupage"
     },
     {
       "label": "NotFoundPage()",
@@ -2036,10 +2036,10 @@
       "source_file": "src/components/admin/AdminPedidosView.jsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_components_admin_adminpedidosview",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "adminpedidosview.jsx"
+      "norm_label": "adminpedidosview.jsx",
+      "id": "src_components_admin_adminpedidosview"
     },
     {
       "label": "FILTROS",
@@ -2047,10 +2047,10 @@
       "source_file": "src/components/admin/AdminPedidosView.jsx",
       "source_location": "L11",
       "_origin": "ast",
-      "id": "src_components_admin_adminpedidosview_filtros",
       "community": 12,
       "community_name": "adminUtils.js",
-      "norm_label": "filtros"
+      "norm_label": "filtros",
+      "id": "src_components_admin_adminpedidosview_filtros"
     },
     {
       "label": "LocalSettingsModal.jsx",
@@ -2119,59 +2119,191 @@
       "id": "src_components_adminutils_test"
     },
     {
-      "label": "ErrorBoundary.jsx",
+      "label": "useSSE.js",
       "file_type": "code",
-      "source_file": "src/components/ErrorBoundary.jsx",
+      "source_file": "src/api/useSSE.js",
       "source_location": "L1",
       "_origin": "ast",
       "community": 13,
-      "community_name": "CartContext.jsx",
-      "norm_label": "errorboundary.jsx",
-      "id": "src_components_errorboundary"
+      "community_name": "AdminPage.jsx",
+      "norm_label": "usesse.js",
+      "id": "src_api_usesse"
     },
     {
-      "label": "CartContext.jsx",
+      "label": "AdminSidebar.jsx",
       "file_type": "code",
-      "source_file": "src/context/CartContext.jsx",
+      "source_file": "src/components/AdminSidebar.jsx",
       "source_location": "L1",
       "_origin": "ast",
       "community": 13,
-      "community_name": "CartContext.jsx",
-      "norm_label": "cartcontext.jsx",
-      "id": "src_context_cartcontext"
+      "community_name": "AdminPage.jsx",
+      "norm_label": "adminsidebar.jsx",
+      "id": "src_components_adminsidebar"
     },
     {
-      "label": "CartContext",
+      "label": "ITEMS",
       "file_type": "code",
-      "source_file": "src/context/CartContext.jsx",
-      "source_location": "L4",
+      "source_file": "src/components/AdminSidebar.jsx",
+      "source_location": "L5",
       "_origin": "ast",
       "community": 13,
-      "community_name": "CartContext.jsx",
-      "norm_label": "cartcontext",
-      "id": "src_context_cartcontext_cartcontext"
+      "community_name": "AdminPage.jsx",
+      "norm_label": "items",
+      "id": "src_components_adminsidebar_items"
     },
     {
-      "label": "RESERVED",
+      "label": "QRModal.jsx",
       "file_type": "code",
-      "source_file": "src/context/CartContext.jsx",
-      "source_location": "L7",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "CartContext.jsx",
-      "norm_label": "reserved",
-      "id": "src_context_cartcontext_reserved"
-    },
-    {
-      "label": "main.jsx",
-      "file_type": "code",
-      "source_file": "src/main.jsx",
+      "source_file": "src/components/QRModal.jsx",
       "source_location": "L1",
       "_origin": "ast",
       "community": 13,
-      "community_name": "CartContext.jsx",
-      "norm_label": "main.jsx",
-      "id": "src_main"
+      "community_name": "AdminPage.jsx",
+      "norm_label": "qrmodal.jsx",
+      "id": "src_components_qrmodal"
+    },
+    {
+      "label": "RegistroModal.jsx",
+      "file_type": "code",
+      "source_file": "src/components/RegistroModal.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "registromodal.jsx",
+      "id": "src_components_registromodal"
+    },
+    {
+      "label": "AuthContext.jsx",
+      "file_type": "code",
+      "source_file": "src/context/AuthContext.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "authcontext.jsx",
+      "id": "src_context_authcontext"
+    },
+    {
+      "label": "AuthContext",
+      "file_type": "code",
+      "source_file": "src/context/AuthContext.jsx",
+      "source_location": "L3",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "authcontext",
+      "id": "src_context_authcontext_authcontext"
+    },
+    {
+      "label": "NotificationContext.jsx",
+      "file_type": "code",
+      "source_file": "src/context/NotificationContext.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "notificationcontext.jsx",
+      "id": "src_context_notificationcontext"
+    },
+    {
+      "label": "NotificationContext",
+      "file_type": "code",
+      "source_file": "src/context/NotificationContext.jsx",
+      "source_location": "L3",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "notificationcontext",
+      "id": "src_context_notificationcontext_notificationcontext"
+    },
+    {
+      "label": "TYPE_ICONS",
+      "file_type": "code",
+      "source_file": "src/context/NotificationContext.jsx",
+      "source_location": "L5",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "type_icons",
+      "id": "src_context_notificationcontext_type_icons"
+    },
+    {
+      "label": "AdminPage.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/AdminPage.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "adminpage.jsx",
+      "id": "src_pages_adminpage"
+    },
+    {
+      "label": "DIAS_HORARIOS",
+      "file_type": "code",
+      "source_file": "src/pages/AdminPage.jsx",
+      "source_location": "L32",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "dias_horarios",
+      "id": "src_pages_adminpage_dias_horarios"
+    },
+    {
+      "label": "CocinaPage.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "cocinapage.jsx",
+      "id": "src_pages_cocinapage"
+    },
+    {
+      "label": "ESTADO_COLORS",
+      "file_type": "code",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L18",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "estado_colors",
+      "id": "src_pages_cocinapage_estado_colors"
+    },
+    {
+      "label": "ESTADO_LABELS",
+      "file_type": "code",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L25",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "estado_labels",
+      "id": "src_pages_cocinapage_estado_labels"
+    },
+    {
+      "label": "ESTADOS",
+      "file_type": "code",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L11",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "estados",
+      "id": "src_pages_cocinapage_estados"
+    },
+    {
+      "label": "LlamadosPage.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/LlamadosPage.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "AdminPage.jsx",
+      "norm_label": "llamadospage.jsx",
+      "id": "src_pages_llamadospage"
     },
     {
       "label": "manifest.json",
@@ -2350,202 +2482,48 @@
       "id": "ref_shopping"
     },
     {
-      "label": "useSSE.js",
+      "label": "CompanyContext.jsx",
       "file_type": "code",
-      "source_file": "src/api/useSSE.js",
+      "source_file": "src/context/CompanyContext.jsx",
       "source_location": "L1",
       "_origin": "ast",
       "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "usesse.js",
-      "id": "src_api_usesse"
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "companycontext.jsx",
+      "id": "src_context_companycontext"
     },
     {
-      "label": "AdminSidebar.jsx",
+      "label": "CompanyContext",
       "file_type": "code",
-      "source_file": "src/components/AdminSidebar.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "adminsidebar.jsx",
-      "id": "src_components_adminsidebar"
-    },
-    {
-      "label": "ITEMS",
-      "file_type": "code",
-      "source_file": "src/components/AdminSidebar.jsx",
+      "source_file": "src/context/CompanyContext.jsx",
       "source_location": "L5",
       "_origin": "ast",
       "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "items",
-      "id": "src_components_adminsidebar_items"
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "companycontext",
+      "id": "src_context_companycontext_companycontext"
     },
     {
-      "label": "QRModal.jsx",
+      "label": "RESERVED",
       "file_type": "code",
-      "source_file": "src/components/QRModal.jsx",
+      "source_file": "src/context/CompanyContext.jsx",
+      "source_location": "L7",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "reserved",
+      "id": "src_context_companycontext_reserved"
+    },
+    {
+      "label": "LoginPage.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/LoginPage.jsx",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "src_pages_loginpage",
       "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "qrmodal.jsx",
-      "id": "src_components_qrmodal"
-    },
-    {
-      "label": "RegistroModal.jsx",
-      "file_type": "code",
-      "source_file": "src/components/RegistroModal.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "registromodal.jsx",
-      "id": "src_components_registromodal"
-    },
-    {
-      "label": "Skeletons.jsx",
-      "file_type": "code",
-      "source_file": "src/components/Skeletons.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "skeletons.jsx",
-      "id": "src_components_skeletons"
-    },
-    {
-      "label": "AuthContext.jsx",
-      "file_type": "code",
-      "source_file": "src/context/AuthContext.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "authcontext.jsx",
-      "id": "src_context_authcontext"
-    },
-    {
-      "label": "AuthContext",
-      "file_type": "code",
-      "source_file": "src/context/AuthContext.jsx",
-      "source_location": "L3",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "authcontext",
-      "id": "src_context_authcontext_authcontext"
-    },
-    {
-      "label": "NotificationContext.jsx",
-      "file_type": "code",
-      "source_file": "src/context/NotificationContext.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "notificationcontext.jsx",
-      "id": "src_context_notificationcontext"
-    },
-    {
-      "label": "NotificationContext",
-      "file_type": "code",
-      "source_file": "src/context/NotificationContext.jsx",
-      "source_location": "L3",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "notificationcontext",
-      "id": "src_context_notificationcontext_notificationcontext"
-    },
-    {
-      "label": "TYPE_ICONS",
-      "file_type": "code",
-      "source_file": "src/context/NotificationContext.jsx",
-      "source_location": "L5",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "type_icons",
-      "id": "src_context_notificationcontext_type_icons"
-    },
-    {
-      "label": "AdminPage.jsx",
-      "file_type": "code",
-      "source_file": "src/pages/AdminPage.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "adminpage.jsx",
-      "id": "src_pages_adminpage"
-    },
-    {
-      "label": "DIAS_HORARIOS",
-      "file_type": "code",
-      "source_file": "src/pages/AdminPage.jsx",
-      "source_location": "L32",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "dias_horarios",
-      "id": "src_pages_adminpage_dias_horarios"
-    },
-    {
-      "label": "CocinaPage.jsx",
-      "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "cocinapage.jsx",
-      "id": "src_pages_cocinapage"
-    },
-    {
-      "label": "ESTADO_COLORS",
-      "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L18",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "estado_colors",
-      "id": "src_pages_cocinapage_estado_colors"
-    },
-    {
-      "label": "ESTADO_LABELS",
-      "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L25",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "estado_labels",
-      "id": "src_pages_cocinapage_estado_labels"
-    },
-    {
-      "label": "ESTADOS",
-      "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L11",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "estados",
-      "id": "src_pages_cocinapage_estados"
-    },
-    {
-      "label": "LlamadosPage.jsx",
-      "file_type": "code",
-      "source_file": "src/pages/LlamadosPage.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "llamadospage.jsx",
-      "id": "src_pages_llamadospage"
+      "community_name": "CompanyContext.jsx",
+      "norm_label": "loginpage.jsx"
     },
     {
       "label": "sw.js",
@@ -2757,15 +2735,103 @@
       "id": "vitest"
     },
     {
-      "label": "LoginPage.jsx",
+      "label": "ARViewer.jsx",
       "file_type": "code",
-      "source_file": "src/pages/LoginPage.jsx",
+      "source_file": "src/components/ARViewer.jsx",
       "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "community_name": "getEmpresa",
-      "norm_label": "loginpage.jsx",
-      "id": "src_pages_loginpage"
+      "community_name": "MenuPage.jsx",
+      "norm_label": "arviewer.jsx",
+      "id": "src_components_arviewer"
+    },
+    {
+      "label": "Skeletons.jsx",
+      "file_type": "code",
+      "source_file": "src/components/Skeletons.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "skeletons.jsx",
+      "id": "src_components_skeletons"
+    },
+    {
+      "label": "OrderModeContext.jsx",
+      "file_type": "code",
+      "source_file": "src/context/OrderModeContext.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "ordermodecontext.jsx",
+      "id": "src_context_ordermodecontext"
+    },
+    {
+      "label": "OrderModeContext",
+      "file_type": "code",
+      "source_file": "src/context/OrderModeContext.jsx",
+      "source_location": "L3",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "ordermodecontext",
+      "id": "src_context_ordermodecontext_ordermodecontext"
+    },
+    {
+      "label": "CheckoutPage.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/CheckoutPage.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "checkoutpage.jsx",
+      "id": "src_pages_checkoutpage"
+    },
+    {
+      "label": "ENTREGAS",
+      "file_type": "code",
+      "source_file": "src/pages/CheckoutPage.jsx",
+      "source_location": "L27",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "entregas",
+      "id": "src_pages_checkoutpage_entregas"
+    },
+    {
+      "label": "MenuPage.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/MenuPage.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_menupage",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "menupage.jsx"
+    },
+    {
+      "label": "ARViewer",
+      "file_type": "code",
+      "source_file": "src/pages/MenuPage.jsx",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "src_pages_menupage_arviewer",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "arviewer"
+    },
+    {
+      "label": "CATEGORIAS",
+      "file_type": "code",
+      "source_file": "src/pages/MenuPage.jsx",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "src_pages_menupage_categorias",
+      "community": 3,
+      "community_name": "MenuPage.jsx",
+      "norm_label": "categorias"
     },
     {
       "label": "client.js",
@@ -2867,28 +2933,6 @@
       "id": "src_components_adminutils_empty_plato"
     },
     {
-      "label": "ARViewer.jsx",
-      "file_type": "code",
-      "source_file": "src/components/ARViewer.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "arviewer.jsx",
-      "id": "src_components_arviewer"
-    },
-    {
-      "label": "ARViewer",
-      "file_type": "code",
-      "source_file": "src/pages/MenuPage.jsx",
-      "source_location": "L10",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "client.js",
-      "norm_label": "arviewer",
-      "id": "src_pages_menupage_arviewer"
-    },
-    {
       "label": "App.jsx",
       "file_type": "code",
       "source_file": "src/App.jsx",
@@ -2898,6 +2942,17 @@
       "community_name": "App.jsx",
       "norm_label": "app.jsx",
       "id": "src_app"
+    },
+    {
+      "label": "ErrorBoundary.jsx",
+      "file_type": "code",
+      "source_file": "src/components/ErrorBoundary.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "errorboundary.jsx",
+      "id": "src_components_errorboundary"
     },
     {
       "label": "Footer.jsx",
@@ -2955,59 +3010,37 @@
       "id": "src_components_toast"
     },
     {
-      "label": "CompanyContext.jsx",
+      "label": "CartContext.jsx",
       "file_type": "code",
-      "source_file": "src/context/CompanyContext.jsx",
+      "source_file": "src/context/CartContext.jsx",
       "source_location": "L1",
       "_origin": "ast",
       "community": 5,
       "community_name": "App.jsx",
-      "norm_label": "companycontext.jsx",
-      "id": "src_context_companycontext"
+      "norm_label": "cartcontext.jsx",
+      "id": "src_context_cartcontext"
     },
     {
-      "label": "CompanyContext",
+      "label": "CartContext",
       "file_type": "code",
-      "source_file": "src/context/CompanyContext.jsx",
-      "source_location": "L5",
+      "source_file": "src/context/CartContext.jsx",
+      "source_location": "L4",
       "_origin": "ast",
       "community": 5,
       "community_name": "App.jsx",
-      "norm_label": "companycontext",
-      "id": "src_context_companycontext_companycontext"
+      "norm_label": "cartcontext",
+      "id": "src_context_cartcontext_cartcontext"
     },
     {
       "label": "RESERVED",
       "file_type": "code",
-      "source_file": "src/context/CompanyContext.jsx",
+      "source_file": "src/context/CartContext.jsx",
       "source_location": "L7",
       "_origin": "ast",
       "community": 5,
       "community_name": "App.jsx",
       "norm_label": "reserved",
-      "id": "src_context_companycontext_reserved"
-    },
-    {
-      "label": "OrderModeContext.jsx",
-      "file_type": "code",
-      "source_file": "src/context/OrderModeContext.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "ordermodecontext.jsx",
-      "id": "src_context_ordermodecontext"
-    },
-    {
-      "label": "OrderModeContext",
-      "file_type": "code",
-      "source_file": "src/context/OrderModeContext.jsx",
-      "source_location": "L3",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "ordermodecontext",
-      "id": "src_context_ordermodecontext_ordermodecontext"
+      "id": "src_context_cartcontext_reserved"
     },
     {
       "label": "ThemeContext.jsx",
@@ -3032,6 +3065,17 @@
       "id": "src_context_themecontext_themecontext"
     },
     {
+      "label": "main.jsx",
+      "file_type": "code",
+      "source_file": "src/main.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "main.jsx",
+      "id": "src_main"
+    },
+    {
       "label": "CartPage.jsx",
       "file_type": "code",
       "source_file": "src/pages/CartPage.jsx",
@@ -3041,50 +3085,6 @@
       "community_name": "App.jsx",
       "norm_label": "cartpage.jsx",
       "id": "src_pages_cartpage"
-    },
-    {
-      "label": "CheckoutPage.jsx",
-      "file_type": "code",
-      "source_file": "src/pages/CheckoutPage.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "checkoutpage.jsx",
-      "id": "src_pages_checkoutpage"
-    },
-    {
-      "label": "ENTREGAS",
-      "file_type": "code",
-      "source_file": "src/pages/CheckoutPage.jsx",
-      "source_location": "L27",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "entregas",
-      "id": "src_pages_checkoutpage_entregas"
-    },
-    {
-      "label": "MenuPage.jsx",
-      "file_type": "code",
-      "source_file": "src/pages/MenuPage.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "menupage.jsx",
-      "id": "src_pages_menupage"
-    },
-    {
-      "label": "CATEGORIAS",
-      "file_type": "code",
-      "source_file": "src/pages/MenuPage.jsx",
-      "source_location": "L12",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "App.jsx",
-      "norm_label": "categorias",
-      "id": "src_pages_menupage_categorias"
     },
     {
       "label": "NotFoundPage.jsx",
@@ -4719,9 +4719,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminpedidosview_adminpedidosview",
-      "target": "src_components_admin_adminpedidosview_hoylocal",
-      "confidence_score": 1.0
+      "target": "src_components_admin_adminpedidosview_hoylocal"
     },
     {
       "relation": "calls",
@@ -5967,9 +5967,9 @@
       "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_loginpage_loginpage",
-      "target": "src_pages_loginpage_getslugfrompath"
+      "target": "src_pages_loginpage_getslugfrompath",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -6003,9 +6003,9 @@
       "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_loginpage_loginpage",
-      "target": "src_pages_loginpage_defaultrouteforrole"
+      "target": "src_pages_loginpage_defaultrouteforrole",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -6049,7 +6049,19 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/MenuPage.jsx",
-      "source_location": "L47",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_menupage_menupage",
+      "target": "src_api_client_llamarmozo"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/MenuPage.jsx",
+      "source_location": "L61",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_menupage_menupage",
@@ -6061,7 +6073,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/MenuPage.jsx",
-      "source_location": "L68",
+      "source_location": "L82",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_menupage_menupage",
@@ -6245,9 +6257,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_menupage_arviewer",
-      "target": "src_components_arviewer"
+      "target": "src_components_arviewer",
+      "confidence_score": 1.0
     },
     {
       "relation": "extends",
@@ -6989,9 +7001,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminpedidosview",
-      "target": "src_components_adminutils_columnas",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_columnas"
     },
     {
       "relation": "imports",
@@ -7001,9 +7013,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminpedidosview",
-      "target": "src_components_adminutils_descargarcsv",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_descargarcsv"
     },
     {
       "relation": "imports",
@@ -7013,9 +7025,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminpedidosview",
-      "target": "src_components_adminutils_formatearprecio",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_formatearprecio"
     },
     {
       "relation": "imports",
@@ -7025,9 +7037,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminpedidosview",
-      "target": "src_components_adminutils_tiemporelativo",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils_tiemporelativo"
     },
     {
       "relation": "imports",
@@ -7037,9 +7049,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminpedidosview",
-      "target": "src_api_client_getpedidosrango",
-      "confidence_score": 1.0
+      "target": "src_api_client_getpedidosrango"
     },
     {
       "relation": "imports",
@@ -8249,9 +8261,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_loginpage",
-      "target": "src_api_client_getempresa"
+      "target": "src_api_client_getempresa",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -8261,9 +8273,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_loginpage",
-      "target": "src_api_client_login"
+      "target": "src_api_client_login",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -8273,9 +8285,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_loginpage",
-      "target": "src_context_authcontext_useauth"
+      "target": "src_context_authcontext_useauth",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -8285,9 +8297,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_menupage",
-      "target": "src_api_client_getmenu"
+      "target": "src_api_client_getmenu",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -8297,9 +8309,21 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_menupage",
-      "target": "src_api_client_getmesas"
+      "target": "src_api_client_getmesas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/MenuPage.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_menupage",
+      "target": "src_api_client_llamarmozo",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -8309,9 +8333,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_menupage",
-      "target": "src_context_cartcontext_usecart"
+      "target": "src_context_cartcontext_usecart",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -8321,9 +8345,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_menupage",
-      "target": "src_context_ordermodecontext_useordermode"
+      "target": "src_context_ordermodecontext_useordermode",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -8333,21 +8357,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_menupage",
-      "target": "src_context_companycontext_usecompany"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/MenuPage.jsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "src_pages_menupage",
-      "target": "src_components_platodetailmodal_platodetailmodal"
+      "target": "src_context_companycontext_usecompany",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -8357,9 +8369,9 @@
       "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_menupage",
-      "target": "src_components_skeletons_menuskeleton"
+      "target": "src_components_skeletons_menuskeleton",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -8837,9 +8849,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminpedidosview",
-      "target": "src_components_adminutils",
-      "confidence_score": 1.0
+      "target": "src_components_adminutils"
     },
     {
       "relation": "imports_from",
@@ -8849,9 +8861,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminpedidosview",
-      "target": "src_api_client",
-      "confidence_score": 1.0
+      "target": "src_api_client"
     },
     {
       "relation": "imports_from",
@@ -9533,9 +9545,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_loginpage",
-      "target": "src_api_client"
+      "target": "src_api_client",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -9545,9 +9557,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_loginpage",
-      "target": "src_context_authcontext"
+      "target": "src_context_authcontext",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -9557,9 +9569,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_menupage",
-      "target": "src_api_client"
+      "target": "src_api_client",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -9569,9 +9581,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_menupage",
-      "target": "src_context_cartcontext"
+      "target": "src_context_cartcontext",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -9581,9 +9593,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_menupage",
-      "target": "src_context_ordermodecontext"
+      "target": "src_context_ordermodecontext",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -9593,9 +9605,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_menupage",
-      "target": "src_context_companycontext"
+      "target": "src_context_companycontext",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -9605,9 +9617,9 @@
       "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_menupage",
-      "target": "src_components_platodetailmodal"
+      "target": "src_components_platodetailmodal",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -9617,9 +9629,9 @@
       "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_menupage",
-      "target": "src_components_skeletons"
+      "target": "src_components_skeletons",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -11056,9 +11068,9 @@
       "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminpedidosview",
-      "target": "src_components_admin_adminpedidosview_filtros",
-      "confidence_score": 1.0
+      "target": "src_components_admin_adminpedidosview_filtros"
     },
     {
       "relation": "contains",
@@ -11067,9 +11079,9 @@
       "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminpedidosview",
-      "target": "src_components_admin_adminpedidosview_adminpedidosview",
-      "confidence_score": 1.0
+      "target": "src_components_admin_adminpedidosview_adminpedidosview"
     },
     {
       "relation": "contains",
@@ -11078,9 +11090,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_components_admin_adminpedidosview",
-      "target": "src_components_admin_adminpedidosview_hoylocal",
-      "confidence_score": 1.0
+      "target": "src_components_admin_adminpedidosview_hoylocal"
     },
     {
       "relation": "contains",
@@ -12277,9 +12289,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_loginpage",
-      "target": "src_pages_loginpage_getslugfrompath"
+      "target": "src_pages_loginpage_getslugfrompath",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12288,9 +12300,9 @@
       "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_loginpage",
-      "target": "src_pages_loginpage_loginpage"
+      "target": "src_pages_loginpage_loginpage",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12299,9 +12311,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_loginpage",
-      "target": "src_pages_loginpage_defaultrouteforrole"
+      "target": "src_pages_loginpage_defaultrouteforrole",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12310,9 +12322,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_menupage",
-      "target": "src_pages_menupage_arviewer"
+      "target": "src_pages_menupage_arviewer",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12321,9 +12333,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_menupage",
-      "target": "src_pages_menupage_categorias"
+      "target": "src_pages_menupage_categorias",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12332,9 +12344,9 @@
       "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_menupage",
-      "target": "src_pages_menupage_menupage"
+      "target": "src_pages_menupage_menupage",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12581,9 +12593,9 @@
       "confidence": "EXTRACTED",
       "source_file": "src/pages/MenuPage.jsx",
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_pages_menupage",
-      "target": "src_components_arviewer"
+      "target": "src_components_arviewer",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -12644,5 +12656,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "46e15c326c5e835cf5270b5df5dc01a4a20da301"
+  "built_at_commit": "8c09a5d0e627a5e6b82e1be0af9948e56df34c6a"
 }
