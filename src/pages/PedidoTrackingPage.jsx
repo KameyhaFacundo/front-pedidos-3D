@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { getPedido, llamarMozo } from '../api/client';
 import { useSSE } from '../api/useSSE';
@@ -25,6 +25,16 @@ const ESTADO_COLORS = {
 
 function formatear(n) {
   return '$' + Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function precioItem(item) {
+  let base = Number(item.plato?.precio || 0);
+  if (item.presentacion_nombre && Array.isArray(item.plato?.presentaciones)) {
+    const pres = item.plato.presentaciones.find((p) => p.nombre === item.presentacion_nombre);
+    if (pres) base = Number(pres.precio);
+  }
+  const extra = (item.agregados || []).reduce((s, a) => s + Number(a.precio || 0) * (a.cantidad || 1), 0);
+  return base + extra;
 }
 
 export default function PedidoTrackingPage() {
@@ -55,6 +65,33 @@ export default function PedidoTrackingPage() {
   useEffect(() => {
     fetchPedido();
   }, [fetchPedido]);
+
+  // Pedimos permiso de notificación al abrir el seguimiento
+  useEffect(() => {
+    try {
+      if ('Notification' in window && Notification.permission === 'default') {
+        Notification.requestPermission();
+      }
+    } catch {}
+  }, []);
+
+  // Notificación del navegador cuando el pedido pasa a "listo"
+  const notifEstadoRef = useRef(null);
+  useEffect(() => {
+    if (!pedido?.estado) return;
+    const prev = notifEstadoRef.current;
+    if (pedido.estado === 'listo' && prev !== 'listo') {
+      try {
+        if ('Notification' in window && Notification.permission === 'granted') {
+          new Notification('¡Tu pedido está listo!', {
+            body: `Pedido #${pedido.id} · Ya lo podés retirar.`,
+            icon: '/pidevo.png',
+          });
+        }
+      } catch {}
+    }
+    notifEstadoRef.current = pedido.estado;
+  }, [pedido]);
 
   const hasToken = !!localStorage.getItem('token');
 
@@ -117,7 +154,7 @@ export default function PedidoTrackingPage() {
   const estadoIdx = ESTADOS.indexOf(estado);
   const esCancelado = estado === 'cancelado';
   const color = ESTADO_COLORS[estado] || 'var(--cream)';
-  const total = (pedido.items || []).reduce((s, i) => s + (i.plato?.precio || 0) * (i.cantidad || 0), 0);
+  const total = (pedido.items || []).reduce((s, i) => s + precioItem(i) * (i.cantidad || 0), 0);
   const descuento = Number(pedido.descuento || 0);
 
   return (
@@ -182,7 +219,7 @@ export default function PedidoTrackingPage() {
                 </div>
               </div>
               <span className="tracking-price">
-                {formatear((item.plato?.precio || 0) * item.cantidad)}
+                {formatear(precioItem(item) * item.cantidad)}
               </span>
             </div>
           ))}

@@ -86,10 +86,10 @@ export default function MenuPage() {
       const params = new URLSearchParams(window.location.search);
       if (params.get('open_picker') === '1') {
         // redirect to mode select where the picker will open
-        window.location.href = '/mode?open_picker=1';
+        window.location.href = `${path('/')}?${params.toString()}`;
       }
     } catch {}
-  }, []);
+  }, [path]);
 
   const [search, setSearch] = useState('');
 
@@ -108,9 +108,12 @@ export default function MenuPage() {
     setDetailPlato(plato);
   };
 
+  const tieneVariantes = (plato) =>
+    (plato.presentaciones?.length || 0) > 0 || (plato.agregados?.length || 0) > 0;
+
   const handleARAddToCart = (plato) => {
     setArPlato(null);
-    if (plato.presentaciones?.length > 0 || plato.agregados?.length > 0) {
+    if (tieneVariantes(plato)) {
       setDetailPlato(plato);
     } else {
       addToCart(plato);
@@ -230,19 +233,30 @@ export default function MenuPage() {
                         <span className="stepper-val">{qty}</span>
                         <button
                           className="stepper-btn"
-                          onClick={() => handleMenuItemClick(plato)}
+                          onClick={() => (tieneVariantes(plato) ? handleMenuItemClick(plato) : addToCart(plato))}
                         >
                           <i className="ti ti-plus"></i>
                         </button>
                       </div>
-                    ) : plato.modelo_glb ? (
-                      <button
-                        className="ar-pill"
-                        onClick={(e) => { e.stopPropagation(); setArPlato(plato); }}
-                      >
-                        <i className="ti ti-camera"></i>VER EN AR
-                      </button>
-                    ) : null}
+                    ) : (
+                      <div className="menu-item-actions">
+                        {plato.modelo_glb && (
+                          <button
+                            className="ar-pill"
+                            onClick={(e) => { e.stopPropagation(); setArPlato(plato); }}
+                          >
+                            <i className="ti ti-camera"></i>VER EN AR
+                          </button>
+                        )}
+                        <button
+                          className="quick-add"
+                          onClick={(e) => { e.stopPropagation(); tieneVariantes(plato) ? handleMenuItemClick(plato) : addToCart(plato); }}
+                          aria-label={`Agregar ${plato.nombre}`}
+                        >
+                          <i className="ti ti-plus"></i>
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

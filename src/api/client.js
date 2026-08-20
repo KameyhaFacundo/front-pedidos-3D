@@ -10,6 +10,10 @@ function getEmpresaSlug() {
   return localStorage.getItem('pidevo_slug');
 }
 
+function isDemoMode() {
+  return getEmpresaSlug() === 'demo' || window.location.pathname.startsWith('/demo');
+}
+
 export async function request(endpoint, options = {}) {
   const url = `${BASE_URL}${endpoint}`;
   const token = getToken();
@@ -27,6 +31,13 @@ export async function request(endpoint, options = {}) {
     ...options,
     headers,
   };
+
+  // La demo pública corre 100% con datos ficticios: no toca el backend
+  // ni crea pedidos reales.
+  if (isDemoMode()) {
+    const { handleMock } = await import('./mock');
+    return handleMock(endpoint, options);
+  }
 
   const response = await fetch(url, config);
 

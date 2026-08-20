@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useOrderMode } from '../context/OrderModeContext';
 import { useCompany } from '../context/CompanyContext';
-import { getMesas } from '../api/client';
+import { getMesas, getPedido } from '../api/client';
 import { TIPOS_FIJO, mesaStyle, fixStyle } from '../components/planoUtils';
 import QRInstructionsModal from '../components/QRInstructionsModal';
 
@@ -17,16 +17,37 @@ export default function ModeSelectPage() {
   const [ocupadaMsg, setOcupadaMsg] = useState(false);
   const [showQrInstructions, setShowQrInstructions] = useState(false);
 
-  const lastOrder = (() => {
+  const [lastOrder, setLastOrder] = useState(() => {
     try {
-      const raw = localStorage.getItem('pidevo_last_order') || localStorage.getItem('pedido3d_last_order');
+      const raw = localStorage.getItem(`pidevo_last_order:${slug}`) || localStorage.getItem('pidevo_last_order') || localStorage.getItem('pedido3d_last_order');
       return raw ? JSON.parse(raw) : null;
     } catch { return null; }
-  })();
+  });
 
   useEffect(() => {
     getMesas().then(setMesas).catch(() => {});
   }, []);
+
+  // Escondé el seguimiento cuando ese pedido ya terminó (entregado/cancelado)
+  useEffect(() => {
+    if (!lastOrder || !slug) return;
+    let active = true;
+    getPedido(lastOrder.id, lastOrder.token)
+      .then((data) => {
+        if (!active) return;
+        const pedido = data.data || data;
+        if (pedido.estado === 'entregado' || pedido.estado === 'cancelado') {
+          try {
+            localStorage.removeItem(`pidevo_last_order:${slug}`);
+            localStorage.removeItem('pidevo_last_order');
+            localStorage.removeItem('pedido3d_last_order');
+          } catch {}
+          setLastOrder(null);
+        }
+      })
+      .catch(() => {});
+    return () => { active = false; };
+  }, [lastOrder, slug]);
 
   useEffect(() => {
     if (step !== 'mesa') return;
@@ -51,7 +72,7 @@ export default function ModeSelectPage() {
     const openPicker = searchParams.get('open_picker');
     if (mesaParam && mesas.length > 0) {
       const mesa = mesas.find((m) => m.id === Number(mesaParam));
-      if (mesa && mesa.activa) {
+      if (mesa && mesa.activa && !mesa.ocupada) {
         setTipo('mesa');
         setMesaId(mesa.id);
         navigate(path('/menu'), { replace: true });

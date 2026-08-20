@@ -9,6 +9,21 @@ function formatear(n) {
   return '$' + Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
+function itemsToTexto(items) {
+  return items
+    .map((item) => {
+      let linea = `${item.cantidad}x ${item.plato.nombre.toUpperCase()}`;
+      if (item.presentacion) linea += ` (${item.presentacion.toUpperCase()})`;
+      if (item.agregados?.length) {
+        linea += ' + ' + item.agregados.map((a) => `${a.nombre}${a.cantidad > 1 ? ` x${a.cantidad}` : ''}`).join(' + ');
+      }
+      linea += `: ${formatear(item.precioUnitario * item.cantidad)}`;
+      if (item.observacion) linea += `%0A  ↳ Obs: ${item.observacion}`;
+      return linea;
+    })
+    .join('%0A');
+}
+
 const ENTREGAS = [
   { key: 'mesa', label: 'Lo consumo en el local', icon: 'ti-tools-kitchen-2' },
   { key: 'retiro', label: 'Lo retiro personalmente', icon: 'ti-shopping-bag' },
@@ -19,7 +34,7 @@ export default function CheckoutPage() {
   const navigate = useNavigate();
   const { items, getTotal, clearCart } = useCart();
   const { tipo: modoTipo, mesaId: modoMesaId } = useOrderMode();
-  const { path } = useCompany();
+  const { path, slug } = useCompany();
   const [mesas, setMesas] = useState([]);
   const [entrega, setEntrega] = useState(modoTipo === 'retiro' ? 'retiro' : 'mesa');
   const [mesaId, setMesaId] = useState(modoMesaId || '');
@@ -34,6 +49,7 @@ export default function CheckoutPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [resumen, setResumen] = useState(null);
 
   useEffect(() => {
     getMesas()
@@ -44,6 +60,11 @@ export default function CheckoutPage() {
   const mesaNumero = useMemo(
     () => mesas.find((m) => m.id === Number(mesaId))?.numero,
     [mesas, mesaId]
+  );
+
+  const mesasDisponibles = useMemo(
+    () => mesas.filter((m) => m.activa && !m.ocupada),
+    [mesas]
   );
 
   const subtotal = getTotal();
@@ -80,6 +101,14 @@ export default function CheckoutPage() {
       setError('Ingresá tu teléfono');
       return;
     }
+    if (entrega === 'mesa' && !mesasDisponibles.some((m) => m.id === Number(mesaId))) {
+      setError('Seleccioná tu mesa');
+      return;
+    }
+    if (entrega === 'envio' && !direccion.trim()) {
+      setError('Ingresá tu dirección de envío');
+      return;
+    }
 
     setSubmitting(true);
     setError(null);
@@ -103,7 +132,15 @@ export default function CheckoutPage() {
 
     try {
       const result = await createPedido(pedidoData);
-      localStorage.setItem('pidevo_last_order', JSON.stringify({ id: result.id, token: result.token, tipo: entrega, mesaNumero: mesaNumero || null, fecha: new Date().toISOString() }));
+      setResumen({
+        itemsTexto: itemsToTexto(items),
+        subtotal,
+        descuento,
+        total,
+      });
+      localStorage.setItem(`pidevo_last_order:${slug}`, JSON.stringify({ id: result.id, token: result.token, tipo: entrega, mesaNumero: mesaNumero || null, fecha: new Date().toISOString() }));
+      localStorage.removeItem('pidevo_last_order');
+      localStorage.removeItem('pedido3d_last_order');
       setSuccess(result);
       clearCart();
     } catch (err) {
@@ -124,18 +161,8 @@ export default function CheckoutPage() {
     );
   }
 
-  if (success) {
+  if (success && resumen) {
     const restoPhone = import.meta.env.VITE_RESTAURANT_PHONE || '5493815069332';
-    const itemsTexto = items.map((item) => {
-      let linea = `${item.cantidad}x ${item.plato.nombre.toUpperCase()}`;
-      if (item.presentacion) linea += ` (${item.presentacion.toUpperCase()})`;
-      if (item.agregados?.length) {
-        linea += ' + ' + item.agregados.map((a) => `${a.nombre}${a.cantidad > 1 ? ` x${a.cantidad}` : ''}`).join(' + ');
-      }
-      linea += `: ${formatear(item.precioUnitario * item.cantidad)}`;
-      if (item.observacion) linea += `%0A  ↳ Obs: ${item.observacion}`;
-      return linea;
-    }).join('%0A');
 
     const msg = [
       '¡Hola! Te paso el resumen de mi pedido',
@@ -148,11 +175,11 @@ export default function CheckoutPage() {
       `Entrega: ${entregaLabel}${entrega === 'mesa' && mesaNumero ? ` (Mesa ${mesaNumero})` : ''}${entrega === 'envio' && direccion ? ` - ${direccion}` : ''}`,
       '',
       'Mi pedido es:',
-      itemsTexto,
+      resumen.itemsTexto,
       '',
-      `Subtotal: ${formatear(subtotal)}`,
-      descuento > 0 ? `Descuento: -${formatear(descuento)}` : '',
-      `TOTAL: ${formatear(total)}`,
+      `Subtotal: ${formatear(resumen.subtotal)}`,
+      resumen.descuento > 0 ? `Descuento: -${formatear(resumen.descuento)}` : '',
+      `TOTAL: ${formatear(resumen.total)}`,
       '',
       'Espero tu respuesta para confirmar mi pedido 🙌',
     ].filter((l) => l !== '').join('%0A');
@@ -261,7 +288,7 @@ export default function CheckoutPage() {
             style={{ marginTop: 10 }}
           >
             <option value="">Seleccioná tu mesa</option>
-            {mesas.filter((m) => m.activa).map((mesa) => (
+            {mesasDisponibles.map((mesa) => (
               <option key={mesa.id} value={mesa.id}>Mesa {mesa.numero}</option>
             ))}
           </select>

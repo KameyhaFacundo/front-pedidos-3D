@@ -1,12 +1,23 @@
 import { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const CartContext = createContext(null);
 
 const CART_KEY = 'pidevo_cart';
+const RESERVED = ['admin', 'cocina', 'llamados', 'login', 'landing'];
 
-function loadCart() {
+function getSlugFromPath(pathname) {
+  const first = pathname.split('/').filter(Boolean)[0];
+  return first && !RESERVED.includes(first) ? first : null;
+}
+
+function getCartKey(slug) {
+  return slug ? `pidevo_cart:${slug}` : CART_KEY;
+}
+
+function loadCart(slug) {
   try {
-    const stored = localStorage.getItem(CART_KEY) || localStorage.getItem('pedido3d_cart');
+    const stored = localStorage.getItem(getCartKey(slug)) || localStorage.getItem(CART_KEY) || localStorage.getItem('pedido3d_cart');
     const parsed = stored ? JSON.parse(stored) : [];
     return Array.isArray(parsed) ? parsed : [];
   } catch {
@@ -33,13 +44,26 @@ function unitPrice(plato, presentacion, agregados) {
 }
 
 export function CartProvider({ children }) {
-  const [items, setItems] = useState(loadCart);
+  const location = useLocation();
+  const slug = getSlugFromPath(location.pathname);
+  const slugRef = useRef(slug);
+  const [items, setItems] = useState(() => loadCart(slug));
   const [toast, setToast] = useState(null);
   const toastId = useRef(0);
 
+  // Persiste el carrito de la empresa actual. Si cambiamos de empresa (o
+  // salimos de la demo), recarga el de esa empresa en vez de guardar el
+  // anterior encima del otro.
   useEffect(() => {
-    localStorage.setItem(CART_KEY, JSON.stringify(items));
-  }, [items]);
+    if (slugRef.current !== slug) {
+      slugRef.current = slug;
+      setItems(loadCart(slug));
+      return;
+    }
+    localStorage.setItem(getCartKey(slug), JSON.stringify(items));
+    localStorage.removeItem(CART_KEY);
+    localStorage.removeItem('pedido3d_cart');
+  }, [items, slug]);
 
   const addToCart = useCallback((plato, opts = {}) => {
     const { presentacion = null, agregados = [], observacion = '', cantidad = 1 } = opts;
@@ -79,8 +103,10 @@ export function CartProvider({ children }) {
 
   const clearCart = useCallback(() => {
     setItems([]);
+    localStorage.removeItem(getCartKey(slug));
     localStorage.removeItem(CART_KEY);
-  }, []);
+    localStorage.removeItem('pedido3d_cart');
+  }, [slug]);
 
   const getSubtotal = useCallback(() => {
     return items.reduce((total, item) => total + (item.precioUnitario || 0) * item.cantidad, 0);
