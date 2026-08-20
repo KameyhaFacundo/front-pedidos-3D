@@ -54,7 +54,7 @@ const DEMO_PLATOS = [
     categoria: 'entradas',
     descripcion: 'Con cebolla caramelizada',
     precio: 9500,
-    foto: null,
+    foto: '/hamburguesa con papas.png',
     disponible: true,
     presentaciones: [],
     agregados: [],
@@ -65,7 +65,7 @@ const DEMO_PLATOS = [
     categoria: 'bebidas',
     descripcion: 'Con menta y jengibre',
     precio: 2800,
-    foto: null,
+    foto: svgFoto('🍋', 'Limonada natural'),
     disponible: true,
     presentaciones: [],
     agregados: [],
@@ -76,7 +76,7 @@ const DEMO_PLATOS = [
     categoria: 'postres',
     descripcion: 'Con dulce de leche y crema',
     precio: 4500,
-    foto: null,
+    foto: svgFoto('🍮', 'Flan casero'),
     disponible: true,
     presentaciones: [],
     agregados: [],
@@ -93,6 +93,16 @@ const DEMO_MESAS = [
 ];
 
 const STORAGE_KEY = 'pidevo_demo_pedido';
+
+function svgFoto(emoji, texto) {
+  const svg =
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">` +
+    `<rect width="200" height="200" fill="#2A2318"/>` +
+    `<text x="100" y="95" font-size="60" text-anchor="middle">${emoji}</text>` +
+    `<text x="100" y="152" font-size="13" fill="#E8AE2D" text-anchor="middle" font-family="Inter,sans-serif">${texto}</text>` +
+    `</svg>`;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+}
 
 function estadoSegunElapsed(ms) {
   if (ms < 30000) return 'nuevo';

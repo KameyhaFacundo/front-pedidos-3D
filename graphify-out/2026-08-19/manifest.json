@@ -145,8 +145,8 @@
     "semantic_hash": ""
   },
   "src/pages/MenuPage.jsx": {
-    "mtime": 1787109470.9386184,
-    "ast_hash": "c27dfc6ff6c9b6ab3afddfba0404ac24",
+    "mtime": 1787163391.036553,
+    "ast_hash": "c7579ddfe859e37dd9481c5814676e91",
     "semantic_hash": ""
   },
   "src/pages/ModeSelectPage.jsx": {
@@ -236,7 +236,7 @@
   },
   ".claude/settings.json": {
     "mtime": 1786846504.1987302,
-    "ast_hash": "d63945663ac5a70eebb1756ab927f4f5",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "eslint.config.js": {
