@@ -1,6 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { COLUMNAS, formatearPrecio, tiempoRelativo, descargarCSV } from '../adminUtils';
 import { getPedidosRango } from '../../api/client';
+
+const hoyLocal = () => {
+  const d = new Date();
+  const off = d.getTimezoneOffset();
+  return new Date(d.getTime() - off * 60000).toISOString().slice(0, 10);
+};
 
 const FILTROS = [
   { key: '', label: 'Todos' },
@@ -10,20 +16,48 @@ const FILTROS = [
 ];
 
 export default function AdminPedidosView({ active, pedidos, metricas, slug, empresa, notify, onAvanzar, onPagar, onCancelar }) {
+  const hoy = hoyLocal();
   const [filtro, setFiltro] = useState('');
   const [busqueda, setBusqueda] = useState('');
   const [verCancelados, setVerCancelados] = useState(false);
-  const [rangoDesde, setRangoDesde] = useState('');
-  const [rangoHasta, setRangoHasta] = useState('');
+  const [rangoDesde, setRangoDesde] = useState(hoy);
+  const [rangoHasta, setRangoHasta] = useState(hoy);
   const [exportando, setExportando] = useState(false);
+  const [rangoPedidos, setRangoPedidos] = useState(null);
+  const [rangoLoading, setRangoLoading] = useState(false);
+
+  useEffect(() => {
+    let activo = true;
+    const esHoy = rangoDesde === hoy && rangoHasta === hoy;
+    if (esHoy) {
+      setRangoPedidos(null);
+      setRangoLoading(false);
+      return () => { activo = false; };
+    }
+    setRangoLoading(true);
+    getPedidosRango(rangoDesde || undefined, rangoHasta || undefined)
+      .then((lista) => {
+        if (activo) setRangoPedidos(lista);
+      })
+      .catch((e) => {
+        if (activo) notify?.('Error al cargar el rango: ' + (e.message || 'desconocido'), 'error');
+      })
+      .finally(() => {
+        if (activo) setRangoLoading(false);
+      });
+    return () => { activo = false; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rangoDesde, rangoHasta]);
+
+  const lista = rangoPedidos ?? pedidos;
 
   const handleExportar = async () => {
     if (exportando) return;
     setExportando(true);
     try {
       if (rangoDesde || rangoHasta) {
-        const lista = await getPedidosRango(rangoDesde || undefined, rangoHasta || undefined);
-        descargarCSV(lista, slug);
+        const exportLista = rangoPedidos ?? await getPedidosRango(rangoDesde || undefined, rangoHasta || undefined);
+        descargarCSV(exportLista, slug);
       } else {
         descargarCSV(pedidos, slug);
       }
@@ -34,7 +68,8 @@ export default function AdminPedidosView({ active, pedidos, metricas, slug, empr
     }
   };
 
-  const visibles = pedidos.filter((p) => {
+  const esRangoActual = rangoDesde === hoy && rangoHasta === hoy;
+  const visibles = lista.filter((p) => {
     if (filtro && p.tipo !== filtro) return false;
     const q = busqueda.trim().toLowerCase();
     if (!q) return true;
@@ -96,10 +131,23 @@ export default function AdminPedidosView({ active, pedidos, metricas, slug, empr
             onChange={(e) => setRangoHasta(e.target.value)}
             title="Hasta"
           />
-          <button className="btn btn-sm" onClick={handleExportar} disabled={exportando}>
+          {!esRangoActual && (
+            <button className="btn btn-sm" onClick={() => { setRangoDesde(hoy); setRangoHasta(hoy); }}>
+              Hoy
+            </button>
+          )}
+          <button className="btn btn-sm" onClick={handleExportar} disabled={exportando || rangoLoading}>
             <i className="ti ti-download"></i> {exportando ? 'Exportando...' : 'Exportar CSV'}
           </button>
         </div>
+      </div>
+
+      <div className="admin-rango-info">
+        {esRangoActual
+          ? 'Mostrando pedidos de hoy'
+          : rangoLoading
+            ? 'Cargando rango...'
+            : `Mostrando ${rangoDesde || 'inicio'} → ${rangoHasta || 'hoy'}`}
       </div>
 
       <div className="pedidos-search">
@@ -119,7 +167,7 @@ export default function AdminPedidosView({ active, pedidos, metricas, slug, empr
 
       <div className="pedidos-filtros">
         {FILTROS.map(({ key, label }) => {
-          const count = key ? pedidos.filter((p) => p.tipo === key).length : pedidos.length;
+          const count = key ? lista.filter((p) => p.tipo === key).length : lista.length;
           return (
             <button
               key={key}
@@ -136,7 +184,7 @@ export default function AdminPedidosView({ active, pedidos, metricas, slug, empr
           title={verCancelados ? 'Ocultar cancelados' : 'Mostrar cancelados'}
         >
           <i className="ti ti-circle-x"></i> {verCancelados ? 'Ocultar cancelados' : 'Cancelados'}{' '}
-          <span className="pedidos-filtro-count">{pedidos.filter((p) => p.estado === 'cancelado').length}</span>
+          <span className="pedidos-filtro-count">{lista.filter((p) => p.estado === 'cancelado').length}</span>
         </button>
       </div>
 

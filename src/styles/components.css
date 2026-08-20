@@ -1497,6 +1497,23 @@
   color-scheme: dark;
 }
 
+.admin-rango-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 8px 24px 0;
+}
+
+.admin-rango-info::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--herb);
+}
+
 .pedidos-search {
   position: relative;
   display: flex;

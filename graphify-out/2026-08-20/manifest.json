@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   "src/api/client.js": {
-    "mtime": 1787228747.0940444,
-    "ast_hash": "68237f631f54ac3a0bc5cfae825b8faa",
+    "mtime": 1787230232.1189108,
+    "ast_hash": "59e2bddaf63d9536efedc8d63621f0fa",
     "semantic_hash": ""
   },
   "src/api/useSSE.js": {
@@ -110,8 +110,8 @@
     "semantic_hash": ""
   },
   "src/pages/AdminPage.jsx": {
-    "mtime": 1787228942.116771,
-    "ast_hash": "e33c9e035e00e02c9940c98105667569",
+    "mtime": 1787230122.3019881,
+    "ast_hash": "e0450b08ac63b8d7d534b6f69f9fb8d1",
     "semantic_hash": ""
   },
   "src/pages/CartPage.jsx": {
@@ -120,13 +120,13 @@
     "semantic_hash": "89cbb873fa553fad199bcc3db46b8a3e"
   },
   "src/pages/CheckoutPage.jsx": {
-    "mtime": 1787190644.2461994,
-    "ast_hash": "0d6ec2242d1aab1e98a5c4ed67cbbeb8",
+    "mtime": 1787230607.3968797,
+    "ast_hash": "73fe4f83d2383a096c90d233abb39253",
     "semantic_hash": ""
   },
   "src/pages/CocinaPage.jsx": {
-    "mtime": 1787190980.0145712,
-    "ast_hash": "058106fb585a911a3d1ef3d794a22981",
+    "mtime": 1787229935.5330632,
+    "ast_hash": "f8d01efe6710edf150c71b10122c56d5",
     "semantic_hash": ""
   },
   "src/pages/LandingPage.jsx": {
@@ -160,8 +160,8 @@
     "semantic_hash": "4715f58bf3ded7b4dea8dfd6a7f73c66"
   },
   "src/pages/PedidoTrackingPage.jsx": {
-    "mtime": 1787229085.4852078,
-    "ast_hash": "bb96037f00eb6c002cacc00b42e3d6c7",
+    "mtime": 1787230317.55654,
+    "ast_hash": "54b70cd13455484e7128acbf7a4a2bd8",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -280,8 +280,8 @@
     "semantic_hash": ""
   },
   "src/components/admin/AdminPedidosView.jsx": {
-    "mtime": 1787228324.184032,
-    "ast_hash": "00377e5fe08612d243b6b5bd90465d4e",
+    "mtime": 1787229855.8072696,
+    "ast_hash": "5d2d8e076f091c8a85bc5e3757c8b8db",
     "semantic_hash": ""
   },
   "src/components/admin/PlatoModal.jsx": {
@@ -305,13 +305,13 @@
     "semantic_hash": ""
   },
   "src/components/admin/LocalSettingsModal.jsx": {
-    "mtime": 1787229069.4455638,
-    "ast_hash": "08600441d6c6fb57d2220d624d36ae4b",
+    "mtime": 1787230061.7101095,
+    "ast_hash": "78d9a056b516403a1da95abca2bd34d1",
     "semantic_hash": ""
   },
   "src/api/mock.js": {
-    "mtime": 1787229030.7059894,
-    "ast_hash": "78256ae7bc38a4e74a6a957719abc10b",
+    "mtime": 1787230296.1626935,
+    "ast_hash": "bc1d03f5cbba3cfd9be92a85db8d40a0",
     "semantic_hash": ""
   },
   "public/manifest.json": {

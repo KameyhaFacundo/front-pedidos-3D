@@ -13,20 +13,8 @@
       "_origin": "ast",
       "id": "src_components_errorboundary_errorboundary",
       "community": 13,
-      "community_name": "App.jsx",
+      "community_name": "CartContext.jsx",
       "norm_label": "errorboundary"
-    },
-    {
-      "label": "getPedido()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L106",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_getpedido",
-      "community": 0,
-      "community_name": "PedidoTrackingPage.jsx",
-      "norm_label": "getpedido()"
     },
     {
       "label": "llamarMozo()",
@@ -284,13 +272,25 @@
       "label": "AdminPedidosView()",
       "file_type": "code",
       "source_file": "src/components/admin/AdminPedidosView.jsx",
-      "source_location": "L12",
+      "source_location": "L18",
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_admin_adminpedidosview_adminpedidosview",
       "community": 12,
       "community_name": "adminUtils.js",
       "norm_label": "adminpedidosview()"
+    },
+    {
+      "label": "hoyLocal()",
+      "file_type": "code",
+      "source_file": "src/components/admin/AdminPedidosView.jsx",
+      "source_location": "L5",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_admin_adminpedidosview_hoylocal",
+      "community": 12,
+      "community_name": "adminUtils.js",
+      "norm_label": "hoylocal()"
     },
     {
       "label": "LocalSettingsModal()",
@@ -377,6 +377,18 @@
       "norm_label": "setsoundenabled()"
     },
     {
+      "label": "soundEnabled()",
+      "file_type": "code",
+      "source_file": "src/components/adminUtils.js",
+      "source_location": "L83",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_adminutils_soundenabled",
+      "community": 12,
+      "community_name": "adminUtils.js",
+      "norm_label": "soundenabled()"
+    },
+    {
       "label": "tiempoRelativo()",
       "file_type": "code",
       "source_file": "src/components/adminUtils.js",
@@ -401,102 +413,6 @@
       "norm_label": "totalpedido()"
     },
     {
-      "label": "App()",
-      "file_type": "code",
-      "source_file": "src/App.jsx",
-      "source_location": "L157",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_app_app",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "app()"
-    },
-    {
-      "label": "CompanyLayout()",
-      "file_type": "code",
-      "source_file": "src/App.jsx",
-      "source_location": "L50",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_app_companylayout",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "companylayout()"
-    },
-    {
-      "label": "defaultRouteForRole()",
-      "file_type": "code",
-      "source_file": "src/App.jsx",
-      "source_location": "L24",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_app_defaultrouteforrole",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "defaultrouteforrole()"
-    },
-    {
-      "label": "DemoModal()",
-      "file_type": "code",
-      "source_file": "src/App.jsx",
-      "source_location": "L104",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_app_demomodal",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "demomodal()"
-    },
-    {
-      "label": "Navbar()",
-      "file_type": "code",
-      "source_file": "src/App.jsx",
-      "source_location": "L60",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_app_navbar",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "navbar()"
-    },
-    {
-      "label": "ProtectedRoute()",
-      "file_type": "code",
-      "source_file": "src/App.jsx",
-      "source_location": "L30",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_app_protectedroute",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "protectedroute()"
-    },
-    {
-      "label": "RedirectHumber()",
-      "file_type": "code",
-      "source_file": "src/App.jsx",
-      "source_location": "L54",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_app_redirecthumber",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "redirecthumber()"
-    },
-    {
-      "label": "ThemeToggle()",
-      "file_type": "code",
-      "source_file": "src/App.jsx",
-      "source_location": "L41",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_app_themetoggle",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "themetoggle()"
-    },
-    {
       "label": ".constructor()",
       "file_type": "code",
       "source_file": "src/components/ErrorBoundary.jsx",
@@ -505,7 +421,7 @@
       "_origin": "ast",
       "id": "src_components_errorboundary_errorboundary_constructor",
       "community": 13,
-      "community_name": "App.jsx",
+      "community_name": "CartContext.jsx",
       "norm_label": ".constructor()"
     },
     {
@@ -517,7 +433,7 @@
       "_origin": "ast",
       "id": "src_components_errorboundary_errorboundary_getderivedstatefromerror",
       "community": 13,
-      "community_name": "App.jsx",
+      "community_name": "CartContext.jsx",
       "norm_label": ".getderivedstatefromerror()"
     },
     {
@@ -529,44 +445,8 @@
       "_origin": "ast",
       "id": "src_components_errorboundary_errorboundary_render",
       "community": 13,
-      "community_name": "App.jsx",
+      "community_name": "CartContext.jsx",
       "norm_label": ".render()"
-    },
-    {
-      "label": "Footer()",
-      "file_type": "code",
-      "source_file": "src/components/Footer.jsx",
-      "source_location": "L10",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_footer_footer",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "footer()"
-    },
-    {
-      "label": "Toast()",
-      "file_type": "code",
-      "source_file": "src/components/Toast.jsx",
-      "source_location": "L3",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_toast_toast",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "toast()"
-    },
-    {
-      "label": "AuthProvider()",
-      "file_type": "code",
-      "source_file": "src/context/AuthContext.jsx",
-      "source_location": "L5",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_authcontext_authprovider",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "authprovider()"
     },
     {
       "label": "CartProvider()",
@@ -577,7 +457,7 @@
       "_origin": "ast",
       "id": "src_context_cartcontext_cartprovider",
       "community": 13,
-      "community_name": "App.jsx",
+      "community_name": "CartContext.jsx",
       "norm_label": "cartprovider()"
     },
     {
@@ -589,7 +469,7 @@
       "_origin": "ast",
       "id": "src_context_cartcontext_getcartkey",
       "community": 13,
-      "community_name": "App.jsx",
+      "community_name": "CartContext.jsx",
       "norm_label": "getcartkey()"
     },
     {
@@ -601,7 +481,7 @@
       "_origin": "ast",
       "id": "src_context_cartcontext_getslugfrompath",
       "community": 13,
-      "community_name": "App.jsx",
+      "community_name": "CartContext.jsx",
       "norm_label": "getslugfrompath()"
     },
     {
@@ -613,7 +493,7 @@
       "_origin": "ast",
       "id": "src_context_cartcontext_itemkey",
       "community": 13,
-      "community_name": "App.jsx",
+      "community_name": "CartContext.jsx",
       "norm_label": "itemkey()"
     },
     {
@@ -625,7 +505,7 @@
       "_origin": "ast",
       "id": "src_context_cartcontext_loadcart",
       "community": 13,
-      "community_name": "App.jsx",
+      "community_name": "CartContext.jsx",
       "norm_label": "loadcart()"
     },
     {
@@ -637,68 +517,8 @@
       "_origin": "ast",
       "id": "src_context_cartcontext_unitprice",
       "community": 13,
-      "community_name": "App.jsx",
+      "community_name": "CartContext.jsx",
       "norm_label": "unitprice()"
-    },
-    {
-      "label": "useCart()",
-      "file_type": "code",
-      "source_file": "src/context/CartContext.jsx",
-      "source_location": "L126",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_cartcontext_usecart",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "usecart()"
-    },
-    {
-      "label": "getScope()",
-      "file_type": "code",
-      "source_file": "src/context/ThemeContext.jsx",
-      "source_location": "L19",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_themecontext_getscope",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "getscope()"
-    },
-    {
-      "label": "getStoredThemes()",
-      "file_type": "code",
-      "source_file": "src/context/ThemeContext.jsx",
-      "source_location": "L8",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_themecontext_getstoredthemes",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "getstoredthemes()"
-    },
-    {
-      "label": "ThemeProvider()",
-      "file_type": "code",
-      "source_file": "src/context/ThemeContext.jsx",
-      "source_location": "L24",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_themecontext_themeprovider",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "themeprovider()"
-    },
-    {
-      "label": "useTheme()",
-      "file_type": "code",
-      "source_file": "src/context/ThemeContext.jsx",
-      "source_location": "L48",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_themecontext_usetheme",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "usetheme()"
     },
     {
       "label": "disableAutofill()",
@@ -709,44 +529,20 @@
       "_origin": "ast",
       "id": "src_main_disableautofill",
       "community": 13,
-      "community_name": "App.jsx",
+      "community_name": "CartContext.jsx",
       "norm_label": "disableautofill()"
     },
     {
-      "label": "CartPage()",
+      "label": "atenderLlamado()",
       "file_type": "code",
-      "source_file": "src/pages/CartPage.jsx",
-      "source_location": "L9",
+      "source_file": "src/api/client.js",
+      "source_location": "L241",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_pages_cartpage_cartpage",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "cartpage()"
-    },
-    {
-      "label": "formatear()",
-      "file_type": "code",
-      "source_file": "src/pages/CartPage.jsx",
-      "source_location": "L5",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_pages_cartpage_formatear",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "formatear()"
-    },
-    {
-      "label": "NotFoundPage()",
-      "file_type": "code",
-      "source_file": "src/pages/NotFoundPage.jsx",
-      "source_location": "L3",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_pages_notfoundpage_notfoundpage",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "notfoundpage()"
+      "id": "src_api_client_atenderllamado",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "atenderllamado()"
     },
     {
       "label": "getEmpresa()",
@@ -757,8 +553,20 @@
       "_origin": "ast",
       "id": "src_api_client_getempresa",
       "community": 15,
-      "community_name": "CompanyContext.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "getempresa()"
+    },
+    {
+      "label": "getLlamados()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L237",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_getllamados",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "getllamados()"
     },
     {
       "label": "login()",
@@ -769,32 +577,152 @@
       "_origin": "ast",
       "id": "src_api_client_login",
       "community": 15,
-      "community_name": "CompanyContext.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "login()"
     },
     {
-      "label": "CompanyProvider()",
+      "label": "getBase()",
       "file_type": "code",
-      "source_file": "src/context/CompanyContext.jsx",
-      "source_location": "L15",
+      "source_file": "src/api/useSSE.js",
+      "source_location": "L3",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_context_companycontext_companyprovider",
+      "id": "src_api_usesse_getbase",
       "community": 15,
-      "community_name": "CompanyContext.jsx",
-      "norm_label": "companyprovider()"
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "getbase()"
     },
     {
-      "label": "getSlugFromPath()",
+      "label": "useSSE()",
       "file_type": "code",
-      "source_file": "src/context/CompanyContext.jsx",
-      "source_location": "L9",
+      "source_file": "src/api/useSSE.js",
+      "source_location": "L11",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_context_companycontext_getslugfrompath",
+      "id": "src_api_usesse_usesse",
       "community": 15,
-      "community_name": "CompanyContext.jsx",
-      "norm_label": "getslugfrompath()"
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "usesse()"
+    },
+    {
+      "label": "ThemeToggle()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L41",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_app_themetoggle",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "themetoggle()"
+    },
+    {
+      "label": "AdminSidebar()",
+      "file_type": "code",
+      "source_file": "src/components/AdminSidebar.jsx",
+      "source_location": "L16",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_adminsidebar_adminsidebar",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "adminsidebar()"
+    },
+    {
+      "label": "AuthProvider()",
+      "file_type": "code",
+      "source_file": "src/context/AuthContext.jsx",
+      "source_location": "L5",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_authcontext_authprovider",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "authprovider()"
+    },
+    {
+      "label": "useAuth()",
+      "file_type": "code",
+      "source_file": "src/context/AuthContext.jsx",
+      "source_location": "L45",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_authcontext_useauth",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "useauth()"
+    },
+    {
+      "label": "getScope()",
+      "file_type": "code",
+      "source_file": "src/context/ThemeContext.jsx",
+      "source_location": "L19",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_themecontext_getscope",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "getscope()"
+    },
+    {
+      "label": "getStoredThemes()",
+      "file_type": "code",
+      "source_file": "src/context/ThemeContext.jsx",
+      "source_location": "L8",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_themecontext_getstoredthemes",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "getstoredthemes()"
+    },
+    {
+      "label": "ThemeProvider()",
+      "file_type": "code",
+      "source_file": "src/context/ThemeContext.jsx",
+      "source_location": "L24",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_themecontext_themeprovider",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "themeprovider()"
+    },
+    {
+      "label": "useTheme()",
+      "file_type": "code",
+      "source_file": "src/context/ThemeContext.jsx",
+      "source_location": "L48",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_themecontext_usetheme",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "usetheme()"
+    },
+    {
+      "label": "tiempoEnEstado()",
+      "file_type": "code",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L32",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_pages_cocinapage_tiempoenestado",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "tiempoenestado()"
+    },
+    {
+      "label": "LlamadosPage()",
+      "file_type": "code",
+      "source_file": "src/pages/LlamadosPage.jsx",
+      "source_location": "L10",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_pages_llamadospage_llamadospage",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "llamadospage()"
     },
     {
       "label": "defaultRouteForRole()",
@@ -805,7 +733,7 @@
       "_origin": "ast",
       "id": "src_pages_loginpage_defaultrouteforrole",
       "community": 15,
-      "community_name": "CompanyContext.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "defaultrouteforrole()"
     },
     {
@@ -817,7 +745,7 @@
       "_origin": "ast",
       "id": "src_pages_loginpage_getslugfrompath",
       "community": 15,
-      "community_name": "CompanyContext.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "getslugfrompath()"
     },
     {
@@ -829,176 +757,8 @@
       "_origin": "ast",
       "id": "src_pages_loginpage_loginpage",
       "community": 15,
-      "community_name": "CompanyContext.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "loginpage()"
-    },
-    {
-      "label": "atenderLlamado()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L241",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_atenderllamado",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "atenderllamado()"
-    },
-    {
-      "label": "createCupon()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L276",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_createcupon",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "createcupon()"
-    },
-    {
-      "label": "createPlato()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L206",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_createplato",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "createplato()"
-    },
-    {
-      "label": "createStaff()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L306",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_createstaff",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "createstaff()"
-    },
-    {
-      "label": "deleteCupon()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L296",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_deletecupon",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "deletecupon()"
-    },
-    {
-      "label": "deletePlato()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L225",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_deleteplato",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "deleteplato()"
-    },
-    {
-      "label": "deleteStaff()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L313",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_deletestaff",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "deletestaff()"
-    },
-    {
-      "label": "getCupones()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L272",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_getcupones",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "getcupones()"
-    },
-    {
-      "label": "getEmpresaSlug()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L9",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_getempresaslug",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "getempresaslug()"
-    },
-    {
-      "label": "getLlamados()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L237",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_getllamados",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "getllamados()"
-    },
-    {
-      "label": "getMe()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L86",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_getme",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "getme()"
-    },
-    {
-      "label": "getStaff()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L302",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_getstaff",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "getstaff()"
-    },
-    {
-      "label": "getToken()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L5",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_gettoken",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "gettoken()"
-    },
-    {
-      "label": "isDemoMode()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L13",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_isdemomode",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "isdemomode()"
     },
     {
       "label": "registrarArVista()",
@@ -1009,104 +769,8 @@
       "_origin": "ast",
       "id": "src_api_client_registrararvista",
       "community": 3,
-      "community_name": "client.js",
+      "community_name": "ARViewer.jsx",
       "norm_label": "registrararvista()"
-    },
-    {
-      "label": "request()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L17",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_request",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "request()"
-    },
-    {
-      "label": "toggleCupon()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L290",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_togglecupon",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "togglecupon()"
-    },
-    {
-      "label": "togglePlatoDisponible()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L231",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_toggleplatodisponible",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "toggleplatodisponible()"
-    },
-    {
-      "label": "updateCupon()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L283",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_updatecupon",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "updatecupon()"
-    },
-    {
-      "label": "updatePlato()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L215",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_updateplato",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "updateplato()"
-    },
-    {
-      "label": "AdminConfigView()",
-      "file_type": "code",
-      "source_file": "src/components/admin/AdminConfigView.jsx",
-      "source_location": "L7",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_admin_adminconfigview_adminconfigview",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "adminconfigview()"
-    },
-    {
-      "label": "AdminEquipoView()",
-      "file_type": "code",
-      "source_file": "src/components/admin/AdminEquipoView.jsx",
-      "source_location": "L8",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_admin_adminequipoview_adminequipoview",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "adminequipoview()"
-    },
-    {
-      "label": "PlatoModal()",
-      "file_type": "code",
-      "source_file": "src/components/admin/PlatoModal.jsx",
-      "source_location": "L6",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_admin_platomodal_platomodal",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "platomodal()"
     },
     {
       "label": "ARViewer()",
@@ -1117,7 +781,7 @@
       "_origin": "ast",
       "id": "src_components_arviewer_arviewer",
       "community": 3,
-      "community_name": "client.js",
+      "community_name": "ARViewer.jsx",
       "norm_label": "arviewer()"
     },
     {
@@ -1129,8 +793,128 @@
       "_origin": "ast",
       "id": "src_api_client_cancelarpedido",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "cancelarpedido()"
+    },
+    {
+      "label": "createCupon()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L276",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_createcupon",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "createcupon()"
+    },
+    {
+      "label": "createPlato()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L206",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_createplato",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "createplato()"
+    },
+    {
+      "label": "createStaff()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L306",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_createstaff",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "createstaff()"
+    },
+    {
+      "label": "deleteCupon()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L296",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_deletecupon",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "deletecupon()"
+    },
+    {
+      "label": "deletePlato()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L225",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_deleteplato",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "deleteplato()"
+    },
+    {
+      "label": "deleteStaff()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L313",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_deletestaff",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "deletestaff()"
+    },
+    {
+      "label": "getCupones()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L272",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_getcupones",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "getcupones()"
+    },
+    {
+      "label": "getEmpresaSlug()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L9",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_getempresaslug",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "getempresaslug()"
+    },
+    {
+      "label": "getMe()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L86",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_getme",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "getme()"
+    },
+    {
+      "label": "getMesas()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L155",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_getmesas",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "getmesas()"
     },
     {
       "label": "getMetricas()",
@@ -1141,7 +925,7 @@
       "_origin": "ast",
       "id": "src_api_client_getmetricas",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "getmetricas()"
     },
     {
@@ -1153,7 +937,7 @@
       "_origin": "ast",
       "id": "src_api_client_getpedidos",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "getpedidos()"
     },
     {
@@ -1165,8 +949,44 @@
       "_origin": "ast",
       "id": "src_api_client_getplatos",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "getplatos()"
+    },
+    {
+      "label": "getStaff()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L302",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_getstaff",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "getstaff()"
+    },
+    {
+      "label": "getToken()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L5",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_gettoken",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "gettoken()"
+    },
+    {
+      "label": "isDemoMode()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L13",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_isdemomode",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "isdemomode()"
     },
     {
       "label": "logout()",
@@ -1177,7 +997,7 @@
       "_origin": "ast",
       "id": "src_api_client_logout",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "logout()"
     },
     {
@@ -1189,8 +1009,56 @@
       "_origin": "ast",
       "id": "src_api_client_reordenarplatos",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "reordenarplatos()"
+    },
+    {
+      "label": "request()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L17",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_request",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "request()"
+    },
+    {
+      "label": "toggleCupon()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L290",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_togglecupon",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "togglecupon()"
+    },
+    {
+      "label": "togglePlatoDisponible()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L231",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_toggleplatodisponible",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "toggleplatodisponible()"
+    },
+    {
+      "label": "updateCupon()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L283",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_updatecupon",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "updatecupon()"
     },
     {
       "label": "updateEmpresa()",
@@ -1201,7 +1069,7 @@
       "_origin": "ast",
       "id": "src_api_client_updateempresa",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "updateempresa()"
     },
     {
@@ -1213,7 +1081,7 @@
       "_origin": "ast",
       "id": "src_api_client_updatepedidoestado",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "updatepedidoestado()"
     },
     {
@@ -1225,44 +1093,56 @@
       "_origin": "ast",
       "id": "src_api_client_updatepedidopago",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "updatepedidopago()"
     },
     {
-      "label": "getBase()",
+      "label": "updatePlato()",
       "file_type": "code",
-      "source_file": "src/api/useSSE.js",
-      "source_location": "L3",
+      "source_file": "src/api/client.js",
+      "source_location": "L215",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_api_usesse_getbase",
+      "id": "src_api_client_updateplato",
       "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "getbase()"
+      "community_name": "client.js",
+      "norm_label": "updateplato()"
     },
     {
-      "label": "useSSE()",
+      "label": "AdminConfigView()",
       "file_type": "code",
-      "source_file": "src/api/useSSE.js",
-      "source_location": "L11",
+      "source_file": "src/components/admin/AdminConfigView.jsx",
+      "source_location": "L7",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_api_usesse_usesse",
+      "id": "src_components_admin_adminconfigview_adminconfigview",
       "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "usesse()"
+      "community_name": "client.js",
+      "norm_label": "adminconfigview()"
     },
     {
-      "label": "AdminSidebar()",
+      "label": "AdminEquipoView()",
       "file_type": "code",
-      "source_file": "src/components/AdminSidebar.jsx",
-      "source_location": "L16",
+      "source_file": "src/components/admin/AdminEquipoView.jsx",
+      "source_location": "L8",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_components_adminsidebar_adminsidebar",
+      "id": "src_components_admin_adminequipoview_adminequipoview",
       "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "adminsidebar()"
+      "community_name": "client.js",
+      "norm_label": "adminequipoview()"
+    },
+    {
+      "label": "PlatoModal()",
+      "file_type": "code",
+      "source_file": "src/components/admin/PlatoModal.jsx",
+      "source_location": "L6",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_admin_platomodal_platomodal",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "platomodal()"
     },
     {
       "label": "playNewOrderSound()",
@@ -1273,20 +1153,8 @@
       "_origin": "ast",
       "id": "src_components_adminutils_playnewordersound",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "playnewordersound()"
-    },
-    {
-      "label": "soundEnabled()",
-      "file_type": "code",
-      "source_file": "src/components/adminUtils.js",
-      "source_location": "L83",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_adminutils_soundenabled",
-      "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "soundenabled()"
     },
     {
       "label": "QRModal()",
@@ -1297,32 +1165,8 @@
       "_origin": "ast",
       "id": "src_components_qrmodal_qrmodal",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "qrmodal()"
-    },
-    {
-      "label": "useAuth()",
-      "file_type": "code",
-      "source_file": "src/context/AuthContext.jsx",
-      "source_location": "L45",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_authcontext_useauth",
-      "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "useauth()"
-    },
-    {
-      "label": "useCompany()",
-      "file_type": "code",
-      "source_file": "src/context/CompanyContext.jsx",
-      "source_location": "L44",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_companycontext_usecompany",
-      "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "usecompany()"
     },
     {
       "label": "AdminPage()",
@@ -1333,7 +1177,7 @@
       "_origin": "ast",
       "id": "src_pages_adminpage_adminpage",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "adminpage()"
     },
     {
@@ -1345,7 +1189,7 @@
       "_origin": "ast",
       "id": "src_pages_adminpage_backendtoformhorarios",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "backendtoformhorarios()"
     },
     {
@@ -1357,7 +1201,7 @@
       "_origin": "ast",
       "id": "src_pages_adminpage_formtobackendhorarios",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "formtobackendhorarios()"
     },
     {
@@ -1369,32 +1213,8 @@
       "_origin": "ast",
       "id": "src_pages_cocinapage_cocinapage",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "cocinapage()"
-    },
-    {
-      "label": "tiempoEnEstado()",
-      "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L32",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_pages_cocinapage_tiempoenestado",
-      "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "tiempoenestado()"
-    },
-    {
-      "label": "LlamadosPage()",
-      "file_type": "code",
-      "source_file": "src/pages/LlamadosPage.jsx",
-      "source_location": "L10",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_pages_llamadospage_llamadospage",
-      "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "llamadospage()"
     },
     {
       "label": "crearPreferencia()",
@@ -1405,7 +1225,7 @@
       "_origin": "ast",
       "id": "src_api_client_crearpreferencia",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "crearpreferencia()"
     },
     {
@@ -1417,7 +1237,7 @@
       "_origin": "ast",
       "id": "src_api_client_createpedido",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "createpedido()"
     },
     {
@@ -1429,20 +1249,8 @@
       "_origin": "ast",
       "id": "src_api_client_getmenu",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "getmenu()"
-    },
-    {
-      "label": "getMesas()",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L155",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_api_client_getmesas",
-      "community": 5,
-      "community_name": "MenuPage.jsx",
-      "norm_label": "getmesas()"
     },
     {
       "label": "validarCupon()",
@@ -1453,8 +1261,104 @@
       "_origin": "ast",
       "id": "src_api_client_validarcupon",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "validarcupon()"
+    },
+    {
+      "label": "App()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L157",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_app_app",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "app()"
+    },
+    {
+      "label": "CompanyLayout()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L50",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_app_companylayout",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "companylayout()"
+    },
+    {
+      "label": "defaultRouteForRole()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L24",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_app_defaultrouteforrole",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "defaultrouteforrole()"
+    },
+    {
+      "label": "DemoModal()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L104",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_app_demomodal",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "demomodal()"
+    },
+    {
+      "label": "Navbar()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L60",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_app_navbar",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "navbar()"
+    },
+    {
+      "label": "ProtectedRoute()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L30",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_app_protectedroute",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "protectedroute()"
+    },
+    {
+      "label": "RedirectHumber()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L54",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_app_redirecthumber",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "redirecthumber()"
+    },
+    {
+      "label": "Footer()",
+      "file_type": "code",
+      "source_file": "src/components/Footer.jsx",
+      "source_location": "L10",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_footer_footer",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "footer()"
     },
     {
       "label": "formatear()",
@@ -1465,7 +1369,7 @@
       "_origin": "ast",
       "id": "src_components_platodetailmodal_formatear",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "formatear()"
     },
     {
@@ -1477,7 +1381,7 @@
       "_origin": "ast",
       "id": "src_components_platodetailmodal_platodetailmodal",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "platodetailmodal()"
     },
     {
@@ -1489,7 +1393,7 @@
       "_origin": "ast",
       "id": "src_components_skeletons_adminskeleton",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "adminskeleton()"
     },
     {
@@ -1501,7 +1405,7 @@
       "_origin": "ast",
       "id": "src_components_skeletons_menuskeleton",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "menuskeleton()"
     },
     {
@@ -1513,8 +1417,68 @@
       "_origin": "ast",
       "id": "src_components_skeletons_pageskeleton",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "pageskeleton()"
+    },
+    {
+      "label": "Toast()",
+      "file_type": "code",
+      "source_file": "src/components/Toast.jsx",
+      "source_location": "L3",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_toast_toast",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "toast()"
+    },
+    {
+      "label": "useCart()",
+      "file_type": "code",
+      "source_file": "src/context/CartContext.jsx",
+      "source_location": "L126",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_cartcontext_usecart",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "usecart()"
+    },
+    {
+      "label": "CompanyProvider()",
+      "file_type": "code",
+      "source_file": "src/context/CompanyContext.jsx",
+      "source_location": "L15",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_companycontext_companyprovider",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "companyprovider()"
+    },
+    {
+      "label": "getSlugFromPath()",
+      "file_type": "code",
+      "source_file": "src/context/CompanyContext.jsx",
+      "source_location": "L9",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_companycontext_getslugfrompath",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "getslugfrompath()"
+    },
+    {
+      "label": "useCompany()",
+      "file_type": "code",
+      "source_file": "src/context/CompanyContext.jsx",
+      "source_location": "L44",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_companycontext_usecompany",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "usecompany()"
     },
     {
       "label": "loadInitial()",
@@ -1525,7 +1489,7 @@
       "_origin": "ast",
       "id": "src_context_ordermodecontext_loadinitial",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "loadinitial()"
     },
     {
@@ -1537,20 +1501,32 @@
       "_origin": "ast",
       "id": "src_context_ordermodecontext_ordermodeprovider",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "ordermodeprovider()"
     },
     {
-      "label": "useOrderMode()",
+      "label": "CartPage()",
       "file_type": "code",
-      "source_file": "src/context/OrderModeContext.jsx",
-      "source_location": "L36",
+      "source_file": "src/pages/CartPage.jsx",
+      "source_location": "L9",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_context_ordermodecontext_useordermode",
+      "id": "src_pages_cartpage_cartpage",
       "community": 5,
-      "community_name": "MenuPage.jsx",
-      "norm_label": "useordermode()"
+      "community_name": "App.jsx",
+      "norm_label": "cartpage()"
+    },
+    {
+      "label": "formatear()",
+      "file_type": "code",
+      "source_file": "src/pages/CartPage.jsx",
+      "source_location": "L5",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_pages_cartpage_formatear",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "formatear()"
     },
     {
       "label": "CheckoutPage()",
@@ -1561,7 +1537,7 @@
       "_origin": "ast",
       "id": "src_pages_checkoutpage_checkoutpage",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "checkoutpage()"
     },
     {
@@ -1573,7 +1549,7 @@
       "_origin": "ast",
       "id": "src_pages_checkoutpage_formatear",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "formatear()"
     },
     {
@@ -1585,7 +1561,7 @@
       "_origin": "ast",
       "id": "src_pages_checkoutpage_itemstotexto",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "itemstotexto()"
     },
     {
@@ -1597,8 +1573,20 @@
       "_origin": "ast",
       "id": "src_pages_menupage_menupage",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "menupage()"
+    },
+    {
+      "label": "NotFoundPage()",
+      "file_type": "code",
+      "source_file": "src/pages/NotFoundPage.jsx",
+      "source_location": "L3",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_pages_notfoundpage_notfoundpage",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "notfoundpage()"
     },
     {
       "label": "createMesa()",
@@ -1623,6 +1611,18 @@
       "community": 7,
       "community_name": "PlanoEditor.jsx",
       "norm_label": "deletemesa()"
+    },
+    {
+      "label": "getPedido()",
+      "file_type": "code",
+      "source_file": "src/api/client.js",
+      "source_location": "L106",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_api_client_getpedido",
+      "community": 7,
+      "community_name": "PlanoEditor.jsx",
+      "norm_label": "getpedido()"
     },
     {
       "label": "saveLayout()",
@@ -1779,6 +1779,18 @@
       "community": 7,
       "community_name": "PlanoEditor.jsx",
       "norm_label": "qrinstructionsmodal()"
+    },
+    {
+      "label": "useOrderMode()",
+      "file_type": "code",
+      "source_file": "src/context/OrderModeContext.jsx",
+      "source_location": "L36",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_ordermodecontext_useordermode",
+      "community": 7,
+      "community_name": "PlanoEditor.jsx",
+      "norm_label": "useordermode()"
     },
     {
       "label": "ModeSelectPage()",
@@ -2077,7 +2089,7 @@
       "label": "FILTROS",
       "file_type": "code",
       "source_file": "src/components/admin/AdminPedidosView.jsx",
-      "source_location": "L5",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "src_components_admin_adminpedidosview_filtros",
       "community": 12,
@@ -2173,17 +2185,6 @@
       "norm_label": "adminutils.test.js"
     },
     {
-      "label": "App.jsx",
-      "file_type": "code",
-      "source_file": "src/App.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_app",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "app.jsx"
-    },
-    {
       "label": "ErrorBoundary.jsx",
       "file_type": "code",
       "source_file": "src/components/ErrorBoundary.jsx",
@@ -2191,41 +2192,8 @@
       "_origin": "ast",
       "id": "src_components_errorboundary",
       "community": 13,
-      "community_name": "App.jsx",
+      "community_name": "CartContext.jsx",
       "norm_label": "errorboundary.jsx"
-    },
-    {
-      "label": "Footer.jsx",
-      "file_type": "code",
-      "source_file": "src/components/Footer.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_components_footer",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "footer.jsx"
-    },
-    {
-      "label": "REDES",
-      "file_type": "code",
-      "source_file": "src/components/Footer.jsx",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "src_components_footer_redes",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "redes"
-    },
-    {
-      "label": "Toast.jsx",
-      "file_type": "code",
-      "source_file": "src/components/Toast.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_components_toast",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "toast.jsx"
     },
     {
       "label": "CartContext.jsx",
@@ -2235,7 +2203,7 @@
       "_origin": "ast",
       "id": "src_context_cartcontext",
       "community": 13,
-      "community_name": "App.jsx",
+      "community_name": "CartContext.jsx",
       "norm_label": "cartcontext.jsx"
     },
     {
@@ -2246,7 +2214,7 @@
       "_origin": "ast",
       "id": "src_context_cartcontext_cartcontext",
       "community": 13,
-      "community_name": "App.jsx",
+      "community_name": "CartContext.jsx",
       "norm_label": "cartcontext"
     },
     {
@@ -2257,30 +2225,8 @@
       "_origin": "ast",
       "id": "src_context_cartcontext_reserved",
       "community": 13,
-      "community_name": "App.jsx",
+      "community_name": "CartContext.jsx",
       "norm_label": "reserved"
-    },
-    {
-      "label": "ThemeContext.jsx",
-      "file_type": "code",
-      "source_file": "src/context/ThemeContext.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_context_themecontext",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "themecontext.jsx"
-    },
-    {
-      "label": "ThemeContext",
-      "file_type": "code",
-      "source_file": "src/context/ThemeContext.jsx",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "src_context_themecontext_themecontext",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "themecontext"
     },
     {
       "label": "main.jsx",
@@ -2290,30 +2236,8 @@
       "_origin": "ast",
       "id": "src_main",
       "community": 13,
-      "community_name": "App.jsx",
+      "community_name": "CartContext.jsx",
       "norm_label": "main.jsx"
-    },
-    {
-      "label": "CartPage.jsx",
-      "file_type": "code",
-      "source_file": "src/pages/CartPage.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_pages_cartpage",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "cartpage.jsx"
-    },
-    {
-      "label": "NotFoundPage.jsx",
-      "file_type": "code",
-      "source_file": "src/pages/NotFoundPage.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_pages_notfoundpage",
-      "community": 13,
-      "community_name": "App.jsx",
-      "norm_label": "notfoundpage.jsx"
     },
     {
       "label": "manifest.json",
@@ -2492,37 +2416,136 @@
       "norm_label": "shopping"
     },
     {
-      "label": "CompanyContext.jsx",
+      "label": "useSSE.js",
       "file_type": "code",
-      "source_file": "src/context/CompanyContext.jsx",
+      "source_file": "src/api/useSSE.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_context_companycontext",
+      "id": "src_api_usesse",
       "community": 15,
-      "community_name": "CompanyContext.jsx",
-      "norm_label": "companycontext.jsx"
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "usesse.js"
     },
     {
-      "label": "CompanyContext",
+      "label": "AdminSidebar.jsx",
       "file_type": "code",
-      "source_file": "src/context/CompanyContext.jsx",
+      "source_file": "src/components/AdminSidebar.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_components_adminsidebar",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "adminsidebar.jsx"
+    },
+    {
+      "label": "ITEMS",
+      "file_type": "code",
+      "source_file": "src/components/AdminSidebar.jsx",
       "source_location": "L5",
       "_origin": "ast",
-      "id": "src_context_companycontext_companycontext",
+      "id": "src_components_adminsidebar_items",
       "community": 15,
-      "community_name": "CompanyContext.jsx",
-      "norm_label": "companycontext"
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "items"
     },
     {
-      "label": "RESERVED",
+      "label": "AuthContext.jsx",
       "file_type": "code",
-      "source_file": "src/context/CompanyContext.jsx",
-      "source_location": "L7",
+      "source_file": "src/context/AuthContext.jsx",
+      "source_location": "L1",
       "_origin": "ast",
-      "id": "src_context_companycontext_reserved",
+      "id": "src_context_authcontext",
       "community": 15,
-      "community_name": "CompanyContext.jsx",
-      "norm_label": "reserved"
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "authcontext.jsx"
+    },
+    {
+      "label": "AuthContext",
+      "file_type": "code",
+      "source_file": "src/context/AuthContext.jsx",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "src_context_authcontext_authcontext",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "authcontext"
+    },
+    {
+      "label": "ThemeContext.jsx",
+      "file_type": "code",
+      "source_file": "src/context/ThemeContext.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_context_themecontext",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "themecontext.jsx"
+    },
+    {
+      "label": "ThemeContext",
+      "file_type": "code",
+      "source_file": "src/context/ThemeContext.jsx",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "src_context_themecontext_themecontext",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "themecontext"
+    },
+    {
+      "label": "CocinaPage.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_cocinapage",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "cocinapage.jsx"
+    },
+    {
+      "label": "ESTADO_COLORS",
+      "file_type": "code",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "src_pages_cocinapage_estado_colors",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "estado_colors"
+    },
+    {
+      "label": "ESTADO_LABELS",
+      "file_type": "code",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "src_pages_cocinapage_estado_labels",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "estado_labels"
+    },
+    {
+      "label": "ESTADOS",
+      "file_type": "code",
+      "source_file": "src/pages/CocinaPage.jsx",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "src_pages_cocinapage_estados",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "estados"
+    },
+    {
+      "label": "LlamadosPage.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/LlamadosPage.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_llamadospage",
+      "community": 15,
+      "community_name": "CocinaPage.jsx",
+      "norm_label": "llamadospage.jsx"
     },
     {
       "label": "LoginPage.jsx",
@@ -2532,7 +2555,7 @@
       "_origin": "ast",
       "id": "src_pages_loginpage",
       "community": 15,
-      "community_name": "CompanyContext.jsx",
+      "community_name": "CocinaPage.jsx",
       "norm_label": "loginpage.jsx"
     },
     {
@@ -2763,85 +2786,8 @@
       "_origin": "ast",
       "id": "model_viewer",
       "community": 3,
-      "community_name": "client.js",
+      "community_name": "ARViewer.jsx",
       "norm_label": "@google/model-viewer"
-    },
-    {
-      "label": "client.js",
-      "file_type": "code",
-      "source_file": "src/api/client.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_api_client",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "client.js"
-    },
-    {
-      "label": "AdminConfigView.jsx",
-      "file_type": "code",
-      "source_file": "src/components/admin/AdminConfigView.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_components_admin_adminconfigview",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "adminconfigview.jsx"
-    },
-    {
-      "label": "EMPTY_CUPON",
-      "file_type": "code",
-      "source_file": "src/components/admin/AdminConfigView.jsx",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "src_components_admin_adminconfigview_empty_cupon",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "empty_cupon"
-    },
-    {
-      "label": "AdminEquipoView.jsx",
-      "file_type": "code",
-      "source_file": "src/components/admin/AdminEquipoView.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_components_admin_adminequipoview",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "adminequipoview.jsx"
-    },
-    {
-      "label": "EMPTY_STAFF",
-      "file_type": "code",
-      "source_file": "src/components/admin/AdminEquipoView.jsx",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "src_components_admin_adminequipoview_empty_staff",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "empty_staff"
-    },
-    {
-      "label": "ROL_LABELS",
-      "file_type": "code",
-      "source_file": "src/components/admin/AdminEquipoView.jsx",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "src_components_admin_adminequipoview_rol_labels",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "rol_labels"
-    },
-    {
-      "label": "PlatoModal.jsx",
-      "file_type": "code",
-      "source_file": "src/components/admin/PlatoModal.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_components_admin_platomodal",
-      "community": 3,
-      "community_name": "client.js",
-      "norm_label": "platomodal.jsx"
     },
     {
       "label": "ARViewer.jsx",
@@ -2851,7 +2797,7 @@
       "_origin": "ast",
       "id": "src_components_arviewer",
       "community": 3,
-      "community_name": "client.js",
+      "community_name": "ARViewer.jsx",
       "norm_label": "arviewer.jsx"
     },
     {
@@ -2862,41 +2808,85 @@
       "_origin": "ast",
       "id": "src_pages_menupage_arviewer",
       "community": 3,
-      "community_name": "client.js",
+      "community_name": "ARViewer.jsx",
       "norm_label": "arviewer"
     },
     {
-      "label": "useSSE.js",
+      "label": "client.js",
       "file_type": "code",
-      "source_file": "src/api/useSSE.js",
+      "source_file": "src/api/client.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_api_usesse",
+      "id": "src_api_client",
       "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "usesse.js"
+      "community_name": "client.js",
+      "norm_label": "client.js"
     },
     {
-      "label": "AdminSidebar.jsx",
+      "label": "AdminConfigView.jsx",
       "file_type": "code",
-      "source_file": "src/components/AdminSidebar.jsx",
+      "source_file": "src/components/admin/AdminConfigView.jsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_components_adminsidebar",
+      "id": "src_components_admin_adminconfigview",
       "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "adminsidebar.jsx"
+      "community_name": "client.js",
+      "norm_label": "adminconfigview.jsx"
     },
     {
-      "label": "ITEMS",
+      "label": "EMPTY_CUPON",
       "file_type": "code",
-      "source_file": "src/components/AdminSidebar.jsx",
+      "source_file": "src/components/admin/AdminConfigView.jsx",
       "source_location": "L5",
       "_origin": "ast",
-      "id": "src_components_adminsidebar_items",
+      "id": "src_components_admin_adminconfigview_empty_cupon",
       "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "items"
+      "community_name": "client.js",
+      "norm_label": "empty_cupon"
+    },
+    {
+      "label": "AdminEquipoView.jsx",
+      "file_type": "code",
+      "source_file": "src/components/admin/AdminEquipoView.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_components_admin_adminequipoview",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "adminequipoview.jsx"
+    },
+    {
+      "label": "EMPTY_STAFF",
+      "file_type": "code",
+      "source_file": "src/components/admin/AdminEquipoView.jsx",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "src_components_admin_adminequipoview_empty_staff",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "empty_staff"
+    },
+    {
+      "label": "ROL_LABELS",
+      "file_type": "code",
+      "source_file": "src/components/admin/AdminEquipoView.jsx",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "src_components_admin_adminequipoview_rol_labels",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "rol_labels"
+    },
+    {
+      "label": "PlatoModal.jsx",
+      "file_type": "code",
+      "source_file": "src/components/admin/PlatoModal.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_components_admin_platomodal",
+      "community": 4,
+      "community_name": "client.js",
+      "norm_label": "platomodal.jsx"
     },
     {
       "label": "QRModal.jsx",
@@ -2906,30 +2896,8 @@
       "_origin": "ast",
       "id": "src_components_qrmodal",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "qrmodal.jsx"
-    },
-    {
-      "label": "AuthContext.jsx",
-      "file_type": "code",
-      "source_file": "src/context/AuthContext.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_context_authcontext",
-      "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "authcontext.jsx"
-    },
-    {
-      "label": "AuthContext",
-      "file_type": "code",
-      "source_file": "src/context/AuthContext.jsx",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "src_context_authcontext_authcontext",
-      "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "authcontext"
     },
     {
       "label": "AdminPage.jsx",
@@ -2939,7 +2907,7 @@
       "_origin": "ast",
       "id": "src_pages_adminpage",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "adminpage.jsx"
     },
     {
@@ -2950,63 +2918,41 @@
       "_origin": "ast",
       "id": "src_pages_adminpage_dias_horarios",
       "community": 4,
-      "community_name": "AdminPage.jsx",
+      "community_name": "client.js",
       "norm_label": "dias_horarios"
     },
     {
-      "label": "CocinaPage.jsx",
+      "label": "App.jsx",
       "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
+      "source_file": "src/App.jsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_pages_cocinapage",
-      "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "cocinapage.jsx"
+      "id": "src_app",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "app.jsx"
     },
     {
-      "label": "ESTADO_COLORS",
+      "label": "Footer.jsx",
       "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L18",
-      "_origin": "ast",
-      "id": "src_pages_cocinapage_estado_colors",
-      "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "estado_colors"
-    },
-    {
-      "label": "ESTADO_LABELS",
-      "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L25",
-      "_origin": "ast",
-      "id": "src_pages_cocinapage_estado_labels",
-      "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "estado_labels"
-    },
-    {
-      "label": "ESTADOS",
-      "file_type": "code",
-      "source_file": "src/pages/CocinaPage.jsx",
-      "source_location": "L11",
-      "_origin": "ast",
-      "id": "src_pages_cocinapage_estados",
-      "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "estados"
-    },
-    {
-      "label": "LlamadosPage.jsx",
-      "file_type": "code",
-      "source_file": "src/pages/LlamadosPage.jsx",
+      "source_file": "src/components/Footer.jsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_pages_llamadospage",
-      "community": 4,
-      "community_name": "AdminPage.jsx",
-      "norm_label": "llamadospage.jsx"
+      "id": "src_components_footer",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "footer.jsx"
+    },
+    {
+      "label": "REDES",
+      "file_type": "code",
+      "source_file": "src/components/Footer.jsx",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "src_components_footer_redes",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "redes"
     },
     {
       "label": "PlatoDetailModal.jsx",
@@ -3016,7 +2962,7 @@
       "_origin": "ast",
       "id": "src_components_platodetailmodal",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "platodetailmodal.jsx"
     },
     {
@@ -3027,7 +2973,7 @@
       "_origin": "ast",
       "id": "src_components_platodetailmodal_empty",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "empty"
     },
     {
@@ -3038,8 +2984,52 @@
       "_origin": "ast",
       "id": "src_components_skeletons",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "skeletons.jsx"
+    },
+    {
+      "label": "Toast.jsx",
+      "file_type": "code",
+      "source_file": "src/components/Toast.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_components_toast",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "toast.jsx"
+    },
+    {
+      "label": "CompanyContext.jsx",
+      "file_type": "code",
+      "source_file": "src/context/CompanyContext.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_context_companycontext",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "companycontext.jsx"
+    },
+    {
+      "label": "CompanyContext",
+      "file_type": "code",
+      "source_file": "src/context/CompanyContext.jsx",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "src_context_companycontext_companycontext",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "companycontext"
+    },
+    {
+      "label": "RESERVED",
+      "file_type": "code",
+      "source_file": "src/context/CompanyContext.jsx",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "src_context_companycontext_reserved",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "reserved"
     },
     {
       "label": "OrderModeContext.jsx",
@@ -3049,7 +3039,7 @@
       "_origin": "ast",
       "id": "src_context_ordermodecontext",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "ordermodecontext.jsx"
     },
     {
@@ -3060,8 +3050,19 @@
       "_origin": "ast",
       "id": "src_context_ordermodecontext_ordermodecontext",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "ordermodecontext"
+    },
+    {
+      "label": "CartPage.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/CartPage.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_cartpage",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "cartpage.jsx"
     },
     {
       "label": "CheckoutPage.jsx",
@@ -3071,7 +3072,7 @@
       "_origin": "ast",
       "id": "src_pages_checkoutpage",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "checkoutpage.jsx"
     },
     {
@@ -3082,7 +3083,7 @@
       "_origin": "ast",
       "id": "src_pages_checkoutpage_entregas",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "entregas"
     },
     {
@@ -3093,7 +3094,7 @@
       "_origin": "ast",
       "id": "src_pages_menupage",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "menupage.jsx"
     },
     {
@@ -3104,8 +3105,19 @@
       "_origin": "ast",
       "id": "src_pages_menupage_categorias",
       "community": 5,
-      "community_name": "MenuPage.jsx",
+      "community_name": "App.jsx",
       "norm_label": "categorias"
+    },
+    {
+      "label": "NotFoundPage.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/NotFoundPage.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_notfoundpage",
+      "community": 5,
+      "community_name": "App.jsx",
+      "norm_label": "notfoundpage.jsx"
     },
     {
       "label": "tsconfig.json",
@@ -4725,9 +4737,21 @@
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
+      "source_file": "src/components/admin/AdminPedidosView.jsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_admin_adminpedidosview_adminpedidosview",
+      "target": "src_components_admin_adminpedidosview_hoylocal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/admin/AdminPedidosView.jsx",
-      "source_location": "L155",
+      "source_location": "L203",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_admin_adminpedidosview_adminpedidosview",
@@ -4739,19 +4763,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/admin/AdminPedidosView.jsx",
-      "source_location": "L25",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_components_admin_adminpedidosview_adminpedidosview",
-      "target": "src_api_client_getpedidosrango"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/admin/AdminPedidosView.jsx",
-      "source_location": "L258",
+      "source_location": "L306",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_admin_adminpedidosview_adminpedidosview",
@@ -4763,7 +4775,19 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/admin/AdminPedidosView.jsx",
-      "source_location": "L26",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_admin_adminpedidosview_adminpedidosview",
+      "target": "src_api_client_getpedidosrango"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/admin/AdminPedidosView.jsx",
+      "source_location": "L60",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_admin_adminpedidosview_adminpedidosview",
@@ -11051,7 +11075,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/admin/AdminPedidosView.jsx",
-      "source_location": "L12",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_admin_adminpedidosview",
+      "target": "src_components_admin_adminpedidosview_filtros",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/admin/AdminPedidosView.jsx",
+      "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_admin_adminpedidosview",
@@ -11066,7 +11101,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_admin_adminpedidosview",
-      "target": "src_components_admin_adminpedidosview_filtros",
+      "target": "src_components_admin_adminpedidosview_hoylocal",
       "confidence_score": 1.0
     },
     {
@@ -12640,5 +12675,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9ecd436635c10ef0bcfa09e1e72609096d9fa5a9"
+  "built_at_commit": "483a8de9423258d52706175ac78964f7dbff24b5"
 }
