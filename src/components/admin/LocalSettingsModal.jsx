@@ -1,13 +1,27 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { soundEnabled, setSoundEnabled } from '../adminUtils';
 
-export default function LocalSettingsModal({ open, configForm, setConfigForm, onSave, saving, onClose }) {
+export default function LocalSettingsModal({ open, configForm, setConfigForm, logoFile, setLogoFile, setLogoRemoved, logoPreview, onSave, saving, onClose }) {
   const [soundOn, setSoundOn] = useState(soundEnabled);
+  const fileRef = useRef(null);
 
   const toggleSound = () => {
     const v = !soundOn;
     setSoundOn(v);
     setSoundEnabled(v);
+  };
+
+  const handleLogoChange = (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    setLogoFile(file);
+    setLogoRemoved(false);
+  };
+
+  const handleRemoveLogo = () => {
+    setLogoFile(null);
+    setLogoRemoved(true);
+    if (fileRef.current) fileRef.current.value = '';
   };
 
   return (
@@ -42,6 +56,49 @@ export default function LocalSettingsModal({ open, configForm, setConfigForm, on
               onChange={(e) => setConfigForm((prev) => ({ ...prev, whatsapp: e.target.value }))}
               placeholder="Ej: 5493815069332"
             />
+          </div>
+
+          <div className="field">
+            <label>Logo del local</label>
+            <div className="logo-upload">
+              {logoFile || configForm.logo ? (
+                <img
+                  src={logoPreview}
+                  alt="Logo"
+                  className="logo-upload-preview"
+                />
+              ) : (
+                <div className="logo-upload-empty">
+                  <i className="ti ti-photo"></i>
+                </div>
+              )}
+              <div className="logo-upload-actions">
+                <button
+                  type="button"
+                  className="btn btn-outline btn-sm"
+                  onClick={() => fileRef.current && fileRef.current.click()}
+                >
+                  <i className="ti ti-upload"></i> {logoFile || configForm.logo ? 'Cambiar' : 'Subir logo'}
+                </button>
+                {(logoFile || configForm.logo) && (
+                  <button
+                    type="button"
+                    className="btn btn-outline btn-sm danger"
+                    onClick={handleRemoveLogo}
+                  >
+                    <i className="ti ti-trash"></i> Quitar
+                  </button>
+                )}
+                <input
+                  ref={fileRef}
+                  type="file"
+                  accept="image/jpeg,image/png,image/jpg,image/webp"
+                  style={{ display: 'none' }}
+                  onChange={handleLogoChange}
+                />
+              </div>
+            </div>
+            <p className="logo-upload-hint">Se muestra en el menú de tus clientes y en tu panel. JPG, PNG o WebP (máx. 8 MB).</p>
           </div>
 
           <div className="toggle-row settings-toggle">

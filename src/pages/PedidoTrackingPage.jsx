@@ -42,7 +42,7 @@ export default function PedidoTrackingPage() {
   const [searchParams] = useSearchParams();
   const trackingToken = searchParams.get('t');
   const { notify } = useNotify();
-  const { path } = useCompany();
+  const { path, empresa } = useCompany();
   const [pedido, setPedido] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -85,13 +85,13 @@ export default function PedidoTrackingPage() {
         if ('Notification' in window && Notification.permission === 'granted') {
           new Notification('¡Tu pedido está listo!', {
             body: `Pedido #${pedido.id} · Ya lo podés retirar.`,
-            icon: '/pidevo.png',
+            icon: empresa?.logo || '/pidevo.png',
           });
         }
       } catch {}
     }
     notifEstadoRef.current = pedido.estado;
-  }, [pedido]);
+  }, [pedido, empresa?.logo]);
 
   const hasToken = !!localStorage.getItem('token');
 

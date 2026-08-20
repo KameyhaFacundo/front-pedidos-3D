@@ -158,6 +158,7 @@ export default function MenuPage() {
           Volver
         </Link>
         <div className="menu-eyebrow">
+          {empresa?.logo && <img src={empresa.logo} alt="" className="menu-brand-logo" />}
           {empresa?.nombre || 'Menú'} · {tipo === 'mesa' ? `Mesa ${mesaNumero || '...'}` : 'Para retirar'}
           {estimado ? ` · Entrega estimada: ${estimado} min` : ''}
         </div>

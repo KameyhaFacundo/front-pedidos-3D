@@ -13,6 +13,19 @@
   text-transform: uppercase;
   letter-spacing: 0.14em;
   margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.menu-brand-logo {
+  height: 18px;
+  width: auto;
+  max-width: 90px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .menu-brand {

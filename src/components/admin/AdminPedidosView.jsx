@@ -11,6 +11,7 @@ const FILTROS = [
 export default function AdminPedidosView({ active, pedidos, metricas, slug, empresa, onAvanzar, onPagar, onCancelar }) {
   const [filtro, setFiltro] = useState('');
   const [busqueda, setBusqueda] = useState('');
+  const [verCancelados, setVerCancelados] = useState(false);
 
   const visibles = pedidos.filter((p) => {
     if (filtro && p.tipo !== filtro) return false;
@@ -92,6 +93,14 @@ export default function AdminPedidosView({ active, pedidos, metricas, slug, empr
             </button>
           );
         })}
+        <button
+          className={`pedidos-filtro cancelados-toggle ${verCancelados ? 'active' : ''}`}
+          onClick={() => setVerCancelados((v) => !v)}
+          title={verCancelados ? 'Ocultar cancelados' : 'Mostrar cancelados'}
+        >
+          <i className="ti ti-circle-x"></i> {verCancelados ? 'Ocultar cancelados' : 'Cancelados'}{' '}
+          <span className="pedidos-filtro-count">{pedidos.filter((p) => p.estado === 'cancelado').length}</span>
+        </button>
       </div>
 
       <div className="admin-metrics">
@@ -126,7 +135,7 @@ export default function AdminPedidosView({ active, pedidos, metricas, slug, empr
       </div>
 
       <div className="admin-board">
-        {COLUMNAS.map(({ key, label, dotClass }) => {
+        {COLUMNAS.filter(({ key }) => key !== 'cancelado' || verCancelados).map(({ key, label, dotClass }) => {
           const colPedidos = porColumna(key);
           return (
             <div key={key} className="admin-col">

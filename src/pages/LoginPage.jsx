@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
-import { login as apiLogin } from '../api/client';
+import { login as apiLogin, getEmpresa } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 
 function defaultRouteForRole(rol) {
@@ -26,6 +26,14 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const pathSlug = getSlugFromPath(location.pathname);
+  const [empresa, setEmpresa] = useState(null);
+
+  useEffect(() => {
+    if (!pathSlug) return;
+    getEmpresa(pathSlug)
+      .then(setEmpresa)
+      .catch(() => setEmpresa(null));
+  }, [pathSlug]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,7 +66,11 @@ export default function LoginPage() {
 
       <div className="login-card">
         <Link to="/" className="login-brand" aria-label="Volver a Pidevo">
-          <img src="/pidevo.png" alt="Pidevo" className="brand-logo" />
+          {empresa?.logo ? (
+            <img src={empresa.logo} alt={empresa.nombre || 'Logo'} className="brand-logo" />
+          ) : (
+            <img src="/pidevo.png" alt="Pidevo" className="brand-logo" />
+          )}
         </Link>
         <h1 className="login-title">Bienvenido de nuevo</h1>
         <p className="login-sub">Ingresá a tu panel de pedidos</p>

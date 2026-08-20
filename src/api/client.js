@@ -91,14 +91,15 @@ export function getMenu() {
   return request('/menu');
 }
 
-export function getEmpresa() {
-  return request('/empresa');
+export function getEmpresa(slug) {
+  const headers = slug ? { 'X-Empresa': slug } : undefined;
+  return request('/empresa', { headers });
 }
 
 export function updateEmpresa(data) {
   return request('/empresa', {
     method: 'PUT',
-    body: JSON.stringify(data),
+    body: data instanceof FormData ? data : JSON.stringify(data),
   });
 }
 

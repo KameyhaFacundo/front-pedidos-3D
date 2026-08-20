@@ -4,12 +4,23 @@ import LocalSettingsModal from './LocalSettingsModal';
 
 const EMPTY_CUPON = { codigo: '', descuento: '', tipo: 'fijo' };
 
-export default function AdminConfigView({ active, configForm, setConfigForm, onSave, saving, notify }) {
+export default function AdminConfigView({ active, configForm, setConfigForm, onSave, saving, notify, logoFile, setLogoFile, logoRemoved, setLogoRemoved }) {
   const [localModalOpen, setLocalModalOpen] = useState(false);
   const [cupones, setCupones] = useState([]);
   const [cuponForm, setCuponForm] = useState(EMPTY_CUPON);
   const [savingCupon, setSavingCupon] = useState(false);
   const [editingCuponId, setEditingCuponId] = useState(null);
+  const [logoPreview, setLogoPreview] = useState(null);
+
+  useEffect(() => {
+    if (!logoFile) {
+      setLogoPreview(configForm.logo || null);
+      return;
+    }
+    const url = URL.createObjectURL(logoFile);
+    setLogoPreview(url);
+    return () => URL.revokeObjectURL(url);
+  }, [logoFile, configForm.logo]);
 
   const loadCupones = useCallback(() => {
     getCupones().then(setCupones).catch(() => {});
@@ -91,7 +102,15 @@ export default function AdminConfigView({ active, configForm, setConfigForm, onS
       <div className="settings-page">
       <div className="settings-card settings-card-compact">
         <div className="settings-head">
-          <i className="ti ti-building-store"></i>
+          {configForm.logo || logoFile ? (
+            <img
+              src={logoPreview}
+              alt="Logo del local"
+              className="settings-logo"
+            />
+          ) : (
+            <i className="ti ti-building-store"></i>
+          )}
           <div>
             <div className="settings-title">Tu local</div>
             <div className="settings-sub">
@@ -109,6 +128,11 @@ export default function AdminConfigView({ active, configForm, setConfigForm, onS
         open={localModalOpen}
         configForm={configForm}
         setConfigForm={setConfigForm}
+        logoFile={logoFile}
+        setLogoFile={setLogoFile}
+        logoRemoved={logoRemoved}
+        setLogoRemoved={setLogoRemoved}
+        logoPreview={logoPreview}
         onSave={onSave}
         saving={saving}
         onClose={() => setLocalModalOpen(false)}

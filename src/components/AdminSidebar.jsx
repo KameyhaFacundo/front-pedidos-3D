@@ -13,7 +13,7 @@ const ITEMS = [
   { key: 'configuracion', label: 'Configuración', icon: 'ti-settings', roles: ['admin'] },
 ];
 
-export default function AdminSidebar({ view, setView: _setView, open, onToggle, onLogout, slug }) {
+export default function AdminSidebar({ view, setView: _setView, open, onToggle, onLogout, slug, empresa }) {
   const { theme, toggleTheme } = useTheme();
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -27,7 +27,13 @@ export default function AdminSidebar({ view, setView: _setView, open, onToggle, 
   return (
     <aside className={`admin-sidebar ${open ? 'open' : ''}`}>
       <div className="admin-sidebar-header">
-        <div className="admin-brand"><img src="/pidevo.png" alt="Pidevo" className="brand-logo" /></div>
+        <div className="admin-brand">
+          {empresa?.logo ? (
+            <img src={empresa.logo} alt={empresa.nombre || 'Logo'} className="brand-logo" />
+          ) : (
+            <span>{empresa?.nombre || 'Pidevo'}</span>
+          )}
+        </div>
         <button className="hamburger in-sidebar" onClick={onToggle} aria-label="Cerrar menú">
           <i className="ti ti-x"></i>
         </button>

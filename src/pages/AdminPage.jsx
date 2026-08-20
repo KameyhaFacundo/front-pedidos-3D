@@ -52,7 +52,9 @@ export default function AdminPage() {
   const [mesas, setMesas] = useState([]);
   const [empresa, setEmpresa] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [configForm, setConfigForm] = useState({ nombre: '', whatsapp: '', abierto: true, tiempo_estimado: '' });
+  const [configForm, setConfigForm] = useState({ nombre: '', whatsapp: '', logo: '', abierto: true, tiempo_estimado: '' });
+  const [logoFile, setLogoFile] = useState(null);
+  const [logoRemoved, setLogoRemoved] = useState(false);
   const [savingConfig, setSavingConfig] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalPlato, setModalPlato] = useState(null);
@@ -114,15 +116,30 @@ export default function AdminPage() {
     }
     setSavingConfig(true);
     try {
-      const empresa = await updateEmpresa({
+      const base = {
         nombre: configForm.nombre.trim(),
         whatsapp: configForm.whatsapp.trim(),
         abierto: Boolean(configForm.abierto),
         tiempo_estimado: configForm.tiempo_estimado === '' || configForm.tiempo_estimado == null
           ? null
           : Number(configForm.tiempo_estimado),
-      });
-      setConfigForm({ nombre: empresa.nombre || '', whatsapp: empresa.whatsapp || '', abierto: empresa.abierto !== false, tiempo_estimado: empresa.tiempo_estimado ?? '' });
+      };
+      let body;
+      if (logoFile) {
+        const fd = new FormData();
+        Object.entries(base).forEach(([k, v]) => fd.append(k, v));
+        fd.append('logo', logoFile);
+        body = fd;
+      } else if (logoRemoved) {
+        body = JSON.stringify({ ...base, logo: null });
+      } else {
+        body = JSON.stringify(base);
+      }
+      const empresa = await updateEmpresa(body);
+      setConfigForm({ nombre: empresa.nombre || '', whatsapp: empresa.whatsapp || '', logo: empresa.logo || '', abierto: empresa.abierto !== false, tiempo_estimado: empresa.tiempo_estimado ?? '' });
+      setLogoFile(null);
+      setLogoRemoved(false);
+      setEmpresa(empresa);
       notify('Datos guardados', 'success');
     } catch (err) {
       notify(err.message || 'Error al guardar', 'error');
@@ -152,7 +169,7 @@ export default function AdminPage() {
     if (view === 'mesas') fetchMesasData();
     if (view === 'configuracion') {
       getEmpresa().then((e) => {
-        if (e) setConfigForm({ nombre: e.nombre || '', whatsapp: e.whatsapp || '', abierto: e.abierto !== false, tiempo_estimado: e.tiempo_estimado ?? '' });
+        if (e) setConfigForm({ nombre: e.nombre || '', whatsapp: e.whatsapp || '', logo: e.logo || '', abierto: e.abierto !== false, tiempo_estimado: e.tiempo_estimado ?? '' });
       }).catch(() => {});
     }
   }, [view, fetchPlatos, fetchMesasData]);
@@ -188,7 +205,9 @@ export default function AdminPage() {
     }
   };
 
-  const handleMovePlato = async (index, dir) => {
+  const handleMovePlato = async (id, dir) => {
+    const index = platos.findIndex((p) => p.id === id);
+    if (index === -1) return;
     const j = index + dir;
     if (j < 0 || j >= platos.length) return;
     const next = [...platos];
@@ -226,7 +245,7 @@ export default function AdminPage() {
 
   return (
     <div className="admin-layout">
-      <AdminSidebar view={view} setView={setView} open={sidebarOpen} onToggle={() => setSidebarOpen((v) => !v)} onLogout={handleLogout} slug={slug} />
+      <AdminSidebar view={view} setView={setView} open={sidebarOpen} onToggle={() => setSidebarOpen((v) => !v)} onLogout={handleLogout} slug={slug} empresa={empresa} />
       {sidebarOpen && <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />}
 
       <div className="admin-main">
@@ -282,6 +301,10 @@ export default function AdminPage() {
           active={view === 'configuracion'}
           configForm={configForm}
           setConfigForm={setConfigForm}
+          logoFile={logoFile}
+          setLogoFile={setLogoFile}
+          logoRemoved={logoRemoved}
+          setLogoRemoved={setLogoRemoved}
           onSave={handleSaveConfig}
           saving={savingConfig}
           notify={notify}

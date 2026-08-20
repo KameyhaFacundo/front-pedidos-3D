@@ -199,6 +199,15 @@ export default function ModeSelectPage() {
 
   return (
     <div className="mode-screen">
+      <div className="mode-logo">
+        {empresa?.logo ? (
+          <img src={empresa.logo} alt={empresa.nombre || 'Logo'} className="brand-logo" />
+        ) : (
+          <span>{empresa?.nombre || 'Pidevo'}</span>
+        )}
+      </div>
+      <div className="mode-eyebrow">¿Cómo querés pedir?</div>
+
       <div className="mode-opt dine" onClick={() => handlePickMode('mesa')}>
         <div className="mode-icon">
           <i className="ti ti-tools-kitchen-2"></i>

@@ -40,7 +40,7 @@ export default function AdminMenuView({ active, platos, onNew, onEdit, onMove })
             const q = menuSearch.toLowerCase();
             return p.nombre.toLowerCase().includes(q) || (p.descripcion || '').toLowerCase().includes(q);
           })
-          .map((plato, index) => {
+          .map((plato, index, lista) => {
             const icon = categoriaIcon(plato.categoria);
             return (
               <div
@@ -53,15 +53,15 @@ export default function AdminMenuView({ active, platos, onNew, onEdit, onMove })
                   <button
                     className="dish-move-btn"
                     disabled={index === 0}
-                    onClick={(e) => { e.stopPropagation(); onMove(index, -1); }}
+                    onClick={(e) => { e.stopPropagation(); onMove(plato.id, -1); }}
                     aria-label="Mover arriba"
                   >
                     <i className="ti ti-chevron-up"></i>
                   </button>
                   <button
                     className="dish-move-btn"
-                    disabled={index === platos.length - 1}
-                    onClick={(e) => { e.stopPropagation(); onMove(index, 1); }}
+                    disabled={index === lista.length - 1}
+                    onClick={(e) => { e.stopPropagation(); onMove(plato.id, 1); }}
                     aria-label="Mover abajo"
                   >
                     <i className="ti ti-chevron-down"></i>

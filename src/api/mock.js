@@ -2,6 +2,7 @@ const DEMO_EMPRESA = {
   id: 1,
   slug: 'demo',
   nombre: 'Pidevo',
+  logo: '/pidevo.png',
   whatsapp: '5493815069332',
   activo: true,
   abierto: true,

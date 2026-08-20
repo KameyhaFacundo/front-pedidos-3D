@@ -1560,6 +1560,13 @@
   font-variant-numeric: tabular-nums;
 }
 
+.pedidos-filtro.cancelados-toggle i { font-size: 14px; }
+.pedidos-filtro.cancelados-toggle.active {
+  background: rgba(var(--ember-rgb), 0.16);
+  border-color: rgba(var(--ember-rgb), 0.4);
+  color: var(--ember);
+}
+
 .staff-form {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr auto;

@@ -72,7 +72,9 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-inner">
         <Link to={path('/')} className="navbar-brand">
-          {empresa?.nombre ? (
+          {empresa?.logo ? (
+            <img src={empresa.logo} alt={empresa.nombre || 'Logo'} className="brand-logo" />
+          ) : empresa?.nombre ? (
             <span className="navbar-empresa">{empresa.nombre}</span>
           ) : (
             <img src="/pidevo.png" alt="Pidevo" className="brand-logo" />
