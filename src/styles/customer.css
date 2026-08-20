@@ -7,6 +7,34 @@
   padding: 20px 24px 14px;
 }
 
+.menu-bell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cream);
+  background: rgba(232, 174, 45, 0.12);
+  border: 1px solid rgba(232, 174, 45, 0.45);
+  border-radius: var(--radius-pill);
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin-left: auto;
+}
+
+.menu-bell:hover {
+  background: rgba(232, 174, 45, 0.22);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.menu-bell:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
 .menu-eyebrow {
   font-size: 10.5px;
   color: var(--muted);

@@ -140,13 +140,13 @@
     "semantic_hash": ""
   },
   "src/pages/LoginPage.jsx": {
-    "mtime": 1787229023.7136261,
-    "ast_hash": "39d32a6c2d1935c1eca4fec35c444e23",
+    "mtime": 1787231962.7380226,
+    "ast_hash": "b05d974eddc64c0825a04746b37ae3c3",
     "semantic_hash": ""
   },
   "src/pages/MenuPage.jsx": {
-    "mtime": 1787228960.5199964,
-    "ast_hash": "981be6464b616d4bc4a1fd096413f605",
+    "mtime": 1787231908.950652,
+    "ast_hash": "beb8bbdcdd20d2d500dddfbb7f955578",
     "semantic_hash": ""
   },
   "src/pages/ModeSelectPage.jsx": {

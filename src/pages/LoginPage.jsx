@@ -61,9 +61,6 @@ export default function LoginPage() {
 
   return (
     <div className="login-page">
-      <div className="login-bg-blob login-blob-1"></div>
-      <div className="login-bg-blob login-blob-2"></div>
-
       <div className="login-card">
         <Link to="/" className="login-brand" aria-label="Volver a Pidevo">
           {empresa?.logo ? (

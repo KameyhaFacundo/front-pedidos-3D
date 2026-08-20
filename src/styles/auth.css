@@ -4,34 +4,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(1100px 600px at 10% -10%, var(--brand-glow), transparent 60%),
-              radial-gradient(900px 500px at 110% 110%, var(--brand-glow), transparent 55%),
-              var(--body-bg);
+  background: var(--body-bg);
   padding: 24px;
   position: relative;
   overflow: hidden;
 }
-
-.login-page::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(var(--hair) 1px, transparent 1px);
-  background-size: 26px 26px;
-  opacity: 0.35;
-  pointer-events: none;
-}
-
-.login-bg-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.login-blob-1 { width: 320px; height: 320px; top: -80px; left: -80px; background: var(--ember); }
-.login-blob-2 { width: 380px; height: 380px; bottom: -120px; right: -100px; background: var(--accent); }
 
 .login-card {
   width: 100%;

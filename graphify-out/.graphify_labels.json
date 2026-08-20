@@ -12,9 +12,8 @@
   "10": "CLAUDE.md",
   "11": "eslint.config.js",
   "12": "adminUtils.js",
-  "13": "CartContext.jsx",
+  "13": "qrcode",
   "14": "manifest.json",
-  "15": "CocinaPage.jsx",
-  "16": "sw.js",
-  "17": "qrcode"
+  "15": "LlamadosPage.jsx",
+  "16": "sw.js"
 }

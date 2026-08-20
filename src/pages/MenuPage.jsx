@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, lazy, Suspense } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { getMenu, getMesas } from '../api/client';
+import { getMenu, getMesas, llamarMozo } from '../api/client';
 import { useCart } from '../context/CartContext';
 import { useOrderMode } from '../context/OrderModeContext';
 import { useCompany } from '../context/CompanyContext';
@@ -35,6 +35,20 @@ export default function MenuPage() {
   const { tipo, mesaId } = useOrderMode();
   const { path } = useCompany();
   const [mesas, setMesas] = useState([]);
+  const [llamando, setLlamando] = useState(false);
+  const [llamadoOk, setLlamadoOk] = useState(false);
+
+  const handleLlamarMozo = async () => {
+    if (llamando || llamadoOk || !mesaId) return;
+    setLlamando(true);
+    try {
+      await llamarMozo(mesaId);
+      setLlamadoOk(true);
+      setTimeout(() => setLlamadoOk(false), 3000);
+    } catch {
+      setLlamando(false);
+    }
+  };
 
   useEffect(() => {
     if (isDemo) {
@@ -162,6 +176,16 @@ export default function MenuPage() {
           {empresa?.nombre || 'Menú'} · {tipo === 'mesa' ? `Mesa ${mesaNumero || '...'}` : 'Para retirar'}
           {estimado ? ` · Entrega estimada: ${estimado} min` : ''}
         </div>
+        {tipo === 'mesa' && mesaId && (
+          <button
+            className="menu-bell"
+            onClick={handleLlamarMozo}
+            disabled={llamando || llamadoOk}
+            title="Llamar al mozo"
+          >
+            <i className={`ti ${llamadoOk ? 'ti-check' : 'ti-bell-ringing'}`}></i>
+          </button>
+        )}
       </header>
 
       <div className="menu-toolbar">
