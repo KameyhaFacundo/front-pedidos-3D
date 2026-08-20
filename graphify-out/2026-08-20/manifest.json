@@ -5,13 +5,13 @@
     "semantic_hash": ""
   },
   "src/App.jsx": {
-    "mtime": 1787190037.8605878,
-    "ast_hash": "748a2188773a9d8a289498006692458f",
+    "mtime": 1787228949.543849,
+    "ast_hash": "f7baf60a33ba4e205241897c509ccf7a",
     "semantic_hash": ""
   },
   "src/api/client.js": {
-    "mtime": 1787188325.1102736,
-    "ast_hash": "1fcb6934ac71d2ca338c2fe34a44c7b0",
+    "mtime": 1787228747.0940444,
+    "ast_hash": "68237f631f54ac3a0bc5cfae825b8faa",
     "semantic_hash": ""
   },
   "src/api/useSSE.js": {
@@ -20,8 +20,8 @@
     "semantic_hash": ""
   },
   "src/components/ARViewer.jsx": {
-    "mtime": 1787224276.4961827,
-    "ast_hash": "0b26554fcc61d1184394ef42a4fe3abe",
+    "mtime": 1787227393.1864393,
+    "ast_hash": "82b3a0a1c8e2a446c16c8793e24cd0d1",
     "semantic_hash": ""
   },
   "src/components/ErrorBoundary.jsx": {
@@ -55,9 +55,9 @@
     "semantic_hash": ""
   },
   "src/components/RegistroModal.jsx": {
-    "mtime": 1786558289.7819142,
-    "ast_hash": "3b560bd1ed47e3e4780c47eaaaf71237",
-    "semantic_hash": "3b560bd1ed47e3e4780c47eaaaf71237"
+    "mtime": 1787226033.490523,
+    "ast_hash": "002336649ef5c291f690245be4ef94e7",
+    "semantic_hash": ""
   },
   "src/components/Skeletons.jsx": {
     "mtime": 1786544136.5211802,
@@ -105,13 +105,13 @@
     "semantic_hash": "37f3a53e7f866be8a56ffa3e99e6e2bc"
   },
   "src/main.jsx": {
-    "mtime": 1787224264.7955182,
-    "ast_hash": "58a101c7130c3dc2a73d99ca5d1eff70",
+    "mtime": 1787225983.5157373,
+    "ast_hash": "d94a04c2517daad137208459f32bf31a",
     "semantic_hash": ""
   },
   "src/pages/AdminPage.jsx": {
-    "mtime": 1787190232.1849682,
-    "ast_hash": "2d7f6447186d0043fef111a3516e1741",
+    "mtime": 1787228942.116771,
+    "ast_hash": "e33c9e035e00e02c9940c98105667569",
     "semantic_hash": ""
   },
   "src/pages/CartPage.jsx": {
@@ -140,18 +140,18 @@
     "semantic_hash": ""
   },
   "src/pages/LoginPage.jsx": {
-    "mtime": 1787162046.0943215,
-    "ast_hash": "4a152c809e1ad1f194cadea6c383ac8b",
+    "mtime": 1787229023.7136261,
+    "ast_hash": "39d32a6c2d1935c1eca4fec35c444e23",
     "semantic_hash": ""
   },
   "src/pages/MenuPage.jsx": {
-    "mtime": 1787224218.6986723,
-    "ast_hash": "e78ebd517678629168d9525fa2e5d562",
+    "mtime": 1787228960.5199964,
+    "ast_hash": "981be6464b616d4bc4a1fd096413f605",
     "semantic_hash": ""
   },
   "src/pages/ModeSelectPage.jsx": {
-    "mtime": 1787186289.0471196,
-    "ast_hash": "55519df43e43eb889f2707c8017f7815",
+    "mtime": 1787228993.9533243,
+    "ast_hash": "37d2febb75b0cddf8ad9476245ff711b",
     "semantic_hash": ""
   },
   "src/pages/NotFoundPage.jsx": {
@@ -160,8 +160,8 @@
     "semantic_hash": "4715f58bf3ded7b4dea8dfd6a7f73c66"
   },
   "src/pages/PedidoTrackingPage.jsx": {
-    "mtime": 1787186754.293095,
-    "ast_hash": "f7c539206865f2f72b80a97d04c2b3ba",
+    "mtime": 1787229085.4852078,
+    "ast_hash": "bb96037f00eb6c002cacc00b42e3d6c7",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -245,8 +245,8 @@
     "semantic_hash": ""
   },
   "src/components/AdminSidebar.jsx": {
-    "mtime": 1787162016.1741667,
-    "ast_hash": "46d179dc8dce1c06228adc97cd3751a1",
+    "mtime": 1787228926.9753482,
+    "ast_hash": "01a0168a76ccba1f49eb98531da4794d",
     "semantic_hash": ""
   },
   "src/components/adminUtils.js": {
@@ -260,13 +260,13 @@
     "semantic_hash": ""
   },
   "src/components/admin/AdminConfigView.jsx": {
-    "mtime": 1787162664.6877153,
-    "ast_hash": "2e79ea0ed019c2ed0ac0128f70a8e8cb",
+    "mtime": 1787228869.602787,
+    "ast_hash": "8e154da5e95cdab839d514fedd0a17d7",
     "semantic_hash": ""
   },
   "src/components/admin/AdminMenuView.jsx": {
-    "mtime": 1787147522.4358926,
-    "ast_hash": "f0803b08f47943156ada0191ef3f42f0",
+    "mtime": 1787228125.4131103,
+    "ast_hash": "94b69466bed3bda3c0d0c92c6602d0a1",
     "semantic_hash": ""
   },
   "src/components/admin/AdminMesasView.jsx": {
@@ -280,8 +280,8 @@
     "semantic_hash": ""
   },
   "src/components/admin/AdminPedidosView.jsx": {
-    "mtime": 1787191099.4490008,
-    "ast_hash": "2e09a6f5bcef08651c0105eb88239bd5",
+    "mtime": 1787228324.184032,
+    "ast_hash": "00377e5fe08612d243b6b5bd90465d4e",
     "semantic_hash": ""
   },
   "src/components/admin/PlatoModal.jsx": {
@@ -305,13 +305,13 @@
     "semantic_hash": ""
   },
   "src/components/admin/LocalSettingsModal.jsx": {
-    "mtime": 1787190240.3000827,
-    "ast_hash": "0efc8db45795d3a1ed7ff5e6e7073948",
+    "mtime": 1787229069.4455638,
+    "ast_hash": "08600441d6c6fb57d2220d624d36ae4b",
     "semantic_hash": ""
   },
   "src/api/mock.js": {
-    "mtime": 1787191239.2438784,
-    "ast_hash": "789935b88f9a1991b03b4c57dc81180a",
+    "mtime": 1787229030.7059894,
+    "ast_hash": "78256ae7bc38a4e74a6a957719abc10b",
     "semantic_hash": ""
   },
   "public/manifest.json": {

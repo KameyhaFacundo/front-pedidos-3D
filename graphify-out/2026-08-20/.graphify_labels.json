@@ -4,7 +4,7 @@
   "2": "devDependencies",
   "3": "client.js",
   "4": "AdminPage.jsx",
-  "5": "App.jsx",
+  "5": "MenuPage.jsx",
   "6": "TypeScript Config",
   "7": "PlanoEditor.jsx",
   "8": "package.json",
@@ -12,9 +12,9 @@
   "10": "CLAUDE.md",
   "11": "eslint.config.js",
   "12": "adminUtils.js",
-  "13": "LoginPage.jsx",
+  "13": "App.jsx",
   "14": "manifest.json",
-  "15": "CartContext.jsx",
+  "15": "CompanyContext.jsx",
   "16": "sw.js",
   "17": "qrcode"
 }

@@ -1,10 +1,9 @@
 {
-  "0": "PedidoTrackingPage.jsx",
   "1": "mock.js",
   "2": "devDependencies",
   "3": "client.js",
   "4": "AdminPage.jsx",
-  "5": "App.jsx",
+  "5": "useCompany",
   "6": "TypeScript Config",
   "7": "PlanoEditor.jsx",
   "8": "package.json",
@@ -12,9 +11,8 @@
   "10": "CLAUDE.md",
   "11": "eslint.config.js",
   "12": "adminUtils.js",
-  "13": "Skeletons.jsx",
+  "13": "App.jsx",
   "14": "manifest.json",
-  "15": "ErrorBoundary",
-  "16": "sw.js",
-  "17": "Footer.jsx"
+  "15": "CompanyContext.jsx",
+  "16": "sw.js"
 }
