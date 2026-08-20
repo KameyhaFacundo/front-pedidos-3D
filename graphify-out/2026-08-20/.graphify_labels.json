@@ -2,7 +2,7 @@
   "0": "PedidoTrackingPage.jsx",
   "1": "mock.js",
   "2": "devDependencies",
-  "3": "MenuPage.jsx",
+  "3": "ARViewer.jsx",
   "4": "client.js",
   "5": "App.jsx",
   "6": "TypeScript Config",
@@ -12,8 +12,8 @@
   "10": "CLAUDE.md",
   "11": "eslint.config.js",
   "12": "adminUtils.js",
-  "13": "AdminPage.jsx",
+  "13": "qrcode",
   "14": "manifest.json",
-  "15": "CompanyContext.jsx",
+  "15": "LlamadosPage.jsx",
   "16": "sw.js"
 }

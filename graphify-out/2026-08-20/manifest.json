@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   "src/api/client.js": {
-    "mtime": 1787230232.1189108,
-    "ast_hash": "59e2bddaf63d9536efedc8d63621f0fa",
+    "mtime": 1787232582.4668813,
+    "ast_hash": "26c31cfa86fa9855b0e98c2993d9c35b",
     "semantic_hash": ""
   },
   "src/api/useSSE.js": {
@@ -236,7 +236,7 @@
   },
   ".claude/settings.json": {
     "mtime": 1786846504.1987302,
-    "ast_hash": "d63945663ac5a70eebb1756ab927f4f5",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "eslint.config.js": {
