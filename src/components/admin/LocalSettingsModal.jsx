@@ -46,6 +46,29 @@ export default function LocalSettingsModal({ open, configForm, setConfigForm, on
 
           <div className="toggle-row settings-toggle">
             <div>
+              <div className="t-label">Local abierto</div>
+              <div className="t-sub">Si está cerrado, los clientes pueden ver el menú pero no pedir</div>
+            </div>
+            <div
+              className={`switch ${configForm.abierto ? 'on' : ''}`}
+              onClick={() => setConfigForm((prev) => ({ ...prev, abierto: !prev.abierto }))}
+            />
+          </div>
+
+          <div className="field">
+            <label>Tiempo estimado de entrega (minutos)</label>
+            <input
+              type="number"
+              min="0"
+              max="600"
+              value={configForm.tiempo_estimado ?? ''}
+              onChange={(e) => setConfigForm((prev) => ({ ...prev, tiempo_estimado: e.target.value === '' ? '' : Number(e.target.value) }))}
+              placeholder="Ej: 25"
+            />
+          </div>
+
+          <div className="toggle-row settings-toggle">
+            <div>
               <div className="t-label">Sonido en pedidos nuevos</div>
               <div className="t-sub">Reproduce un beep cuando entra un pedido</div>
             </div>

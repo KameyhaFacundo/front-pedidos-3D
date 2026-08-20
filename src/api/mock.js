@@ -4,6 +4,8 @@ const DEMO_EMPRESA = {
   nombre: 'Pidevo',
   whatsapp: '5493815069332',
   activo: true,
+  abierto: true,
+  tiempo_estimado: 25,
 };
 
 const DEMO_PLATOS = [
@@ -12,6 +14,7 @@ const DEMO_PLATOS = [
     nombre: 'Bunker Cranch Doble',
     categoria: 'principales',
     descripcion: 'Doble medallón, cheddar y panceta ahumada',
+    ingredientes: ['Cebolla', 'Tomate', 'Lechuga', 'Panceta'],
     precio: 13500,
     foto: '/hamburguesa.png',
     disponible: true,
@@ -23,6 +26,7 @@ const DEMO_PLATOS = [
     nombre: 'Hamburguesa con papas',
     categoria: 'principales',
     descripcion: 'Con panceta, cheddar y papas fritas',
+    ingredientes: ['Cebolla', 'Tomate', 'Panceta'],
     precio: 12000,
     foto: '/hamburguesa con papas.png',
     disponible: true,
@@ -42,6 +46,7 @@ const DEMO_PLATOS = [
     nombre: 'Milanesa napolitana',
     categoria: 'principales',
     descripcion: 'Con papas al horno y ensalada',
+    ingredientes: ['Jamón', 'Queso', 'Tomate'],
     precio: 11000,
     foto: '/napolitana.png',
     disponible: true,
@@ -104,7 +109,7 @@ function svgFoto(emoji, texto) {
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
 
-function estadoSegunElapsed(ms) {
+export function estadoSegunElapsed(ms) {
   if (ms < 30000) return 'nuevo';
   if (ms < 90000) return 'preparacion';
   if (ms < 180000) return 'listo';

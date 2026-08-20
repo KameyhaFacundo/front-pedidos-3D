@@ -34,7 +34,7 @@ export default function CheckoutPage() {
   const navigate = useNavigate();
   const { items, getTotal, clearCart } = useCart();
   const { tipo: modoTipo, mesaId: modoMesaId } = useOrderMode();
-  const { path, slug } = useCompany();
+  const { path, slug, empresa } = useCompany();
   const [mesas, setMesas] = useState([]);
   const [entrega, setEntrega] = useState(modoTipo === 'retiro' ? 'retiro' : 'mesa');
   const [mesaId, setMesaId] = useState(modoMesaId || '');
@@ -50,6 +50,8 @@ export default function CheckoutPage() {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [resumen, setResumen] = useState(null);
+  const [propinaPct, setPropinaPct] = useState(0);
+  const cerrado = empresa?.abierto === false;
 
   useEffect(() => {
     getMesas()
@@ -75,7 +77,9 @@ export default function CheckoutPage() {
     return Math.min(Number(cupon.descuento), subtotal);
   }, [cupon, subtotal]);
 
-  const total = subtotal - descuento;
+  const baseTotal = subtotal - descuento;
+  const propina = Math.round(baseTotal * (propinaPct / 100) * 100) / 100;
+  const total = baseTotal + propina;
 
   const handleValidarCupon = async () => {
     if (!cuponCodigo.trim()) return;
@@ -93,6 +97,10 @@ export default function CheckoutPage() {
   };
 
   const handleSubmit = async () => {
+    if (cerrado) {
+      setError('El local está cerrado por ahora');
+      return;
+    }
     if (!nombre.trim()) {
       setError('Ingresá tu nombre');
       return;
@@ -136,6 +144,7 @@ export default function CheckoutPage() {
         itemsTexto: itemsToTexto(items),
         subtotal,
         descuento,
+        propina,
         total,
       });
       localStorage.setItem(`pidevo_last_order:${slug}`, JSON.stringify({ id: result.id, token: result.token, tipo: entrega, mesaNumero: mesaNumero || null, fecha: new Date().toISOString() }));
@@ -179,6 +188,7 @@ export default function CheckoutPage() {
       '',
       `Subtotal: ${formatear(resumen.subtotal)}`,
       resumen.descuento > 0 ? `Descuento: -${formatear(resumen.descuento)}` : '',
+      resumen.propina > 0 ? `Propina: ${formatear(resumen.propina)}` : '',
       `TOTAL: ${formatear(resumen.total)}`,
       '',
       'Espero tu respuesta para confirmar mi pedido 🙌',
@@ -236,6 +246,12 @@ export default function CheckoutPage() {
         <div className="alert alert-error">
           <p>{error}</p>
           <button onClick={() => setError(null)}>&times;</button>
+        </div>
+      )}
+
+      {cerrado && (
+        <div className="alert alert-warning">
+          <p><i className="ti ti-clock-off"></i> El local está cerrado por ahora. No se pueden confirmar pedidos.</p>
         </div>
       )}
 
@@ -365,6 +381,21 @@ export default function CheckoutPage() {
       </div>
 
       <div className="checkout-section">
+        <h2>Propina</h2>
+        <div className="propina-chips">
+          {[0, 10, 15, 20].map((pct) => (
+            <button
+              key={pct}
+              className={`chip ${propinaPct === pct ? 'active' : ''}`}
+              onClick={() => setPropinaPct(pct)}
+            >
+              {pct === 0 ? 'Sin propina' : `${pct}%`}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="checkout-section">
         <h2>Resumen del pedido</h2>
         <div className="checkout-summary">
           {items.map((item) => (
@@ -391,6 +422,12 @@ export default function CheckoutPage() {
               <span>-{formatear(descuento)}</span>
             </div>
           )}
+          {propina > 0 && (
+            <div className="summary-row">
+              <span>Propina ({propinaPct}%)</span>
+              <span>{formatear(propina)}</span>
+            </div>
+          )}
           <div className="summary-total">
             <span>Total</span>
             <span>{formatear(total)}</span>
@@ -401,9 +438,9 @@ export default function CheckoutPage() {
       <button
         className="btn btn-primary btn-block btn-lg"
         onClick={handleSubmit}
-        disabled={submitting}
+        disabled={submitting || cerrado}
       >
-        {submitting ? 'Confirmando...' : `Pedir por WhatsApp · ${formatear(total)}`}
+        {cerrado ? 'Local cerrado' : submitting ? 'Confirmando...' : `Pedir por WhatsApp · ${formatear(total)}`}
       </button>
     </div>
   );

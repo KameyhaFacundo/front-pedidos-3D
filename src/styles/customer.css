@@ -645,6 +645,91 @@
   border: 1px solid rgba(156, 180, 61, 0.3);
 }
 
+.alert-warning {
+  background: rgba(232, 174, 45, 0.12);
+  color: var(--gold);
+  border: 1px solid rgba(232, 174, 45, 0.3);
+}
+
+.alert-warning i { margin-right: 6px; }
+
+.demo-banner,
+.cerrado-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  padding: 9px 14px;
+  border-radius: var(--radius-pill);
+  margin: 0 22px 10px;
+}
+
+.demo-banner {
+  background: rgba(232, 174, 45, 0.1);
+  color: var(--gold);
+  border: 1px dashed rgba(232, 174, 45, 0.4);
+}
+
+.cerrado-banner {
+  background: rgba(255, 90, 54, 0.12);
+  color: var(--ember);
+  border: 1px solid rgba(255, 90, 54, 0.3);
+}
+
+.cerrado-pill {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  border: 1px solid rgba(168, 156, 135, 0.35);
+  padding: 6px 10px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.propina-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sin-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.propina-chips .chip,
+.sin-list .chip {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(168, 156, 135, 0.35);
+  background: transparent;
+  color: var(--cream);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.propina-chips .chip:hover,
+.sin-list .chip:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.propina-chips .chip.active,
+.sin-list .chip.active {
+  background: rgba(232, 174, 45, 0.15);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
 /* ===== COCINA PAGE ===== */
 .cocina-page { padding: 0 22px 2rem; }
 
@@ -753,6 +838,75 @@
   padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--hair);
 }
+
+.pedido-card-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.comanda-print {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface-2);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-pill);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.comanda-print:hover {
+  color: var(--cream);
+  border-color: var(--gold);
+}
+
+.mesa-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.mesa-group {
+  background: var(--surface-1);
+  border: 1px solid var(--hair);
+  border-radius: 16px;
+  padding: 12px;
+}
+
+.mesa-group-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 4px 12px;
+}
+
+.mesa-group-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--cream);
+}
+
+.mesa-group-count {
+  background: var(--ember);
+  color: var(--on-brand);
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.agrupar-tab i { margin-right: 4px; }
 
 .pedido-id {
   font-family: 'Fraunces', serif;

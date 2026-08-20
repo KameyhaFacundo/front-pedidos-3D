@@ -11,9 +11,11 @@ export default function PlatoDetailModal({ plato, onClose }) {
   const { addToCart } = useCart();
   const presentaciones = plato?.presentaciones || EMPTY;
   const agregados = plato?.agregados || EMPTY;
+  const ingredientes = plato?.ingredientes || EMPTY;
 
   const [presentacion, setPresentacion] = useState(null);
   const [seleccion, setSeleccion] = useState({});
+  const [sinSet, setSinSet] = useState(new Set());
   const [observacion, setObservacion] = useState('');
 
   useEffect(() => {
@@ -35,11 +37,25 @@ export default function PlatoDetailModal({ plato, onClose }) {
   const extraTotal = extras.reduce((sum, e) => sum + Number(e.precio) * e.cantidad, 0);
   const total = Number(precioBase) + extraTotal;
 
+  const toggleSin = (ing) => {
+    setSinSet((prev) => {
+      const next = new Set(prev);
+      if (next.has(ing)) {
+        next.delete(ing);
+      } else {
+        next.add(ing);
+      }
+      return next;
+    });
+  };
+
   const handleAgregar = () => {
+    const sinTexto = [...sinSet].length > 0 ? [...sinSet].map((i) => `Sin ${i}`).join(', ') : '';
+    const observacionFinal = [observacion.trim(), sinTexto].filter(Boolean).join(' - ');
     addToCart(plato, {
       presentacion,
       agregados: extras,
-      observacion,
+      observacion: observacionFinal || null,
       cantidad: 1,
     });
     onClose();
@@ -120,6 +136,24 @@ export default function PlatoDetailModal({ plato, onClose }) {
                     </div>
                   );
                 })}
+              </div>
+            </div>
+          )}
+
+          {ingredientes.length > 0 && (
+            <div className="plato-section">
+              <div className="plato-section-title">¿Quitar algún ingrediente?</div>
+              <div className="plato-section-sub">Tocá los que no quieras que lleve.</div>
+              <div className="sin-list">
+                {ingredientes.map((ing) => (
+                  <button
+                    key={ing}
+                    className={`chip ${sinSet.has(ing) ? 'active' : ''}`}
+                    onClick={() => toggleSin(ing)}
+                  >
+                    {sinSet.has(ing) ? <i className="ti ti-circle-check"></i> : <i className="ti ti-circle"></i>} {ing}
+                  </button>
+                ))}
               </div>
             </div>
           )}

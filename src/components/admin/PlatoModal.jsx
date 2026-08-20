@@ -9,6 +9,7 @@ export default function PlatoModal({ open, plato, onClose, onSaved }) {
   const [saving, setSaving] = useState(false);
   const [presentaciones, setPresentaciones] = useState([]);
   const [agregados, setAgregados] = useState([]);
+  const [ingredientesTexto, setIngredientesTexto] = useState('');
   const [fotoFile, setFotoFile] = useState(null);
   const [glbFile, setGlbFile] = useState(null);
   const [usdzFile, setUsdzFile] = useState(null);
@@ -32,6 +33,7 @@ export default function PlatoModal({ open, plato, onClose, onSaved }) {
     setUsdzFile(null);
     setPresentaciones((plato?.presentaciones || []).map((p) => ({ id: p.id, nombre: p.nombre, descripcion: p.descripcion || '', precio: p.precio })));
     setAgregados((plato?.agregados || []).map((a) => ({ id: a.id, nombre: a.nombre, descripcion: a.descripcion || '', precio: a.precio })));
+    setIngredientesTexto((plato?.ingredientes || []).join(', '));
   }, [open, plato]);
 
   if (!open) return null;
@@ -75,6 +77,12 @@ export default function PlatoModal({ open, plato, onClose, onSaved }) {
         formData.append(`agregados[${i}][descripcion]`, a.descripcion || '');
         formData.append(`agregados[${i}][precio]`, Number(a.precio) || 0);
       });
+
+      const ingredientes = ingredientesTexto
+        .split(',')
+        .map((s) => s.trim())
+        .filter(Boolean);
+      ingredientes.forEach((ing, i) => formData.append(`ingredientes[${i}]`, ing));
 
       if (plato) {
         await updatePlato(plato.id, formData);
@@ -191,6 +199,17 @@ export default function PlatoModal({ open, plato, onClose, onSaved }) {
               onChange={(e) => handleChange('descripcion', e.target.value)}
               placeholder="Doble medallón de 110gr, queso tybo, panceta..."
             />
+          </div>
+
+          <div className="field">
+            <label>Ingredientes (separados por coma)</label>
+            <input
+              type="text"
+              value={ingredientesTexto}
+              onChange={(e) => setIngredientesTexto(e.target.value)}
+              placeholder="Cebolla, Tomate, Lechuga, Panceta"
+            />
+            <small className="field-hint">Los clientes podrán quitarlos de su pedido</small>
           </div>
 
           <div className="custom-section">

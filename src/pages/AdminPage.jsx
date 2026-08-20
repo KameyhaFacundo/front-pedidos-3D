@@ -52,7 +52,7 @@ export default function AdminPage() {
   const [mesas, setMesas] = useState([]);
   const [empresa, setEmpresa] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [configForm, setConfigForm] = useState({ nombre: '', whatsapp: '' });
+  const [configForm, setConfigForm] = useState({ nombre: '', whatsapp: '', abierto: true, tiempo_estimado: '' });
   const [savingConfig, setSavingConfig] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalPlato, setModalPlato] = useState(null);
@@ -117,8 +117,12 @@ export default function AdminPage() {
       const empresa = await updateEmpresa({
         nombre: configForm.nombre.trim(),
         whatsapp: configForm.whatsapp.trim(),
+        abierto: Boolean(configForm.abierto),
+        tiempo_estimado: configForm.tiempo_estimado === '' || configForm.tiempo_estimado == null
+          ? null
+          : Number(configForm.tiempo_estimado),
       });
-      setConfigForm({ nombre: empresa.nombre || '', whatsapp: empresa.whatsapp || '' });
+      setConfigForm({ nombre: empresa.nombre || '', whatsapp: empresa.whatsapp || '', abierto: empresa.abierto !== false, tiempo_estimado: empresa.tiempo_estimado ?? '' });
       notify('Datos guardados', 'success');
     } catch (err) {
       notify(err.message || 'Error al guardar', 'error');
@@ -148,7 +152,7 @@ export default function AdminPage() {
     if (view === 'mesas') fetchMesasData();
     if (view === 'configuracion') {
       getEmpresa().then((e) => {
-        if (e) setConfigForm({ nombre: e.nombre || '', whatsapp: e.whatsapp || '' });
+        if (e) setConfigForm({ nombre: e.nombre || '', whatsapp: e.whatsapp || '', abierto: e.abierto !== false, tiempo_estimado: e.tiempo_estimado ?? '' });
       }).catch(() => {});
     }
   }, [view, fetchPlatos, fetchMesasData]);

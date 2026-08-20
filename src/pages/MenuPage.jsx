@@ -1,12 +1,13 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, lazy, Suspense } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { getMenu, getMesas } from '../api/client';
 import { useCart } from '../context/CartContext';
 import { useOrderMode } from '../context/OrderModeContext';
 import { useCompany } from '../context/CompanyContext';
-import ARViewer from '../components/ARViewer';
 import PlatoDetailModal from '../components/PlatoDetailModal';
 import { MenuSkeleton } from '../components/Skeletons';
+
+const ARViewer = lazy(() => import('../components/ARViewer'));
 
 const CATEGORIAS = [
   { key: '', label: 'Todos' },
@@ -58,6 +59,9 @@ export default function MenuPage() {
     const mesa = mesas.find((m) => m.id === mesaId);
     return mesa ? mesa.numero : null;
   }, [mesas, mesaId]);
+
+  const cerrado = empresa?.abierto === false;
+  const estimado = empresa?.tiempo_estimado;
 
   useEffect(() => {
     // If demo mode, we already set localStorage slug and empresa above; proceed to call API
@@ -142,6 +146,12 @@ export default function MenuPage() {
           MODO DEMO — datos ficticios. No se están usando datos reales.
         </div>
       )}
+      {cerrado && (
+        <div className="cerrado-banner">
+          <i className="ti ti-clock-off"></i>
+          El local está cerrado por ahora. Podés ver el menú, pero no se pueden hacer pedidos.
+        </div>
+      )}
       <header className="menu-header">
         <Link to={path('/')} className="back-link">
           <i className="ti ti-arrow-left"></i>
@@ -149,6 +159,7 @@ export default function MenuPage() {
         </Link>
         <div className="menu-eyebrow">
           {empresa?.nombre || 'Menú'} · {tipo === 'mesa' ? `Mesa ${mesaNumero || '...'}` : 'Para retirar'}
+          {estimado ? ` · Entrega estimada: ${estimado} min` : ''}
         </div>
       </header>
 
@@ -222,7 +233,9 @@ export default function MenuPage() {
                         ? `Desde $${Math.min(...plato.presentaciones.map((p) => Number(p.precio))).toFixed(2)}`
                         : `$${Number(plato.precio).toFixed(2)}`}
                     </div>
-                    {qty > 0 ? (
+                    {cerrado ? (
+                      <span className="cerrado-pill">Local cerrado</span>
+                    ) : qty > 0 ? (
                       <div className="stepper" onClick={(e) => e.stopPropagation()}>
                         <button
                           className="stepper-btn"
@@ -266,11 +279,13 @@ export default function MenuPage() {
       )}
 
       {arPlato && (
-        <ARViewer
-          plato={arPlato}
-          onClose={() => setArPlato(null)}
-          onAddToCart={handleARAddToCart}
-        />
+        <Suspense fallback={null}>
+          <ARViewer
+            plato={arPlato}
+            onClose={() => setArPlato(null)}
+            onAddToCart={handleARAddToCart}
+          />
+        </Suspense>
       )}
 
       {detailPlato && (

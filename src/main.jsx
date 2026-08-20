@@ -6,8 +6,10 @@ import ErrorBoundary from './components/ErrorBoundary';
 import App from './App';
 import '@tabler/icons-webfont/dist/tabler-icons.min.css';
 
-if (!customElements.get('model-viewer')) {
-  import('@google/model-viewer');
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
 }
 
 createRoot(document.getElementById('root')).render(

@@ -154,7 +154,28 @@ function DemoModal() {
 
 export default function App() {
   const location = useLocation();
+  const { empresa } = useCompany();
   const isDemoPath = location.pathname.startsWith('/demo');
+
+  // Título y meta OG dinámicos por empresa (para compartir en WhatsApp / SEO).
+  useEffect(() => {
+    const title = empresa?.nombre ? `${empresa.nombre} · Pedidos online` : 'Pidevo — Pedidos para tu local';
+    const desc = empresa?.nombre
+      ? `Pedí en ${empresa.nombre}: menú digital, pedidos por WhatsApp y seguimiento en vivo.`
+      : 'Pidevo: sistema de pedidos por QR para restaurantes.';
+    document.title = title;
+    const setMeta = (selector, content) => {
+      const el = document.querySelector(selector);
+      if (el) el.setAttribute('content', content);
+    };
+    setMeta('meta[property="og:title"]', title);
+    setMeta('meta[property="og:description"]', desc);
+    setMeta('meta[name="twitter:title"]', title);
+    setMeta('meta[name="twitter:description"]', desc);
+    setMeta('meta[property="og:url"]', window.location.href);
+    setMeta('meta[property="og:image"]', `${window.location.origin}/hamburguesa.png`);
+    setMeta('meta[name="twitter:image"]', `${window.location.origin}/hamburguesa.png`);
+  }, [empresa]);
 
   // Wherever the app was last *not* on /demo/* -- kept passively in sync on
   // every render, not threaded through each navigate()/Link call inside the

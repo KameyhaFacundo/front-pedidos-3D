@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   "src/api/client.js": {
-    "mtime": 1787147378.0107887,
-    "ast_hash": "5a17df0fd0511f09b03377fb1ccad2b4",
+    "mtime": 1787188325.1102736,
+    "ast_hash": "1fcb6934ac71d2ca338c2fe34a44c7b0",
     "semantic_hash": ""
   },
   "src/api/useSSE.js": {
@@ -80,9 +80,9 @@
     "semantic_hash": "ba048c246021b5393e9d717e7037e14c"
   },
   "src/context/CartContext.jsx": {
-    "mtime": 1786550490.0316918,
-    "ast_hash": "9c0915e0c04acaacf1f8c2332b166ec5",
-    "semantic_hash": "9c0915e0c04acaacf1f8c2332b166ec5"
+    "mtime": 1787187291.1118612,
+    "ast_hash": "9ec6d43b2e3485acf848bb97c13cfc6a",
+    "semantic_hash": ""
   },
   "src/context/CompanyContext.jsx": {
     "mtime": 1786851796.7844374,
@@ -95,9 +95,9 @@
     "semantic_hash": "6f19d4bf076386bfe1f5896f5026925f"
   },
   "src/context/OrderModeContext.jsx": {
-    "mtime": 1786458671.6891227,
-    "ast_hash": "35df64a78bee0f9371d7462178995295",
-    "semantic_hash": "35df64a78bee0f9371d7462178995295"
+    "mtime": 1787185844.5397096,
+    "ast_hash": "41f6b0fc0196082737f918e8aae9f309",
+    "semantic_hash": ""
   },
   "src/context/ThemeContext.jsx": {
     "mtime": 1786558289.7819142,
@@ -120,9 +120,9 @@
     "semantic_hash": "89cbb873fa553fad199bcc3db46b8a3e"
   },
   "src/pages/CheckoutPage.jsx": {
-    "mtime": 1786569896.4661727,
-    "ast_hash": "eec346959779d673f9a7af38e6bd3c8b",
-    "semantic_hash": "eec346959779d673f9a7af38e6bd3c8b"
+    "mtime": 1787186710.2045743,
+    "ast_hash": "39abbdf444446ba7e845a8ece481f811",
+    "semantic_hash": ""
   },
   "src/pages/CocinaPage.jsx": {
     "mtime": 1787154741.5755527,
@@ -145,13 +145,13 @@
     "semantic_hash": ""
   },
   "src/pages/MenuPage.jsx": {
-    "mtime": 1787163391.036553,
-    "ast_hash": "c7579ddfe859e37dd9481c5814676e91",
+    "mtime": 1787186696.802929,
+    "ast_hash": "5060e7e87d7e96d4ec21e6bf26756028",
     "semantic_hash": ""
   },
   "src/pages/ModeSelectPage.jsx": {
-    "mtime": 1787109742.256816,
-    "ast_hash": "b113fb8f98e8b0e9fc9bb2d81e7ddc2d",
+    "mtime": 1787186289.0471196,
+    "ast_hash": "55519df43e43eb889f2707c8017f7815",
     "semantic_hash": ""
   },
   "src/pages/NotFoundPage.jsx": {
@@ -160,8 +160,8 @@
     "semantic_hash": "4715f58bf3ded7b4dea8dfd6a7f73c66"
   },
   "src/pages/PedidoTrackingPage.jsx": {
-    "mtime": 1787109263.151157,
-    "ast_hash": "cc235b46b472860c589e08b7ca0eeb35",
+    "mtime": 1787186754.293095,
+    "ast_hash": "f7c539206865f2f72b80a97d04c2b3ba",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -236,7 +236,7 @@
   },
   ".claude/settings.json": {
     "mtime": 1786846504.1987302,
-    "ast_hash": "",
+    "ast_hash": "d63945663ac5a70eebb1756ab927f4f5",
     "semantic_hash": ""
   },
   "eslint.config.js": {
@@ -307,6 +307,11 @@
   "src/components/admin/LocalSettingsModal.jsx": {
     "mtime": 1787162593.9145105,
     "ast_hash": "3d2c2b2c5e06bc69cbc46bf1bb3d89aa",
+    "semantic_hash": ""
+  },
+  "src/api/mock.js": {
+    "mtime": 1787188492.2658017,
+    "ast_hash": "cefe0042aead7ce0c51d40224e107e4c",
     "semantic_hash": ""
   }
 }

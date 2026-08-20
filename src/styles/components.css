@@ -1479,6 +1479,55 @@
   margin-bottom: 16px;
 }
 
+.pedidos-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.pedidos-search > i {
+  position: absolute;
+  left: 12px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.pedidos-search input {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-pill);
+  color: var(--cream);
+  padding: 9px 38px 9px 36px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.pedidos-search input:focus {
+  border-color: var(--gold);
+}
+
+.pedidos-search input::placeholder {
+  color: var(--muted);
+}
+
+.pedidos-search-clear {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 15px;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.pedidos-search-clear:hover { color: var(--cream); }
+
 .pedidos-filtro {
   display: inline-flex;
   align-items: center;

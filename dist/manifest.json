@@ -1,0 +1,31 @@
+{
+  "name": "Pidevo — Pedidos para tu local",
+  "short_name": "Pidevo",
+  "description": "Pedí directo al local: menú digital por QR, pedidos por WhatsApp y seguimiento en vivo.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "es",
+  "background_color": "#14110D",
+  "theme_color": "#14110D",
+  "categories": ["food", "business", "shopping"],
+  "icons": [
+    {
+      "src": "/pidevo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/pidevo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

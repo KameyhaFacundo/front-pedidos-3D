@@ -10,7 +10,26 @@ const FILTROS = [
 
 export default function AdminPedidosView({ active, pedidos, metricas, slug, empresa, onAvanzar, onPagar, onCancelar }) {
   const [filtro, setFiltro] = useState('');
-  const visibles = filtro ? pedidos.filter((p) => p.tipo === filtro) : pedidos;
+  const [busqueda, setBusqueda] = useState('');
+
+  const visibles = pedidos.filter((p) => {
+    if (filtro && p.tipo !== filtro) return false;
+    const q = busqueda.trim().toLowerCase();
+    if (!q) return true;
+    const itemNames = (p.items || []).map((it) => it.plato?.nombre || '').join(' ');
+    const hay = [
+      String(p.id),
+      p.nombre,
+      p.celular,
+      p.direccion,
+      p.mesa?.numero,
+      itemNames,
+    ]
+      .filter(Boolean)
+      .map((s) => String(s).toLowerCase())
+      .some((s) => s.includes(q));
+    return hay;
+  });
   const porColumna = (estado) => visibles.filter((p) => p.estado === estado);
 
   const waNumero = (empresa?.whatsapp || '').replace(/\D/g, '');
@@ -43,6 +62,21 @@ export default function AdminPedidosView({ active, pedidos, metricas, slug, empr
         <button className="btn btn-sm" onClick={() => descargarCSV(pedidos, slug)}>
           <i className="ti ti-download"></i> Exportar CSV
         </button>
+      </div>
+
+      <div className="pedidos-search">
+        <i className="ti ti-search"></i>
+        <input
+          type="text"
+          placeholder="Buscar por nº de pedido, cliente, plato o dirección..."
+          value={busqueda}
+          onChange={(e) => setBusqueda(e.target.value)}
+        />
+        {busqueda && (
+          <button className="pedidos-search-clear" onClick={() => setBusqueda('')} aria-label="Limpiar búsqueda">
+            <i className="ti ti-x"></i>
+          </button>
+        )}
       </div>
 
       <div className="pedidos-filtros">

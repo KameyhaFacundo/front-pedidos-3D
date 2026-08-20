@@ -1,16 +1,16 @@
-# Graph Report - front-pedidos-3D  (2026-08-19)
+# Graph Report - front-pedidos-3D  (2026-08-20)
 
 ## Corpus Check
-- 50 files · ~117,316 words
+- 53 files · ~119,132 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 303 nodes · 706 edges · 13 communities (12 shown, 1 thin omitted)
+- 328 nodes · 734 edges · 18 communities (16 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.65)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1d511cbf`
+- Built from commit: `bf182292`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -19,7 +19,7 @@
 - mock.js
 - devDependencies
 - client.js
-- CocinaPage.jsx
+- AdminPage.jsx
 - App.jsx
 - TypeScript Config
 - PlanoEditor.jsx
@@ -27,10 +27,14 @@
 - LandingPage.jsx
 - CLAUDE.md
 - adminUtils.js
+- LoginPage.jsx
+- manifest.json
+- CartContext.jsx
+- sw.js
 
 ## God Nodes (most connected - your core abstractions)
 1. `request()` - 44 edges
-2. `useCompany()` - 20 edges
+2. `useCompany()` - 21 edges
 3. `AdminPage()` - 19 edges
 4. `useAuth()` - 15 edges
 5. `useCart()` - 14 edges
@@ -41,28 +45,28 @@
 10. `getMesas()` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `LocalSettingsModal()` --indirect_call--> `soundEnabled()`  [INFERRED]
+  src/components/admin/LocalSettingsModal.jsx → src/components/adminUtils.js
+- `ProtectedRoute()` --calls--> `useAuth()`  [EXTRACTED]
+  src/App.jsx → src/context/AuthContext.jsx
+- `ThemeToggle()` --calls--> `useTheme()`  [EXTRACTED]
+  src/App.jsx → src/context/ThemeContext.jsx
+- `DemoModal()` --calls--> `useCart()`  [EXTRACTED]
+  src/App.jsx → src/context/CartContext.jsx
 - `RegistroModal()` --calls--> `login()`  [EXTRACTED]
   src/components/RegistroModal.jsx → src/api/client.js
-- `LlamadosPage()` --calls--> `logout()`  [EXTRACTED]
-  src/pages/LlamadosPage.jsx → src/api/client.js
-- `PlanoEditor()` --calls--> `getEmpresa()`  [EXTRACTED]
-  src/components/PlanoEditor.jsx → src/api/client.js
-- `CompanyProvider()` --calls--> `getEmpresa()`  [EXTRACTED]
-  src/context/CompanyContext.jsx → src/api/client.js
-- `ModeSelectPage()` --calls--> `getPedido()`  [EXTRACTED]
-  src/pages/ModeSelectPage.jsx → src/api/client.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (13 total, 1 thin omitted)
+## Communities (18 total, 2 thin omitted)
 
 ### Community 0 - "PedidoTrackingPage.jsx"
-Cohesion: 0.18
-Nodes (14): getPedido(), llamarMozo(), registrarEmpresa(), RegistroModal(), NotificationContext, NotificationProvider(), TYPE_ICONS, useNotify() (+6 more)
+Cohesion: 0.33
+Nodes (8): getPedido(), llamarMozo(), ESTADO_COLORS, ESTADO_INFO, ESTADOS, formatear(), PedidoTrackingPage(), precioItem()
 
 ### Community 1 - "mock.js"
-Cohesion: 0.29
+Cohesion: 0.21
 Nodes (10): crearPedido(), DEMO_EMPRESA, DEMO_MESAS, DEMO_PLATOS, estadoSegunElapsed(), guardarDemoPedido(), handleMock(), leerDemoPedido() (+2 more)
 
 ### Community 2 - "devDependencies"
@@ -70,24 +74,24 @@ Cohesion: 0.12
 Nodes (17): eslint, @eslint/js, eslint-plugin-react-hooks, eslint-plugin-react-refresh, globals, devDependencies, eslint, @eslint/js (+9 more)
 
 ### Community 3 - "client.js"
-Cohesion: 0.12
-Nodes (40): cancelarPedido(), createCupon(), createPlato(), createStaff(), deleteCupon(), deletePlato(), deleteStaff(), getCupones() (+32 more)
+Cohesion: 0.11
+Nodes (35): atenderLlamado(), createCupon(), createPlato(), createStaff(), deleteCupon(), deletePlato(), deleteStaff(), getCupones() (+27 more)
 
-### Community 4 - "CocinaPage.jsx"
-Cohesion: 0.12
-Nodes (24): atenderLlamado(), getLlamados(), login(), getBase(), useSSE(), ThemeToggle(), AdminSidebar(), ITEMS (+16 more)
+### Community 4 - "AdminPage.jsx"
+Cohesion: 0.14
+Nodes (27): cancelarPedido(), getPedidos(), logout(), registrarEmpresa(), updatePedidoEstado(), getBase(), useSSE(), AdminSidebar() (+19 more)
 
 ### Community 5 - "App.jsx"
-Cohesion: 0.06
-Nodes (46): createPedido(), getMenu(), getMesas(), validarCupon(), App(), defaultRouteForRole(), DemoModal(), Navbar() (+38 more)
+Cohesion: 0.08
+Nodes (41): createPedido(), getMenu(), getMesas(), validarCupon(), App(), defaultRouteForRole(), DemoModal(), Navbar() (+33 more)
 
 ### Community 6 - "TypeScript Config"
 Cohesion: 0.11
 Nodes (17): DOM, ES2023, src, vite/client, compilerOptions, allowArbitraryExtensions, allowJs, checkJs (+9 more)
 
 ### Community 7 - "PlanoEditor.jsx"
-Cohesion: 0.16
-Nodes (19): createMesa(), deleteMesa(), saveLayout(), toggleMesaActiva(), updateMesa(), AdminMesasView(), ESTADO_DOT, ESTADO_LABELS (+11 more)
+Cohesion: 0.15
+Nodes (22): createMesa(), deleteMesa(), getEmpresa(), saveLayout(), toggleMesaActiva(), updateMesa(), AdminMesasView(), ESTADO_DOT (+14 more)
 
 ### Community 8 - "package.json"
 Cohesion: 0.07
@@ -99,27 +103,39 @@ Nodes (15): AnimatedStat(), COMPARACION, FAQS, FEATURES, fmt(), LandingPage(), P
 
 ### Community 12 - "adminUtils.js"
 Cohesion: 0.22
-Nodes (16): AdminMenuView(), AdminMetricasView(), AdminPedidosView(), FILTROS, LocalSettingsModal(), calcularMetricas(), CATE_LABELS, categoriaIcon() (+8 more)
+Nodes (15): AdminMenuView(), AdminMetricasView(), AdminPedidosView(), FILTROS, LocalSettingsModal(), calcularMetricas(), CATE_LABELS, categoriaIcon() (+7 more)
+
+### Community 13 - "LoginPage.jsx"
+Cohesion: 0.70
+Nodes (4): login(), defaultRouteForRole(), getSlugFromPath(), LoginPage()
+
+### Community 14 - "manifest.json"
+Cohesion: 0.12
+Nodes (15): background_color, categories, description, display, icons, lang, name, orientation (+7 more)
+
+### Community 15 - "CartContext.jsx"
+Cohesion: 0.21
+Nodes (9): ErrorBoundary, CartContext, CartProvider(), getCartKey(), getSlugFromPath(), itemKey(), loadCart(), RESERVED (+1 more)
 
 ## Knowledge Gaps
-- **80 isolated node(s):** `DEMO_EMPRESA`, `DEMO_PLATOS`, `DEMO_MESAS`, `CartContext`, `RESERVED` (+75 more)
+- **95 isolated node(s):** `name`, `private`, `version`, `type`, `node` (+90 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `request()` connect `client.js` to `PedidoTrackingPage.jsx`, `mock.js`, `CocinaPage.jsx`, `App.jsx`, `PlanoEditor.jsx`?**
+- **Why does `request()` connect `client.js` to `PedidoTrackingPage.jsx`, `mock.js`, `AdminPage.jsx`, `App.jsx`, `PlanoEditor.jsx`, `LoginPage.jsx`?**
   _High betweenness centrality (0.019) - this node is a cross-community bridge._
-- **Why does `useCompany()` connect `App.jsx` to `PedidoTrackingPage.jsx`, `client.js`, `CocinaPage.jsx`, `PlanoEditor.jsx`?**
+- **Why does `useCompany()` connect `App.jsx` to `PedidoTrackingPage.jsx`, `AdminPage.jsx`, `PlanoEditor.jsx`?**
   _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **What connects `DEMO_EMPRESA`, `DEMO_PLATOS`, `DEMO_MESAS` to the rest of the system?**
-  _80 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `name`, `private`, `version` to the rest of the system?**
+  _95 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
 - **Should `client.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.11840888066604996 - nodes in this community are weakly interconnected._
-- **Should `CocinaPage.jsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.12258064516129032 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10853658536585366 - nodes in this community are weakly interconnected._
+- **Should `AdminPage.jsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.1379800853485064 - nodes in this community are weakly interconnected._
 - **Should `App.jsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06386946386946386 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07826694619147449 - nodes in this community are weakly interconnected._

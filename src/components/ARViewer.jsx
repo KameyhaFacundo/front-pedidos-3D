@@ -41,14 +41,20 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
 
     const onError = () => { if (mounted && !plato.foto) setStatus('error'); };
 
-    viewer.addEventListener('load', onLoad);
-    viewer.addEventListener('error', onError);
-
-    if (!plato.foto) {
-      timeout = setTimeout(() => {
-        if (mounted) setStatus('viewer');
-      }, 6000);
-    }
+    // model-viewer (~1 MB) only loads on demand, when the viewer opens.
+    (async () => {
+      if (!customElements.get('model-viewer')) {
+        await import('@google/model-viewer');
+      }
+      if (!mounted) return;
+      viewer.addEventListener('load', onLoad);
+      viewer.addEventListener('error', onError);
+      if (!plato.foto) {
+        timeout = setTimeout(() => {
+          if (mounted) setStatus('viewer');
+        }, 6000);
+      }
+    })();
 
     return () => {
       mounted = false;
