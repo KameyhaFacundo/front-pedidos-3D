@@ -682,6 +682,42 @@
   color: var(--herb) !important;
 }
 
+.success-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 320px;
+  margin-top: 18px;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #25D366;
+  color: #fff;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-whatsapp:hover {
+  background: #1fae56;
+  color: #fff;
+}
+
+.checkout-mesa-pago p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.checkout-mesa-pago i { color: var(--gold); }
+
 /* ===== ALERTS ===== */
 .alert {
   display: flex;

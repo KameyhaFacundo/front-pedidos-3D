@@ -134,7 +134,7 @@ export default function CheckoutPage() {
       direccion: entrega === 'envio' ? direccion.trim() || null : null,
       nombre: entrega === 'mesa' ? null : nombre.trim() || null,
       celular: entrega === 'mesa' ? null : celular.trim() || null,
-      medio_pago: medioPago,
+      medio_pago: entrega === 'mesa' ? 'efectivo' : medioPago,
       cupon_codigo: cupon ? cupon.codigo : undefined,
       items: items.map((item) => ({
         plato_id: item.plato.id,
@@ -196,6 +196,7 @@ export default function CheckoutPage() {
 
   if (success && resumen) {
     const restoPhone = import.meta.env.VITE_RESTAURANT_PHONE || '5493815069332';
+    const esMesa = entrega === 'mesa';
 
     const msg = [
       '¡Hola! Te paso el resumen de mi pedido',
@@ -205,7 +206,7 @@ export default function CheckoutPage() {
       ...(celular ? [`Teléfono: ${celular}`] : []),
       '',
       `Forma de pago: ${medioPago}`,
-      `Entrega: ${entregaLabel}${entrega === 'mesa' && mesaNumero ? ` (Mesa ${mesaNumero})` : ''}${entrega === 'envio' && direccion ? ` - ${direccion}` : ''}`,
+      `Entrega: ${entregaLabel}${esMesa && mesaNumero ? ` (Mesa ${mesaNumero})` : ''}${entrega === 'envio' && direccion ? ` - ${direccion}` : ''}`,
       '',
       'Mi pedido es:',
       resumen.itemsTexto,
@@ -226,28 +227,33 @@ export default function CheckoutPage() {
             <path d="M8 12l3 3 5-5" />
           </svg>
         </div>
-        <h2>¡Pedido confirmado!</h2>
-        <p>Tu pedido #{success.id} ha sido registrado.</p>
+        <h2>{esMesa ? '¡Pedido enviado a la cocina!' : '¡Pedido confirmado!'}</h2>
+        <p>
+          {esMesa
+            ? `Tu pedido #${success.id} fue enviado directo a la cocina${mesaNumero ? ` · Mesa ${mesaNumero}` : ''}.`
+            : `Tu pedido #${success.id} ha sido registrado.`}
+        </p>
         <p className="success-estado">Estado: {success.estado}</p>
 
-        <a
-          href={`https://wa.me/${restoPhone}?text=${msg}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-primary btn-block"
-          style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginTop: 16,
-            background: '#25D366', color: '#fff', border: 'none', textDecoration: 'none', width: '100%', maxWidth: 300,
-          }}
-        >
-          <i className="ti ti-brand-whatsapp" style={{ fontSize: 20 }}></i>
-          Pedir por WhatsApp
-        </a>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '100%', maxWidth: 300, marginTop: 12 }}>
-          <button className="btn btn-outline" onClick={() => navigate(path(`/pedido/${success.id}?t=${success.token}`))}>
-            <i className="ti ti-eye"></i> Ver seguimiento
+        <div className="success-actions">
+          <button
+            className="btn btn-primary btn-block"
+            onClick={() => navigate(path(`/pedido/${success.id}?t=${success.token}`))}
+          >
+            <i className="ti ti-eye"></i> Ver estado del pedido
           </button>
+
+          {!esMesa && (
+            <a
+              href={`https://wa.me/${restoPhone}?text=${msg}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-whatsapp btn-block"
+            >
+              <i className="ti ti-brand-whatsapp"></i> También avisar por WhatsApp
+            </a>
+          )}
+
           <button className="btn btn-outline" onClick={() => navigate(path('/menu'))}>
             Volver al menú
           </button>
@@ -354,52 +360,59 @@ export default function CheckoutPage() {
         )}
       </div>
 
-      <div className="checkout-section">
-        <h2>Forma de pago</h2>
-        <div className="radio-group">
-          <label className={`radio-card ${medioPago === 'efectivo' ? 'active' : ''}`}>
-            <input
-              type="radio"
-              name="medioPago"
-              value="efectivo"
-              checked={medioPago === 'efectivo'}
-              onChange={(e) => setMedioPago(e.target.value)}
-            />
-            <div className="radio-content">
-              <i className="ti ti-cash"></i>
-              <span>Efectivo</span>
-            </div>
-          </label>
-          <label className={`radio-card ${medioPago === 'transferencia' ? 'active' : ''}`}>
-            <input
-              type="radio"
-              name="medioPago"
-              value="transferencia"
-              checked={medioPago === 'transferencia'}
-              onChange={(e) => setMedioPago(e.target.value)}
-            />
-            <div className="radio-content">
-              <i className="ti ti-transfer"></i>
-              <span>Transferencia</span>
-            </div>
-          </label>
-          {mpEnabled && (
-            <label className={`radio-card ${medioPago === 'mercadopago' ? 'active' : ''}`}>
+      {entrega === 'mesa' ? (
+        <div className="checkout-section checkout-mesa-pago">
+          <h2>Forma de pago</h2>
+          <p><i className="ti ti-info-circle"></i> Pagás en el local cuando te traigan el pedido.</p>
+        </div>
+      ) : (
+        <div className="checkout-section">
+          <h2>Forma de pago</h2>
+          <div className="radio-group">
+            <label className={`radio-card ${medioPago === 'efectivo' ? 'active' : ''}`}>
               <input
                 type="radio"
                 name="medioPago"
-                value="mercadopago"
-                checked={medioPago === 'mercadopago'}
+                value="efectivo"
+                checked={medioPago === 'efectivo'}
                 onChange={(e) => setMedioPago(e.target.value)}
               />
               <div className="radio-content">
-                <i className="ti ti-credit-card"></i>
-                <span>Mercado Pago</span>
+                <i className="ti ti-cash"></i>
+                <span>Efectivo</span>
               </div>
             </label>
-          )}
+            <label className={`radio-card ${medioPago === 'transferencia' ? 'active' : ''}`}>
+              <input
+                type="radio"
+                name="medioPago"
+                value="transferencia"
+                checked={medioPago === 'transferencia'}
+                onChange={(e) => setMedioPago(e.target.value)}
+              />
+              <div className="radio-content">
+                <i className="ti ti-transfer"></i>
+                <span>Transferencia</span>
+              </div>
+            </label>
+            {mpEnabled && (
+              <label className={`radio-card ${medioPago === 'mercadopago' ? 'active' : ''}`}>
+                <input
+                  type="radio"
+                  name="medioPago"
+                  value="mercadopago"
+                  checked={medioPago === 'mercadopago'}
+                  onChange={(e) => setMedioPago(e.target.value)}
+                />
+                <div className="radio-content">
+                  <i className="ti ti-credit-card"></i>
+                  <span>Mercado Pago</span>
+                </div>
+              </label>
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="checkout-section">
         <h2>Cupón de descuento</h2>
@@ -508,7 +521,7 @@ export default function CheckoutPage() {
         onClick={handleSubmit}
         disabled={submitting || cerrado}
       >
-        {cerrado ? 'Local cerrado' : submitting ? 'Confirmando...' : `Pedir por WhatsApp · ${formatear(total)}`}
+        {cerrado ? 'Local cerrado' : submitting ? 'Confirmando...' : `Confirmar pedido · ${formatear(total)}`}
       </button>
     </div>
   );
