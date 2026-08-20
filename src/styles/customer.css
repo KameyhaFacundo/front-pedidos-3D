@@ -361,6 +361,21 @@
 
 .ar-cam-btn:hover { background: var(--ember); }
 
+.ar-notice {
+  position: absolute;
+  bottom: 84px;
+  left: 16px;
+  right: 16px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cream);
+  background: rgba(20, 17, 13, 0.82);
+  border: 1px solid rgba(168, 156, 135, 0.3);
+  border-radius: var(--radius-pill);
+  padding: 8px 14px;
+}
+
 .ar-full-close {
   position: absolute;
   top: 16px;

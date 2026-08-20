@@ -5,6 +5,11 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
   const containerRef = useRef(null);
   const modelRef = useRef(null);
   const [status, setStatus] = useState('loading');
+  const [arNotice, setArNotice] = useState(null);
+
+  const esiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const esMovil = esiOS || /Android/i.test(navigator.userAgent);
+  const puedeAR = esMovil && (esiOS ? Boolean(plato?.modelo_usdz) : Boolean(plato?.modelo_glb));
 
   useEffect(() => {
     if (plato?.id) {
@@ -72,7 +77,14 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
     const viewer = modelRef.current;
     if (viewer && viewer.activateAR) {
       setStatus('loading');
-      viewer.activateAR().then(() => setStatus('ar-active')).catch(() => setStatus('viewer'));
+      setArNotice(null);
+      viewer
+        .activateAR()
+        .then(() => setStatus('ar-active'))
+        .catch(() => {
+          setStatus('viewer');
+          setArNotice('No se pudo abrir la realidad aumentada en este dispositivo. Podés rotar el modelo en 3D.');
+        });
     }
   };
 
@@ -91,8 +103,8 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
           poster={plato.foto || undefined}
           reveal="auto"
           loading="eager"
-          ar
-          ar-modes="webxr scene-viewer quick-look"
+          ar={puedeAR}
+          ar-modes={puedeAR ? 'webxr scene-viewer quick-look' : ''}
           ar-scale="fixed"
           camera-controls
           auto-rotate
@@ -126,17 +138,23 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
               <div className="ar-plato-price">${Number(plato.precio).toFixed(2)}</div>
             </div>
             <div style={{ display: 'flex', gap: 8 }}>
-              <button className="ar-cam-btn" onClick={handleRetryAR} title="Abrir cámara AR">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" />
-                  <circle cx="12" cy="13" r="4" />
-                </svg>
-              </button>
+              {puedeAR && (
+                <button className="ar-cam-btn" onClick={handleRetryAR} title="Abrir cámara AR">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" />
+                    <circle cx="12" cy="13" r="4" />
+                  </svg>
+                </button>
+              )}
               <button className="btn btn-success btn-sm" onClick={() => onAddToCart(plato)}>
                 Agregar
               </button>
             </div>
           </div>
+          {arNotice && <div className="ar-notice">{arNotice}</div>}
+          {!puedeAR && (
+            <div className="ar-notice">AR no disponible en este dispositivo. Podés rotar el modelo en 3D.</div>
+          )}
         </div>
       )}
 
@@ -150,7 +168,7 @@ export default function ARViewer({ plato, onClose, onAddToCart }) {
           <div className="ar-plato-name" style={{ marginTop: 16 }}>{plato.nombre}</div>
           <div className="ar-plato-price">${Number(plato.precio).toFixed(2)}</div>
           <div style={{ display: 'flex', gap: 8, marginTop: 16 }}>
-            {tieneModelo && (
+            {tieneModelo && puedeAR && (
               <button className="btn btn-primary btn-sm" onClick={handleRetryAR}>
                 Reintentar AR
               </button>

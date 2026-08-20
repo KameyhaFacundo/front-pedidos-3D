@@ -12,9 +12,9 @@
   "10": "CLAUDE.md",
   "11": "eslint.config.js",
   "12": "adminUtils.js",
-  "13": "LoginPage.jsx",
+  "13": "Skeletons.jsx",
   "14": "manifest.json",
-  "15": "CartContext.jsx",
+  "15": "ErrorBoundary",
   "16": "sw.js",
-  "17": "qrcode"
+  "17": "Footer.jsx"
 }

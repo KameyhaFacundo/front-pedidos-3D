@@ -51,7 +51,7 @@ export default function RegistroModal({ onClose }) {
           <button className="modal-close" onClick={onClose}><i className="ti ti-x"></i></button>
         </div>
 
-        <form onSubmit={handleSubmit} className="registro-body">
+        <form onSubmit={handleSubmit} className="registro-body" data-allow-autocomplete>
           <div className="field">
             <label>Nombre de tu local</label>
             <input

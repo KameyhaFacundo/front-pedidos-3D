@@ -70,7 +70,7 @@ export default function LoginPage() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="login-form">
+        <form onSubmit={handleSubmit} className="login-form" data-allow-autocomplete>
           <div className="field">
             <label>Email</label>
             <div className="login-input-wrap">

@@ -606,7 +606,7 @@
 /* Menu view */
 .dish-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background: var(--hair);
   border: 1px solid var(--hair);
@@ -614,13 +614,15 @@
   overflow: hidden;
 }
 
+@media (max-width: 1200px) { .dish-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px) { .dish-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px) { .dish-grid { grid-template-columns: 1fr; } }
 
 .dish-card {
   background: var(--bg);
-  padding: 16px;
+  padding: 12px;
   position: relative;
+  min-width: 0;
 }
 
 .dish-move {
@@ -660,9 +662,9 @@
 
 .dish-thumb {
   width: 100%;
-  height: 84px;
+  aspect-ratio: 1 / 1;
   border-radius: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -692,6 +694,10 @@
   font-size: 14.5px;
   color: var(--cream);
   margin-bottom: 8px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .dish-bottom {
